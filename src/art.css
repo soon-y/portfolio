@@ -1,0 +1,380 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --art: #ff9501;
+}
+
+.art::selection {
+    color: var(--art);
+}
+
+.art-opp::selection {
+    background-color: var(--art);
+    color: white;
+}
+
+.persona {
+    width: 98vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 33% 33.5% 33.5%;
+    grid-template-rows: 10% 10% 10% 10% 60%;
+    background-color: #fbfbfb;
+    transform: translate(-50%, -50%);
+}
+
+.persona .box {
+    padding: 20px;
+}
+
+.persona p {
+    margin: 0;
+    color: black;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.persona .quotes {
+    font-family: "Noto Serif", serif;
+    font-weight: 600;
+    font-family: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    text-align: center;
+    background-color: rgb(240, 240, 240);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.persona .profile-img {
+    grid-area: 1 / 1 / 5 / 1;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.persona .quote {
+    grid-area: 1 / 2 / 3 / 2;
+    align-self: center;
+}
+
+.persona .profile {
+    grid-area: 3 / 2 / 5 / 2;
+}
+
+.persona .bio {
+    grid-area: 5 / 1;
+}
+
+.persona .needs {
+    grid-area: 5 / 2;
+}
+
+.persona .experience {
+    grid-area: 5 / 3;
+}
+
+.persona #EI {
+    grid-area: 1 / 3;
+}
+
+.persona #SN {
+    grid-area: 2 / 3;
+}
+
+
+.persona #TF {
+    grid-area: 3 / 3;
+}
+
+.persona #JP {
+    grid-area: 4 / 3;
+}
+
+.persona .bars {
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    position: relative;
+    padding-top: 20px;
+}
+
+.persona .bar {
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    margin: auto;
+    background: #eee;
+}
+
+.persona .circle {
+    width: 20px;
+    height: 20px;
+    background-color: var(--art);
+}
+
+.persona .leftside {
+    left: 0;
+}
+
+.persona .rightside {
+    right: 0;
+}
+
+.persona .bars p {
+    position: absolute;
+    top: 40px;
+    font-size: 0.8rem;
+}
+
+/* Persona 1 */
+
+#persona1 .profile-img {
+    background-image: url(./art/portrait1.jpg);
+}
+
+#persona1 #EI .circle {
+    position: absolute;
+    left: 20%;
+}
+
+#persona1 #SN .circle {
+    position: absolute;
+    left: 30%;
+}
+
+#persona1 #TF .circle {
+    position: absolute;
+    left: 80%;
+}
+
+#persona1 #JP .circle {
+    position: absolute;
+    left: 10%;
+}
+
+/* Persona 2 */
+
+#persona2 .profile-img {
+    background-image: url(./art/portrait2.jpg);
+}
+
+#persona2 #EI .circle {
+    position: absolute;
+    left: 80%;
+}
+
+#persona2 #SN .circle {
+    position: absolute;
+    left: 60%;
+}
+
+#persona2 #TF .circle {
+    position: absolute;
+    left: 40%;
+}
+
+#persona2 #JP .circle {
+    position: absolute;
+    left: 80%;
+}
+
+.persona table {
+    width: 100%;
+    height: auto;
+    border-collapse: collapse;
+}
+
+.persona h3 {
+    margin: 0.5rem 0 0.2rem 0;
+}
+
+.persona th {
+    text-align: left;
+    width: 6rem;
+}
+
+.journey-profile-wrapper {
+    width: 6.5rem;
+    height: auto;
+    background-image: url("./art/portrait2-mobile.jpg");
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-position: center;
+    background-size: cover;
+}
+
+.journey-map {
+    margin: auto;
+    width: 60%;
+    background-color: rgba(255, 255, 255, 1);
+    color: black;
+    border-collapse: collapse;
+    padding: 1rem;
+}
+
+.journey-map p {
+    margin: 0;
+}
+
+.journey-map th {
+    color: rgba(0, 0, 0, 0.6);
+    padding: 0.4rem;
+}
+
+.journey-touch {
+    width: 5.8rem;
+    padding: 0.4rem
+}
+
+.journey-stage {
+    width: auto;
+    padding: 0.4rem
+}
+
+.journey-feeling {
+    width: 1.2rem;
+    padding: 0.4rem
+}
+
+.journey-map .title {
+    background-color: var(--art);
+    color: white;
+}
+
+.journey-map tr:nth-child(even) {
+    background-color: #ffac1125;
+}
+
+.icon {
+    font-size: 1rem;
+}
+
+.face-smile {
+    color: #ffbb01;
+}
+
+.face-laugh-beam {
+    color: #23ae61;
+}
+
+.face-frown {
+    color: #e60606;
+}
+
+.desktop-screen {
+    padding: 0.1rem 0.3rem 0.1rem 0;
+    border-radius: 50%;
+    font-size: 1rem;
+    color: var(--art);
+}
+
+.mobile-screen {
+    padding: 0.1rem 0.5rem 0.1rem 0;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    color: var(--art);
+}
+
+@media (max-aspect-ratio: 1/1) {
+    .persona {
+        width: 100vw;
+        height: 100vh;
+        display: inline-block;
+    }
+
+    .persona .box {
+        padding: 0px 20px 0 20px;
+    }
+
+    .persona .profile-img {
+        display: none;
+    }
+
+    .persona .bio {
+        margin-top: 10px;
+    }
+
+    .persona .experience {
+        margin-bottom: 30px;
+    }
+
+    .persona .bars {
+        width: 50%;
+        height: 25px;
+        padding-top: 10px;
+    }
+
+    .persona .bar {
+        height: 20px;
+        margin: auto;
+        background: #eee;
+    }
+
+    .persona .bars p {
+        top: 10px;
+    }
+
+    .persona .leftside {
+        left: 0;
+        transform: translateX(-120%);
+    }
+
+    .persona .rightside {
+        right: 0;
+        transform: translateX(120%);
+    }
+
+    .persona .quote {
+        padding: 1rem;
+    }
+
+    .journey-map {
+        width: 80vw;
+        height: auto;
+        margin: auto;
+    }
+
+    .persona p,
+    .persona table {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .persona .quotes {
+        font-size: 1rem;
+    }
+
+    .persona th {
+        width: 5rem;
+    }
+}
+
+@media (max-aspect-ratio: 0.7) {
+    .persona p,
+    .persona table {
+        font-size: 0.8rem;
+        line-height: 1.5;
+    }
+
+    .persona th {
+        width: 4rem;
+    }
+
+    .bars {
+        display: none;
+    }
+
+    .journey-map {
+        margin: auto;
+        width: 80%;
+        background-color: rgba(255, 255, 255, 1);
+        color: black;
+        border-collapse: collapse;
+        padding: 1rem;
+    }
+
+    .journey-map p {
+        font-size: 0.8rem;
+    }
+}

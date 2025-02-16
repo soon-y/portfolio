@@ -1,0 +1,24 @@
+:root {
+  font-family: "Montserrat", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  line-height: 1.2;
+  font-weight: 400;
+
+  --bgColor: #242424;
+  background-color: var(--bgColor);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+}
+
+canvas {
+  height: 100vh;
+}
