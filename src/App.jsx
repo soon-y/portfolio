@@ -149,11 +149,15 @@ function App(props) {
         <Logo position={[Math.sin(step * 3) * radius, 0, Math.cos(step * 3) * radius]} onClick={toSkill} />
         <Art position={[Math.sin(step * 4) * radius, 0, Math.cos(step * 4) * radius]} rotation-y={step * 1} onClick={() => toDetails(art.current)} ref={art} display={display} />
         <Caregem  position={[Math.sin(step*5) * radius, 0, Math.cos(step*5) * radius]} rotation-y={step*2} />
-      <Billiard position={[Math.sin(step*6) * radius, 0, Math.cos(step*6) * radius]} rotation-y={step*3} />
+        <Billiard position={[Math.sin(step*6) * radius, 0, Math.cos(step*6) * radius]} rotation-y={step*3} />
         <Skills position={[Math.sin(step * 3) * radius, 0, Math.cos(step * 3) * radius * 3]} visible={visible} />
       </group>
 
       <Html>
+        {index === 0 && <a href='https://www.linkedin.com/in/soonyoung-park/' target='_blank' style={{cursor: 'auto'}}>
+        <div style={{backgroundColor:'transparent', width: '25%', height: '25%', position: 'fixed', top: 0, left: 0}}>
+        </div>
+        </a>}
         <div ref={UIdefault}>
           <p className='nav page-nav center'>{count} / 6</p>
           <FontAwesomeIcon icon={faArrowRight} className='arrow-icon' style={{ right: 0 }} onClick={next} />

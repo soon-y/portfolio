@@ -4,10 +4,9 @@ import Typo from "../Mesh/Typo.jsx"
 
 function LinkedIn(props) {
   const [white] = useMatcapTexture(param.matcapWhite, 256)
-  const href = () => { window.open("https://www.linkedin.com/in/soonyoung-park/", "_blank") }
 
   return (
-    <group {...props} onClick={href} >
+    <group {...props}>
       <RoundedBox args={[2, 2, 0.8]} radius={0.2} smoothness={4} bevelSegments={4} creaseAngle={0.4} >
         <meshStandardMaterial color='#0274b3' />
       </RoundedBox>
