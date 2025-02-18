@@ -130,7 +130,7 @@
 /* Persona 1 */
 
 #persona1 .profile-img {
-    background-image: url(./public/art/portrait1.jpg);
+    background-image: url(/art/portrait1.jpg);
 }
 
 #persona1 #EI .circle {
@@ -156,7 +156,7 @@
 /* Persona 2 */
 
 #persona2 .profile-img {
-    background-image: url(./public/art/portrait2.jpg);
+    background-image: url(/art/portrait2.jpg);
 }
 
 #persona2 #EI .circle {
@@ -197,7 +197,7 @@
 .journey-profile-wrapper {
     width: 6.5rem;
     height: auto;
-    background-image: url("./public/art/portrait2-mobile.jpg");
+    background-image: url("/art/portrait2-mobile.jpg");
     background-repeat: no-repeat;
     background-origin: content-box;
     background-position: center;
