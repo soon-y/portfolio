@@ -28,7 +28,7 @@ function DewyDesc() {
 			const slider = document.querySelector('.slider')
 			slider.style.setProperty(
 				'--moonPhase',
-				`url('dewy/thumb${moonPhase == 8 ? 0 : moonPhase}.png')`
+				`url('/dewy/thumb${moonPhase == 8 ? 0 : moonPhase}.png')`
 			)
 		}
 	}, [moonPhase])
