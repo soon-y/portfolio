@@ -691,8 +691,6 @@ function Logo(props) {
       <LinkedIn
         position={[viewport.aspect < 1 ? -wc + 2.8 : -wc + 1, viewport.aspect < 1 ? hc - 1.7 : hc - 0.8, props.position[2]]}
         scale={viewport.aspect < 1 ? 0.9 : .5}
-        onPointerOut={() => setHover(false)}
-        onPointerOver={() => setHover(true)}
       />
 
       <group {...props} dispose={null}
