@@ -154,7 +154,7 @@ function App(props) {
       </group>
 
       <Html>
-        {index === 0 && <a href='https://www.linkedin.com/in/soonyoung-park/' target='_blank' style={{cursor: 'auto'}}>
+        {count === 1 && <a href='https://www.linkedin.com/in/soonyoung-park/' target='_blank' style={{cursor: 'auto'}}>
         <div style={{backgroundColor:'transparent', width: '25%', height: '25%', position: 'fixed', top: 0, left: 0}}>
         </div>
         </a>}
