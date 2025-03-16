@@ -7,7 +7,6 @@ import { useGLTF, Html, Float, useAnimations } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
 import { param } from '../param.js'
 import gsap from "gsap"
-import DewyDesc from '../DewyDesc.jsx'
 
 const Dewy = forwardRef(function Dewy(props, ref) {
 	const { camera, viewport } = useThree()
@@ -52,6 +51,8 @@ const Dewy = forwardRef(function Dewy(props, ref) {
 	useEffect(() => {
 		actions[names[0]].reset().fadeIn(0.5).play()
 		actions[names[1]].reset().fadeIn(0.5).play()
+		actions[names[2]].reset().fadeIn(0.5).play()
+		actions[names[3]].reset().fadeIn(0.5).play()
 	})
 
 	useEffect(() => {
@@ -69,7 +70,6 @@ const Dewy = forwardRef(function Dewy(props, ref) {
 				duration: armDuration,
 				ease: "power2.inout",
 			})
-
 			gsap.to(armL.current.rotation, {
 				x: -Math.PI / 2 + 0.4,
 				y: -1,
@@ -192,7 +192,9 @@ const Dewy = forwardRef(function Dewy(props, ref) {
 					/>
 				</group>
 				<Float>
-					<Html center occlude="blending" transform wrapperClass='annotation' position={[4, 4, 0]}>
+					<Html center occlude="blending" transform wrapperClass='annotation' position={[4, 4, 0]} style={{
+						opacity: props.opacity
+					}}>
 						<div className='fixed'>
 							<b>Dewy Days</b><br />
 							<div className='sub-desc'> Water tracking application </div>
@@ -202,8 +204,18 @@ const Dewy = forwardRef(function Dewy(props, ref) {
 					<group position={[1, -4, 0]} rotation={[0, -Math.PI / 2, 0]} scale={1.5}
 						onPointerOut={() => setHover(false)}
 						onPointerOver={() => setHover(true)}>
-
-						<mesh ref={armL} rotation={[Math.PI / 2 + 0.4, 0, 0]} position={[0.1, 1.1, -0.4]}
+						<group name="Armature">
+							<skinnedMesh
+								name="legs"
+								geometry={nodes.legs.geometry}
+								material={materials.dewy}
+								skeleton={nodes.legs.skeleton}
+							/>
+							<primitive object={nodes.Bone} />
+							<primitive object={nodes.Bone001} />
+							<primitive object={nodes.Bone003} />
+						</group>
+						<mesh ref={armL} rotation={[-Math.PI / 2 - 0.4, 0, 0]} position={[0.1, 1.1, -0.4]}
 							name="armL"
 							castShadow
 							receiveShadow
@@ -211,7 +223,6 @@ const Dewy = forwardRef(function Dewy(props, ref) {
 							material={materials.dewy}
 							scale={[0.654, 0.447, 0.654]}
 						/>
-
 						<mesh ref={armR} rotation={[Math.PI / 2 + 0.4, 0, 0]} position={[0.1, 1.1, 0.4]}
 							name="armL"
 							castShadow
@@ -362,7 +373,6 @@ const Dewy = forwardRef(function Dewy(props, ref) {
 						</group>
 					</group>
 				</Float>
-				<DewyDesc display={props.display} />
 			</group>
 		</group>
 	)
