@@ -8,7 +8,7 @@ import gsap from "gsap"
 
 function Toggle(props) {
   const [hovered, setHover] = useState(false)
-  const [on, setON] = useState(true)
+  const [on, setON] = useState(false)
   const { nodes, materials } = useGLTF('./model/3Dswitch.glb')
   const EN = useRef()
   const KR = useRef()
@@ -78,7 +78,8 @@ function Toggle(props) {
         position={[0, 0, -0.7]}
         scale={1.3}
       />
-      <group ref={Toggle} position={[1, 0, 0]} onClick={() => setON(!on)}>
+      <group ref={Toggle} position={[1, 0, 0]} position-x={-1} rotation-z={Math.PI * 2}
+      onClick={() => setON(!on)}>
         <mesh
           castShadow
           receiveShadow
@@ -86,7 +87,7 @@ function Toggle(props) {
           material={materials.white}
           scale={[1, 1, 0.57]}
         />
-        <group scale={[0.9, 0.9, 0.5]} ref={EN}>
+        <group scale={[1.02, 1.02, 0.581]} ref={EN}>
           <mesh
             castShadow
             receiveShadow
@@ -100,7 +101,7 @@ function Toggle(props) {
             material={materials.navy}
           />
         </group>
-        <group ref={KR} position-z={-0.1}>
+        <group ref={KR} position-z={-1}>
           <mesh
             castShadow
             receiveShadow
