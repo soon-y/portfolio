@@ -14,7 +14,7 @@ export default function NoteTaking(props) {
     actions[names[0]].reset().fadeIn(0.5).play()
   })
   return (
-    <group ref={group} {...props} dispose={null} rotation={[-Math.PI / 4, Math.PI, 0]}>
+    <group ref={group} {...props} dispose={null} rotation={props.rotation}>
       <group name="Scene">
         <mesh
           name="Cube"
