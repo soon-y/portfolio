@@ -42,7 +42,6 @@ const Dewy = forwardRef(function Dewy(props, ref) {
 		actions[names[0]].reset().fadeIn(0.5).play()
 		actions[names[1]].reset().fadeIn(0.5).play()
 		actions[names[2]].reset().fadeIn(0.5).play()
-		actions[names[3]].reset().fadeIn(0.5).play()
 	})
 
 	useEffect(() => {
