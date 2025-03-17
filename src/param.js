@@ -4,6 +4,8 @@ const height = 4 / 5
 const innerRadius = outerRadius - thickness
 
 const param = {
+  count: 1,
+  index: 0,
   N: 100,
   height: height,
   angle: Math.PI / 2,
