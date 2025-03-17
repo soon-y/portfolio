@@ -1,171 +1,418 @@
-import { useState, useEffect, forwardRef } from 'react'
-import { Html, Float } from '@react-three/drei'
-import { useThree } from '@react-three/fiber'
-import { param } from './param.js'
+import { useState, useEffect, useRef } from 'react'
+import { Canvas, useThree } from '@react-three/fiber'
+import { OrbitControls, Float, Sparkles, Environment } from '@react-three/drei'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFaceSmile, faFaceLaugh, faFaceFrown, faMobileScreenButton, faDesktop, faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router'
+import { param } from './param.js'
 import Mobile from "./Model/Mobile.jsx"
 import NoteTaking from "./Model/NoteTaking.jsx"
 import LipReading from "./Model/LipReading.jsx"
 import Hand from "./Model/Hand.jsx"
+import Art from "./Model/Art.jsx"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import './art.css'
+import './App.css'
 
-const artDesc = forwardRef(function artDesc(props, ref) {
-	const { camera, viewport } = useThree()
-	const [radius, setRadius] = useState(viewport.aspect < 1.2 ? param.diameter * 10 + (1.2 - viewport.aspect) * param.diameter * 20 : param.diameter * 10)
-	const [hc, setHc] = useState((2 * radius * Math.tan(Math.PI / 180 * camera.fov / 2)) * 0.5)
-	const [select, setSelct] = useState(0)
+gsap.registerPlugin(ScrollTrigger)
+
+export default function ArtDesc() {
+	const [ratio, setRatio] = useState(window.innerWidth / window.innerHeight)
+	const [on, setOn] = useState(false)
+	const radius = 5
+
+	const scale = Array.from({ length: 1000 }, () => 0.5 + Math.random() * 4)
+
+	const section0 = useRef(null)
+	const section1 = useRef(null)
+	const section2 = useRef(null)
+	const section3 = useRef(null)
+	const section4 = useRef(null)
+	const section5 = useRef(null)
+	const section6 = useRef(null)
+	const section7 = useRef(null)
+	const section8 = useRef(null)
+	const section9 = useRef(null)
+	const section10 = useRef(null)
+	const section11 = useRef(null)
+	const section12 = useRef(null)
+	const img01 = useRef(null)
+	const text2 = useRef(null)
+	const text2_1 = useRef(null)
+	const text3 = useRef(null)
+	const text4 = useRef(null)
+	const text5 = useRef(null)
+	const text6 = useRef(null)
+	const text6_masking = useRef(null)
+
+	const prototype = useRef(null)
+	const model = useRef()
+	const logo = useRef()
+	const logoTransform = useRef()
 
 	useEffect(() => {
-		if (viewport.aspect < 1.2) { setRadius(param.diameter * 10 + (1.2 - viewport.aspect) * param.diameter * 20) }
-		else { setRadius(param.diameter * 10) }
-		setHc((2 * radius * Math.tan(Math.PI / 180 * camera.fov / 2)) * 0.5)
-	}, [viewport])
+		const checkIfElementsAreLoaded = () => {
+			if (logo.current && model.current && prototype.current) {
+				const context = gsap.context(() => {
+					const sec1 = gsap.timeline({
+						scrollTrigger: {
+							trigger: section1.current,
+							start: 'top bottom',
+							end: 'bottom center',
+							scrub: 1,
+						}
+					})
+					sec1.to('.top', { opacity: 1 }, 0)
+					sec1.to(img01.current, { x: '-10%' }, 0)
+					sec1.to(logo.current.position, { y: 10 }, 0)
+
+					const sec2 = gsap.timeline({
+						scrollTrigger: {
+							trigger: section2.current,
+							start: 'top center',
+							end: 'bottom bottom',
+							scrub: 1,
+						}
+					})
+					sec2.from(text2.current, { x: '20%', opacity: 0 }, 0)
+					sec2.from(text2_1.current, { x: '-20%', opacity: 0 }, 0)
+
+					const sec3 = gsap.timeline({
+						scrollTrigger: {
+							trigger: section3.current,
+							start: 'top center',
+							end: 'bottom bottom',
+							scrub: 1,
+						}
+					})
+					sec3.from(text3.current, { x: '20%', opacity: 0 }, 0)
+					sec3.to(model.current.position, { y: ratio > 1 ? '0' : 1.5 }, 0)
+					sec3.from(model.current.rotation, { y: Math.PI / 3 }, 0)
+
+					const sec4 = gsap.timeline({
+						scrollTrigger: {
+							trigger: section4.current,
+							start: 'top center',
+							end: 'bottom bottom',
+							scrub: 1,
+						}
+					})
+					sec4.from(text4.current, { x: '20%', opacity: 0 }, 0)
+					sec4.to(model.current.rotation, { y: -Math.PI * 2 / 3 }, 0)
+
+					const sec5 = gsap.timeline({
+						scrollTrigger: {
+							trigger: section5.current,
+							start: 'top center',
+							end: 'bottom bottom',
+							scrub: 1,
+						}
+					})
+					sec5.from(text5.current, { x: '20%', opacity: 0 }, 0)
+					sec5.to(model.current.rotation, { y: -Math.PI * 4 / 3 }, 0)
+
+					const sec6 = gsap.timeline({
+						scrollTrigger: {
+							trigger: section6.current,
+							start: 'top center',
+							end: 'bottom bottom',
+							scrub: 1,
+						}
+					})
+					sec6.from(text6.current, { x: '20%', opacity: 0 }, 0)
+					sec6.to(text6_masking.current, { opacity: 1 }, 0)
+					sec6.to(model.current.position, { y: 10 }, 0)
+
+					const sec7 = gsap.timeline({
+						scrollTrigger: {
+							trigger: section7.current,
+							start: 'top center',
+							end: 'bottom bottom',
+							scrub: 1, ease: "power1.out"
+						}
+					})
+					sec7.from('#persona1 .profile-img', { opacity: 0 }, 0)
+					.from('#persona1 .quote', { y: '20%', opacity: 0 }, 0)
+					.from('#persona1 .profile', { y: '20%', opacity: 0 }, 0)
+					.from('#persona1 #EI', { y: '20%', opacity: 0 }, 0)
+					.from('#persona1 #SN', { y: '20%', opacity: 0 }, 0)
+					.from('#persona1 #TF', { y: '20%', opacity: 0 }, 0)
+					.from('#persona1 #JP', { y: '20%', opacity: 0 }, 0)
+					.from('#persona1 .bio', { y: '20%', opacity: 0 }, 0)
+					.from('#persona1 .needs', { y: '20%', opacity: 0 }, 0)
+					.from('#persona1 .experience', { y: '20%', opacity: 0 }, 0)
+
+					const sec8 = gsap.timeline({
+						scrollTrigger: {
+							trigger: section8.current,
+							start: 'top center',
+							end: 'bottom bottom',
+							scrub: 1, ease: "power1.out"
+						}
+					})
+					sec8.from('#persona2 .profile-img', { opacity: 0 }, 0)
+					.from('#persona2 .quote', { y: '20%', opacity: 0 }, 0)
+					.from('#persona2 .profile', { y: '20%', opacity: 0 }, 0)
+					.from('#persona2 #EI', { y: '20%', opacity: 0 }, 0)
+					.from('#persona2 #SN', { y: '20%', opacity: 0 }, 0)
+					.from('#persona2 #TF', { y: '20%', opacity: 0 }, 0)
+					.from('#persona2 #JP', { y: '20%', opacity: 0 }, 0)
+					.from('#persona2 .bio', { y: '20%', opacity: 0 }, 0)
+					.from('#persona2 .needs', { y: '20%', opacity: 0 }, 0)
+					.from('#persona2 .experience', { y: '20%', opacity: 0 }, 0)
+
+					const sec9 = gsap.timeline({
+						scrollTrigger: {
+							trigger: section9.current,
+							start: 'top 40%',
+							end: 'bottom bottom',
+							scrub: 1, ease: "power1.out"
+						}
+					})
+					sec9.from('.journey-profile', { opacity: 0 }, 0)
+					.from('.journey-map', { y: '20%', opacity: 0 }, 0)
+					.from('.journey-touch', { y: '20%', opacity: 0 }, 0)
+					.from('.journey-stage', { y: '20%', opacity: 0 }, 0)
+					.from('.journey-feeling', { y: '20%', opacity: 0 }, 0)
+
+					const sec10 = gsap.timeline({
+						scrollTrigger: {
+							trigger: section10.current,
+							start: 'top 80%',
+							end: 'bottom bottom',
+							scrub: 1,
+						}
+					})
+					sec10.to(logoTransform.current.position, { y: 0 }, 0)
+					.from('.logo_desc', { opacity: 0, x: '20%' }, 0)
+
+					const sec11 = gsap.timeline({
+						scrollTrigger: {
+							trigger: section11.current,
+							start: 'top center',
+							end: 'bottom 20%',
+							scrub: 1,
+						}
+					})
+					sec11.to(logoTransform.current.position, { y: 10 }, 0)
+					.from('.flowchart', { opacity: 0 }, 0)
+
+					const sec12 = gsap.timeline({
+						scrollTrigger: {
+							trigger: section12.current,
+							start: 'top center',
+							end: 'bottom bottom',
+							scrub: 1,
+						}
+					})
+					sec12.to(prototype.current.position, { y: 0 }, 0)
+				})
+				return () => context.revert()
+			} else {
+				setTimeout(checkIfElementsAreLoaded, 100)
+			}
+		}
+		checkIfElementsAreLoaded()
+
+		window.addEventListener('resize', handleResize);
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		}
+	}, [])
+
+	const handleResize = () => {
+		const newRatio = window.innerWidth / window.innerHeight;
+		setRatio(newRatio)
+	}
 
 	return (
-		<>
-			<Html>
-				<p className='desc center art' style={{ position: 'absolute', top: `100vh`, left: '0' }}>
-					In 2016, I came across a
-					<a className='art' href="https://comic.naver.com/webtoon/list?titleId=659934&page=1&sort=ASC" target="_blank"> comic </a>
-					written by a deaf writer based on her real-life experiences. As a museum-goer at the time,
-					I was curious about how deaf people engaged with culture such as museums and galleries.<br />
-					I researched how deaf people communicate and how the museum's docent service operates
-					to identify touch points.
-					Based on the research, I designed a exhibition guide app
-					that allows deaf people to reserve and interact with the docents the way they want to.
-				</p>
+		<div>
+			<Canvas style={{ position: 'fixed' }} camera={{
+				fov: 45,
+				position: [0, 0, 0]
+			}}
+				gl={{ stencil: true }}>
+				{/* <OrbitControls /> */}
+				<ambientLight intensity={0.1} />
+				<Environment preset="sunset" />
+				<Sparkles count={scale.length} size={scale} position={[0, 0, 0]} scale={[12, 12, 50]} speed={0.1} />
+				<Art ref={logo} position={[ratio > 1 ? -ratio * 2.2 : 0, ratio > 1 ? 0 : 2, ratio > 1 ? -10 : -14]}
+					opacity={1} scale={0.5} animation={false} />
+				<Art ref={logoTransform} position={[0, -10, -10]} opacity={0} scale={0.5} onClick={() => { setOn(!on) }} on={on} animation={true}/>
+				<group position={[0, -10, -7]} ref={prototype}>
+					<Mobile
+						rotation={[0, -Math.PI / 2, 0]}
+						scale={1}
+						matcap={param.matcapOrange}
+						src={"https://soonyoung-p.github.io/log/art/prototype/"}
+						content={"iframe-time"} />
+				</group>
+				<group ref={model} position={[ratio > 1 ? -radius * 1.7 : -radius, -10, -10]} >
+					<Hand position={[radius, -2, 0]} scale={0.4} />
+					<LipReading rotation-y={Math.PI * 0.66} position={[-Math.cos(Math.PI / 3) * radius, 0, -Math.sin(Math.PI / 3) * radius]} scale={0.8} />
+					<NoteTaking rotation={[Math.PI / 2, Math.PI / 3, -Math.PI / 2]} position={[-Math.cos(Math.PI / 3) * radius, 0, Math.sin(Math.PI / 3) * radius]} scale={1.1} />
+				</group>
+			</Canvas>
 
-				<div className='section' style={{ position: 'absolute', top: `200vh` }}>
-					<div className="mobile section center" style={{
-						background: "url('./art/mockupMobile.jpg')",
-						backgroundSize: 'cover',
-						backgroundPosition: 'center',
-					}}>
-					</div>
-					<div className="web section center" style={{
-						background: "url('./art/mockupWeb.jpg')",
-						backgroundSize: 'cover',
-						backgroundPosition: 'center',
-					}}>
+			<div className='wrapper'>
+				<Link to={'/'}>
+					<p className='nav back button-decoration'>Back</p>
+				</Link>
+				<p className='nav top button-decoration'><a href='#first'>Top</a></p>
+
+				<div id='first' className='section-wo flex-container' ref={section0}>
+					<div className='left-side dewy desc'></div>
+					<div className='right-side'>
+						<div className='desc art'>
+							<p>
+								In 2016, I came across a
+								<a className='art' href="https://comic.naver.com/webtoon/list?titleId=659934&page=1&sort=ASC" target="_blank"> comic </a>
+								written by a deaf writer based on her real-life experiences. As a museum-goer at the time,
+								I was curious about how deaf people engaged with culture such as museums and galleries.<br />
+								I researched how deaf people communicate and how the museum's docent service operates
+								to identify touch points.
+								Based on the research, I designed a exhibition guide app
+								that allows deaf people to reserve and interact with the docents the way they want to.
+							</p>
+						</div>
 					</div>
 				</div>
 
-				<div className='section center' style={{ position: 'absolute', top: `300vh` }}>
-					<div className='desc' style={{ position: 'relative', top: `5%`, margin: 'auto' }}>
-						<p className='art'>
-							People with hearing loss use a variety of communication methods depending on the severity of their
-							hearing loss, their preferences, and the resources available to them. Some common methods include:
+				<div className='section' ref={section1} style={{
+					background: "url('./art/art_bg.jpg')",
+					backgroundSize: 'cover',
+					backgroundPosition: 'center',
+					backgroundRepeat: 'no-repeat',
+				}}>
+					<img ref={img01} className='full-img'
+						src='/art/art_thumb.png' />
+				</div>
+
+				<div className='section' ref={section2} style={{
+					display: 'flex', alignItems: 'center',
+				}}>
+					<div style={{ opacity: 0.3, position: 'absolute', right: 0 }} ref={text2_1} >
+						<p className='stroke' style={{ lineHeight: 1.1, textAlign: 'right' }}>
+							Sign Language<br />Lip Reading<br />Written Communication
 						</p>
+					</div>
+					<p ref={text2} className='art desc' style={{
+						width: ratio > 1 ? '50vw' : '90vw',
+						margin: 'auto',
+						textAlign: 'left',
+					}}>
+						People with hearing loss use a variety of communication methods depending on the severity of their
+						hearing loss, their preferences, and the resources available to them.
+					</p>
+				</div>
 
-						<div>
-							<span className='art-opp' style={{
-								fontWeight: 700, margin: '0', fontSize: '1.2rem',
-								color: select === 0 ? '#ff9501' : 'white', cursor: 'pointer'
-							}}
-								onClick={() => setSelct(0)} >
-								Sign Language
-							</span>
-							{!(select === 0) && <FontAwesomeIcon icon={faCaretDown} style={{ margin: '0 0.5rem' }} />}
-							{select === 0 && <FontAwesomeIcon icon={faCaretUp} style={{ margin: '-0.1rem 0.5rem', color: '#ff9501' }} />}
-						</div>
-
-						{select === 0 &&
-							<div className='art-opp'>
+				<div className='section flex-container' ref={section3}>
+					<div className='left-side'>
+					</div>
+					<div className='right-side desc art'>
+						<div ref={text3}>
+							<p>
+								<span style={{ color: 'rgba(255,255,255,0.8)' }}>common methods <b>01</b></span> <br />
+								<span style={{ fontWeight: 700, fontSize: '3rem', lineHeight: 1, margin: '0 rem', }}>Sign Language</span>
+							</p>
+							<p className='art'>
 								Sign language is the primary language for many individuals with hearing loss,
 								allowing them to express themselves fluently and connect with others who are also proficient in
 								sign language.
-							</div>}
-
-						<div>
-							<span className='art-opp' style={{
-								fontWeight: 700, margin: '0', fontSize: '1.2rem',
-								color: select === 1 ? '#ff9501' : 'white', cursor: 'pointer'
-							}}
-								onClick={() => setSelct(1)}>
-								Lip Reading (Speechreading)
-							</span>
-							{!(select === 1) && <FontAwesomeIcon icon={faCaretDown} style={{ margin: '0 0.5rem' }} />}
-							{select === 1 && <FontAwesomeIcon icon={faCaretUp} style={{ margin: '-0.1rem 0.5rem', color: '#ff9501' }} />}
-
+							</p>
 						</div>
+					</div>
+				</div>
 
-						{select === 1 &&
-							<div className='art-opp'>
+				<div className='section flex-container' ref={section4}>
+					<div className='left-side'>
+					</div>
+					<div className='right-side desc art'>
+						<div ref={text4} className='text-opacity art'>
+							<p>
+								<span style={{ color: 'rgba(255,255,255,0.8)' }}>common methods <b>02</b></span> <br />
+								<span style={{ fontWeight: 700, fontSize: '3rem', lineHeight: 1, margin: '0 rem', }}>Lip Reading (Speechreading)</span>
+							</p>
+							<p>
 								Lip reading involves watching the movement of a speaker’s lips, face, and body to understand
 								what they are saying. The speakers should show their lips with frontal faces and speak clearly
 								at a natural pace.
 								However, it is sometimes challenging because many sounds look similar on the lips, and some
 								words are hard to distinguish just by lip movement.
-							</div>}
-						<div>
-
-							<span className='art-opp' style={{
-								fontWeight: 700, margin: '0', fontSize: '1.2rem',
-								color: select === 2 ? '#ff9501' : 'white', pointer: 'cursor'
-							}}
-								onClick={() => setSelct(2)}>
-								Written Communication
-							</span>
-							{!(select === 2) && <FontAwesomeIcon icon={faCaretDown} style={{ margin: '0 0.5rem' }} />}
-							{select === 2 && <FontAwesomeIcon icon={faCaretUp} style={{ margin: '-0.1rem 0.5rem', color: '#ff9501' }} />}
+							</p>
 						</div>
+					</div>
+				</div>
 
-						{select === 2 &&
-							<div className='art-opp'>
+				<div className='section flex-container' ref={section5}>
+					<div className='left-side'>
+					</div>
+					<div className='right-side desc art'>
+						<div ref={text5}>
+							<p>
+								<span style={{ color: 'rgba(255,255,255,0.8)' }}>common methods <b>03</b></span> <br />
+								<span style={{ fontWeight: 700, fontSize: '3rem', lineHeight: 1, margin: '0 rem', }}>Written Communication</span>
+							</p>
+							<p>
 								Texting, writing notes, or typing on electronic devices is a common method of communication for
 								people with hearing loss, especially in one-on-one or small group settings.
 								Many individuals with hearing loss prefer to carry a pen and paper or use a smartphone/tablet to
 								facilitate easier communication in situations where verbal communication might be challenging.
-							</div>}
+							</p>
+						</div>
 					</div>
 				</div>
-			</Html>
 
-			<Float floatIntensity={0.1} speed={0.5} floatingRange={[0.05, 0.05]} rotationIntensity={0.1}>
-				{select === 0 && <Hand position={[0, -hc * 6.7, 0]} scale={0.6} />}
-				{select === 1 && <LipReading position={[0, -hc * 6.4, 0]} scale={1.5} />}
-				{select === 2 && <NoteTaking position={[0, -hc * 6.5, 0]} scale={2} />}
-			</Float>
-
-			<Html>
-				<div className='desc center art' style={{ position: 'absolute', top: `400vh` }}>
-					<p className='art-opp'>I referenced the docent programs provided by
-						<a target="_blank" href="https://www.museum.go.kr/site/eng/content/tours_and_services">
-							<b><em> National Museum of Korea </em> </b>
-						</a>
-					</p>
-					<b>
-						<p className='art-opp'>Sign language docent</p>
-					</b>
-					<ul>
-						<li>For groups of 5 to 20 people, it should be booked at least one day before your desired date.
-						</li>
-						<li>Walk-ins are also accepted, but priority is given to those who make reservations in advance.
-						</li>
-					</ul>
-					<b>
-						<p className='art-opp'>Exhibition Guide App</p>
-					</b>
-					<ul>
-						<li>
-							This is a new exhibition guide service that uses Bluetooth beacons and smart devices to
-							automatically
-							guide
-							visitors to exhibits based on their location.</li>
-						<li>After installing the app, you need to download the content in advance while connected to WIFI.
-						</li>
-						<li>Bluetooth function must be turned on.</li>
-					</ul>
+				<div className='section flex-container' ref={section6}>
+					<div className='left-side'>
+						<div ref={text6_masking} style={{ alignContent: 'center' }}>
+							<p style={{ color: 'rgba(255,255,255,0.5)', fontWeight: 700 }}>
+								- Reference -
+							</p>
+							<a target="_blank" href="https://www.museum.go.kr/site/eng/content/tours_and_services">
+								<p className='masking'>National <br />Museum <br />of Korea</p>
+							</a>
+						</div>
+					</div>
+					<div className='right-side desc art'>
+						<div ref={text6} style={{ alignContent: 'center' }}>
+							<b>
+								<p style={{ margin: 0 }}>Sign language docent</p>
+							</b>
+							<ul style={{ margin: 0 }}>
+								<li>For groups of 5 to 20 people, it should be booked at least one day before your desired date.
+								</li>
+								<li>Walk-ins are also accepted, but priority is given to those who make reservations in advance.
+								</li>
+							</ul>
+							<b>
+								<p style={{ margin: '0.5rem 0 0 0' }}>Exhibition Guide App</p>
+							</b>
+							<ul style={{ margin: 0 }}>
+								<li>
+									This is a new exhibition guide service that uses Bluetooth beacons and smart devices to
+									automatically
+									guide
+									visitors to exhibits based on their location.</li>
+								<li>After installing the app, you need to download the content in advance while connected to WIFI.
+								</li>
+								<li>Bluetooth function must be turned on.</li>
+							</ul>
+						</div>
+					</div>
 				</div>
-				<div id="persona1" className="persona" style={{ position: 'absolute', top: `500vh` }}>
+
+				<div id="persona1" className="persona section" ref={section7}>
 					<div className="profile-img">
 					</div>
-					<div className="quote box">
-						<p className="quotes"><q><em className='art'>
-							I want to be able to see at a glance where sign language docents are available and book
-							them easily and conveniently.
-						</em></q></p>
+					<div className="quote box art">
+						<p className='title'>Persona 01</p>
+						<p className="quotes">
+							<q><em>
+								I want to be able to see at a glance where sign language docents are available and book
+								them easily and conveniently.
+							</em></q></p>
 					</div>
 					<div className="profile box">
 						<table>
@@ -174,14 +421,14 @@ const artDesc = forwardRef(function artDesc(props, ref) {
 									<th className='art' colSpan={2} style={{ fontSize: '1.2rem' }}>
 										Mina Kim
 									</th>
-									<td rowSpan={4} className='' style={{
-										width: viewport.aspect < 1 ? '30%' : '0',
+									{ratio < 1 && <td rowSpan={4} style={{
+										width: '30%',
 										height: '100%',
-										backgroundImage: viewport.aspect < 1 ? 'url(./art/portrait1-mobile.jpg)' : '',
+										backgroundImage: 'url(./art/portrait1-mobile.jpg)',
 										backgroundSize: 'cover',
 										backgroundPosition: 'center',
 									}}>
-									</td>
+									</td>}
 								</tr>
 								<tr>
 									<th><p className='art'>Age</p></th>
@@ -252,13 +499,14 @@ const artDesc = forwardRef(function artDesc(props, ref) {
 					</div>
 				</div>
 
-				<div id="persona2" className="persona" style={{ position: 'absolute', top: `600vh` }}>
+				<div id="persona2" className="persona section" ref={section8}>
 					<div className="profile-img">
 						<div className="portrait"></div>
 					</div>
-					<div className="quote box">
-						<p className="quotes art">
-							<q><em className='art'>
+					<div className="quote box art">
+						<p className='title'>Persona 02</p>
+						<p className="quotes">
+							<q><em>
 								I want the freedom to explore artworks in depth without being restricted by docent schedules.
 							</em></q>
 						</p>
@@ -271,14 +519,14 @@ const artDesc = forwardRef(function artDesc(props, ref) {
 										Yoonha Lee
 									</th>
 									<td><p className='art'></p></td>
-									<td rowSpan={4} style={{
-										width: viewport.aspect < 1 ? '30%' : '0',
+									{ratio < 1 && <td rowSpan={4} style={{
+										width: '30%',
 										height: '100%',
-										backgroundImage: viewport.aspect < 1 ? 'url(./art/portrait2-mobile.jpg)' : '',
+										backgroundImage: 'url(./art/portrait2-mobile.jpg)',
 										backgroundSize: 'cover',
 										backgroundPosition: 'center',
 									}}>
-									</td>
+									</td>}
 								</tr>
 								<tr>
 									<th><p className='art'>Age</p></th>
@@ -349,121 +597,122 @@ const artDesc = forwardRef(function artDesc(props, ref) {
 					</div>
 				</div>
 
-				<div className="section center" style={{ position: 'absolute', top: `700vh` }}>
-					<table className="journey-map" style={{
-						top: '50%', transform: 'translateY(-50%)', position: 'relative'
-					}}>
+				<div className="section" ref={section9}>
+					<table className="journey-map art">
 						<tbody>
 							<tr>
-								<td className="journey-profile-wrapper"></td>
-								<td colSpan={5} className="journey-stage">
-									<b><p className='art'>Yoonha Lee </p></b>
-									<p className='art'>
+								<td className='journey-touch'>
+									<img src='./art/portrait2-mobile.jpg' className="journey-profile" />
+								</td>
+								<td colSpan={5} className="journey-stage journey-case">
+									<b><p>Yoonha Lee </p></b>
+									<p>
 										She is visiting a gallery on the schedule of the sign language docent.
-									</p></td>
+									</p>
+								</td>
 							</tr>
 							<tr>
-								<th colSpan={5} className='title art-opp'>
+								<th colSpan={5} className='title'>
 									Journey Map
 								</th>
 							</tr>
 							<tr>
-								<th className="journey-touch art">Stages</th>
-								<th className="journey-stage art">User action</th>
-								<th colSpan="3" className='art'>Feelings</th>
+								<th className="journey-touch">Stages</th>
+								<th className="journey-stage">User action</th>
+								<th colSpan="3">Feelings</th>
 							</tr>
 							<tr>
 								<td className="journey-touch">
-									<p className='art'>
+									<p>
 										Motivation
 									</p>
 								</td>
 								<td className="journey-stage">
-									<p className='art'>
+									<p>
 										Wants to go to a gallery
 									</p>
 								</td>
-								<td className="journey-feeling"></td>
-								<td className="journey-feeling"></td>
+								<td></td>
+								<td></td>
 								<td className="journey-feeling"><FontAwesomeIcon icon={faFaceLaugh} className={"face-laugh-beam icon"} /></td>
 							</tr>
 							<tr>
-								<td className="journey-touch"><p className='art'>
+								<td className="journey-touch"><p>
 									Discovery
 								</p></td>
-								<td className="journey-stage"><p className='art'>
+								<td className="journey-stage"><p>
 									Searches exhibitions and sign language docent programs
 								</p></td>
-								<td className="journey-feeling"></td>
+								<td></td>
 								<td className="journey-feeling"><FontAwesomeIcon icon={faFaceSmile} className="face-smile icon" /></td>
-								<td className="journey-feeling"></td>
+								<td></td>
 							</tr>
 							<tr>
-								<td className="journey-touch"><p className='art'>
+								<td className="journey-touch"><p>
 									Booking
 								</p></td>
-								<td className="journey-stage"><p className='art'>
+								<td className="journey-stage"><p>
 									Selects a gallery and reserves a sign language docent
 								</p></td>
-								<td className="journey-feeling"></td>
-								<td className="journey-feeling"></td>
+								<td></td>
+								<td></td>
 								<td className="journey-feeling"><FontAwesomeIcon icon={faFaceLaugh} className={"face-laugh-beam icon"} /></td>
 							</tr>
 							<tr>
-								<td className="journey-touch"><p className='art'>
+								<td className="journey-touch"><p>
 									Visit
 								</p></td>
-								<td className="journey-stage"><p className='art'>
+								<td className="journey-stage"><p>
 									Visits the gallery, however docent service is cancelled
 								</p></td>
 								<td className="journey-feeling"><FontAwesomeIcon icon={faFaceFrown} className="face-frown icon" /></td>
-								<td className="journey-feeling"></td>
-								<td className="journey-feeling"></td>
+								<td></td>
+								<td></td>
 							</tr>
 							<tr>
-								<td className="journey-touch"><p className='art'>
+								<td className="journey-touch"><p>
 									Explore
 								</p></td>
-								<td className="journey-stage"><p className='art'>
+								<td className="journey-stage"><p>
 									Appreciates the artworks with reading descriptions
 								</p></td>
 								<td className="journey-feeling"><FontAwesomeIcon icon={faFaceFrown} className="face-frown icon" /></td>
-								<td className="journey-feeling"></td>
-								<td className="journey-feeling"></td>
+								<td></td>
+								<td></td>
 							</tr>
 							<tr>
-								<td className="journey-touch"><p className='art'>
+								<td className="journey-touch"><p>
 									Completion
 								</p></td>
-								<td className="journey-stage"><p className='art'>
+								<td className="journey-stage"><p>
 									Leaves the gallery
 								</p></td>
-								<td className="journey-feeling"></td>
+								<td></td>
 								<td className="journey-feeling"><FontAwesomeIcon icon={faFaceSmile} className="face-smile icon" /></td>
-								<td className="journey-feeling"></td>
+								<td></td>
 							</tr>
 							<tr>
-								<th className="title art-opp" colSpan={7}>Solution</th>
+								<th className="title" colSpan={7}>Solution</th>
 							</tr>
 							<tr>
-								<td className="journey-touch"><p className='art'>
+								<td className="journey-touch"><p>
 									Discovery
 								</p></td>
 								<td className="journey-stage" colSpan={4}>
 									<FontAwesomeIcon icon={faDesktop} className='icon desktop-screen' />
 									<FontAwesomeIcon icon={faMobileScreenButton} className='icon mobile-screen' />
-									<p className='art' style={{ display: 'inline' }}>
+									<p style={{ display: 'inline' }}>
 										Archiving galleries where sign language docent programs are provided,
 										and being albe to book them
 									</p></td>
 							</tr>
 							<tr>
-								<td className="journey-touch"><p className='art'>
+								<td className="journey-touch"><p>
 									Explore
 								</p></td>
 								<td className="journey-stage" colSpan={4}>
 									<FontAwesomeIcon icon={faMobileScreenButton} className='icon mobile-screen' />
-									<p className='art' style={{ display: 'inline' }}>
+									<p style={{ display: 'inline' }}>
 										Providing sign language docents via AR
 									</p></td>
 							</tr>
@@ -471,83 +720,40 @@ const artDesc = forwardRef(function artDesc(props, ref) {
 					</table>
 				</div>
 
-				<div style={{ position: 'absolute', top: `800vh` }}>
-					<div className="section center" style={{
-						backgroundColor: '#fbfbfb'
+				<div ref={section10} style={{ width: '100vw', height: '100vh', }}>
+					<p className='art desc logo_desc' style={{
+						fontWeight: 400, fontSize: '1.2rem',
+						lineHeight: '1.5rem',
+						margin: '4rem auto',
+						width: '90vw', height: 'auto',
+						textAlign: 'center',
 					}}>
-
-						<div className='desc art' style={{
-							color: 'rgb(190, 190, 190)',
-							fontWeight: 700,
-							position: 'fixed',
-							marginTop: '2rem',
-							left: '50%',
-							fontSize: '2rem',
-							transform: 'translateX(-50%)',
-							textAlign: 'center',
-						}}>Logo Idea
-
-							<p className='art' style={{
-								fontWeight: 500,
-								fontSize: '1.2rem',
-								lineHeight: '1.5rem',
-								margin: '0.5rem 0',
-							}}>
-								The logo represents the idea of bringing art to augmented reality (AR).
-							</p>
-						</div>
-
-
-						<img src='./art/art-logo.gif' width={viewport.aspect >= 1 ? '60%' : '90%'} style={{
-							position: 'relative',
-							top: '50%',
-							left: '50%',
-							transform: 'translate(-50%,-50%)'
-						}} />
-					</div>
+						The logo represents the idea of bringing art to augmented reality (AR).
+					</p>
 				</div>
 
-				<div style={{ position: 'absolute', top: `900vh` }}>
-					<div className="section center" style={{
-						backgroundColor: 'white'
-					}}>
-
-
-
-						<img src='./art/flowchart.png' width={viewport.aspect >= 1 ? '60%' : '90%'} style={{
-							position: 'relative',
-							top: '50%',
-							left: '50%',
-							transform: 'translate(-50%,-50%)'
-						}} />
-
-						<span className='art' style={{
-							color: 'rgb(205, 205, 205)',
-							fontWeight: 700,
-							position: 'fixed',
-							marginTop: '2rem',
-							left: '50%',
-							fontSize: '2rem',
-							transform: 'translateX(-50%)',
-							textAlign: 'center',
-						}}>Flowchart
-						</span>
-					</div>
+				<div className="section" style={{ backgroundColor: 'white' }} ref={section11}>
+					<img src='./art/flowchart.png' width={ratio > 1 ? '60%' : '100%'} className='center flowchart' />
+					<p className='art stroke' style={{
+						position: 'absolute',
+						left: '50%',
+						bottom: 0,
+						color: 'white',
+						stroke: 'rgb(205, 205, 205)',
+						WebkitTextStrokeColor: 'rgb(205, 205, 205)',
+						textAlign: 'center',
+						zIndex: 1,
+						transform: 'translate(-50% ,-20%)',
+						mixBlendMode: 'multiply',
+						margin: 0,
+					}}>Flowchart
+					</p>
 				</div>
 
-			</Html>
-
-			<Float speed={0.1} rotationIntensity={0.1} floatIntensity={0.1}>
-				<Mobile position={[0, -hc * 20, 0]}
-					rotation={[0, -Math.PI / 2, 0]}
-					scale={viewport.aspect >= 1 ? 2.5 : (1 - viewport.aspect) * 7 + 2}
-					matcap={param.matcapOrange}
-					src={"https://soonyoung-p.github.io/log/art/prototype/"}
-					content={"iframe-time"} />
-			</Float>
-		</>
+				<div style={{ width: '100vw', height: '100vh' }} ref={section12}>
+					<p className='stroke' style={{ textAlign: 'center' }}>Prototype</p>
+				</div>
+			</div>
+		</div>
 	)
-})
-
-
-export default artDesc
+}
