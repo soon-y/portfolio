@@ -13,14 +13,24 @@
     color: white;
 }
 
+.masking{
+    margin: 0;
+    font-size: 7rem;
+    font-weight: 900;
+    line-height: 0.9;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: url(/art/NationalMuseum.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .persona {
-    width: 98vw;
-    height: 100vh;
     display: grid;
     grid-template-columns: 33% 33.5% 33.5%;
     grid-template-rows: 10% 10% 10% 10% 60%;
     background-color: #fbfbfb;
-    transform: translate(-50%, -50%);
 }
 
 .persona .box {
@@ -46,6 +56,12 @@
     padding: 1rem;
 }
 
+.persona .title {
+    color: rgb(221, 221, 221);
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+
 .persona .profile-img {
     grid-area: 1 / 1 / 5 / 1;
     background-size: cover;
@@ -55,7 +71,6 @@
 
 .persona .quote {
     grid-area: 1 / 2 / 3 / 2;
-    align-self: center;
 }
 
 .persona .profile {
@@ -127,7 +142,7 @@
     font-size: 0.8rem;
 }
 
-/* Persona 1 */
+/********** Persona 1 **********/
 
 #persona1 .profile-img {
     background-image: url(/art/portrait1.jpg);
@@ -153,7 +168,7 @@
     left: 10%;
 }
 
-/* Persona 2 */
+/********** Persona 2 **********/
 
 #persona2 .profile-img {
     background-image: url(/art/portrait2.jpg);
@@ -194,23 +209,21 @@
     width: 6rem;
 }
 
-.journey-profile-wrapper {
-    width: 6.5rem;
-    height: auto;
-    background-image: url("/art/portrait2-mobile.jpg");
-    background-repeat: no-repeat;
-    background-origin: content-box;
-    background-position: center;
-    background-size: cover;
+/********** Journey-map  **********/
+
+.journey-profile {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
 }
 
 .journey-map {
     margin: auto;
-    width: 60%;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255);
     color: black;
     border-collapse: collapse;
     padding: 1rem;
+    min-height: 100vh;
 }
 
 .journey-map p {
@@ -218,36 +231,41 @@
 }
 
 .journey-map th {
-    color: rgba(0, 0, 0, 0.6);
-    padding: 0.4rem;
+    color: rgba(0, 0, 0, 0.4);
 }
 
 .journey-touch {
-    width: 5.8rem;
-    padding: 0.4rem
+    width: 7.5rem;
+    padding: 0 0.5rem
 }
 
 .journey-stage {
     width: auto;
-    padding: 0.4rem
+    padding: 0 0.5rem
 }
 
 .journey-feeling {
-    width: 1.2rem;
-    padding: 0.4rem
+    text-align: center;
 }
 
 .journey-map .title {
-    background-color: var(--art);
+    background-color: var(--bgColor);
     color: white;
+    font-size: 1.5rem;
+    margin: 0;
 }
 
 .journey-map tr:nth-child(even) {
-    background-color: #ffac1125;
+    background-color: #e7e7e75a;
+}
+
+.journey-map tr:nth-child(1) {
+    background-color: var(--bgColor);
+    color: white;
 }
 
 .icon {
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 .face-smile {
@@ -278,13 +296,11 @@
 
 @media (max-aspect-ratio: 1/1) {
     .persona {
-        width: 100vw;
-        height: 100vh;
         display: inline-block;
     }
 
     .persona .box {
-        padding: 0px 20px 0 20px;
+        padding: 0 1rem;
     }
 
     .persona .profile-img {
@@ -292,7 +308,7 @@
     }
 
     .persona .bio {
-        margin-top: 10px;
+        margin-top: 2rem;
     }
 
     .persona .experience {
@@ -300,39 +316,12 @@
     }
 
     .persona .bars {
-        width: 50%;
-        height: 25px;
-        padding-top: 10px;
+        width: calc(100% - 2rem);
+        height: 50px;
     }
-
-    .persona .bar {
-        height: 20px;
-        margin: auto;
-        background: #eee;
-    }
-
-    .persona .bars p {
-        top: 10px;
-    }
-
-    .persona .leftside {
-        left: 0;
-        transform: translateX(-120%);
-    }
-
-    .persona .rightside {
-        right: 0;
-        transform: translateX(120%);
-    }
-
+    
     .persona .quote {
         padding: 1rem;
-    }
-
-    .journey-map {
-        width: 80vw;
-        height: auto;
-        margin: auto;
     }
 
     .persona p,
@@ -350,31 +339,9 @@
     }
 }
 
-@media (max-aspect-ratio: 0.7) {
-    .persona p,
-    .persona table {
-        font-size: 0.8rem;
-        line-height: 1.5;
-    }
-
-    .persona th {
-        width: 4rem;
-    }
-
-    .bars {
-        display: none;
-    }
-
-    .journey-map {
-        margin: auto;
-        width: 80%;
-        background-color: rgba(255, 255, 255, 1);
-        color: black;
-        border-collapse: collapse;
-        padding: 1rem;
-    }
-
-    .journey-map p {
-        font-size: 0.8rem;
+@media (max-aspect-ratio: 2/3) {
+    .masking{
+        margin: 0;
+        font-size: 5.5rem;
     }
 }

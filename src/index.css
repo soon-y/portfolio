@@ -4,6 +4,7 @@
   font-style: normal;
   line-height: 1.2;
   font-weight: 400;
+  scroll-behavior: smooth;
 
   --bgColor: #242424;
   background-color: var(--bgColor);
@@ -13,12 +14,28 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.wrapper {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+*{
+  box-sizing: border-box;
+  outline: none;
+}
+
 a {
   font-weight: 600;
   text-decoration: none;
   color: white;
 }
 
+ul{
+  padding-inline-start: 1.1rem;
+}
+
 canvas {
   height: 100vh;
+  width: 100vw;
 }
