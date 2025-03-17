@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { param } from './param.js'
-import { useMatcapTexture, Float } from '@react-three/drei'
+import { useMatcapTexture } from '@react-three/drei'
 import { useThree, useFrame } from '@react-three/fiber'
 import gsap from "gsap"
 import Toggle from "./Model/Toggle.jsx"
