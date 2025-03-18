@@ -1,28 +1,12 @@
-import { useRef, useEffect, } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWifi, faSignal, faBatteryThreeQuarters } from '@fortawesome/free-solid-svg-icons'
 
 export default function MobileNav(props) {
+	const [min, setMin] = useState(new Date().getMinutes())
 	const hour = useRef(new Date().getHours())
-	const min = useRef(new Date().getMinutes())
-
-	setInterval(() => {
-		if (hour.current && min.current) {
-			updateTime()
-		}
-	}, 1000);
-
-	useEffect(() => {
-		if (hour.current && min.current) {
-			updateTime()
-		}
-	}, [min])
-
-	const updateTime = () => {
-		const now = new Date()
-		min.current = now.getMinutes()
-		hour.current = now.getHours()
-	}
+	useEffect(() => { hour.current = new Date().getHours()},[min])
+	setInterval(() => { setMin(new Date().getMinutes()) }, 5000)
 
 	return (
 		<>
@@ -38,10 +22,9 @@ export default function MobileNav(props) {
 
 			{props.content === "iframe-time" && (<div>
 				<iframe className="content-wrapper" src={props.src} />
-				{/* <iframe className="content-embed" src={props.src}/> */}
 				<div className="statusBar">
 					<div className="current-time">
-						{hour.current < 10 ? '0' + hour.current : hour.current}:{min.current < 10 ? '0' + min.current : min.current}
+						{hour.current < 10 ? '0' + hour.current : hour.current}:{min < 10 ? '0' + min : min}
 					</div>
 					<div className="status">
 						<FontAwesomeIcon icon={faSignal} style={{ fontSize: '14px' }} />
