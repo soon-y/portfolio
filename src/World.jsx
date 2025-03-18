@@ -14,6 +14,7 @@ import Skills from './Skills.jsx'
 function World(props) {
   const arrows = document.getElementsByClassName("arrow-icon")
   const pageNav = document.querySelector(".page-nav");
+  const linkedIn = document.querySelector(".linkedIn");
   const scale = Array.from({ length: 1000 }, () => 0.5 + Math.random() * 4)
   const UIback = useRef()
   const Models = useRef()
@@ -56,6 +57,7 @@ function World(props) {
   const toSkill = () => {
     arrows[0].style.display = 'none'
     arrows[1].style.display = 'none'
+    linkedIn.style.display = 'none'
     pageNav.style.display = 'none'
     UIback.current.style.display = 'block'
     gsap.to(camera.position, {
@@ -69,6 +71,7 @@ function World(props) {
   const toLogo = () => {
     arrows[0].style.display = 'block'
     arrows[1].style.display = 'block'
+    linkedIn.style.display = 'block'
     pageNav.style.display = 'block'
     UIback.current.style.display = 'none'
     gsap.to(camera.position, {
@@ -82,7 +85,10 @@ function World(props) {
   return (
     <>
       {/* <OrbitControls /> */}
-      <Sparkles count={scale.length} size={scale} position={[0, 0, -radius]} scale={[12, 12, 50]} speed={0.1} />
+      <Sparkles count={scale.length} size={scale} position={[0, 0, -radius]} speed={0.1} scale={[
+        12, 
+        viewport.aspect >= 0.5 ? 12 : 20, 
+        radius*3]} />
       <ambientLight intensity={1} />
       <directionalLight position={[0, 3, 3]} intensity={1.5} />
 
