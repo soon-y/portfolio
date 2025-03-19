@@ -35,7 +35,7 @@ function App() {
         <World index={index} dewy_hovered={hovered}/>
       </Canvas>
 
-      {count === 1 && <a href='https://www.linkedin.com/in/soonyoung-park/' target='_blank' style={{cursor: 'auto'}}>
+      {count === 1 && <a href='https://www.linkedin.com/in/soonyoung-park/' target='_blank' style={{cursor: 'auto'}} className='linkedIn'>
         <div style={{backgroundColor:'transparent', width: '25%', height: '25%', position: 'fixed', top: 0, left: 0}}>
         </div>
       </a>}
@@ -55,7 +55,7 @@ function App() {
       </Link>}
 
       <div>
-        <p className='nav page-nav' style={{ transform: 'translate(-50%, -50%)' }}>{count} / 6</p>
+        <p className='nav page-nav'>{count} / 6</p>
         <FontAwesomeIcon icon={faArrowRight} className='arrow-icon' style={{ right: 0 }} onClick={next} />
         <FontAwesomeIcon icon={faArrowLeft} className='arrow-icon' style={{ left: 0 }} onClick={previous} />
       </div>
