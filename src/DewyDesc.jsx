@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Canvas, useThree } from '@react-three/fiber'
+import { Canvas } from '@react-three/fiber'
 import { OrbitControls, Float, Sparkles, Environment } from '@react-three/drei'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCloudSun, faCloudMoon } from '@fortawesome/free-solid-svg-icons'
@@ -19,8 +19,8 @@ export default function DewyDesc() {
   const [daytime, setDaytime] = useState(true)
   const [weatherIndex, setWeather] = useState(0)
   const [moonPhase, setMoonphase] = useState(4)
-  const radius = 5
-  const scale = Array.from({ length: 1000 }, () => 0.5 + Math.random() * 4)
+  const radius = 6
+  const scale = Array.from({ length: 500 }, () => 0.5 + Math.random() * 4)
 
   const section0 = useRef(null)
   const section1 = useRef(null)
@@ -186,7 +186,6 @@ export default function DewyDesc() {
           })
           sec8.from(img08_1.current, { y: '50%' }, 0)
           sec8.from(img08_2.current, { y: '50%' }, 0)
-          sec8.to(prototype.current.position, { y: 10 }, 0)
 
           const sec9 = gsap.timeline({
             scrollTrigger: {
@@ -269,11 +268,13 @@ export default function DewyDesc() {
         {/* <OrbitControls /> */}
         <ambientLight intensity={0.1} />
         <Environment preset="sunset" />
-        <Sparkles count={scale.length} size={scale} position={[0, 0, 0]} scale={[12, 12, 50]} speed={0.1} />
+        <Sparkles count={scale.length} size={scale} position={[0, 0, -10]} scale={[12, 12, 20]} speed={0.1} />
 
-        <Dewy ref={dewy} position={[ratio > 1 ? -ratio * 4.6 : 0, ratio > 1 ? 1 : 2 + (1-ratio) * 8, ratio > 1 ? -20 : -20 - 20 * (1 - ratio)]}
-          opacity={0}
-          onClick={() => { window.open("https://dewydays.vercel.app", "_blank") }} />
+        <Dewy ref={dewy} position={[
+          ratio > 1 ? -ratio * 4.6 : 0, 
+          ratio > 1 ? 1 : 2 + (1-ratio) * 9, 
+          ratio > 1 ? -20 : -20 - 20 * (1 - ratio)]}
+          onClick={() => { window.open("https://dewydays.vercel.app", "_blank") }} opacity={0} />
 
         <group ref={mobile} position={[ratio > 1 ? -radius * 1.5 : -radius, -10, -8]} >
           <Float speed={0.1} rotationIntensity={0.1} floatIntensity={0.1}>
@@ -325,7 +326,7 @@ export default function DewyDesc() {
 
         <div id='first' className='section-wo flex-container' ref={section0}>
           <div className='left-side dewy desc'>
-            <p className='stroke' ref={text0}>
+            <p className='stroke' ref={text0} style={{ marginTop: ratio > 0.5 ? 0 : '5rem'}}>
               Dewy Days
             </p>
           </div>
