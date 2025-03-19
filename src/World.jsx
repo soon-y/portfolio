@@ -20,7 +20,7 @@ function World(props) {
   const UIback = useRef()
   const Models = useRef()
   const [visible, setVisible] = useState(false)
-  const [permissionRequired, setPermission] = useState(typeof DeviceMotionEvent.requestPermission === "function")
+  const [permissionRequired, setPermission] = useState((typeof DeviceMotionEvent.requestPermission === "function"))
   const { camera, viewport } = useThree()
   const [radius, setRadius] = useState(viewport.aspect < 1.2 ? param.diameter * 10 + (1.2 - viewport.aspect) * param.diameter * 20 : param.diameter * 10)
   const [hc, setHc] = useState((2 * radius * Math.tan(Math.PI / 180 * camera.fov / 2)) * 0.5)
@@ -91,7 +91,7 @@ function World(props) {
   const requestOrientationPermission = () => {
     DeviceOrientationEvent.requestPermission().then((response) => {
       if (response == "granted") {
-        setPermission(true)
+        setPermission(false)
         window.addEventListener("deviceorientation", (event) => {
           parallax(event);
         })
@@ -103,23 +103,23 @@ function World(props) {
     let yTilt, xTilt
     switch (screen.orientation.type) {
       case "portrait-primary":
-        yTilt = -(event.beta - 90) * 0.2;
-        xTilt = event.gamma * 0.2;
+        yTilt = 0
+        xTilt = event.gamma * 0.01
         break;
       case "portrait-secondary":
-        yTilt = -(event.beta + 90) * 0.2;
-        xTilt = event.gamma * 0.2;
+        yTilt = 0
+        xTilt = -event.gamma * 0.01
         break;
       case "landscape-primary":
       case "landscape-secondary":
-        yTilt = event.gamma > 0 ? (event.gamma - 90) * 0.2 : (event.gamma + 90) * 0.2;
-        xTilt = 0;
+        yTilt = event.beta * 0.01
+        xTilt = 0
         break;
       default:
     }
 
-    gsap.to(Models.current.position, {
-      x: xTilt,
+    gsap.to(camera.position, {
+      x: -xTilt,
       y: yTilt,
       duration: 0.6,
       ease: "power2.inout",
@@ -148,8 +148,9 @@ function World(props) {
         <Dewy position={[Math.sin(step * 1) * radius, 0, Math.cos(step * 1) * radius]} rotation-y={step * 4} dewy_hovered={props.dewy_hovered} />
         <Snake position={[Math.sin(step * 2) * radius, 0, Math.cos(step * 2) * radius]} rotation-y={step * 5} />
         <Logo position={[Math.sin(step * 3) * radius, 0, Math.cos(step * 3) * radius]} onClick={toSkill} />
-        {permissionRequired && <Mobile position={[viewport.aspect < 1 ? wc * 2 - 2 : wc * 2 - 1.2, viewport.aspect < 1 ? hc - 2.3 : hc - 1, Math.cos(step * 3) * radius]}
-          scale={viewport.aspect < 1 ? .6 : .35} matcap={param.matcapWhite} rotation-y={-Math.PI / 2} redSign={true} onClick={requestOrientationPermission} />}
+        {permissionRequired && 
+        <Mobile position={[viewport.aspect < 1 ? wc * 2 - 1.8 : wc * 2 - 1.2, viewport.aspect < 1 ? hc - 2 : hc - 1, Math.cos(step * 3) * radius]}
+          scale={viewport.aspect < 1 ? .55 : .35} matcap={param.matcapWhite} rotation-y={-Math.PI / 2} redSign={true} onClick={requestOrientationPermission} />}
         <Billiard position={[Math.sin(step * 4) * radius, 0, Math.cos(step * 4) * radius]} rotation-y={step * 1} />
         <Caregem position={[Math.sin(step * 5) * radius, 0, Math.cos(step * 5) * radius]} rotation-y={step * 2} />
         <Art position={[Math.sin(step * 6) * radius, 0, Math.cos(step * 6) * radius]} rotation-y={step * 3} />
