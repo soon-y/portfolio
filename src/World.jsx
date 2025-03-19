@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { OrbitControls, Sparkles, Html } from '@react-three/drei'
+import { OrbitControls, Sparkles, Html, Environment } from '@react-three/drei'
 import { useThree, useFrame } from '@react-three/fiber'
 import { param } from './param.js'
 import gsap from "gsap"
@@ -10,6 +10,7 @@ import Dewy from './Model/Dewy.jsx'
 import Art from './Model/Art.jsx'
 import Caregem from './Model/Caregem.jsx'
 import Skills from './Skills.jsx'
+import Mobile from "./Model/Mobile.jsx"
 
 function World(props) {
   const arrows = document.getElementsByClassName("arrow-icon")
@@ -19,11 +20,19 @@ function World(props) {
   const UIback = useRef()
   const Models = useRef()
   const [visible, setVisible] = useState(false)
+  const [permissionRequired, setPermission] = useState(typeof DeviceMotionEvent.requestPermission === "function")
   const { camera, viewport } = useThree()
   const [radius, setRadius] = useState(viewport.aspect < 1.2 ? param.diameter * 10 + (1.2 - viewport.aspect) * param.diameter * 20 : param.diameter * 10)
-  const step = Math.PI / 3
   const [hc, setHc] = useState((2 * radius * Math.tan(Math.PI / 180 * camera.fov / 2)) * 0.5)
   const [wc, setWc] = useState((camera.aspect * hc) * 0.5)
+  const step = Math.PI / 3
+  const isTouchDevice = () => {
+    return (
+      "ontouchstart" in window ||
+      navigator.maxTouchPoints > 0 ||
+      navigator.msMaxTouchPoints > 0
+    )
+  }
 
   useEffect(() => {
     if (viewport.aspect < 1.2) { setRadius(param.diameter * 10 + (1.2 - viewport.aspect) * param.diameter * 20) }
@@ -34,25 +43,22 @@ function World(props) {
   }, [viewport])
 
   useEffect(() => {
-    Models.current.rotation.y = step * props.index 
+    Models.current.rotation.y = step * props.index
+    if (isTouchDevice() && !permissionRequired) {
+      window.addEventListener("deviceorientation", (event) => {
+        parallax(event);
+      })
+    }
   }, [])
 
   useFrame((state, delta) => {
-    if (!document.hidden) {
+    if (!document.hidden && !isTouchDevice()) {
       const parallaxX = state.pointer.x
       const parallaxY = state.pointer.y
       camera.position.x += (parallaxX - camera.position.x) * delta
       camera.position.y += (parallaxY - camera.position.y) * delta
     }
   })
-
-  if (Models.current) {
-    gsap.to(Models.current.rotation, {
-      y: step * props.index,
-      duration: 1,
-      ease: "power1.out",
-    })
-  }
 
   const toSkill = () => {
     arrows[0].style.display = 'none'
@@ -82,26 +88,73 @@ function World(props) {
     setVisible(false)
   }
 
+  const requestOrientationPermission = () => {
+    DeviceOrientationEvent.requestPermission().then((response) => {
+      if (response == "granted") {
+        setPermission(true)
+        window.addEventListener("deviceorientation", (event) => {
+          parallax(event);
+        })
+      }
+    }).catch(console.error);
+  }
+
+  const parallax = (event) => {
+    let yTilt, xTilt
+    switch (screen.orientation.type) {
+      case "portrait-primary":
+        yTilt = -(event.beta - 90) * 0.2;
+        xTilt = event.gamma * 0.2;
+        break;
+      case "portrait-secondary":
+        yTilt = -(event.beta + 90) * 0.2;
+        xTilt = event.gamma * 0.2;
+        break;
+      case "landscape-primary":
+      case "landscape-secondary":
+        yTilt = event.gamma > 0 ? (event.gamma - 90) * 0.2 : (event.gamma + 90) * 0.2;
+        xTilt = 0;
+        break;
+      default:
+    }
+
+    gsap.to(Models.current.position, {
+      x: xTilt,
+      y: yTilt,
+      duration: 0.6,
+      ease: "power2.inout",
+    })
+  }
+
+  if (Models.current) {
+    gsap.to(Models.current.rotation, {
+      y: step * props.index,
+      duration: 1,
+      ease: "power1.out",
+    })
+  }
+
   return (
     <>
       {/* <OrbitControls /> */}
       <Sparkles count={scale.length} size={scale} position={[0, 0, -radius]} speed={0.1} scale={[
-        12, 
-        viewport.aspect >= 0.5 ? 12 : 20, 
-        radius*3]} />
-      <ambientLight intensity={1} />
-      <directionalLight position={[0, 3, 3]} intensity={1.5} />
+        12,
+        viewport.aspect >= 0.5 ? 12 : 20,
+        radius * 3]} />
+      <ambientLight intensity={0.1} />
+      <Environment preset="sunset" />
 
-      {/* <axesHelper args={[10]} /> */}
-        <group ref={Models}>
-          <Dewy position={[Math.sin(step * 1) * radius, 0, Math.cos(step * 1) * radius]} rotation-y={step * 4} dewy_hovered = {props.dewy_hovered}/>
-          <Snake    position={[Math.sin(step*2) * radius, 0, Math.cos(step*2) * radius]} rotation-y={step*5} />
-          <Logo position={[Math.sin(step * 3) * radius, 0, Math.cos(step * 3) * radius]} onClick={toSkill} />
-          <Billiard position={[Math.sin(step * 4) * radius, 0, Math.cos(step * 4) * radius]} rotation-y={step*1} />
-          <Caregem  position={[Math.sin(step*5) * radius, 0, Math.cos(step*5) * radius]} rotation-y={step*2} />
-          <Art position={[Math.sin(step*6) * radius, 0, Math.cos(step*6) * radius]} rotation-y={step * 3} />
-          <Skills position={[Math.sin(step * 3) * radius, 0, Math.cos(step * 3) * radius * 3]} visible={visible} />
-        </group>
+      <group ref={Models}>
+        <Dewy position={[Math.sin(step * 1) * radius, 0, Math.cos(step * 1) * radius]} rotation-y={step * 4} dewy_hovered={props.dewy_hovered} />
+        <Snake position={[Math.sin(step * 2) * radius, 0, Math.cos(step * 2) * radius]} rotation-y={step * 5} />
+        <Logo position={[Math.sin(step * 3) * radius, 0, Math.cos(step * 3) * radius]} onClick={toSkill} />
+        {permissionRequired && <Mobile position={[viewport.aspect < 1 ? wc * 2 - 2 : wc * 2 - 1.2, viewport.aspect < 1 ? hc - 2.3 : hc - 1, Math.cos(step * 3) * radius]}
+          scale={viewport.aspect < 1 ? .6 : .35} matcap={param.matcapWhite} rotation-y={-Math.PI / 2} redSign={true} onClick={requestOrientationPermission} />}
+        <Billiard position={[Math.sin(step * 4) * radius, 0, Math.cos(step * 4) * radius]} rotation-y={step * 1} />
+        <Caregem position={[Math.sin(step * 5) * radius, 0, Math.cos(step * 5) * radius]} rotation-y={step * 2} />
+        <Art position={[Math.sin(step * 6) * radius, 0, Math.cos(step * 6) * radius]} rotation-y={step * 3} />
+        <Skills position={[Math.sin(step * 3) * radius, 0, Math.cos(step * 3) * radius * 3]} visible={visible} />
+      </group>
 
       <Html>
         <p className='nav back button-display button-decoration' ref={UIback} onClick={toLogo}>Back</p>
