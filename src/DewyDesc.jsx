@@ -326,7 +326,7 @@ export default function DewyDesc() {
 
         <div id='first' className='section-wo flex-container' ref={section0}>
           <div className='left-side dewy desc'>
-            <p className='stroke' ref={text0} style={{ marginTop: ratio > 0.5 ? 0 : '5rem'}}>
+            <p className='stroke' ref={text0} style={{ marginTop: ratio > 1 ? 0 : '5rem'}}>
               Dewy Days
             </p>
           </div>
