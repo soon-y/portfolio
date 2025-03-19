@@ -1,5 +1,6 @@
 import { Canvas } from '@react-three/fiber'
 import { useState } from 'react'
+import { useSwipeable } from 'react-swipeable'
 import World from './World.jsx'
 import { param } from './param.js'
 import './App.css'
@@ -10,7 +11,7 @@ import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 function App() {
   const [count, setCount] = useState(param.count)
   const [index, setIndex] = useState(param.index)
-  const [hovered, setHover] = useState(false)
+  const [hovered, setHover] = useState(false)  
   
   const next = () => {
     setCount(num => num % 6 + 1)
@@ -19,14 +20,21 @@ function App() {
     param.index = param.index + 1
   }
   const previous = () => {
-    setCount(num => num - 1 < 1 ? 6 : num - 1)
+    setCount(num => num > 1 ? num - 1 : 6)
     setIndex(num => num - 1)
     param.count = count - 1
     param.index = param.index - 1
   }
 
+  const handlers = useSwipeable({
+    onSwipedLeft: next,
+    onSwipedRight: previous,
+    preventScrollOnSwipe: true,
+    trackMouse: true
+  })
+
    return (
-    <>
+    <div {...handlers}>
       <Canvas shadows camera={{
         fov: 45,
         position: [0, 0, 0]
@@ -59,7 +67,7 @@ function App() {
         <FontAwesomeIcon icon={faArrowRight} className='arrow-icon' style={{ right: 0 }} onClick={next} />
         <FontAwesomeIcon icon={faArrowLeft} className='arrow-icon' style={{ left: 0 }} onClick={previous} />
       </div>
-    </>
+    </div>
     )
 }
 
