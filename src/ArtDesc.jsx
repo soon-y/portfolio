@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Canvas, useThree } from '@react-three/fiber'
-import { OrbitControls, Float, Sparkles, Environment } from '@react-three/drei'
+import { OrbitControls, Sparkles, Environment } from '@react-three/drei'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFaceSmile, faFaceLaugh, faFaceFrown, faMobileScreenButton, faDesktop, faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router'
@@ -19,10 +19,9 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function ArtDesc() {
 	const [ratio, setRatio] = useState(window.innerWidth / window.innerHeight)
-	const [on, setOn] = useState(false)
-	const radius = 5
+	const radius = 7
 
-	const scale = Array.from({ length: 1000 }, () => 0.5 + Math.random() * 4)
+	const scale = Array.from({ length: 500 }, () => 0.5 + Math.random() * 4)
 
 	const section0 = useRef(null)
 	const section1 = useRef(null)
@@ -36,7 +35,6 @@ export default function ArtDesc() {
 	const section9 = useRef(null)
 	const section10 = useRef(null)
 	const section11 = useRef(null)
-	const section12 = useRef(null)
 	const img01 = useRef(null)
 	const text2 = useRef(null)
 	const text2_1 = useRef(null)
@@ -49,7 +47,6 @@ export default function ArtDesc() {
 	const prototype = useRef(null)
 	const model = useRef()
 	const logo = useRef()
-	const logoTransform = useRef()
 
 	useEffect(() => {
 		const checkIfElementsAreLoaded = () => {
@@ -64,7 +61,7 @@ export default function ArtDesc() {
 						}
 					})
 					sec1.to('.top', { opacity: 1 }, 0)
-					sec1.to(img01.current, { x: '-10%' }, 0)
+					sec1.from(img01.current, { x: '10%' }, 0)
 					sec1.to(logo.current.position, { y: 10 }, 0)
 
 					const sec2 = gsap.timeline({
@@ -133,15 +130,15 @@ export default function ArtDesc() {
 						}
 					})
 					sec7.from('#persona1 .profile-img', { opacity: 0 }, 0)
-					.from('#persona1 .quote', { y: '20%', opacity: 0 }, 0)
-					.from('#persona1 .profile', { y: '20%', opacity: 0 }, 0)
-					.from('#persona1 #EI', { y: '20%', opacity: 0 }, 0)
-					.from('#persona1 #SN', { y: '20%', opacity: 0 }, 0)
-					.from('#persona1 #TF', { y: '20%', opacity: 0 }, 0)
-					.from('#persona1 #JP', { y: '20%', opacity: 0 }, 0)
-					.from('#persona1 .bio', { y: '20%', opacity: 0 }, 0)
-					.from('#persona1 .needs', { y: '20%', opacity: 0 }, 0)
-					.from('#persona1 .experience', { y: '20%', opacity: 0 }, 0)
+						.from('#persona1 .quote', { y: '20%', opacity: 0 }, 0)
+						.from('#persona1 .profile', { y: '20%', opacity: 0 }, 0)
+						.from('#persona1 #EI', { y: '20%', opacity: 0 }, 0)
+						.from('#persona1 #SN', { y: '20%', opacity: 0 }, 0)
+						.from('#persona1 #TF', { y: '20%', opacity: 0 }, 0)
+						.from('#persona1 #JP', { y: '20%', opacity: 0 }, 0)
+						.from('#persona1 .bio', { y: '20%', opacity: 0 }, 0)
+						.from('#persona1 .needs', { y: '20%', opacity: 0 }, 0)
+						.from('#persona1 .experience', { y: '20%', opacity: 0 }, 0)
 
 					const sec8 = gsap.timeline({
 						scrollTrigger: {
@@ -152,15 +149,15 @@ export default function ArtDesc() {
 						}
 					})
 					sec8.from('#persona2 .profile-img', { opacity: 0 }, 0)
-					.from('#persona2 .quote', { y: '20%', opacity: 0 }, 0)
-					.from('#persona2 .profile', { y: '20%', opacity: 0 }, 0)
-					.from('#persona2 #EI', { y: '20%', opacity: 0 }, 0)
-					.from('#persona2 #SN', { y: '20%', opacity: 0 }, 0)
-					.from('#persona2 #TF', { y: '20%', opacity: 0 }, 0)
-					.from('#persona2 #JP', { y: '20%', opacity: 0 }, 0)
-					.from('#persona2 .bio', { y: '20%', opacity: 0 }, 0)
-					.from('#persona2 .needs', { y: '20%', opacity: 0 }, 0)
-					.from('#persona2 .experience', { y: '20%', opacity: 0 }, 0)
+						.from('#persona2 .quote', { y: '20%', opacity: 0 }, 0)
+						.from('#persona2 .profile', { y: '20%', opacity: 0 }, 0)
+						.from('#persona2 #EI', { y: '20%', opacity: 0 }, 0)
+						.from('#persona2 #SN', { y: '20%', opacity: 0 }, 0)
+						.from('#persona2 #TF', { y: '20%', opacity: 0 }, 0)
+						.from('#persona2 #JP', { y: '20%', opacity: 0 }, 0)
+						.from('#persona2 .bio', { y: '20%', opacity: 0 }, 0)
+						.from('#persona2 .needs', { y: '20%', opacity: 0 }, 0)
+						.from('#persona2 .experience', { y: '20%', opacity: 0 }, 0)
 
 					const sec9 = gsap.timeline({
 						scrollTrigger: {
@@ -171,42 +168,31 @@ export default function ArtDesc() {
 						}
 					})
 					sec9.from('.journey-profile', { opacity: 0 }, 0)
-					.from('.journey-map', { y: '20%', opacity: 0 }, 0)
-					.from('.journey-touch', { y: '20%', opacity: 0 }, 0)
-					.from('.journey-stage', { y: '20%', opacity: 0 }, 0)
-					.from('.journey-feeling', { y: '20%', opacity: 0 }, 0)
+						.from('.journey-map', { y: '20%', opacity: 0 }, 0)
+						.from('.journey-touch', { y: '20%', opacity: 0 }, 0)
+						.from('.journey-stage', { y: '20%', opacity: 0 }, 0)
+						.from('.journey-feeling', { y: '20%', opacity: 0 }, 0)
 
 					const sec10 = gsap.timeline({
 						scrollTrigger: {
 							trigger: section10.current,
-							start: 'top 80%',
-							end: 'bottom bottom',
+							start: 'top center',
+							end: 'top 20%',
 							scrub: 1,
 						}
 					})
-					sec10.to(logoTransform.current.position, { y: 0 }, 0)
-					.from('.logo_desc', { opacity: 0, x: '20%' }, 0)
+					sec10.from('.flowchart', { opacity: 0 }, 0)
+						.from('.flowchart', { y: '20%' }, 0)
 
 					const sec11 = gsap.timeline({
 						scrollTrigger: {
 							trigger: section11.current,
 							start: 'top center',
-							end: 'bottom 20%',
-							scrub: 1,
-						}
-					})
-					sec11.to(logoTransform.current.position, { y: 10 }, 0)
-					.from('.flowchart', { opacity: 0 }, 0)
-
-					const sec12 = gsap.timeline({
-						scrollTrigger: {
-							trigger: section12.current,
-							start: 'top center',
 							end: 'bottom bottom',
 							scrub: 1,
 						}
 					})
-					sec12.to(prototype.current.position, { y: 0 }, 0)
+					sec11.to(prototype.current.position, { y: 0 }, 0)
 				})
 				return () => context.revert()
 			} else {
@@ -236,10 +222,12 @@ export default function ArtDesc() {
 				{/* <OrbitControls /> */}
 				<ambientLight intensity={0.1} />
 				<Environment preset="sunset" />
-				<Sparkles count={scale.length} size={scale} position={[0, 0, 0]} scale={[12, 12, 50]} speed={0.1} />
-				<Art ref={logo} position={[ratio > 1 ? -ratio * 2.2 : 0, ratio > 1 ? 0 : 2, ratio > 1 ? -10 : -14]}
-					opacity={1} scale={0.5} animation={false} />
-				<Art ref={logoTransform} position={[0, -10, -10]} opacity={0} scale={0.5} onClick={() => { setOn(!on) }} on={on} animation={true}/>
+				<Sparkles count={scale.length} size={scale} position={[0, 0, -10]} scale={[12, 12, 20]} speed={0.1} />
+				<Art ref={logo} position={[
+					ratio > 1 ? -ratio * 2.2 : 0, 
+					ratio > 1 ? 0 : 1 + (1 - ratio) * 4, 
+					ratio > 1 ? -10 : -14]}
+					opacity={1} scale={0.5} />
 				<group position={[0, -10, -7]} ref={prototype}>
 					<Mobile
 						rotation={[0, -Math.PI / 2, 0]}
@@ -248,8 +236,8 @@ export default function ArtDesc() {
 						src={"https://soonyoung-p.github.io/log/art/prototype/"}
 						content={"iframe-time"} />
 				</group>
-				<group ref={model} position={[ratio > 1 ? -radius * 1.7 : -radius, -10, -10]} >
-					<Hand position={[radius, -2, 0]} scale={0.4} />
+				<group ref={model} position={[ratio > 1 ? -radius * 1.6 : -radius, -10, -10]} >
+					<Hand position={[radius, -2, 0]} scale={0.3} />
 					<LipReading rotation-y={Math.PI * 0.66} position={[-Math.cos(Math.PI / 3) * radius, 0, -Math.sin(Math.PI / 3) * radius]} scale={0.8} />
 					<NoteTaking rotation={[Math.PI / 2, Math.PI / 3, -Math.PI / 2]} position={[-Math.cos(Math.PI / 3) * radius, 0, Math.sin(Math.PI / 3) * radius]} scale={1.1} />
 				</group>
@@ -262,7 +250,7 @@ export default function ArtDesc() {
 				<p className='nav top button-decoration'><a href='#first'>Top</a></p>
 
 				<div id='first' className='section-wo flex-container' ref={section0}>
-					<div className='left-side dewy desc'></div>
+					<div className='left-side'></div>
 					<div className='right-side'>
 						<div className='desc art'>
 							<p>
@@ -274,18 +262,18 @@ export default function ArtDesc() {
 								to identify touch points.
 								Based on the research, I designed a exhibition guide app
 								that allows deaf people to reserve and interact with the docents the way they want to.
+								The logo represents the idea of bringing art to augmented reality (AR).
 							</p>
 						</div>
 					</div>
 				</div>
 
-				<div className='section' ref={section1} style={{
+				<div className='section-img' ref={section1} style={{
 					background: "url('./art/art_bg.jpg')",
-					backgroundSize: 'cover',
-					backgroundPosition: 'center',
+					backgroundSize: 'cover', backgroundPosition: 'center',
 					backgroundRepeat: 'no-repeat',
 				}}>
-					<img ref={img01} className='full-img'
+					<img ref={img01} style={{ height: '100vh' }}
 						src='/art/art_thumb.png' />
 				</div>
 
@@ -293,7 +281,7 @@ export default function ArtDesc() {
 					display: 'flex', alignItems: 'center',
 				}}>
 					<div style={{ opacity: 0.3, position: 'absolute', right: 0 }} ref={text2_1} >
-						<p className='stroke' style={{ lineHeight: 1.1, textAlign: 'right' }}>
+						<p className='stroke' style={{ lineHeight: 1.1, textAlign: 'right', marginRight: '1rem' }}>
 							Sign Language<br />Lip Reading<br />Written Communication
 						</p>
 					</div>
@@ -312,11 +300,9 @@ export default function ArtDesc() {
 					</div>
 					<div className='right-side desc art'>
 						<div ref={text3}>
+							<p style={{ color: 'rgba(255,255,255,0.8)' }}>common methods <b>01</b></p>
+							<p style={{ fontWeight: 700, fontSize: ratio > 0.5 ? '3rem' : '2.2rem', lineHeight: 1, marginBottom: '1rem', }}>Sign Language</p>
 							<p>
-								<span style={{ color: 'rgba(255,255,255,0.8)' }}>common methods <b>01</b></span> <br />
-								<span style={{ fontWeight: 700, fontSize: '3rem', lineHeight: 1, margin: '0 rem', }}>Sign Language</span>
-							</p>
-							<p className='art'>
 								Sign language is the primary language for many individuals with hearing loss,
 								allowing them to express themselves fluently and connect with others who are also proficient in
 								sign language.
@@ -329,13 +315,11 @@ export default function ArtDesc() {
 					<div className='left-side'>
 					</div>
 					<div className='right-side desc art'>
-						<div ref={text4} className='text-opacity art'>
+						<div ref={text4}>
+							<p style={{ color: 'rgba(255,255,255,0.8)' }}>common methods <b>02</b></p>
+							<p style={{ fontWeight: 700, fontSize: ratio > 0.5 ? '3rem' : '2.2rem', lineHeight: 1, marginBottom: '1rem', }}>Lip Reading (Speechreading)</p>
 							<p>
-								<span style={{ color: 'rgba(255,255,255,0.8)' }}>common methods <b>02</b></span> <br />
-								<span style={{ fontWeight: 700, fontSize: '3rem', lineHeight: 1, margin: '0 rem', }}>Lip Reading (Speechreading)</span>
-							</p>
-							<p>
-								Lip reading involves watching the movement of a speaker’s lips, face, and body to understand
+							Lip reading involves watching the movement of a speaker’s lips, face, and body to understand
 								what they are saying. The speakers should show their lips with frontal faces and speak clearly
 								at a natural pace.
 								However, it is sometimes challenging because many sounds look similar on the lips, and some
@@ -350,10 +334,8 @@ export default function ArtDesc() {
 					</div>
 					<div className='right-side desc art'>
 						<div ref={text5}>
-							<p>
-								<span style={{ color: 'rgba(255,255,255,0.8)' }}>common methods <b>03</b></span> <br />
-								<span style={{ fontWeight: 700, fontSize: '3rem', lineHeight: 1, margin: '0 rem', }}>Written Communication</span>
-							</p>
+							<p style={{ color: 'rgba(255,255,255,0.8)' }}>common methods <b>03</b></p>
+							<p style={{ fontWeight: 700, fontSize: ratio > 0.5 ? '3rem' : '2.2rem', lineHeight: 1, marginBottom: '1rem', }}>Written Communication</p>
 							<p>
 								Texting, writing notes, or typing on electronic devices is a common method of communication for
 								people with hearing loss, especially in one-on-one or small group settings.
@@ -365,9 +347,9 @@ export default function ArtDesc() {
 				</div>
 
 				<div className='section flex-container' ref={section6}>
-					<div className='left-side'>
-						<div ref={text6_masking} style={{ alignContent: 'center' }}>
-							<p style={{ color: 'rgba(255,255,255,0.5)', fontWeight: 700 }}>
+					<div className='left-side' style={{ display: 'flex' }}>
+						<div ref={text6_masking} className='art' style={{ alignContent: ratio > 0.5 ? 'center' : 'flex-end' }}>
+							<p style={{ color: 'rgba(255,255,255,0.5)', fontWeight: 700, marginBottom: '0.5rem' }}>
 								- Reference -
 							</p>
 							<a target="_blank" href="https://www.museum.go.kr/site/eng/content/tours_and_services">
@@ -720,37 +702,21 @@ export default function ArtDesc() {
 					</table>
 				</div>
 
-				<div ref={section10} style={{ width: '100vw', height: '100vh', }}>
-					<p className='art desc logo_desc' style={{
-						fontWeight: 400, fontSize: '1.2rem',
-						lineHeight: '1.5rem',
-						margin: '4rem auto',
-						width: '90vw', height: 'auto',
-						textAlign: 'center',
-					}}>
-						The logo represents the idea of bringing art to augmented reality (AR).
-					</p>
-				</div>
-
-				<div className="section" style={{ backgroundColor: 'white' }} ref={section11}>
+				<div className="section" style={{ backgroundColor: 'white' }} ref={section10}>
 					<img src='./art/flowchart.png' width={ratio > 1 ? '60%' : '100%'} className='center flowchart' />
 					<p className='art stroke' style={{
-						position: 'absolute',
-						left: '50%',
-						bottom: 0,
-						color: 'white',
-						stroke: 'rgb(205, 205, 205)',
+						position: 'absolute', left: '50%', bottom: 0,
+						color: 'white', stroke: 'rgb(205, 205, 205)',
 						WebkitTextStrokeColor: 'rgb(205, 205, 205)',
 						textAlign: 'center',
 						zIndex: 1,
-						transform: 'translate(-50% ,-20%)',
+						transform: 'translate(-50%, 10%)',
 						mixBlendMode: 'multiply',
-						margin: 0,
 					}}>Flowchart
 					</p>
 				</div>
 
-				<div style={{ width: '100vw', height: '100vh' }} ref={section12}>
+				<div style={{ width: '100vw', height: '100vh' }} ref={section11}>
 					<p className='stroke' style={{ textAlign: 'center' }}>Prototype</p>
 				</div>
 			</div>
