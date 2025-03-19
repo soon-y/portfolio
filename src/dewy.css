@@ -40,7 +40,6 @@
 }
 
 .weatherBtn p {
-  margin: 0;
   line-height: 1;
   text-shadow: 1px 1px 8px #4f61628d;
 }
@@ -416,7 +415,7 @@
   height: 40px;
   border-radius: 20px;
   outline: none;
-  background-color: rgba(54, 91, 115, 0.3);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .slider::-webkit-slider-thumb {

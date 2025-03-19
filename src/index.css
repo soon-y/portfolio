@@ -23,6 +23,7 @@
 *{
   box-sizing: border-box;
   outline: none;
+  margin: 0;
 }
 
 a {
@@ -36,6 +37,6 @@ ul{
 }
 
 canvas {
-  height: 100vh;
   width: 100vw;
+  height: 100vh;
 }
