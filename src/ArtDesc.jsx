@@ -237,7 +237,7 @@ export default function ArtDesc() {
 						src={"https://soonyoung-p.github.io/log/art/prototype/"}
 						content={"iframe-time"} />
 				</group>
-				<group ref={model} position={[ratio > 1 ? -radius * 1.6 : -radius, -10, -10]} >
+				<group ref={model} position={[ratio > 1 ? -radius * 1.8 : -radius, -10, -10]} >
 					<Hand position={[radius, -2, 0]} scale={0.3} />
 					<LipReading rotation-y={Math.PI * 0.66} position={[-Math.cos(Math.PI / 3) * radius, 0, -Math.sin(Math.PI / 3) * radius]} scale={0.8} />
 					<NoteTaking rotation={[Math.PI / 2, Math.PI / 3, -Math.PI / 2]} position={[-Math.cos(Math.PI / 3) * radius, 0, Math.sin(Math.PI / 3) * radius]} scale={1.1} />
