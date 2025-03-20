@@ -486,7 +486,7 @@ export default function DewyDesc() {
           </div>
 
           <div className='weatherImg' style={{
-            height: ratio > 0.5 ? '80%' : 'auto',
+            height: ratio > 0.5 ? '40%' : 'auto',
             width: ratio > 0.5 ? 'auto' : '90%',
             aspectRatio: 1,
             margin: 'auto',
