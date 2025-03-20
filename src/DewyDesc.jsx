@@ -113,7 +113,6 @@ export default function DewyDesc() {
           })
           sec3.from(text3.current, { x: '20%', opacity: 0 }, 0)
           sec3.to(mobile.current.rotation, { y: -Math.PI / 2 }, 0)
-          sec3.from(mobile2.current, { opacity: 0 }, 0)
 
           const sec4 = gsap.timeline({
             scrollTrigger: {
@@ -125,7 +124,6 @@ export default function DewyDesc() {
           })
           sec4.from(text4.current, { x: '20%', opacity: 0 }, 0)
           sec4.to(mobile.current.rotation, { y: -Math.PI }, 0)
-          sec4.from(mobile3.current, { opacity: 0 }, 0)
           sec4.to(mobile1.current, { opacity: 0 }, 0)
 
           const sec5 = gsap.timeline({
@@ -138,7 +136,6 @@ export default function DewyDesc() {
           })
           sec5.from(text5.current, { x: '20%', opacity: 0 }, 0)
           sec5.to(mobile.current.rotation, { y: -Math.PI * 1.5 }, 0)
-          sec5.from(mobile4.current, { opacity: 0 }, 0)
 
           const sec6 = gsap.timeline({
             scrollTrigger: {
@@ -248,6 +245,37 @@ export default function DewyDesc() {
           })
           sec13.from(img13.current, { y: '-20%' }, 0)
         })
+
+        const sec3_mobile = gsap.timeline({
+          scrollTrigger: {
+            trigger: section3.current,
+            start: 'top 20%',
+            end: 'bottom bottom',
+            scrub: 1,
+          }
+        })
+        sec3_mobile.from(mobile2.current, { opacity: 0 }, 0)
+
+        const sec4_mobile = gsap.timeline({
+          scrollTrigger: {
+            trigger: section4.current,
+            start: 'top 20%',
+            end: 'bottom bottom',
+            scrub: 1,
+          }
+        })
+        sec4_mobile.from(mobile3.current, { opacity: 0 }, 0)
+
+        const sec5_mobile = gsap.timeline({
+          scrollTrigger: {
+            trigger: section5.current,
+            start: 'top 20%',
+            end: 'bottom bottom',
+            scrub: 1,
+          }
+        })
+        sec5_mobile.from(mobile4.current, { opacity: 0 }, 0)
+
         return () => context.revert()
       } else {
         setTimeout(checkIfElementsAreLoaded, 100)
@@ -335,7 +363,7 @@ export default function DewyDesc() {
 
         <div id='first' className='section-wo flex-container' ref={section0}>
           <div className='left-side dewy desc'>
-            <p className='stroke' ref={text0} style={{ marginTop: ratio > 1 ? 0 : '1rem'}}>
+            <p className='stroke' ref={text0} style={{ marginTop: ratio > 1 ? 0 : '5rem'}}>
               Dewy Days
             </p>
           </div>

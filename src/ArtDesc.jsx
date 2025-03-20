@@ -386,7 +386,7 @@ export default function ArtDesc() {
 					</div>
 				</div>
 
-				<div id="persona1" className="persona section" ref={section7}>
+				<div id="persona1" className="persona section-auto" ref={section7}>
 					<div className="profile-img">
 					</div>
 					<div className='profile-desc'>
@@ -484,7 +484,7 @@ export default function ArtDesc() {
 					</div>
 				</div>
 
-				<div id="persona2" className="persona section" ref={section8}>
+				<div id="persona2" className="persona section-auto" ref={section8}>
 					<div className="profile-img">
 						<div className="portrait"></div>
 					</div>
@@ -584,7 +584,7 @@ export default function ArtDesc() {
 					</div>
 				</div>
 
-				<div className="section" ref={section9}>
+				<div className="section-auto" ref={section9}>
 					<table className="journey-map art">
 						<tbody>
 							<tr>
