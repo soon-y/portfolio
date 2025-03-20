@@ -21,6 +21,24 @@
   line-height: 1.5rem;
 }
 
+.weatherIcon {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 700;
+  text-align: center;
+  font-size: 2rem;
+  margin: 2rem 0 0 0;
+}
+
+.weatherBtns{
+  width: 90vw;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 3rem auto;
+}
+
 .weatherBtn {
   background-image: url("/dewy/bubbleLong.png");
   background-repeat: no-repeat;
@@ -475,5 +493,16 @@
     width: 30%;
     height: auto;
     opacity: 0;
+  }
+}
+
+@media (max-aspect-ratio: 1/2) {
+  .weatherIcon {
+    margin: 1rem 0 0 0;
+  }
+
+  .weatherBtns{
+    width: 96vw;
+    margin: 0 auto 1rem auto;
   }
 }

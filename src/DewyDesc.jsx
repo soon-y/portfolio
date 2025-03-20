@@ -465,15 +465,7 @@ export default function DewyDesc() {
           display: 'flex', flexDirection: 'column',
           justifyItems: 'center', alignItems: 'center',
         }}>
-          <p className='weatherIcon' style={{
-            color: 'rgba(255,255,255,0.7)',
-            fontWeight: 700,
-            margin: ratio > 0.5 ? '2rem 0 0 0' : '1rem 0 0 0',
-            textAlign: 'center',
-            fontSize: '2rem',
-          }}>Weather Icon
-          </p>
-
+          <p className='weatherIcon'>Weather Icon</p>
           <div className='weatherDaytime'>
             <FontAwesomeIcon icon={faCloudSun} className='bubble' style={{
               margin: '1rem 0.5rem',
@@ -725,16 +717,7 @@ export default function DewyDesc() {
               </div>}
           </div>
 
-          <div style={{
-            width: ratio > 1 ? '90vw' : '96vw',
-            height: 'auto',
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-            alignItems: 'center',
-            margin: ratio > 0.5 ? '0 auto 3rem auto' : '0 auto 1rem auto',
-            position: 'relative',
-          }}>
+          <div className='weatherBtns'>
             <button className="weatherBtn btn0" onClick={() => setWeather(0)} style={{
               backgroundColor: weatherIndex === 0 ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0)',
             }}><p>Clear</p></button>
