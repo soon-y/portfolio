@@ -46,7 +46,7 @@
   background-size: cover;
   font-size: 1rem;
   font-weight: 600;
-  width: 7rem;
+  width: 6.5rem;
   height: 3rem;
   padding: 1rem;
   cursor: pointer;
@@ -499,6 +499,7 @@
 @media (max-aspect-ratio: 0.7) {
   .weatherIcon {
     margin: 1rem 0 0 0;
+    font-size: 1.7rem;
   }
 
   .weatherBtns{
