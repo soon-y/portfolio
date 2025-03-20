@@ -62,7 +62,7 @@ export default function ArtDesc() {
 					})
 					sec1.to('.top', { opacity: 1 }, 0)
 					sec1.from(img01.current, { x: '10%' }, 0)
-					sec1.to(logo.current.position, { y: 10 }, 0)
+					sec1.to(logo.current.position, { y: 20 }, 0)
 
 					const sec2 = gsap.timeline({
 						scrollTrigger: {
