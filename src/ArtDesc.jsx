@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { Canvas, useThree } from '@react-three/fiber'
+import { Canvas } from '@react-three/fiber'
 import { OrbitControls, Sparkles, Environment } from '@react-three/drei'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFaceSmile, faFaceLaugh, faFaceFrown, faMobileScreenButton, faDesktop, faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons'
@@ -19,7 +19,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function ArtDesc() {
 	const [ratio, setRatio] = useState(window.innerWidth / window.innerHeight)
-	const radius = 7
+	const [radius, setRadius] = useState(ratio > 1 ? ratio * 3 : 5)
 
 	const scale = Array.from({ length: 500 }, () => 0.5 + Math.random() * 4)
 
@@ -210,6 +210,7 @@ export default function ArtDesc() {
 	const handleResize = () => {
 		const newRatio = window.innerWidth / window.innerHeight;
 		setRatio(newRatio)
+		setRadius(ratio > 1 ? newRatio * 3 : 5)
 	}
 
 	return (
@@ -224,8 +225,8 @@ export default function ArtDesc() {
 				<Environment preset="sunset" />
 				<Sparkles count={scale.length} size={scale} position={[0, 0, -10]} scale={[12, 12, 20]} speed={0.1} />
 				<Art ref={logo} position={[
-					ratio > 1 ? -ratio * 2.2 : 0, 
-					ratio > 1 ? 0 : 1 + (1 - ratio) * 4, 
+					ratio > 1 ? -ratio * 2.2 : 0,
+					ratio > 1 ? 0 : 1 + (1 - ratio) * 5,
 					ratio > 1 ? -10 : -14]}
 					opacity={1} scale={0.5} />
 				<group position={[0, -10, -7]} ref={prototype}>
@@ -301,7 +302,7 @@ export default function ArtDesc() {
 					<div className='right-side desc art'>
 						<div ref={text3}>
 							<p style={{ color: 'rgba(255,255,255,0.8)' }}>common methods <b>01</b></p>
-							<p style={{ fontWeight: 700, fontSize: ratio > 0.5 ? '3rem' : '2.2rem', lineHeight: 1, marginBottom: '1rem', }}>Sign Language</p>
+							<p className='method-title'>Sign Language</p>
 							<p>
 								Sign language is the primary language for many individuals with hearing loss,
 								allowing them to express themselves fluently and connect with others who are also proficient in
@@ -317,9 +318,9 @@ export default function ArtDesc() {
 					<div className='right-side desc art'>
 						<div ref={text4}>
 							<p style={{ color: 'rgba(255,255,255,0.8)' }}>common methods <b>02</b></p>
-							<p style={{ fontWeight: 700, fontSize: ratio > 0.5 ? '3rem' : '2.2rem', lineHeight: 1, marginBottom: '1rem', }}>Lip Reading (Speechreading)</p>
+							<p className='method-title'>Lip Reading (Speechreading)</p>
 							<p>
-							Lip reading involves watching the movement of a speaker’s lips, face, and body to understand
+								Lip reading involves watching the movement of a speaker’s lips, face, and body to understand
 								what they are saying. The speakers should show their lips with frontal faces and speak clearly
 								at a natural pace.
 								However, it is sometimes challenging because many sounds look similar on the lips, and some
@@ -335,7 +336,7 @@ export default function ArtDesc() {
 					<div className='right-side desc art'>
 						<div ref={text5}>
 							<p style={{ color: 'rgba(255,255,255,0.8)' }}>common methods <b>03</b></p>
-							<p style={{ fontWeight: 700, fontSize: ratio > 0.5 ? '3rem' : '2.2rem', lineHeight: 1, marginBottom: '1rem', }}>Written Communication</p>
+							<p className='method-title'>Written Communication</p>
 							<p>
 								Texting, writing notes, or typing on electronic devices is a common method of communication for
 								people with hearing loss, especially in one-on-one or small group settings.
@@ -388,44 +389,46 @@ export default function ArtDesc() {
 				<div id="persona1" className="persona section" ref={section7}>
 					<div className="profile-img">
 					</div>
-					<div className="quote box art">
-						<p className='title'>Persona 01</p>
-						<p className="quotes">
-							<q><em>
-								I want to be able to see at a glance where sign language docents are available and book
-								them easily and conveniently.
-							</em></q></p>
-					</div>
-					<div className="profile box">
-						<table>
-							<tbody>
-								<tr>
-									<th className='art' colSpan={2} style={{ fontSize: '1.2rem' }}>
-										Mina Kim
-									</th>
-									{ratio < 1 && <td rowSpan={4} style={{
-										width: '30%',
-										height: '100%',
-										backgroundImage: 'url(./art/portrait1-mobile.jpg)',
-										backgroundSize: 'cover',
-										backgroundPosition: 'center',
-									}}>
-									</td>}
-								</tr>
-								<tr>
-									<th><p className='art'>Age</p></th>
-									<td><p className='art'>31</p></td>
-								</tr>
-								<tr>
-									<th><p className='art'>Location</p></th>
-									<td><p className='art'>Seoul, Korea</p></td>
-								</tr>
-								<tr>
-									<th><p className='art'>Family</p></th>
-									<td><p className='art'>Parents, 1 older brother</p></td>
-								</tr>
-							</tbody>
-						</table>
+					<div className='profile-desc'>
+						<div className="quote box art">
+							<p className='title'>Persona 01</p>
+							<p className="quotes">
+								<q><em>
+									I want to be able to see at a glance where sign language docents are available and book
+									them easily and conveniently.
+								</em></q></p>
+						</div>
+						<div className="profile">
+							<table>
+								<tbody>
+									<tr>
+										<th className='art' colSpan={2} style={{ fontSize: '1.2rem' }}>
+											Mina Kim
+										</th>
+										{ratio < 1 && <td rowSpan={4} style={{
+											width: '30%',
+											height: '100%',
+											backgroundImage: 'url(./art/portrait1-mobile.jpg)',
+											backgroundSize: 'cover',
+											backgroundPosition: 'center',
+										}}>
+										</td>}
+									</tr>
+									<tr>
+										<th><p className='art'>Age</p></th>
+										<td><p className='art'>31</p></td>
+									</tr>
+									<tr>
+										<th><p className='art'>Location</p></th>
+										<td><p className='art'>Seoul, Korea</p></td>
+									</tr>
+									<tr>
+										<th><p className='art'>Family</p></th>
+										<td><p className='art'>Parents, 1 older brother</p></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 					<div className="bars" id="EI">
 						<div className="bar"></div>
@@ -485,45 +488,47 @@ export default function ArtDesc() {
 					<div className="profile-img">
 						<div className="portrait"></div>
 					</div>
-					<div className="quote box art">
-						<p className='title'>Persona 02</p>
-						<p className="quotes">
-							<q><em>
-								I want the freedom to explore artworks in depth without being restricted by docent schedules.
-							</em></q>
-						</p>
-					</div>
-					<div className="profile box">
-						<table>
-							<tbody>
-								<tr>
-									<th className='art' colSpan={2} style={{ fontSize: '1.2rem' }}>
-										Yoonha Lee
-									</th>
-									<td><p className='art'></p></td>
-									{ratio < 1 && <td rowSpan={4} style={{
-										width: '30%',
-										height: '100%',
-										backgroundImage: 'url(./art/portrait2-mobile.jpg)',
-										backgroundSize: 'cover',
-										backgroundPosition: 'center',
-									}}>
-									</td>}
-								</tr>
-								<tr>
-									<th><p className='art'>Age</p></th>
-									<td><p className='art'>20</p></td>
-								</tr>
-								<tr>
-									<th><p className='art'>Location</p></th>
-									<td><p className='art'>Incheon, Korea</p></td>
-								</tr>
-								<tr>
-									<th><p className='art'>Family</p></th>
-									<td><p className='art'>Parents, 1 younger sister</p></td>
-								</tr>
-							</tbody>
-						</table>
+					<div className='profile-desc'>
+						<div className="quote box art">
+							<p className='title'>Persona 02</p>
+							<p className="quotes">
+								<q><em>
+									I want the freedom to explore artworks in depth without being restricted by docent schedules.
+								</em></q>
+							</p>
+						</div>
+						<div className="profile">
+							<table>
+								<tbody>
+									<tr>
+										<th className='art' colSpan={2} style={{ fontSize: '1.2rem' }}>
+											Yoonha Lee
+										</th>
+										<td><p className='art'></p></td>
+										{ratio < 1 && <td rowSpan={4} style={{
+											width: '30%',
+											height: '100%',
+											backgroundImage: 'url(./art/portrait2-mobile.jpg)',
+											backgroundSize: 'cover',
+											backgroundPosition: 'center',
+										}}>
+										</td>}
+									</tr>
+									<tr>
+										<th><p className='art'>Age</p></th>
+										<td><p className='art'>20</p></td>
+									</tr>
+									<tr>
+										<th><p className='art'>Location</p></th>
+										<td><p className='art'>Incheon, Korea</p></td>
+									</tr>
+									<tr>
+										<th><p className='art'>Family</p></th>
+										<td><p className='art'>Parents, 1 younger sister</p></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 					<div className="bars" id="EI">
 						<div className="bar"></div>

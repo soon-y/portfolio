@@ -13,6 +13,13 @@
     color: white;
 }
 
+.method-title{
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
 .masking{
     font-size: 7rem;
     font-weight: 900;
@@ -33,7 +40,7 @@
 }
 
 .persona .box {
-    padding: 20px;
+    padding: 1rem;
 }
 
 .persona p {
@@ -45,13 +52,12 @@
 .persona .quotes {
     font-family: "Noto Serif", serif;
     font-weight: 600;
-    font-family: 1.5rem;
     font-size: 1.1rem;
     line-height: 1.5;
     text-align: center;
     background-color: rgb(240, 240, 240);
     border-radius: 1rem;
-    padding: 1rem;
+    padding: 0.8rem;
 }
 
 .persona .title {
@@ -67,12 +73,13 @@
     background-position: center;
 }
 
-.persona .quote {
-    grid-area: 1 / 2 / 3 / 2;
+.persona .profile-desc {
+    grid-area: 1 / 2 / 5 / 2;
 }
 
 .persona .profile {
-    grid-area: 3 / 2 / 5 / 2;
+    line-height: 1;
+    padding: 0 1rem;
 }
 
 .persona .bio {
@@ -288,7 +295,17 @@
     color: var(--art);
 }
 
+@media (max-aspect-ratio: 1.25) {
+    .masking{
+        font-size: 5rem;
+    }
+}
+
 @media (max-aspect-ratio: 1/1) {
+    .masking{
+        font-size: 6rem;
+    }
+
     .persona {
         display: inline-block;
     }
@@ -333,8 +350,26 @@
     }
 }
 
-@media (max-aspect-ratio: 1/2) {
+@media (max-aspect-ratio: 0.6) {
     .masking{
-        font-size: 4rem;
+        font-size: 5rem;
+    }
+
+    .journey-map .title {
+        padding: 1rem 0 0.5rem;
+    }
+
+    .method-title{
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-aspect-ratio: 0.4) {
+    .masking{
+        font-size: 3.5rem;
+    }
+
+    .method-title{
+        font-size: 2rem;
     }
 }

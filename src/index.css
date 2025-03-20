@@ -14,6 +14,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html{
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+}
+
 .wrapper {
   overflow-y: scroll;
   overflow-x: hidden;

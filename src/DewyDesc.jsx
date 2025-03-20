@@ -19,7 +19,7 @@ export default function DewyDesc() {
   const [daytime, setDaytime] = useState(true)
   const [weatherIndex, setWeather] = useState(0)
   const [moonPhase, setMoonphase] = useState(4)
-  const radius = 6
+  const [radius, setRadius] = useState(ratio > 1 ? ratio * 3 : 5)
   const scale = Array.from({ length: 500 }, () => 0.5 + Math.random() * 4)
 
   const section0 = useRef(null)
@@ -53,6 +53,10 @@ export default function DewyDesc() {
   const img12 = useRef(null)
   const img13 = useRef(null)
   const mobile = useRef(null)
+  const mobile1 = useRef(null)
+  const mobile2 = useRef(null)
+  const mobile3 = useRef(null)
+  const mobile4 = useRef(null)
   const prototype = useRef(null)
   const dewy = useRef(null)
 
@@ -109,6 +113,7 @@ export default function DewyDesc() {
           })
           sec3.from(text3.current, { x: '20%', opacity: 0 }, 0)
           sec3.to(mobile.current.rotation, { y: -Math.PI / 2 }, 0)
+          sec3.from(mobile2.current, { opacity: 0 }, 0)
 
           const sec4 = gsap.timeline({
             scrollTrigger: {
@@ -120,6 +125,8 @@ export default function DewyDesc() {
           })
           sec4.from(text4.current, { x: '20%', opacity: 0 }, 0)
           sec4.to(mobile.current.rotation, { y: -Math.PI }, 0)
+          sec4.from(mobile3.current, { opacity: 0 }, 0)
+          sec4.to(mobile1.current, { opacity: 0 }, 0)
 
           const sec5 = gsap.timeline({
             scrollTrigger: {
@@ -131,6 +138,7 @@ export default function DewyDesc() {
           })
           sec5.from(text5.current, { x: '20%', opacity: 0 }, 0)
           sec5.to(mobile.current.rotation, { y: -Math.PI * 1.5 }, 0)
+          sec5.from(mobile4.current, { opacity: 0 }, 0)
 
           const sec6 = gsap.timeline({
             scrollTrigger: {
@@ -256,6 +264,7 @@ export default function DewyDesc() {
   const handleResize = () => {
     const newRatio = window.innerWidth / window.innerHeight;
     setRatio(newRatio)
+    setRadius(ratio > 1 ? ratio * 3 : 5)
   }
 
   return (
@@ -278,28 +287,28 @@ export default function DewyDesc() {
 
         <group ref={mobile} position={[ratio > 1 ? -radius * 1.5 : -radius, -10, -8]} >
           <Float speed={0.1} rotationIntensity={0.1} floatIntensity={0.1}>
-            <Mobile position={[radius, 0, 0]}
+            <Mobile position={[radius, 0, 0]} ref={mobile1}
               rotation={[0, -Math.PI / 2, 0]}
               scale={1}
               matcap={param.matcapSky}
               src={"./dewy/v1-profile.mp4"}
               content={"video"} />
 
-            <Mobile position={[0, 0, -radius]}
+            <Mobile position={[0, 0, -radius]} ref={mobile2}
               rotation={[0, 0, 0]}
               scale={1}
               matcap={param.matcapSky}
               src={"./dewy/v2-cupSelection.mp4"}
               content={"video"} />
 
-            <Mobile position={[-radius, 0, 0]}
+            <Mobile position={[-radius, 0, 0]} ref={mobile3}
               rotation={[0, Math.PI / 2, 0]}
               scale={1}
               matcap={param.matcapSky}
               src={"./dewy/v3-sliderAdjustion.mp4"}
               content={"video"} />
 
-            <Mobile position={[0, 0, radius]}
+            <Mobile position={[0, 0, radius]} ref={mobile4}
               rotation={[0, Math.PI, 0]}
               scale={1}
               matcap={param.matcapSky}
@@ -326,7 +335,7 @@ export default function DewyDesc() {
 
         <div id='first' className='section-wo flex-container' ref={section0}>
           <div className='left-side dewy desc'>
-            <p className='stroke' ref={text0} style={{ marginTop: ratio > 1 ? 0 : '5rem'}}>
+            <p className='stroke' ref={text0} style={{ marginTop: ratio > 1 ? 0 : '1rem'}}>
               Dewy Days
             </p>
           </div>
@@ -431,7 +440,7 @@ export default function DewyDesc() {
           <p className='weatherIcon' style={{
             color: 'rgba(255,255,255,0.7)',
             fontWeight: 700,
-            margin: '1.8rem',
+            margin: '2rem 0 0 0',
             textAlign: 'center',
             fontSize: '2rem',
           }}>Weather Icon
@@ -439,11 +448,11 @@ export default function DewyDesc() {
 
           <div className='weatherDaytime'>
             <FontAwesomeIcon icon={faCloudSun} className='bubble' style={{
-              margin: '2rem 0.5rem',
+              margin: '1rem 0.5rem',
               backgroundColor: daytime ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0)'
             }} onClick={() => setDaytime(true)} />
             <FontAwesomeIcon icon={faCloudMoon} className='bubble' style={{
-              margin: '2rem 0.5rem',
+              margin: '1rem 0.5rem',
               backgroundColor: !daytime ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0)'
             }} onClick={() => setDaytime(false)} />
           </div>
