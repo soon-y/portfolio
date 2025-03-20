@@ -412,8 +412,8 @@
   --moonPhase: url('/dewy/weather/thumb4.png');
   -webkit-appearance: none;
   width: 100%;
-  height: 40px;
-  border-radius: 20px;
+  height: 2rem;
+  border-radius: 1rem;
   outline: none;
   background-color: rgba(255, 255, 255, 0.2);
 }
@@ -421,16 +421,16 @@
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 40px;
-  height: 40px;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   background: var(--moonPhase);
   cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-  width: 40px;
-  height: 40px;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   background: var(--moonPhase);
   cursor: pointer;

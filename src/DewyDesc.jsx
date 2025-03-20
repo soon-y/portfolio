@@ -468,7 +468,7 @@ export default function DewyDesc() {
           <p className='weatherIcon' style={{
             color: 'rgba(255,255,255,0.7)',
             fontWeight: 700,
-            margin: '2rem 0 0 0',
+            margin: ratio > 0.5 ? '2rem 0 0 0' : '1rem 0 0 0',
             textAlign: 'center',
             fontSize: '2rem',
           }}>Weather Icon
@@ -486,7 +486,8 @@ export default function DewyDesc() {
           </div>
 
           <div className='weatherImg' style={{
-            height: ratio > 1 ? '40%' : `30%`,
+            height: ratio > 0.5 ? '80%' : 'auto',
+            width: ratio > 0.5 ? 'auto' : '90%',
             aspectRatio: 1,
             margin: 'auto',
             position: 'relative',
@@ -731,7 +732,7 @@ export default function DewyDesc() {
             flexWrap: 'wrap',
             justifyContent: 'center',
             alignItems: 'center',
-            margin: '0 auto 3rem',
+            margin: ratio > 0.5 ? '0 auto 3rem auto' : '0 auto 1rem auto',
             position: 'relative',
           }}>
             <button className="weatherBtn btn0" onClick={() => setWeather(0)} style={{
