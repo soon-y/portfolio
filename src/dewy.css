@@ -496,7 +496,7 @@
   }
 }
 
-@media (max-aspect-ratio: 1/2) {
+@media (max-aspect-ratio: 0.7) {
   .weatherIcon {
     margin: 1rem 0 0 0;
   }

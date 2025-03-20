@@ -262,14 +262,8 @@ iframe {
   }
 }
 
-@media (max-aspect-ratio: 1/2) {
+@media (max-aspect-ratio: 0.7) {
   .stroke {
-    font-size: 3.5rem;
-  }
-}
-
-@media (max-aspect-ratio: 0.4) {
-  .stroke {
-    font-size: 3rem;
+    font-size: 4rem;
   }
 }

@@ -349,9 +349,9 @@
     }
 }
 
-@media (max-aspect-ratio: 0.6) {
+@media (max-aspect-ratio: 0.7) {
     .masking{
-        font-size: 5rem;
+        font-size: 4rem;
     }
 
     .journey-map .title {
@@ -364,15 +364,5 @@
 
     .method-title{
         font-size: 2.2rem;
-    }
-}
-
-@media (max-aspect-ratio: 0.4) {
-    .masking{
-        font-size: 3rem;
-    }
-
-    .method-title{
-        font-size: 2rem;
     }
 }
