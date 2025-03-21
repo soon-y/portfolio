@@ -1,11 +1,11 @@
-import { useState, useEffect, forwardRef, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { Html, Float, useMatcapTexture } from '@react-three/drei'
 import { param } from '../param.js'
 import Typo from "../Mesh/Typo.jsx"
 import RadiusBox from "../Mesh/RadiusBox.jsx"
 import HalfArc from "../Mesh/HalfArc.jsx"
 
-const Art = forwardRef(function Art(props, ref) {
+function Art(props) {
 	const [hovered, setHover] = useState(false)
 	const [orange] = useMatcapTexture(param.matcapOrange, 256)
 	const [white] = useMatcapTexture(param.matcapWhite, 256)
@@ -23,15 +23,22 @@ const Art = forwardRef(function Art(props, ref) {
 
 	return (
 		<>
-			<group {...props} ref={ref}>
+			<group {...props}>
 				<Float speed={1} rotationIntensity={0.1} floatIntensity={0.1}>
 					<group
 						onPointerOut={() => setHover(false)}
 						onPointerOver={() => setHover(true)}>
-						<Html center transform wrapperClass='annotation' position={[0, -1.6, 1]} style={{
-							opacity: props.opacity
-						}}>
+						<Html center transform wrapperClass='annotation' position={[0, -1.6, 1]}>
 							<div className='sub-desc'> Docent Service for the Deaf</div>
+						</Html>
+
+						<Html center occlude="blending" transform wrapperClass='annotation' position={[0, -2.3, 0]} style={{  opacity: 0
+							// opacity: props.opacity
+						}}>
+							<div className='fixed'>
+								<div className='sub-logo'><img style={{ width: '2.8rem'}} src='./img/next.svg' />
+									<img src='./img/react.png' />React <img src='./img/ts.png' /></div>
+							</div>
 						</Html>
 
 						<group position={[-1.8, 0, 0]}>
@@ -46,6 +53,6 @@ const Art = forwardRef(function Art(props, ref) {
 			</group>
 		</>
 	)
-})
+}
 
 export default Art
