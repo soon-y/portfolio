@@ -61,6 +61,7 @@ function World(props) {
   })
 
   const toSkill = () => {
+    props.skillActive(true)
     arrows[0].style.display = 'none'
     arrows[1].style.display = 'none'
     linkedIn.style.display = 'none'
@@ -75,6 +76,7 @@ function World(props) {
   }
 
   const toLogo = () => {
+    props.skillActive(false)
     arrows[0].style.display = 'block'
     arrows[1].style.display = 'block'
     linkedIn.style.display = 'block'
@@ -127,11 +129,11 @@ function World(props) {
   }
 
   if (Models.current) {
-    gsap.to(Models.current.rotation, {
-      y: step * props.index,
-      duration: 1,
-      ease: "power1.out",
-    })
+      gsap.to(Models.current.rotation, {
+        y: step * props.index,
+        duration: 1,
+        ease: "power1.out",
+      })
   }
 
   return (

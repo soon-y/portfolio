@@ -11,56 +11,65 @@ import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 function App() {
   const [count, setCount] = useState(param.count)
   const [index, setIndex] = useState(param.index)
-  const [hovered, setHover] = useState(false)  
-  
-  const next = () => {
-    setCount(num => num % 6 + 1)
-    setIndex(num => num + 1)
-    param.count = count + 1
-    param.index = param.index + 1
-  }
-  const previous = () => {
-    setCount(num => num > 1 ? num - 1 : 6)
-    setIndex(num => num - 1)
-    param.count = count - 1
-    param.index = param.index - 1
+  const [hovered, setHover] = useState(false)
+  const [skillVisible, setSkillVisible] = useState(false)
+
+  const updateSkillVisible = (bool) => {
+    setSkillVisible(bool);
   }
 
-  const handlers = useSwipeable({
+  const next = () => {
+    if (!skillVisible) {
+      setCount(num => num % 6 + 1)
+      setIndex(num => num + 1)
+      param.count = count + 1
+      param.index = param.index + 1
+    }
+  }
+  const previous = () => {
+    if (!skillVisible) {
+      setCount(num => num > 1 ? num - 1 : 6)
+      setIndex(num => num - 1)
+      param.count = count - 1
+      param.index = param.index - 1
+    }
+  }
+
+  const swipeHandlers = useSwipeable({
     onSwipedLeft: next,
     onSwipedRight: previous,
     preventScrollOnSwipe: true,
     trackMouse: true
   })
 
-   return (
-    <div {...handlers}>
+  return (
+    <div {...swipeHandlers}>
       <Canvas shadows camera={{
         fov: 45,
         position: [0, 0, 0]
       }}
         gl={{ stencil: true }}>
-        <World index={index} dewy_hovered={hovered}/>
+        <World index={index} dewy_hovered={hovered} skillActive={updateSkillVisible} />
       </Canvas>
 
-      {count === 1 && <a href='https://www.linkedin.com/in/soonyoung-park/' target='_blank' style={{cursor: 'auto'}} className='linkedIn'>
-        <div style={{backgroundColor:'transparent', width: '25%', height: '25%', position: 'fixed', top: 0, left: 0}}>
+      {count === 1 && <a href='https://www.linkedin.com/in/soonyoung-park/' target='_blank' style={{ cursor: 'auto' }} className='linkedIn'>
+        <div style={{ backgroundColor: 'transparent', width: '25%', height: '25%', position: 'fixed', top: 0, left: 0 }}>
         </div>
       </a>}
 
-      {count === 3 && 
-      <Link to={"/dewy-days"}>
-        <div style={{backgroundColor:'transparent', width: '50%', height: '80%', position: 'fixed', top: '25%', left: '25%'}}
-        onPointerOut={() => setHover(false)}
-        onPointerOver={() => setHover(true)}>
-        </div>
-      </Link>}
+      {count === 3 &&
+        <Link to={"/dewy-days"}>
+          <div style={{ backgroundColor: 'transparent', width: '50%', height: '80%', position: 'fixed', top: '25%', left: '25%' }}
+            onPointerOut={() => setHover(false)}
+            onPointerOver={() => setHover(true)}>
+          </div>
+        </Link>}
 
-      {count === 4 && 
-      <Link to={"/art"}>
-        <div style={{backgroundColor:'transparent', width: '50%', height: '80%', position: 'fixed', top: '25%', left: '25%'}}>
-        </div>
-      </Link>}
+      {count === 4 &&
+        <Link to={"/art"}>
+          <div style={{ backgroundColor: 'transparent', width: '50%', height: '80%', position: 'fixed', top: '25%', left: '25%' }}>
+          </div>
+        </Link>}
 
       <div>
         <p className='nav page-nav'>{count} / 6</p>
@@ -68,7 +77,7 @@ function App() {
         <FontAwesomeIcon icon={faArrowLeft} className='arrow-icon' style={{ left: 0 }} onClick={previous} />
       </div>
     </div>
-    )
+  )
 }
 
 export default App
