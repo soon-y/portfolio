@@ -224,11 +224,13 @@ export default function ArtDesc() {
 				<ambientLight intensity={0.1} />
 				<Environment preset="sunset" />
 				<Sparkles count={scale.length} size={scale} position={[0, 0, -10]} scale={[12, 12, 20]} speed={0.1} />
-				<Art ref={logo} position={[
-					ratio > 1 ? -ratio * 2.2 : 0,
-					ratio > 1 ? 0 : 1 + (1 - ratio) * 5,
-					ratio > 1 ? -10 : -14]}
-					opacity={1} scale={0.5} />
+				<group ref={logo}>
+					<Art position={[
+						ratio > 1 ? -ratio * 2.2 : 0,
+						ratio > 1 ? 0 : 1 + (1 - ratio) * 5,
+						ratio > 1 ? -10 : -14]}
+						opacity={0} scale={0.5} />
+				</group>
 				<group position={[0, -10, -7]} ref={prototype}>
 					<Mobile
 						rotation={[0, -Math.PI / 2, 0]}

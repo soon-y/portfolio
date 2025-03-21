@@ -307,11 +307,13 @@ export default function DewyDesc() {
         <Environment preset="sunset" />
         <Sparkles count={scale.length} size={scale} position={[0, 0, -10]} scale={[12, 12, 20]} speed={0.1} />
 
-        <Dewy ref={dewy} position={[
-          ratio > 1 ? -ratio * 4.6 : 0, 
-          ratio > 1 ? 1 : 2 + (1-ratio) * 9, 
-          ratio > 1 ? -20 : -20 - 20 * (1 - ratio)]}
-          onClick={() => { window.open("https://dewydays.vercel.app", "_blank") }} opacity={0} />
+        <group ref={dewy}>
+          <Dewy position={[
+            ratio > 1 ? -ratio * 4.6 : 0,
+            ratio > 1 ? 1 : 2 + (1 - ratio) * 9,
+            ratio > 1 ? -20 : -20 - 20 * (1 - ratio)]}
+            onClick={() => { window.open("https://dewydays.vercel.app", "_blank") }} opacity={0} />
+        </group>
 
         <group ref={mobile} position={[ratio > 1 ? -radius * 1.5 : -radius, -10, -8]} >
           <Float speed={0.1} rotationIntensity={0.1} floatIntensity={0.1}>
@@ -363,7 +365,7 @@ export default function DewyDesc() {
 
         <div id='first' className='section-wo flex-container' ref={section0}>
           <div className='left-side dewy desc'>
-            <p className='stroke' ref={text0} style={{ marginTop: ratio > 1 ? 0 : '5rem'}}>
+            <p className='stroke' ref={text0} style={{ marginTop: ratio > 1 ? 0 : '5rem' }}>
               Dewy Days
             </p>
           </div>
