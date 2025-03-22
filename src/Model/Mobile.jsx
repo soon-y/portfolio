@@ -13,7 +13,7 @@ const Mobile = forwardRef(function Mobile(props, ref) {
   const mobile = useRef()
 
   useFrame((state, delta) => {
-    if(mobile.current && props.redSign){
+    if (mobile.current && props.redSign) {
       mobile.current.rotation.y = (Math.sin(state.clock.elapsedTime)) * 0.3
       mobile.current.rotation.x = (Math.sin(state.clock.elapsedTime)) * 0.3
     }
@@ -21,22 +21,32 @@ const Mobile = forwardRef(function Mobile(props, ref) {
 
   return (
     <group {...props} dispose={null}>
-      <mesh ref={mobile}
-        geometry={nodes.Cube.geometry}
-        material={materials.Material}
-        scale={[0.211, 1.057, 1.057]}
-      >
-        <meshMatcapMaterial matcap={matcapTexture} />
-      </mesh>
+      <group ref={mobile}>
+        <mesh
+          geometry={nodes.Cube.geometry}
+          material={materials.Material}
+          scale={[0.211, 1.057, 1.057]}>
+          <meshMatcapMaterial matcap={matcapTexture} />
+        </mesh>
+        <mesh
+          geometry={nodes.Cube001.geometry}
+          material={materials.Material}
+          scale={[0.211, 1.057, 1.057]}>
+          <meshMatcapMaterial matcap={matcapTexture} />
+        </mesh>
+      </group>
       {!props.redSign &&
-      <Mask id={1} colorWrite={false} depthWrite={false}
-        geometry={nodes.screen.geometry}
-        position={[0, -0.001, 0]}>
-        <Html position-x={0} className="content-wrapper" rotation-y={Math.PI / 2} scale={0.2} transform ref={ref}>
-          <MobileNav src={props.src} content={props.content} />
-        </Html>
-      </Mask>}
-      <mesh visible = {!!props.redSign} 
+        <group>
+          <mesh
+            geometry={nodes.screen.geometry} position={[0.001, 0.006, 0.006]}
+            material={materials['Material.001']}
+            scale={[0.211, 1.049, 1.04]} />
+          <Html position-x={-0.01} className="content-wrapper" rotation-y={Math.PI / 2} scale={0.2} transform ref={ref}>
+            <MobileNav src={props.src} content={props.content} />
+          </Html>
+        </group>
+      }
+      <mesh visible={!!props.redSign}
         geometry={nodes.Torus001.geometry}
         material={materials.red}
         position={[0.568, 0, 0]}
