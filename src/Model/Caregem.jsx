@@ -176,9 +176,9 @@ export default function Caregem(props) {
               />
               <mesh ref={hourHand}
                 geometry={nodes.hourHand.geometry}
-                material={materials['Material.002']}
-                position={[-0.002, -0.006, 1.482]}
-                scale={[0.026, 0.208, 0]}
+                material={materials.hourhand}
+                position={[-0.002, -0.006, 1.483]}
+                scale={[0.012, 0.42, 0.001]}
               />
               <mesh ref={minHand}
                 geometry={nodes.minHand.geometry}
