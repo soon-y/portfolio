@@ -8,9 +8,6 @@ function HtmlM(props) {
   const { nodes, materials } = useGLTF('./model/HTML.glb')
   return (
     <group {...props} dispose={null}>
-      <Html center transform position={[0, 1.4, 0]}>
-        <p className='skill-title' style={{ opacity: props.opacity ? 1 : 0 }}>HTML5</p>
-      </Html>
       <group position={[0, 0, 0.355]} scale={[1, 1.146, 1]}>
         <mesh
           castShadow
