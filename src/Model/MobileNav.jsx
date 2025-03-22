@@ -11,7 +11,7 @@ export default function MobileNav(props) {
 	return (
 		<>
 			{props.content === "video" && (
-				<video playsInline loop autoPlay muted width={400}>
+				<video playsInline loop autoPlay muted>
 					<source className="content-wrapper" src={props.src} type="video/mp4" />
 				</video>
 			)}

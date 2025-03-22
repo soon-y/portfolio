@@ -178,13 +178,6 @@
   margin: 0 0.3rem;
 }
 
-.skill-title {
-  font-size: 0.8rem;
-  padding: 0;
-  color: white;
-  line-height: 0.5;
-}
-
 .content-wrapper {
   position: relative;
   background: white;
@@ -212,6 +205,10 @@
 .status {
   position: fixed;
   right: 30px;
+}
+
+video{
+  width: 100%;
 }
 
 iframe {
