@@ -72,7 +72,10 @@ function App() {
         </Link>}
 
       <div>
-        <p className='nav page-nav'>{count} / 6</p>
+        <div className='nav page-nav'>
+          <p style={{ fontSize: '1.2rem', fontWeight: 500 }}>{count} / 6</p>
+          <p style={{ color: 'gray' }}>© 2025 Soonyoung</p>
+        </div>
         <FontAwesomeIcon icon={faArrowRight} className='arrow-icon' style={{ right: 0 }} onClick={next} />
         <FontAwesomeIcon icon={faArrowLeft} className='arrow-icon' style={{ left: 0 }} onClick={previous} />
       </div>
