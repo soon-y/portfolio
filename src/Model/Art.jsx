@@ -28,16 +28,13 @@ function Art(props) {
 					<group
 						onPointerOut={() => setHover(false)}
 						onPointerOver={() => setHover(true)}>
-						<Html center transform wrapperClass='annotation' position={[0, -1.6, 1]}>
+						<Html center transform wrapperClass='annotation' position={[0, -1.9, 1]}>
 							<div className='sub-desc'> Docent Service for the Deaf</div>
-						</Html>
-
-						<Html center occlude="blending" transform wrapperClass='annotation' position={[0, -2.3, 0]} style={{  opacity: 0
-							// opacity: props.opacity
-						}}>
-							<div className='fixed'>
-								<div className='sub-logo'><img style={{ width: '2.8rem'}} src='./img/next.svg' />
-									<img src='./img/react.png' />React <img src='./img/ts.png' /></div>
+							<div className='sub-logo'>
+								<img style={{ width: '2.8rem' }} src='./img/next.svg' />
+								<img src='./img/react.png' />
+								<img src='./img/ts.png' />
+								<img src='./img/tailwind.png' />
 							</div>
 						</Html>
 

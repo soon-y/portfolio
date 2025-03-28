@@ -79,7 +79,7 @@ export default function Caregem(props) {
         <Html center occlude="blending" transform wrapperClass='annotation' position={[distance, 4.5, 0]}>
           <b>Caregem</b>
           <div className='sub-desc'> Smartwatch application </div>
-          <div className='sub-logo'> <img src='./img/Vue.png' />Vue <img src='./img/ts.png' /></div>
+          <div className='sub-logo'> <img src='./img/Vue.png' /> <img src='./img/ts.png' /></div>
         </Html>
         <group name='watch' position={[distance, -1, -.5]} scale={2} rotation={[0, -0.2, 0]}>
           <group name='crown'>

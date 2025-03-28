@@ -187,7 +187,10 @@ function Dewy(props) {
 						<div className='fixed'>
 							<b>Dewy Days</b><br />
 							<div className='sub-desc'> Water tracking application </div>
-							<div className='sub-logo'> <img src='./img/react.png' />React <img src='./img/js.png' /></div>
+							<div className='sub-logo'>
+								<img src='./img/react.png' />
+								<img src='./img/js.png' />
+							</div>
 						</div>
 					</Html>
 					<group position={[1, -4, 0]} rotation={[0, -Math.PI / 2, 0]} scale={1.5}
