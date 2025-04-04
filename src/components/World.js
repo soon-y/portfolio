@@ -1,3 +1,5 @@
+"use client"
+
 import { useState, useEffect, useRef } from 'react'
 import { Sparkles, Html, Environment } from '@react-three/drei'
 import { useThree, useFrame } from '@react-three/fiber'

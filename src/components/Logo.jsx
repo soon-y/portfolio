@@ -1,3 +1,5 @@
+"use client"
+
 import { useState, useEffect, useRef } from 'react'
 import { param } from '@/lib/param'
 import { useThree, useFrame } from '@react-three/fiber'
