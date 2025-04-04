@@ -785,7 +785,7 @@ export default function DewyDesc() {
         </div>
 
         <div className='section-img section12' style={{ backgroundColor: '#cbd4d1' }}>
-          <Image src="/dewy/water-package-web.png" alt="water package" width={3000} height={0} layout="intrinsic" className="w-full h-auto web img11_1" />
+          <Image src="/dewy/water-package-web.png" alt="water package" width={3000} height={0} layout="intrinsic" className="w-full h-auto web img12_1" />
           <Image src="/dewy/water-package-mobile.png" alt="water package" width={1000} height={0} layout="intrinsic" className="w-full h-auto mobile img12_2" />
         </div>
 
