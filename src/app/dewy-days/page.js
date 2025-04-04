@@ -1,5 +1,6 @@
 "use client"
 
+import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Sparkles, Environment } from '@react-three/drei'
@@ -386,10 +387,10 @@ export default function DewyDesc() {
               <p>
                 <a className='dewy' target="_blank" href="https://www.bbc.com/future/article/20190403-how-much-water-should-you-drink-a-day">
                   How much water should we drink a day? </a>
-                It's very important to drink appropriate amount of water every day.
+                It&lsquo;s very important to drink appropriate amount of water every day.
                 The water you should intake depends on your age, weight and activity level. The weather also apparently affects.
-                In general, people think that they should drink more water than usual when it's extremely hot,
-                however, that wasn't the case for me.
+                In general, people think that they should drink more water than usual when it&lsquo;s extremely hot,
+                however, that wasn&lsquo;t the case for me.
                 <br />
                 I used to drink little water, and <a className='dewy' target="_blank" href="https://www.bbc.com/news/world-asia-65247927">
                   the fine dust in Korea</a> made my nose and throat feel dry.
@@ -401,7 +402,7 @@ export default function DewyDesc() {
         </div>
 
         <div className='section-img section1' style={{ backgroundColor: '#f3f3f3' }}>
-          <img className="img-item img01" src='/dewy/phone-web.jpg' />
+          <Image src="/dewy/phone-web.jpg" alt="phone" width={3000} height={0} layout="intrinsic" className="w-full h-auto img01" />
         </div>
 
         <div className='section flex-container section2'>
@@ -498,219 +499,219 @@ export default function DewyDesc() {
 
             {daytime && (weatherIndex === 0) &&
               <div>
-                <img src='dewy/weather/sunMane.png' alt='sun' className='absolute sunMane sun' />
-                <img src='dewy/weather/sunFace.png' alt='sun' className='absolute sunFace sun' />
+                <Image src="/dewy/weather/sunMane.png" alt="sun" width={3000} height={0} layout="intrinsic" className='absolute sunMane sun' />
+                <Image src="/dewy/weather/sunFace.png" alt="sun" width={3000} height={0} layout="intrinsic" className='absolute sunFace sun' />
               </div>}
 
             {daytime && (weatherIndex === 1) &&
               <div>
-                <img src='dewy/weather/sunMane.png' alt='sun' className='absolute sunMane sunManeCloud sun' />
-                <img src='dewy/weather/sunFace.png' alt='sun' className='absolute sunFaceCloud sun' />
-                <img src='dewy/weather/cloud.png' alt='cloud' className='absolute partlyCloud' />
+                <Image src="/dewy/weather/sunMane.png" alt="sun" width={3000} height={0} layout="intrinsic" className='absolute sunMane sunManeCloud sun' />
+                <Image src="/dewy/weather/sunFace.png" alt="sun" width={3000} height={0} layout="intrinsic" className='absolute sunFaceCloud sun' />
+                <Image src="/dewy/weather/cloud.png" alt="cloud" width={3000} height={0} layout="intrinsic" className='absolute partlyCloud' />
               </div>}
 
             {daytime && (weatherIndex === 2) &&
               <div>
-                <img src='dewy/weather/cloud.png' alt='cloud' className='absolute cloud' />
+                <Image src="/dewy/weather/cloud.png" alt="cloud" width={3000} height={0} layout="intrinsic" className='absolute cloud' />
               </div>}
 
             {!daytime && (weatherIndex === 2) &&
               <div>
-                <img src='dewy/weather/cloudNight.png' alt='cloud' className='absolute cloud' />
+                <Image src="/dewy/weather/cloudNight.png" alt="cloud" width={3000} height={0} layout="intrinsic" className='absolute cloud' />
               </div>}
 
             {daytime && (weatherIndex === 3) &&
               <div>
-                <img src="/dewy/weather/smog.png" alt="smog" className="absolute smogT smog" />
-                <img src="/dewy/weather/smog.png" alt="smog" className="absolute smogB smog" />
+                <Image src="/dewy/weather/smog.png" alt="smog" width={3000} height={0} layout="intrinsic" className='absolute smogT smog' />
+                <Image src="/dewy/weather/smog.png" alt="smog" width={3000} height={0} layout="intrinsic" className='absolute smogB smog' />
               </div>}
 
             {!daytime && (weatherIndex === 3) &&
               <div>
-                <img src="/dewy/weather/smogNight.png" alt="smog" className="absolute smogT smog" />
-                <img src="/dewy/weather/smogNight.png" alt="smog" className="absolute smogB smog" />
+                <Image src="/dewy/weather/smogNight.png" alt="smog" width={3000} height={0} layout="intrinsic" className='absolute smogT smog' />
+                <Image src="/dewy/weather/smogNight.png" alt="smog" width={3000} height={0} layout="intrinsic" className='absolute smogB smog' />
               </div>}
 
             {daytime && (weatherIndex === 4) &&
               <div>
-                <img src="/dewy/weather/rain.png" alt="rain" className="absolute drizzle0 drop" />
-                <img src="/dewy/weather/rain.png" alt="rain" className="absolute drizzle1 drop" />
-                <img src="/dewy/weather/rain.png" alt="rain" className="absolute drizzle2 drop" />
+                <Image src="/dewy/weather/rain.png" alt="rain" width={3000} height={0} layout="intrinsic" className='absolute drizzle0 drop' />
+                <Image src="/dewy/weather/rain.png" alt="rain" width={3000} height={0} layout="intrinsic" className='absolute drizzle1 drop' />
+                <Image src="/dewy/weather/rain.png" alt="rain" width={3000} height={0} layout="intrinsic" className='absolute drizzle2 drop' />
               </div>}
 
             {daytime && (weatherIndex === 5) &&
               <div>
-                <img src="/dewy/weather/rain.png" alt="rain" className="absolute rain0 drop" />
-                <img src="/dewy/weather/rain.png" alt="rain" className="absolute rain1 drop" />
-                <img src="/dewy/weather/rain.png" alt="rain" className="absolute rain2 drop" />
+                <Image src="/dewy/weather/rain.png" alt="rain" width={3000} height={0} layout="intrinsic" className='absolute rain0 drop' />
+                <Image src="/dewy/weather/rain.png" alt="rain" width={3000} height={0} layout="intrinsic" className='absolute rain1 drop' />
+                <Image src="/dewy/weather/rain.png" alt="rain" width={3000} height={0} layout="intrinsic" className='absolute rain2 drop' />
               </div>}
 
             {!daytime && (weatherIndex === 4) &&
               <div>
-                <img src="/dewy/weather/rainNight.png" alt="rain" className="absolute drizzle0 drop" />
-                <img src="/dewy/weather/rainNight.png" alt="rain" className="absolute drizzle1 drop" />
-                <img src="/dewy/weather/rainNight.png" alt="rain" className="absolute drizzle2 drop" />
+                <Image src="/dewy/weather/rainNight.png" alt="rain" width={3000} height={0} layout="intrinsic" className='absolute drizzle0 drop' />
+                <Image src="/dewy/weather/rainNight.png" alt="rain" width={3000} height={0} layout="intrinsic" className='absolute drizzle1 drop' />
+                <Image src="/dewy/weather/rainNight.png" alt="rain" width={3000} height={0} layout="intrinsic" className='absolute drizzle2 drop' />
               </div>}
 
             {!daytime && (weatherIndex === 5) &&
               <div>
-                <img src="/dewy/weather/rainNight.png" alt="rain" className="absolute rain0 drop" />
-                <img src="/dewy/weather/rainNight.png" alt="rain" className="absolute rain1 drop" />
-                <img src="/dewy/weather/rainNight.png" alt="rain" className="absolute rain2 drop" />
+                <Image src="/dewy/weather/rainNight.png" alt="rain" width={3000} height={0} layout="intrinsic" className='absolute rain0 drop' />
+                <Image src="/dewy/weather/rainNight.png" alt="rain" width={3000} height={0} layout="intrinsic" className='absolute rain1 drop' />
+                <Image src="/dewy/weather/rainNight.png" alt="rain" width={3000} height={0} layout="intrinsic" className='absolute rain2 drop' />
               </div>}
 
             {daytime && (weatherIndex === 6) &&
               <div>
-                <img src="/dewy/weather/rain.png" alt="rain" className="absolute rain0 drop" />
-                <img src="/dewy/weather/lightning.png" alt="thunder" className="absolute lightning drop" />
-                <img src="/dewy/weather/rain.png" alt="rain" className="absolute rain2 drop" />
+                <Image src="/dewy/weather/rain.png" alt="rain" width={3000} height={0} layout="intrinsic" className='absolute rain0 drop' />
+                <Image src="/dewy/weather/lightning.png" alt="thunder" width={3000} height={0} layout="intrinsic" className='absolute lightning drop' />
+                <Image src="/dewy/weather/rain.png" alt="rain" width={3000} height={0} layout="intrinsic" className='absolute rain2 drop' />
               </div>}
 
             {!daytime && (weatherIndex === 6) &&
               <div>
-                <img src="/dewy/weather/rainNight.png" alt="rain" className="absolute rain0 drop" />
-                <img src="/dewy/weather/lightning.png" alt="thunder" className="absolute lightning drop" />
-                <img src="/dewy/weather/rainNight.png" alt="rain" className="absolute rain2 drop" />
+                <Image src="/dewy/weather/rainNight.png" alt="rain" width={3000} height={0} layout="intrinsic" className='absolute rain0 drop' />
+                <Image src="/dewy/weather/lightning.png" alt="thunder" width={3000} height={0} layout="intrinsic" className='absolute lightning drop' />
+                <Image src="/dewy/weather/rainNight.png" alt="rain" width={3000} height={0} layout="intrinsic" className='absolute rain2 drop' />
               </div>}
 
             {daytime && (weatherIndex === 7) &&
               <div>
-                <img src="/dewy/weather/snow.png" alt="snow" className="absolute rain0 snow" />
-                <img src="/dewy/weather/snow.png" alt="snow" className="absolute rain1 snow" />
-                <img src="/dewy/weather/snow.png" alt="snow" className="absolute rain2 snow" />
+                <Image src="/dewy/weather/snow.png" alt="snow" width={3000} height={0} layout="intrinsic" className='absolute rain0 snow' />
+                <Image src="/dewy/weather/snow.png" alt="snow" width={3000} height={0} layout="intrinsic" className='absolute rain1 snow' />
+                <Image src="/dewy/weather/snow.png" alt="snow" width={3000} height={0} layout="intrinsic" className='absolute rain2 snow' />
               </div>}
 
             {!daytime && (weatherIndex === 7) &&
               <div>
-                <img src="/dewy/weather/snowNight.png" alt="snow" className="absolute rain0 snow" />
-                <img src="/dewy/weather/snowNight.png" alt="snow" className="absolute rain1 snow" />
-                <img src="/dewy/weather/snowNight.png" alt="snow" className="absolute rain2 snow" />
+                <Image src="/dewy/weather/snowNight.png" alt="snow" width={3000} height={0} layout="intrinsic" className='absolute rain0 snow' />
+                <Image src="/dewy/weather/snowNight.png" alt="snow" width={3000} height={0} layout="intrinsic" className='absolute rain1 snow' />
+                <Image src="/dewy/weather/snowNight.png" alt="snow" width={3000} height={0} layout="intrinsic" className='absolute rain2 snow' />
               </div>}
 
             {daytime && (weatherIndex === 8) &&
               <div>
-                <img src="/dewy/weather/tornado0.png" alt="tornado" className="absolute tornado tornado0" />
-                <img src="/dewy/weather/tornado1.png" alt="tornado" className="absolute tornado tornado1" />
-                <img src="/dewy/weather/tornado2.png" alt="tornado" className="absolute tornado tornado2" />
-                <img src="/dewy/weather/tornado3.png" alt="tornado" className="absolute tornado tornado3" />
+                <Image src="/dewy/weather/tornado0.png" alt="tornado" width={3000} height={0} layout="intrinsic" className='absolute tornado tornado0' />
+                <Image src="/dewy/weather/tornado1.png" alt="tornado" width={3000} height={0} layout="intrinsic" className='absolute tornado tornado1' />
+                <Image src="/dewy/weather/tornado2.png" alt="tornado" width={3000} height={0} layout="intrinsic" className='absolute tornado tornado2' />
+                <Image src="/dewy/weather/tornado3.png" alt="tornado" width={3000} height={0} layout="intrinsic" className='absolute tornado tornado3' />
               </div>}
 
             {!daytime && (weatherIndex === 8) &&
               <div>
-                <img src="/dewy/weather/tornadoNight0.png" alt="tornado" className="absolute tornado tornado0" />
-                <img src="/dewy/weather/tornadoNight1.png" alt="tornado" className="absolute tornado tornado1" />
-                <img src="/dewy/weather/tornadoNight2.png" alt="tornado" className="absolute tornado tornado2" />
-                <img src="/dewy/weather/tornadoNight3.png" alt="tornado" className="absolute tornado tornado3" />
+                <Image src="/dewy/weather/tornadoNight0.png" alt="tornado" width={3000} height={0} layout="intrinsic" className='absolute tornado tornado0' />
+                <Image src="/dewy/weather/tornadoNight1.png" alt="tornado" width={3000} height={0} layout="intrinsic" className='absolute tornado tornado1' />
+                <Image src="/dewy/weather/tornadoNight2.png" alt="tornado" width={3000} height={0} layout="intrinsic" className='absolute tornado tornado2' />
+                <Image src="/dewy/weather/tornadoNight3.png" alt="tornado" width={3000} height={0} layout="intrinsic" className='absolute tornado tornado3' />
               </div>}
 
             {daytime && (weatherIndex === 3 || weatherIndex === 4 || weatherIndex === 5 ||
               weatherIndex === 6 || weatherIndex === 7) &&
               <div>
-                <img src='dewy/weather/cloud.png' alt="cloud" className='absolute cloud cloudmit' />
+                <Image src="/dewy/weather/cloud.png" alt="cloud" width={3000} height={0} layout="intrinsic" className='absolute cloud cloudmit' />
               </div>}
 
             {!daytime && (weatherIndex === 3 || weatherIndex === 4 || weatherIndex === 5 ||
               weatherIndex === 6 || weatherIndex === 7) &&
               <div>
-                <img src='dewy/weather/cloudNight.png' alt="cloud" className='absolute cloud cloudmit' />
+                <Image src="/dewy/weather/cloudNight.png" alt="cloud" width={3000} height={0} layout="intrinsic" className='absolute cloud cloudmit' />
               </div>}
 
             {(!daytime) && (weatherIndex === 0) && (moonPhase == 4) &&
               <div>
-                <img src='dewy/weather/moonlight.png' alt="moonlight" className='absolute moonlight sun' />
-                <img src='dewy/weather/moonFace.png' alt="moon" className='absolute sunFace sun' />
+                <Image src="/dewy/weather/moonlight.png" alt="moonlight" width={3000} height={0} layout="intrinsic" className='absolute moonlight sun' />
+                <Image src="/dewy/weather/moonFace.png" alt="moon" width={3000} height={0} layout="intrinsic" className='absolute sunFace sun' />
               </div>}
 
             {(!daytime) && (weatherIndex === 0) && (moonPhase == 0) &&
               <div>
-                <img src='dewy/weather/moon0.png' alt="moon" className='absolute sunFace sun' />
+                <Image src="/dewy/weather/moon0.png" alt="moon" width={3000} height={0} layout="intrinsic" className='absolute sunFace sun' />
               </div>}
 
             {(!daytime) && (weatherIndex === 0) && (moonPhase == 1) &&
               <div>
-                <img src='dewy/weather/moon1.png' alt="moon" className='absolute sunFace sun' />
+                <Image src="/dewy/weather/moon1.png" alt="moon" width={3000} height={0} layout="intrinsic" className='absolute sunFace sun' />
               </div>}
 
             {(!daytime) && (weatherIndex === 0) && (moonPhase == 2) &&
               <div>
-                <img src='dewy/weather/moon2.png' alt="moon" className='absolute sunFace sun' />
+                <Image src="/dewy/weather/moon2.png" alt="moon" width={3000} height={0} layout="intrinsic" className='absolute sunFace sun' />
               </div>}
 
             {(!daytime) && (weatherIndex === 0) && (moonPhase == 3) &&
               <div>
-                <img src='dewy/weather/moon3.png' alt="moon" className='absolute sunFace sun' />
+                <Image src="/dewy/weather/moon3.png" alt="moon" width={3000} height={0} layout="intrinsic" className='absolute sunFace sun' />
               </div>}
 
             {(!daytime) && (weatherIndex === 0) && (moonPhase == 5) &&
               <div>
-                <img src='dewy/weather/moon5.png' alt="moon" className='absolute sunFace sun' />
+                <Image src="/dewy/weather/moon5.png" alt="moon" width={3000} height={0} layout="intrinsic" className='absolute sunFace sun' />
               </div>}
 
             {(!daytime) && (weatherIndex === 0) && (moonPhase == 6) &&
               <div>
-                <img src='dewy/weather/moon6.png' alt="moon" className='absolute sunFace sun' />
+                <Image src="/dewy/weather/moon6.png" alt="moon" width={3000} height={0} layout="intrinsic" className='absolute sunFace sun' />
               </div>}
 
             {(!daytime) && (weatherIndex === 0) && (moonPhase == 7) &&
               <div>
-                <img src='dewy/weather/moon7.png' alt="moon" className='absolute sunFace sun' />
+                <Image src="/dewy/weather/moon7.png" alt="moon" width={3000} height={0} layout="intrinsic" className='absolute sunFace sun' />
               </div>}
 
             {(!daytime) && (weatherIndex === 0) && (moonPhase == 8) &&
               <div>
-                <img src='dewy/weather/moon0.png' alt="moon" className='absolute sunFace sun' />
+                <Image src="/dewy/weather/moon0.png" alt="moon" width={3000} height={0} layout="intrinsic" className='absolute sunFace sun' />
               </div>}
 
 
             {(!daytime) && (weatherIndex === 1) && (moonPhase == 4) &&
               <div>
-                <img src='dewy/weather/moonlight.png' alt="moonlight" className='absolute moonlightCloud sun' />
-                <img src='dewy/weather/moonFace.png' alt="moon" className='absolute sunFaceCloud sun' />
+                <Image src="/dewy/weather/moonlight.png" alt="moonlight" width={3000} height={0} layout="intrinsic" className='absolute moonlightCloud sun' />
+                <Image src="/dewy/weather/moonFace.png" alt="moon" width={3000} height={0} layout="intrinsic" className='absolute sunFaceCloud sun' />
               </div>}
 
             {(!daytime) && (weatherIndex === 1) && (moonPhase == 0) &&
               <div>
-                <img src='dewy/weather/moon0.png' alt="moon" className='absolute sunFaceCloud sun' />
+                <Image src="/dewy/weather/moon0.png" alt="moon" width={3000} height={0} layout="intrinsic" className='absolute sunFaceCloud sun' />
               </div>}
 
             {(!daytime) && (weatherIndex === 1) && (moonPhase == 1) &&
               <div>
-                <img src='dewy/weather/moon1.png' alt="moon" className='absolute sunFaceCloud sun' />
+                <Image src="/dewy/weather/moon1.png" alt="moon" width={3000} height={0} layout="intrinsic" className='absolute sunFaceCloud sun' />
               </div>}
 
             {(!daytime) && (weatherIndex === 1) && (moonPhase == 2) &&
               <div>
-                <img src='dewy/weather/moon2.png' alt="moon" className='absolute sunFaceCloud sun' />
+                <Image src="/dewy/weather/moon2.png" alt="moon" width={3000} height={0} layout="intrinsic" className='absolute sunFaceCloud sun' />
               </div>}
 
             {(!daytime) && (weatherIndex === 1) && (moonPhase == 3) &&
               <div>
-                <img src='dewy/weather/moon3.png' alt="moon" className='absolute sunFaceCloud sun' />
+                <Image src="/dewy/weather/moon3.png" alt="moon" width={3000} height={0} layout="intrinsic" className='absolute sunFaceCloud sun' />
               </div>}
 
             {(!daytime) && (weatherIndex === 1) && (moonPhase == 5) &&
               <div>
-                <img src='dewy/weather/moon5.png' alt="moon" className='absolute sunFaceCloud sun' />
+                <Image src="/dewy/weather/moon5.png" alt="moon" width={3000} height={0} layout="intrinsic" className='absolute sunFaceCloud sun' />
               </div>}
 
             {(!daytime) && (weatherIndex === 1) && (moonPhase == 6) &&
               <div>
-                <img src='dewy/weather/moon6.png' alt="moon" className='absolute sunFaceCloud sun' />
+                <Image src="/dewy/weather/moon6.png" alt="moon" width={3000} height={0} layout="intrinsic" className='absolute sunFaceCloud sun' />
               </div>}
 
             {(!daytime) && (weatherIndex === 1) && (moonPhase == 7) &&
               <div>
-                <img src='dewy/weather/moon7.png' alt="moon" className='absolute sunFaceCloud sun' />
+                <Image src="/dewy/weather/moon7.png" alt="moon" width={3000} height={0} layout="intrinsic" className='absolute sunFaceCloud sun' />
               </div>}
 
             {(!daytime) && (weatherIndex === 1) && (moonPhase == 8) &&
               <div>
-                <img src='dewy/weather/moon0.png' alt="moon" className='absolute sunFaceCloud sun' />
+                <Image src="/dewy/weather/moon0.png" alt="moon" width={3000} height={0} layout="intrinsic" className='absolute sunFaceCloud sun' />
               </div>}
 
             {!daytime && (weatherIndex === 1) &&
               <div>
-                <img src='dewy/weather/cloudNight.png' alt='cloud' className='absolute partlyCloud' />
+                <Image src="/dewy/weather/cloudNight.png" alt="cloud" width={3000} height={0} layout="intrinsic" className='absolute partlyCloud' />
               </div>}
           </div>
 
@@ -764,28 +765,28 @@ export default function DewyDesc() {
         </div>
 
         <div className='section-img section8' style={{ backgroundColor: '#dddddd' }}>
-          <img src='/dewy/flyer-web.jpg' className='img-item web img08_1' />
-          <img src='/dewy/flyer-mobile.jpg' className='img-item mobile img08_2' />
+          <Image src="/dewy/flyer-web.jpg" alt="flyer" width={3000} height={0} layout="intrinsic" className="w-full h-auto web img08_1" />
+          <Image src="/dewy/flyer-mobile.jpg" alt="flyer" width={1000} height={0} layout="intrinsic" className="w-full h-auto mobile img08_2" />
         </div>
 
         <div className='section-img section9' style={{ backgroundColor: '#acb6b5' }}>
-          <img src='/dewy/cup-web.png' className='img-item web img09_1' />
-          <img src='/dewy/cup-mobile.png' className='img-item mobile img09_2' />
+          <Image src="/dewy/cup-web.png" alt="cup" width={3000} height={0} layout="intrinsic" className="w-full h-auto web img09_1" />
+          <Image src="/dewy/cup-mobile.png" alt="cup" width={1000} height={0} layout="intrinsic" className="w-full h-auto mobile img09_2" />
         </div>
 
         <div className='section-img section10' style={{ backgroundColor: '#8a9292' }}>
-          <img src='/dewy/cups-web.png' className='img-item web img10_1' />
-          <img src='/dewy/cups-mobile.png' className='img-item mobile img10_2' />
+          <Image src="/dewy/cups-web.png" alt="cups" width={3000} height={0} layout="intrinsic" className="w-full h-auto web img10_1" />
+          <Image src="/dewy/cups-mobile.png" alt="cups" width={1000} height={0} layout="intrinsic" className="w-full h-auto mobile img10_2" />
         </div>
 
         <div className='section-img section11' style={{ backgroundColor: '#a5adad' }}>
-          <img src='/dewy/tumbler-web.png' className='img-item web img11_1' />
-          <img src='/dewy/tumbler-mobile.png' className='img-item mobile img11_2' />
+          <Image src="/dewy/tumbler-web.png" alt="tumbler" width={3000} height={0} layout="intrinsic" className="w-full h-auto web img11_1" />
+          <Image src="/dewy/tumbler-mobile.png" alt="tumbler" width={1000} height={0} layout="intrinsic" className="w-full h-auto mobile img11_2" />
         </div>
 
         <div className='section-img section12' style={{ backgroundColor: '#cbd4d1' }}>
-          <img src='/dewy/water-package-web.png' className='img-item web img12_1' />
-          <img src='/dewy/water-package-mobile.png' className='img-item mobile img12_2' />
+          <Image src="/dewy/water-package-web.png" alt="water package" width={3000} height={0} layout="intrinsic" className="w-full h-auto web img11_1" />
+          <Image src="/dewy/water-package-mobile.png" alt="water package" width={1000} height={0} layout="intrinsic" className="w-full h-auto mobile img12_2" />
         </div>
 
         <div className='section-img section13' style={{
@@ -794,7 +795,7 @@ export default function DewyDesc() {
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
         }}>
-          <img src='/dewy/card-web.png' className='full-img img13' />
+          <Image src="/dewy/card-web.png" alt="business card" fill className="full-img img13" />
         </div>
       </div>
     </div>

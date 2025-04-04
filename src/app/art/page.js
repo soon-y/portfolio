@@ -305,7 +305,7 @@ export default function ArtDesc() {
                 <a className='art' href="https://comic.naver.com/webtoon/list?titleId=659934&page=1&sort=ASC" target="_blank"> comic </a>
                 written by a deaf writer based on her real-life experiences. As a museum-goer at the time,
                 I was curious about how deaf people engaged with culture such as museums and galleries.<br />
-                I researched how deaf people communicate and how the museum's docent service operates
+                I researched how deaf people communicate and how the museum&lsquo;s docent service operates
                 to identify touch points.
                 Based on the research, I designed a exhibition guide app that allows deaf people to reserve and
                 interact with the docents the way they want to.
@@ -526,8 +526,8 @@ export default function ArtDesc() {
             <h3 className='art'>Experience</h3>
             <p className='art-opp'>
               Mina visited the museum to listen to the docent, but when she arrived at the last slot, there were
-              so many people that it was hard to see the curator's lips, and to make matters worse, she could barely
-              understand what he was saying because he had a low-pitched voice. Mina couldn't help but look at
+              so many people that it was hard to see the curator&lsquo;s lips, and to make matters worse, she could barely
+              understand what he was saying because he had a low-pitched voice. Mina couldn&lsquo;t help but look at
               the exhibition alone.
             </p>
           </div>
@@ -619,14 +619,14 @@ export default function ArtDesc() {
               Yoonha usually draws by herself at home. Sometimes she goes to an arts centre for people with
               disabilities
               to meet other people and talk about painting. When she needs a change of scenery, she goes to museums
-              when there aren't many people. This is because she needs sign language interpretation, which she can
+              when there aren&lsquo;t many people. This is because she needs sign language interpretation, which she can
               watch by herself.
             </p>
           </div>
           <div className="experience box">
             <h3 className='art'>Experience</h3>
             <p className='art-opp'>
-              It's been a while since Yoonha has been to an art museum. She tried to sign up for a sign language
+              It&lsquo;s been a while since Yoonha has been to an art museum. She tried to sign up for a sign language
               interpretation guide, but it was cancelled because the number of participants was not met.
               She downloaded the museum app to read the exhibit descriptions, but the writing was hard to read.
             </p>
@@ -638,7 +638,7 @@ export default function ArtDesc() {
             <tbody>
               <tr>
                 <td className='journey-touch'>
-                  <img src='./art/portrait2-mobile.jpg' className="journey-profile" />
+                  <Image src="/art/portrait2-mobile.jpg" alt="portrait" width={3000} height={0} layout="intrinsic" className="journey-profile" />
                 </td>
                 <td colSpan={5} className="journey-stage journey-case">
                   <b><p>Yoonha Lee </p></b>
@@ -759,8 +759,8 @@ export default function ArtDesc() {
         </div>
 
         <div className="section-img section10" style={{ backgroundColor: 'white' }}>
-          <img src='./art/flowchart.jpg' className='img-item flowchart_1 web' />
-          <img src='./art/flowchart-mobile.jpg' className='img-item flowchart_2 mobile' />
+          <Image src="/art/flowchart.jpg" alt="flowchart" width={3000} height={0} layout="intrinsic" className="w-full h-auto web flowchart_1" />
+          <Image src="/art/flowchart-mobile.jpg" alt="flowchart" width={1000} height={0} layout="intrinsic" className="w-full h-auto mobile flowchart_2" />
           <p className='art stroke absolute left-[50%] bottom-0' style={{
             color: 'white', stroke: 'rgb(205, 205, 205)',
             WebkitTextStrokeColor: 'rgb(205, 205, 205)',

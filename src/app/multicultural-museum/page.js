@@ -15,7 +15,7 @@ import './styles.css'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
-export default function home() {
+export default function MMdesc() {
   const [ratio, setRatio] = useState(1)
   const scale = Array.from({ length: 500 }, () => 0.5 + Math.random() * 4)
 
@@ -213,8 +213,8 @@ export default function home() {
         </div>
 
         <div className='section-img section1' style={{ backgroundColor: '#e4e4e4' }}>
-          <img src='/multicultural/m-logo.png' className='img-item img01 web' />
-          <img src='/multicultural/m-logo-mobile.png' className='img-item img01 mobile' />
+          <Image src="/multicultural/m-logo.png" alt="logo" width={3000} height={0} layout="intrinsic" className="w-full h-auto img01 web" />
+          <Image src="/multicultural/m-logo-mobile.png" alt="logo" width={3000} height={0} layout="intrinsic" className="w-full h-auto img01 mobile" />
         </div>
 
         <h1 className='text2_0 relative pt-12 pb-4 text-center text-3xl font-bold'>Logo Conception</h1>
@@ -286,18 +286,18 @@ export default function home() {
         </div>
 
         <div className='section-img section6' style={{ backgroundColor: '#dcdddd' }}>
-          <img src='/multicultural/stationery.jpg' className='img-item img06_1 web' />
-          <img src='/multicultural/stationery-mobile.jpg' className='img-item img06_2 mobile' />
+          <Image src="/multicultural/stationery.jpg" alt="stationery" width={3000} height={0} layout="intrinsic" className="w-full h-auto web img06_1" />
+          <Image src="/multicultural/stationery-mobile.jpg" alt="stationery" width={1000} height={0} layout="intrinsic" className="w-full h-auto mobile img06_2" />
         </div>
 
         <div className='section-img section7' style={{ backgroundColor: '#c1c2c4' }}>
-          <img src='/multicultural/bag.png' className='img-item img07_1 web' />
-          <img src='/multicultural/bag-mobile.png' className='img-item img07_2 mobile' />
+          <Image src="/multicultural/bag.png" alt="bag" width={3000} height={0} layout="intrinsic" className="w-full h-auto web img07_1" />
+          <Image src="/multicultural/bag-mobile.png" alt="bag" width={1000} height={0} layout="intrinsic" className="w-full h-auto mobile img07_2" />
         </div>
 
         <div className='section-img section8' style={{ backgroundColor: '#a8a8a8' }}>
-          <img src='/multicultural/ticket.png' className='img-item img08_1 web' />
-          <img src='/multicultural/ticket-mobile.png' className='img-item img08_2 mobile' />
+          <Image src="/multicultural/ticket.png" alt="ticket" width={3000} height={0} layout="intrinsic" className="w-full h-auto web img08_1" />
+          <Image src="/multicultural/ticket-mobile.png" alt="ticket" width={1000} height={0} layout="intrinsic" className="w-full h-auto mobile img08_2" />
         </div>
       </div>
     </div>
