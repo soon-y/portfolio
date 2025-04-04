@@ -267,7 +267,7 @@ export default function ArtDesc() {
         <Environment preset="sunset" />
         <Sparkles count={scale.length} size={scale} position={[0, 0, -10]} scale={[12, 12, 20]} speed={0.1} />
         <group ref={logo} onClick={() => {
-          window.open("https://soonyoung-portfolio.vercel.app/", "_blank")
+          window.open("https://soonyoung.vercel.app/", "_blank")
         }}>
           <Art position={[
             ratio > 1 ? -ratio * 2.2 : 0,
@@ -280,7 +280,7 @@ export default function ArtDesc() {
             rotation={[0, -Math.PI / 2, 0]}
             scale={1} opacity={0}
             color={param.orange}
-            src={"https://soonyoung-portfolio.vercel.app/"}
+            src={"https://soonyoung.vercel.app/"}
             content={"iframe-time"} />
         </group>
         <group ref={model} rotation-y={Math.PI * 1 / 3} position={[ratio > 1 ? -radius * 1.7 : -radius, -10, -10]} >

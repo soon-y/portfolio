@@ -169,7 +169,7 @@ export default function MMdesc() {
         <Environment preset="sunset" />
         <Sparkles count={scale.length} size={scale} position={[0, 0, -10]} scale={[12, 12, 20]} speed={0.1} />
         <group ref={logo} onClick={() => {
-          window.open("https://dewydays.vercel.app/", "_blank")
+          window.open("https://soonyoung.vercel.app/", "_blank")
         }}>
           <Multi scale={0.5} opacity={0} position={[
             ratio > 1 ? -ratio * 2.2 : 0,
@@ -181,7 +181,7 @@ export default function MMdesc() {
             rotation={[0, -Math.PI / 2, 0]}
             scale={1}
             color={param.magenta}
-            src={"https://soonyoung-portfolio.vercel.app/"}
+            src={"https://soonyoung.vercel.app/"}
             content={"iframe-time"} />
         </group>
 
