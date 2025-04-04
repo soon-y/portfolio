@@ -1,0 +1,15 @@
+:root {
+  --main: #fe0094;
+}
+
+.mm::selection {
+  color: var(--main);
+}
+
+.concept{
+  transition-duration: 500ms;
+}
+
+.concept:hover {
+  filter: grayscale(100%) brightness(0.5) blur(2px);
+}
