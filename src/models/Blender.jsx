@@ -32,6 +32,6 @@ function Blender(props) {
   )
 }
 
-useGLTF.preload('./model/Blender.glb')
+useGLTF.preload('./model/blender.glb')
 export default Blender
 
