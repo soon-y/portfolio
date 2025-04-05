@@ -42,6 +42,9 @@ function World(props) {
     }
 
     Models.current.rotation.y = step * props.index
+  }, [])
+
+  useEffect(() => {
     if (touchDevice) {
       if (!typeof DeviceMotionEvent.requestPermission === "function") {
         window.addEventListener("deviceorientation", (event) => {
@@ -51,7 +54,7 @@ function World(props) {
         setPermission(true)
       }
     }
-  }, [])
+  }, [touchDevice])
 
   useFrame((state, delta) => {
     if (!document.hidden && !touchDevice) {
