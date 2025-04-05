@@ -48,7 +48,7 @@ function World(props) {
     if (touchDevice) {
       if (!typeof DeviceMotionEvent.requestPermission === "function") {
         window.addEventListener("deviceorientation", (event) => {
-          parallax(event);
+          parallax(event)
         })
       }else {
         setPermission(true)
@@ -107,30 +107,30 @@ function World(props) {
   }
 
   const parallax = (event) => {
-    let yTilt, xTilt
-    switch (screen.orientation.type) {
-      case "portrait-primary":
-        yTilt = 0
-        xTilt = event.gamma * 0.01
-        break;
-      case "portrait-secondary":
-        yTilt = 0
-        xTilt = -event.gamma * 0.01
-        break;
-      case "landscape-primary":
-      case "landscape-secondary":
-        yTilt = event.beta * 0.01
-        xTilt = 0
-        break;
-      default:
-    }
+    // let yTilt, xTilt
+    // switch (screen.orientation.type) {
+    //   case "portrait-primary":
+    //     yTilt = 0
+    //     xTilt = event.gamma * 0.01
+    //     break;
+    //   case "portrait-secondary":
+    //     yTilt = 0
+    //     xTilt = -event.gamma * 0.01
+    //     break;
+    //   case "landscape-primary":
+    //   case "landscape-secondary":
+    //     yTilt = event.beta * 0.01
+    //     xTilt = 0
+    //     break;
+    //   default:
+    // }
 
-    gsap.to(camera.position, {
-      x: -xTilt,
-      y: yTilt,
-      duration: 0.6,
-      ease: "power2.inout",
-    })
+    // gsap.to(camera.position, {
+    //   x: -xTilt,
+    //   y: yTilt,
+    //   duration: 0.6,
+    //   ease: "power2.inout",
+    // })
   }
 
   if (Models.current) {
