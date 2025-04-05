@@ -213,44 +213,32 @@ export default function MMdesc() {
         </div>
 
         <div className='section-img section1' style={{ backgroundColor: '#e4e4e4' }}>
-          <Image src="/multicultural/m-logo.png" alt="logo" width={3000} height={0} layout="intrinsic" className="w-full h-auto img01 web" />
-          <Image src="/multicultural/m-logo-mobile.png" alt="logo" width={3000} height={0} layout="intrinsic" className="w-full h-auto img01 mobile" />
+          <Image src="/multicultural/m-logo.png" alt="Logo" width={3000} height={0} layout="intrinsic" className="w-full h-auto img01 web" />
+          <Image src="/multicultural/m-logo-mobile.png" alt="Logo" width={3000} height={0} layout="intrinsic" className="w-full h-auto img01 mobile" />
         </div>
 
         <h1 className='text2_0 relative pt-12 pb-4 text-center text-3xl font-bold'>Logo Conception</h1>
         <div className='section section2 grid grid-rows-[1fr_1fr_1fr_1fr] md:grid-rows-[1fr_1fr] md:grid-cols-[1fr_1fr]'>
           <div className='relative w-[100vw] h-[25vh] md:w-[50vw] md:h-[50vh] overflow-hidden'>
-            <Image
-              src="/multicultural/hex.jpg" alt="Connection" fill
-              className="concept object-cover object-center"
-            />
+            <Image src="/multicultural/hex.jpg" alt="Connection" fill className="concept object-cover object-center" />
             <h1 className="text2_1 absolute drop-shadow-xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl font-bold">
               Connection
             </h1>
           </div>
           <div className='relative w-[100vw] h-[25vh] md:w-[50vw] md:h-[50vh] overflow-hidden'>
-            <Image
-              src="/multicultural/globe.jpg" alt="globe" fill
-              className="concept object-cover object-center"
-            />
+            <Image src="/multicultural/globe.jpg" alt="Globe" fill className="concept object-cover object-center" />
             <h1 className="text2_2 absolute drop-shadow-xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl font-bold">
               Globe
             </h1>
           </div>
           <div className='relative w-[100vw] h-[25vh] md:w-[50vw] md:h-[50vh] overflow-hidden'>
-            <Image
-              src="/multicultural/support.jpg" alt="Support" fill
-              className="concept object-cover object-center"
-            />
+            <Image src="/multicultural/support.jpg" alt="Support" fill className="concept object-cover object-center" />
             <h1 className="text2_3 absolute drop-shadow-xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl font-bold">
               Support
             </h1>
           </div>
           <div className='relative w-[100vw] h-[25vh] md:w-[50vw] md:h-[50vh] overflow-hidden'>
-            <Image
-              src="/multicultural/network.jpg" alt="network" fill
-              className="concept object-cover object-center"
-            />
+            <Image src="/multicultural/network.jpg" alt="Network" fill className="concept object-cover object-center" />
             <h1 className="text2_4 absolute drop-shadow-xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl font-bold">
               Network
             </h1>
@@ -262,8 +250,7 @@ export default function MMdesc() {
           backgroundSize: 'cover', backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
         }}>
-          <Image src="/multicultural/color.png" alt="Connection" fill
-            className="object-cover object-center img03_1" />
+          <Image src="/multicultural/color.png" alt="Color" fill className="object-cover object-center img03_1" />
         </div>
 
         <div className='mobile section section3_2' style={{
@@ -271,8 +258,7 @@ export default function MMdesc() {
           backgroundSize: 'cover', backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
         }}>
-          <Image src="/multicultural/color-mobile.png" alt="Connection" fill
-            className="object-cover object-center  img03_2" />
+          <Image src="/multicultural/color-mobile.png" alt="Color" fill className="object-cover object-center  img03_2" />
         </div>
 
         <div className='section' style={{
