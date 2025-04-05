@@ -242,7 +242,6 @@ export default function ArtDesc() {
     }
     checkIfElementsAreLoaded()
     setRatio(window.innerWidth / window.innerHeight)
-    console.log(ratio)
     window.addEventListener('resize', handleResize)
     return () => {
       window.removeEventListener('resize', handleResize)
@@ -253,7 +252,6 @@ export default function ArtDesc() {
     const newRatio = window.innerWidth / window.innerHeight
     setRatio(newRatio)
     setRadius(ratio > 1 ? ratio * 3 : 5)
-    console.log(ratio)
   }
 
   return (
@@ -322,8 +320,8 @@ export default function ArtDesc() {
           backgroundSize: 'cover', backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
         }}>
-          <Image src="/art/art_thumb.png" alt="Art" fill className="img01 mobile h-full w-auto object-cover" />
-          <Image src="/art/art_thumb.png" alt="Art" width={1920} height={1080}
+          <Image src="/art/art_thumb.png" alt="Art" fill sizes='100vh' className="img01 mobile h-full w-auto object-cover" />
+          <Image src="/art/art_thumb.png" alt="Art" width={1359} height={1641}
             className="img01 web h-full w-auto object-cover" />
         </div>
 
@@ -638,7 +636,7 @@ export default function ArtDesc() {
             <tbody>
               <tr>
                 <td className='journey-touch'>
-                  <Image src="/art/portrait2-mobile.jpg" alt="portrait" width={3000} height={0} layout="intrinsic" className="journey-profile" />
+                  <Image src="/art/portrait2-mobile.jpg" alt="portrait" width={1197} height={1220} className="journey-profile" />
                 </td>
                 <td colSpan={5} className="journey-stage journey-case">
                   <b><p>Yoonha Lee </p></b>
@@ -759,8 +757,8 @@ export default function ArtDesc() {
         </div>
 
         <div className="section-img section10" style={{ backgroundColor: 'white' }}>
-          <Image src="/art/flowchart.jpg" alt="flowchart" width={3000} height={0} layout="intrinsic" className="w-full h-auto web flowchart_1" />
-          <Image src="/art/flowchart-mobile.jpg" alt="flowchart" width={1000} height={0} layout="intrinsic" className="w-full h-auto mobile flowchart_2" />
+          <Image src="/art/flowchart.jpg" alt="flowchart" width={1713} height={809} className="w-full h-auto web flowchart_1" />
+          <Image src="/art/flowchart-mobile.jpg" alt="flowchart" width={987} height={731} className="w-full h-auto mobile flowchart_2" />
           <p className='art stroke absolute left-[50%] bottom-0' style={{
             color: 'white', stroke: 'rgb(205, 205, 205)',
             WebkitTextStrokeColor: 'rgb(205, 205, 205)',
