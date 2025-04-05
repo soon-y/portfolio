@@ -19,7 +19,7 @@ gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 export default function DewyDesc() {
   const [ratio, setRatio] = useState(1)
-  const [radius, setRadius] = useState(ratio > 1 ? ratio * 5 : 5)
+  const [radius, setRadius] = useState(ratio > 1 ? ratio * 3 : 5)
   const [daytime, setDaytime] = useState(true)
   const [weatherIndex, setWeather] = useState(0)
   const [moonPhase, setMoonphase] = useState(4)
@@ -306,7 +306,7 @@ export default function DewyDesc() {
   const handleResize = () => {
     const newRatio = window.innerWidth / window.innerHeight
     setRatio(newRatio)
-    setRadius(ratio > 1 ? ratio * 5 : 5)
+    setRadius(ratio > 1 ? ratio * 3 : 5)
   }
 
   return (
