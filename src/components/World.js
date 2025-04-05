@@ -22,18 +22,11 @@ function World(props) {
   const UIback = useRef()
   const Models = useRef()
   const [visible, setVisible] = useState(false)
-  const [permissionRequired, setPermission] = useState((typeof DeviceMotionEvent.requestPermission === "function"))
+  const [permissionRequired, setPermission] = useState(false)
   const { camera, viewport } = useThree()
   const [radius, setRadius] = useState(viewport.aspect < 1.2 ? param.diameter * 10 + (1.2 - viewport.aspect) * param.diameter * 20 : param.diameter * 10)
   const [hc, setHc] = useState((2 * radius * Math.tan(Math.PI / 180 * camera.fov / 2)) * 0.5)
   const step = Math.PI / 3
-  const isTouchDevice = () => {
-    return (
-      "ontouchstart" in window ||
-      navigator.maxTouchPoints > 0 ||
-      navigator.msMaxTouchPoints > 0
-    )
-  }
 
   useEffect(() => {
     if (viewport.aspect < 1.2) { setRadius(param.diameter * 10 + (1.2 - viewport.aspect) * param.diameter * 20) }
@@ -43,13 +36,25 @@ function World(props) {
   }, [viewport])
 
   useEffect(() => {
-    Models.current.rotation.y = step * props.index
-    if (isTouchDevice() && !permissionRequired) {
-      window.addEventListener("deviceorientation", (event) => {
-        parallax(event);
-      })
+    const isTouchDevice = () => {
+      return (
+        "ontouchstart" in window ||
+        navigator.maxTouchPoints > 0 ||
+        navigator.msMaxTouchPoints > 0
+      )
     }
-  })
+
+    Models.current.rotation.y = step * props.index
+    if (isTouchDevice()) {
+      if (!typeof DeviceMotionEvent.requestPermission === "function") {
+        window.addEventListener("deviceorientation", (event) => {
+          parallax(event);
+        })
+      }else {
+        setPermission(true)
+      }
+    }
+  }, [])
 
   useFrame((state, delta) => {
     if (!document.hidden && !isTouchDevice()) {
@@ -153,7 +158,7 @@ function World(props) {
         {permissionRequired &&
           <Mobile position={[viewport.aspect < 1 ? wc * 2 - 1.8 : wc * 2 - 1.2, viewport.aspect < 1 ? hc - 2 : hc - 1, Math.cos(step * 3) * radius]}
             scale={viewport.aspect < 1 ? .55 : .35} matcap={param.matcapWhite} rotation-y={-Math.PI / 2} redSign={true} onClick={requestOrientationPermission} />}
-        <Multi position={[Math.sin(step * 4) * radius, 0, Math.cos(step * 4) * radius]} rotation-y={step * 1} MM_hovered={props.MM_hovered}/>
+        <Multi position={[Math.sin(step * 4) * radius, 0, Math.cos(step * 4) * radius]} rotation-y={step * 1} MM_hovered={props.MM_hovered} />
         <Caregem position={[Math.sin(step * 5) * radius, 0, Math.cos(step * 5) * radius]} rotation-y={step * 2} />
         <Art position={[Math.sin(step * 6) * radius, 0, Math.cos(step * 6) * radius]} rotation-y={step * 3} />
         <Skills position={[Math.sin(step * 3) * radius, 0, Math.cos(step * 3) * radius * 3]} visible={visible} />
