@@ -795,7 +795,7 @@ export default function DewyDesc() {
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
         }}>
-          <Image src="/dewy/card-web.png" alt="business card" fill className="full-img img13" />
+          <Image src="/dewy/card-web.png" alt="business card" fill className="img13 object-cover object-center" />
         </div>
       </div>
     </div>
