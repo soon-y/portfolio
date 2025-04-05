@@ -37,7 +37,9 @@ function World(props) {
   }, [viewport])
 
   useEffect(() => {
-    if("ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) setTouchDevice(true)
+    if("ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
+      setTouchDevice(true)
+    }
 
     Models.current.rotation.y = step * props.index
     if (touchDevice) {
