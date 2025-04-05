@@ -22,6 +22,7 @@ function World(props) {
   const UIback = useRef()
   const Models = useRef()
   const [visible, setVisible] = useState(false)
+  const [touchDevice, setTouchDevice] = useState(false)
   const [permissionRequired, setPermission] = useState(false)
   const { camera, viewport } = useThree()
   const [radius, setRadius] = useState(viewport.aspect < 1.2 ? param.diameter * 10 + (1.2 - viewport.aspect) * param.diameter * 20 : param.diameter * 10)
@@ -36,16 +37,10 @@ function World(props) {
   }, [viewport])
 
   useEffect(() => {
-    const isTouchDevice = () => {
-      return (
-        "ontouchstart" in window ||
-        navigator.maxTouchPoints > 0 ||
-        navigator.msMaxTouchPoints > 0
-      )
-    }
+    if("ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) setTouchDevice(true)
 
     Models.current.rotation.y = step * props.index
-    if (isTouchDevice()) {
+    if (touchDevice) {
       if (!typeof DeviceMotionEvent.requestPermission === "function") {
         window.addEventListener("deviceorientation", (event) => {
           parallax(event);
@@ -57,7 +52,7 @@ function World(props) {
   }, [])
 
   useFrame((state, delta) => {
-    if (!document.hidden && !isTouchDevice()) {
+    if (!document.hidden && !touchDevice) {
       const parallaxX = state.pointer.x
       const parallaxY = state.pointer.y
       camera.position.x += (parallaxX - camera.position.x) * delta
