@@ -49,7 +49,7 @@ function World(props) {
         parallax(event);
       })
     }
-  }, [])
+  })
 
   useFrame((state, delta) => {
     if (!document.hidden && !isTouchDevice()) {
