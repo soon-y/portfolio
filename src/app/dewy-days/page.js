@@ -4,8 +4,7 @@ import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Sparkles, Environment } from '@react-three/drei'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCloudSun, faCloudMoon } from '@fortawesome/free-solid-svg-icons'
+import { Sun, Moon } from 'lucide-react'
 import { param } from '@/lib/param'
 import Link from 'next/link'
 import Mobile from "@/models/Mobile"
@@ -478,23 +477,21 @@ export default function DewyDesc() {
           justifyItems: 'center', alignItems: 'center',
         }}>
           <p className='weatherIcon pt-4 md:pt-6' style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.7rem', fontWeight: 700 }}>Weather Icon</p>
-          <div className='weatherDaytime'>
-            <FontAwesomeIcon icon={faCloudSun} className='bubble' style={{
+          <div className='weatherDaytime flex'>
+            <Sun size={54} color='white' className='bubble' style={{
               margin: '1rem 0.5rem',
-              backgroundColor: daytime ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0)'
+              backgroundColor: daytime ? 'rgba(96, 152, 204, 0.2)' : 'rgba(255, 255, 255, 0)'
             }} onClick={() => setDaytime(true)} />
-            <FontAwesomeIcon icon={faCloudMoon} className='bubble' style={{
+            <Moon size={54} color='white' className='bubble' style={{
               margin: '1rem 0.5rem',
-              backgroundColor: !daytime ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0)'
+              backgroundColor: !daytime ? 'rgba(5, 4, 40, 0.2)' : 'rgba(255, 255, 255, 0)'
             }} onClick={() => setDaytime(false)} />
           </div>
 
           <div className='weatherImg' style={{
             height: ratio > 0.5 ? '40%' : 'auto',
             width: ratio > 0.5 ? 'auto' : '90%',
-            aspectRatio: 1,
-            margin: 'auto',
-            position: 'relative',
+            aspectRatio: 1, margin: 'auto', position: 'relative',
           }}>
 
             {daytime && (weatherIndex === 0) &&
@@ -731,31 +728,31 @@ export default function DewyDesc() {
 
           <div className='weatherBtns'>
             <button className="weatherBtn btn0" onClick={() => setWeather(0)} style={{
-              backgroundColor: weatherIndex === 0 ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0)',
+              backgroundColor: weatherIndex === 0 ? daytime? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
             }}><p>Clear</p></button>
             <button className="weatherBtn btn1" onClick={() => setWeather(1)} style={{
-              backgroundColor: weatherIndex === 1 ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0)'
+              backgroundColor: weatherIndex === 1 ? daytime? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
             }}><p style={{ transform: 'translateY(-25%)' }}>Partly cloudy</p></button>
             <button className="weatherBtn btn2" onClick={() => setWeather(2)} style={{
-              backgroundColor: weatherIndex === 2 ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0)'
+              backgroundColor: weatherIndex === 2 ? daytime? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
             }}><p>Overcast</p></button>
             <button className="weatherBtn btn3" onClick={() => setWeather(3)} style={{
-              backgroundColor: weatherIndex === 3 ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0)'
+              backgroundColor: weatherIndex === 3 ? daytime? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
             }}><p>Fog</p></button>
             <button className="weatherBtn btn4" onClick={() => setWeather(4)} style={{
-              backgroundColor: weatherIndex === 4 ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0)'
+              backgroundColor: weatherIndex === 4 ? daytime? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
             }}><p>Drizzle</p></button>
             <button className="weatherBtn btn5" onClick={() => setWeather(5)} style={{
-              backgroundColor: weatherIndex === 5 ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0)'
+              backgroundColor: weatherIndex === 5 ? daytime? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
             }}><p>Rain</p></button>
             <button className="weatherBtn btn6" onClick={() => setWeather(6)} style={{
-              backgroundColor: weatherIndex === 6 ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0)'
+              backgroundColor: weatherIndex === 6 ? daytime? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
             }}><p>Thunder</p></button>
             <button className="weatherBtn btn7" onClick={() => setWeather(7)} style={{
-              backgroundColor: weatherIndex === 7 ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0)'
+              backgroundColor: weatherIndex === 7 ? daytime? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
             }}><p>Snow</p></button>
             <button className="weatherBtn btn8" onClick={() => setWeather(8)} style={{
-              backgroundColor: weatherIndex === 8 ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0)'
+              backgroundColor: weatherIndex === 8 ? daytime? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
             }}><p>Tornado</p></button>
           </div>
         </div>

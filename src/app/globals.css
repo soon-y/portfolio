@@ -55,13 +55,13 @@ p {
 }
 
 .arrow-icon {
-  color: rgba(255, 255, 255, 0.8);
   position: fixed;
   top: 50%;
   font-size: 1.5rem;
   padding: 1.4rem;
   transform: translate(0, -50%);
   cursor: pointer;
+  z-index: 100;
 }
 
 .annotation>div {

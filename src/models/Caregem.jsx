@@ -2,8 +2,7 @@ import { useRef, useState, useEffect, } from 'react'
 import { useGLTF, Html, Float, Mask, useMask } from '@react-three/drei'
 import Mobile from '@/models/Mobile'
 import { param } from '@/lib/param'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleChevronUp, faCircleChevronDown, faBatteryThreeQuarters } from '@fortawesome/free-solid-svg-icons'
+import { ChevronUp, ChevronDown, BatteryMedium } from 'lucide-react'
 import { useLoader } from '@react-three/fiber';
 import * as THREE from 'three'
 import gsap from "gsap"
@@ -65,7 +64,7 @@ export default function Caregem(props) {
       <Float speed={0.1} floatIntensity={0.1}>
         <Mobile rotation={[0, -Math.PI / 2 + 0.2, 0]} position={[-distance, 0, 0]} scale={3} color={param.rose}
           src={"https://caregem.vercel.app"}
-          content={"iframe-time"} opacity= {0}
+          content={"iframe-time"} opacity={0}
           onPointerOut={() => setHover(false)}
           onPointerOver={() => setHover(true)} />
 
@@ -84,12 +83,14 @@ export default function Caregem(props) {
         <group name='watch' position={[distance, -1, -.5]} scale={2} rotation={[0, -0.2, 0]}>
           <group name='crown'>
             {index === 1 && scrollIndex !== 4 &&
-              <Html scale={0.8} center transform wrapperClass='cursor-pointer' style={{ color: 'rgba(193, 168, 214, 0.8)' }} position={[1.1, 0.5, 1]}>
-                <FontAwesomeIcon icon={faCircleChevronUp} onClick={() => setScrollIndex(scrollIndex + 1 > 4 ? scrollIndex : scrollIndex + 1)} />
+              <Html scale={0.8} center transform position={[1.1, 0.5, 1]}>
+                <ChevronUp size={18} color='white' className='border cursor-pointer' style={{ borderRadius: '50%', borderColor:'rgba(255,255,255,0.4)' }}
+                  onClick={() => setScrollIndex(scrollIndex + 1 > 4 ? scrollIndex : scrollIndex + 1)} />
               </Html>}
             {index === 1 && scrollIndex !== 0 &&
-              <Html scale={0.8} center transform wrapperClass='cursor-pointer' style={{ color: 'rgba(193, 168, 214, 0.8)' }} position={[1.1, -0.5, 1]}>
-                <FontAwesomeIcon icon={faCircleChevronDown} onClick={() => setScrollIndex(scrollIndex - 1 < 0 ? scrollIndex : scrollIndex - 1)} />
+              <Html scale={0.8} center transform position={[1.1, -0.5, 1]}>
+                <ChevronDown size={18} color='white' className='border cursor-pointer' style={{ borderRadius: '50%', borderColor:'rgba(255,255,255,0.4)' }}
+                  onClick={() => setScrollIndex(scrollIndex - 1 < 0 ? scrollIndex : scrollIndex - 1)} />
               </Html>}
             <mesh ref={crown}
               geometry={nodes.crown.geometry}
@@ -123,7 +124,7 @@ export default function Caregem(props) {
               </Html>}
             {(index === 0 || scrollIndex !== 0) &&
               <Html center transform scale={0.3} position-y={-0.6}>
-                <FontAwesomeIcon icon={faBatteryThreeQuarters} style={{ color: 'rgba(255, 255, 255, 0.7)' }} />
+                <BatteryMedium size={24} color='white' />
               </Html>}
             {index === 1 && scrollIndex !== 0 &&
               <Html center transform scale={0.2} position-y={0.6}>
@@ -134,29 +135,29 @@ export default function Caregem(props) {
             {index === 1 && scrollIndex === 1 &&
               <Html center transform scale={0.3} position-y={-0.22}>
                 <p style={{ textAlign: 'center', lineHeight: 1 }}>
-                  <span className='value'>89</span><br />
-                  <span className='unit'>BPM</span>
+                  <span className='font-bold' style={{fontSize: '1.2rem'}}>89</span><br />
+                  <span className='font-medium' style={{fontSize: '0.8rem'}}>BPM</span>
                 </p>
               </Html>}
             {index === 1 && scrollIndex === 2 &&
               <Html center transform scale={0.3} position-y={-0.22}>
                 <p style={{ textAlign: 'center', lineHeight: 1 }}>
-                  <span className='value'>5421</span><br />
-                  <span className='unit'>steps</span>
+                  <span className='font-bold' style={{fontSize: '1.2rem'}}>5421</span><br />
+                  <span className='font-medium' style={{fontSize: '0.8rem'}}>steps</span>
                 </p>
               </Html>}
             {index === 1 && scrollIndex === 3 &&
               <Html center transform scale={0.3} position-y={-0.22}>
                 <p style={{ textAlign: 'center', lineHeight: 1 }}>
-                  <span className='value'>4.8</span><br />
-                  <span className='unit'>km/h</span>
+                  <span className='font-bold' style={{fontSize: '1.2rem'}}>4.8</span><br />
+                  <span className='font-medium' style={{fontSize: '0.8rem'}}>km/h</span>
                 </p>
               </Html>}
             {index === 1 && scrollIndex === 4 &&
               <Html center transform scale={0.3} position-y={-0.22}>
                 <p style={{ textAlign: 'center', lineHeight: 1 }}>
-                  <span className='value'>REM</span><br />
-                  <span className='unit'>Sleep Mode</span>
+                  <span className='font-bold' style={{fontSize: '1.2rem'}}>REM</span><br />
+                  <span className='font-medium' style={{fontSize: '0.8rem'}}>Sleep Mode</span>
                 </p>
               </Html>}
           </Mask>

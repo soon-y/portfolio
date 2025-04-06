@@ -3,8 +3,7 @@
 import { Canvas } from '@react-three/fiber'
 import { useState } from 'react'
 import { useSwipeable } from 'react-swipeable'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { param } from '@/lib/param'
 import World from '@/components/World'
 import Link from 'next/link'
@@ -87,8 +86,8 @@ function App() {
           <p className='page-nav font-semibold' style={{ fontSize: '1.2rem' }}>{count} / 6</p>
           <p className='text-gray-500'>© 2025 Soonyoung</p>
         </div>
-        <FontAwesomeIcon icon={faArrowRight} className='arrow-icon right-0' onClick={next} />
-        <FontAwesomeIcon icon={faArrowLeft} className='arrow-icon left-0' onClick={previous} />
+        <ArrowLeft size={72} color='white' className='arrow-icon left-0' onClick={previous} />
+        <ArrowRight size={72} color="white" className='arrow-icon right-0' onClick={next} />
       </div>
     </div>
   )
