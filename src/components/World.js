@@ -152,7 +152,7 @@ function World(props) {
         <Snake position={[Math.sin(step * 2) * radius, 0, Math.cos(step * 2) * radius]} rotation-y={step * 5} />
         <Logo position={[Math.sin(step * 3) * radius, 0, Math.cos(step * 3) * radius]} onClick={toSkill} />
         {permissionRequired &&
-          <Mobile position={[wc - 1, viewport.aspect < 1 ? hc - 2 : hc - 1, Math.cos(step * 3) * radius]}
+          <Mobile position={[wc - 2, viewport.aspect < 1 ? hc - 2 : hc - 1, Math.cos(step * 3) * radius]}
             scale={viewport.aspect < 1 ? .55 : .35} color={param.white} rotation-y={-Math.PI / 2} redSign={true} onClick={requestOrientationPermission} />}
         <Multi position={[Math.sin(step * 4) * radius, 0, Math.cos(step * 4) * radius]} rotation-y={step * 1} MM_hovered={props.MM_hovered} />
         <Caregem position={[Math.sin(step * 5) * radius, 0, Math.cos(step * 5) * radius]} rotation-y={step * 2} />
