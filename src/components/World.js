@@ -15,9 +15,7 @@ import Caregem from '@/models/Caregem'
 import Mobile from '@/models/Mobile'
 
 function World(props) {
-  const arrows = document.getElementsByClassName("arrow-icon")
-  const pageNav = document.querySelector(".page-nav");
-  const linkedIn = document.querySelector(".linkedIn");
+  const [domRefs, setDomRefs] = useState({ arrows: [], pageNav: null, linkedIn: null })
   const scale = Array.from({ length: 1000 }, () => 0.5 + Math.random() * 4)
   const UIback = useRef()
   const Models = useRef()
@@ -34,10 +32,21 @@ function World(props) {
     else { setRadius(param.diameter * 10) }
     setHc((2 * radius * Math.tan(Math.PI / 180 * camera.fov / 2)) * 0.5)
     if (visible) camera.position.z = -radius * 2
-  }, [viewport])
+  }, [viewport, visible])
 
   useEffect(() => {
-    if("ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
+    if (Models.current) {
+      gsap.to(Models.current.rotation, { y: step * props.index, duration: 1, ease: "power1.out" })
+    }
+  }, [props.index])
+
+  useEffect(() => {
+    const arrows = document.getElementsByClassName("arrow-icon")
+    const pageNav = document.querySelector(".page-nav")
+    const linkedIn = document.querySelector(".linkedIn")
+    setDomRefs({ arrows, pageNav, linkedIn })
+
+    if ("ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
       setTouchDevice(true)
     }
 
@@ -45,15 +54,14 @@ function World(props) {
   }, [])
 
   useEffect(() => {
-    if (touchDevice) {
-      if (!typeof DeviceMotionEvent.requestPermission === "function") {
-        window.addEventListener("deviceorientation", (event) => {
-          parallax(event)
-        })
-      }else {
-        setPermission(true)
-      }
+    if (!touchDevice) return
+    if (typeof DeviceOrientationEvent?.requestPermission !== "function") {
+      window.addEventListener("deviceorientation", parallax)
+    } else {
+      setPermission(true)
     }
+
+    return () => window.removeEventListener("deviceorientation", parallax)
   }, [touchDevice])
 
   useFrame((state, delta) => {
@@ -66,12 +74,11 @@ function World(props) {
   })
 
   const toSkill = () => {
-    props.skillActive(true)
-    arrows[0].style.display = 'none'
-    arrows[1].style.display = 'none'
-    linkedIn.style.display = 'none'
-    pageNav.style.display = 'none'
-    UIback.current.style.display = 'block'
+    if (domRefs.arrows[0]) domRefs.arrows[0].style.display = 'none'
+    if (domRefs.arrows[1]) domRefs.arrows[1].style.display = 'none'
+    if (domRefs.linkedIn) domRefs.linkedIn.style.display = 'none'
+    if (domRefs.pageNav) domRefs.pageNav.style.display = 'none'
+    if (UIback.current) UIback.current.style.display = 'block'
     gsap.to(camera.position, {
       z: -radius * 2,
       duration: 0.8,
@@ -82,11 +89,11 @@ function World(props) {
 
   const toLogo = () => {
     props.skillActive(false)
-    arrows[0].style.display = 'block'
-    arrows[1].style.display = 'block'
-    linkedIn.style.display = 'block'
-    pageNav.style.display = 'block'
-    UIback.current.style.display = 'none'
+    if (domRefs.arrows[0]) domRefs.arrows[0].style.display = 'block'
+    if (domRefs.arrows[1]) domRefs.arrows[1].style.display = 'block'
+    if (domRefs.linkedIn) domRefs.linkedIn.style.display = 'block'
+    if (domRefs.pageNav) domRefs.pageNav.style.display = 'block'
+    if (UIback.current) UIback.current.style.display = 'none'
     gsap.to(camera.position, {
       z: 0,
       duration: 0.8,
@@ -99,51 +106,39 @@ function World(props) {
     DeviceOrientationEvent.requestPermission().then((response) => {
       if (response == "granted") {
         setPermission(false)
-        window.addEventListener("deviceorientation", (event) => {
-          parallax(event);
-        })
+        window.addEventListener("deviceorientation", parallax)
       }
     }).catch(console.error);
   }
 
   const parallax = (event) => {
-    // let yTilt, xTilt
-    // switch (screen.orientation.type) {
-    //   case "portrait-primary":
-    //     yTilt = 0
-    //     xTilt = event.gamma * 0.01
-    //     break;
-    //   case "portrait-secondary":
-    //     yTilt = 0
-    //     xTilt = -event.gamma * 0.01
-    //     break;
-    //   case "landscape-primary":
-    //   case "landscape-secondary":
-    //     yTilt = event.beta * 0.01
-    //     xTilt = 0
-    //     break;
-    //   default:
-    // }
+    let yTilt, xTilt
+    switch (screen.orientation.type) {
+      case "portrait-primary":
+        yTilt = 0
+        xTilt = event.gamma * 0.01
+        break;
+      case "portrait-secondary":
+        yTilt = 0
+        xTilt = -event.gamma * 0.01
+        break;
+      case "landscape-primary":
+      case "landscape-secondary":
+        yTilt = event.beta * 0.01
+        xTilt = 0
+        break;
+    }
 
-    // gsap.to(camera.position, {
-    //   x: -xTilt,
-    //   y: yTilt,
-    //   duration: 0.6,
-    //   ease: "power2.inout",
-    // })
-  }
-
-  if (Models.current) {
-    gsap.to(Models.current.rotation, {
-      y: step * props.index,
-      duration: 1,
-      ease: "power1.out",
+    gsap.to(camera.position, {
+      x: -xTilt,
+      y: yTilt,
+      duration: 0.6,
+      ease: "power2.inout",
     })
   }
 
   return (
     <>
-      {/* <OrbitControls /> */}
       <Sparkles count={scale.length} size={scale} position={[0, 0, -radius]} speed={0.1} scale={[
         12,
         viewport.aspect >= 0.5 ? 12 : 20,
