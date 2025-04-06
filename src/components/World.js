@@ -111,9 +111,23 @@ function World(props) {
     }).catch(console.error);
   }
 
+  const getOrientationType = () => {
+    if (typeof screen !== 'undefined' && screen.orientation && screen.orientation.type) {
+      return screen.orientation.type
+    }
+  
+    const angle = typeof window.orientation === "number" ? window.orientation : 0
+    if (angle === 0 || angle === 180) return "portrait-primary"
+    if (angle === 90) return "landscape-primary"
+    if (angle === -90) return "landscape-secondary"
+    
+    return "portrait-primary"
+  }
+
   const parallax = (event) => {
     let yTilt, xTilt
-    switch (screen.orientation.type) {
+    const orientation = getOrientationType()
+    switch (orientation) {
       case "portrait-primary":
         yTilt = 0
         xTilt = event.gamma * 0.01
