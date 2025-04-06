@@ -4,8 +4,7 @@ import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Sparkles, Environment } from '@react-three/drei'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFaceSmile, faFaceLaugh, faFaceFrown, faMobileScreenButton, faDesktop } from '@fortawesome/free-solid-svg-icons'
+import { Laugh, Smile, Frown, Smartphone, Monitor } from 'lucide-react'
 import { param } from '@/lib/param'
 import Link from 'next/link'
 import Mobile from "@/models/Mobile"
@@ -668,7 +667,7 @@ export default function ArtDesc() {
                 </td>
                 <td></td>
                 <td></td>
-                <td className="journey-feeling"><FontAwesomeIcon icon={faFaceLaugh} className={"face-laugh-beam icon"} /></td>
+                <td className="journey-feeling"><Laugh size={24} className={"face-laugh-beam"} /></td>
               </tr>
               <tr className='bg-white text-black'>
                 <td className="journey-touch"><p>
@@ -678,7 +677,7 @@ export default function ArtDesc() {
                   Searches exhibitions and sign language docent programs
                 </p></td>
                 <td></td>
-                <td className="journey-feeling"><FontAwesomeIcon icon={faFaceSmile} className="face-smile icon" /></td>
+                <td className="journey-feeling"><Smile size={24} className="face-smile" /></td>
                 <td></td>
               </tr>
               <tr className='bg-[#f5f5f5] text-black'>
@@ -690,7 +689,7 @@ export default function ArtDesc() {
                 </p></td>
                 <td></td>
                 <td></td>
-                <td className="journey-feeling"><FontAwesomeIcon icon={faFaceLaugh} className={"face-laugh-beam icon"} /></td>
+                <td className="journey-feeling"><Laugh size={24} className={"face-laugh-beam"} /></td>
               </tr>
               <tr className='bg-white text-black'>
                 <td className="journey-touch"><p>
@@ -699,7 +698,7 @@ export default function ArtDesc() {
                 <td className="journey-stage"><p>
                   Visits the gallery, however docent service is cancelled
                 </p></td>
-                <td className="journey-feeling"><FontAwesomeIcon icon={faFaceFrown} className="face-frown icon" /></td>
+                <td className="journey-feeling"><Frown size={24} className="face-frown" /></td>
                 <td></td>
                 <td></td>
               </tr>
@@ -710,7 +709,7 @@ export default function ArtDesc() {
                 <td className="journey-stage"><p>
                   Appreciates the artworks with reading descriptions
                 </p></td>
-                <td className="journey-feeling"><FontAwesomeIcon icon={faFaceFrown} className="face-frown icon" /></td>
+                <td className="journey-feeling"><Frown size={24} className="face-frown" /></td>
                 <td></td>
                 <td></td>
               </tr>
@@ -722,7 +721,7 @@ export default function ArtDesc() {
                   Leaves the gallery
                 </p></td>
                 <td></td>
-                <td className="journey-feeling"><FontAwesomeIcon icon={faFaceSmile} className="face-smile icon" /></td>
+                <td className="journey-feeling"><Smile size={24} className="face-smile" /></td>
                 <td></td>
               </tr>
               <tr>
@@ -733,9 +732,9 @@ export default function ArtDesc() {
                   Discovery
                 </p></td>
                 <td className="journey-stage" colSpan={4}>
-                  <FontAwesomeIcon icon={faDesktop} className='icon desktop-screen' />
-                  <FontAwesomeIcon icon={faMobileScreenButton} className='icon mobile-screen' />
-                  <p style={{ display: 'inline' }}>
+                  <Monitor size={24} className='inline-block desktop-screen' />
+                  <Smartphone size={24} className='inline-block mobile-screen' />
+                  <p className='inline'>
                     Archiving galleries where sign language docent programs are provided,
                     and being albe to book them
                   </p></td>
@@ -745,8 +744,8 @@ export default function ArtDesc() {
                   Explore
                 </p></td>
                 <td className="journey-stage" colSpan={4}>
-                  <FontAwesomeIcon icon={faMobileScreenButton} className='icon mobile-screen' />
-                  <p style={{ display: 'inline' }}>
+                  <Smartphone size={24} className='inline-block mobile-screen' />
+                  <p className='inline'>
                     Providing sign language docents via AR
                   </p>
                 </td>
