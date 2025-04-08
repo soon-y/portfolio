@@ -175,10 +175,6 @@ p {
 }
 
 @media (max-aspect-ratio: 1) {
-  .section-auto {
-    min-height: auto;
-  }
-
   .arrow-icon {
     top: calc(100% - 2.5rem);
   }
