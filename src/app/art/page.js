@@ -28,18 +28,33 @@ export default function ArtDesc() {
   const logo = useRef(null)
 
   useGSAP(() => {
-    gsap.utils.toArray(['.section', '.section-img', '.section-wo', '.section-auto']).forEach((triggerEl) => {
-      ScrollTrigger.create({
-        trigger: triggerEl,
-        start: 'top bottom',
-        end: 'bottom bottom',
-        snap: {
-          snapTo: 1,
-          duration: 1,
-          ease: "power2.inOut",
-        }
+    if ("ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
+      gsap.utils.toArray(['.section', '.section-img', '.section-wo']).forEach((triggerEl) => {
+        ScrollTrigger.create({
+          trigger: triggerEl,
+          start: 'top top',
+          end: 'bottom top',
+          snap: {
+            snapTo: 1,
+            duration: 1,
+            ease: "power2.inOut",
+          }
+        })
       })
-    })
+    } else {
+      gsap.utils.toArray(['.section', '.section-img', '.section-wo']).forEach((triggerEl) => {
+        ScrollTrigger.create({
+          trigger: triggerEl,
+          start: 'top bottom',
+          end: 'bottom bottom',
+          snap: {
+            snapTo: 1,
+            duration: 1,
+            ease: "power2.inOut",
+          }
+        })
+      })
+    }    
 
     const sec1 = gsap.timeline({
       scrollTrigger: {
@@ -241,6 +256,7 @@ export default function ArtDesc() {
     }
     checkIfElementsAreLoaded()
     setRatio(window.innerWidth / window.innerHeight)
+    setRadius(ratio > 1 ? ratio * 3 : 5)
     window.addEventListener('resize', handleResize)
     return () => {
       window.removeEventListener('resize', handleResize)
@@ -634,10 +650,10 @@ export default function ArtDesc() {
           <table className="journey-map art">
             <tbody>
               <tr>
-                <td className='journey-touch'>
+                <td style={{ paddingTop: '1rem' }}className='journey-touch'>
                   <Image src="/art/portrait2-mobile.jpg" alt="portrait" width={1197} height={1220} className="journey-profile" />
                 </td>
-                <td colSpan={5} className="journey-stage journey-case">
+                <td colSpan={5}  style={{ paddingTop: '1rem' }} className="journey-stage journey-case pt-5">
                   <b><p>Yoonha Lee </p></b>
                   <p>
                     She is visiting a gallery on the schedule of the sign language docent.

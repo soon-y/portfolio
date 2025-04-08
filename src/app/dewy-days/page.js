@@ -31,34 +31,34 @@ export default function DewyDesc() {
   const prototype = useRef(null)
   const dewy = useRef(null)
 
-  useEffect(() => {
-    if (document.querySelector('.slider')) {
-      const slider = document.querySelector('.slider')
-      slider.style.setProperty(
-        '--moonPhase',
-        `url('/dewy/weather/thumb${moonPhase == 8 ? 0 : moonPhase}.png')`
-      )
-    }
-  }, [moonPhase])
-
-  useEffect(() => {
-    if ((weatherIndex !== 0 && weatherIndex !== 1)) setMoonphase(4)
-    if (daytime) setMoonphase(4)
-  }, [weatherIndex, daytime])
-
   useGSAP(() => {
-    gsap.utils.toArray(['.section', '.section-img', '.section-wo']).forEach((triggerEl) => {
-      ScrollTrigger.create({
-        trigger: triggerEl,
-        start: 'top bottom',
-        end: 'bottom bottom',
-        snap: {
-          snapTo: 1,
-          duration: 1,
-          ease: "power2.inOut",
-        }
+    if ("ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
+      gsap.utils.toArray(['.section', '.section-img', '.section-wo']).forEach((triggerEl) => {
+        ScrollTrigger.create({
+          trigger: triggerEl,
+          start: 'top top',
+          end: 'bottom top',
+          snap: {
+            snapTo: 1,
+            duration: 1,
+            ease: "power2.inOut",
+          }
+        })
       })
-    })
+    } else {
+      gsap.utils.toArray(['.section', '.section-img', '.section-wo']).forEach((triggerEl) => {
+        ScrollTrigger.create({
+          trigger: triggerEl,
+          start: 'top bottom',
+          end: 'bottom bottom',
+          snap: {
+            snapTo: 1,
+            duration: 1,
+            ease: "power2.inOut",
+          }
+        })
+      })
+    }
 
     const sec1 = gsap.timeline({
       scrollTrigger: {
@@ -202,6 +202,14 @@ export default function DewyDesc() {
   })
 
   useEffect(() => {
+    if (document.querySelector('.slider')) {
+      const slider = document.querySelector('.slider')
+      slider.style.setProperty(
+        '--moonPhase',
+        `url('/dewy/weather/thumb${moonPhase == 8 ? 0 : moonPhase}.png')`
+      )
+    }
+
     const checkIfElementsAreLoaded = () => {
       if (mobile2.current && mobile3.current && mobile4.current
         && mobile.current && dewy.current && prototype.current
@@ -296,6 +304,7 @@ export default function DewyDesc() {
     }
     checkIfElementsAreLoaded()
     setRatio(window.innerWidth / window.innerHeight)
+    setRadius(ratio > 1 ? ratio * 3 : 5)
     window.addEventListener('resize', handleResize)
     return () => {
       window.removeEventListener('resize', handleResize)
@@ -728,31 +737,31 @@ export default function DewyDesc() {
 
           <div className='weatherBtns'>
             <button className="weatherBtn btn0" onClick={() => setWeather(0)} style={{
-              backgroundColor: weatherIndex === 0 ? daytime? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
+              backgroundColor: weatherIndex === 0 ? daytime ? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
             }}><p>Clear</p></button>
             <button className="weatherBtn btn1" onClick={() => setWeather(1)} style={{
-              backgroundColor: weatherIndex === 1 ? daytime? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
+              backgroundColor: weatherIndex === 1 ? daytime ? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
             }}><p style={{ transform: 'translateY(-25%)' }}>Partly cloudy</p></button>
             <button className="weatherBtn btn2" onClick={() => setWeather(2)} style={{
-              backgroundColor: weatherIndex === 2 ? daytime? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
+              backgroundColor: weatherIndex === 2 ? daytime ? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
             }}><p>Overcast</p></button>
             <button className="weatherBtn btn3" onClick={() => setWeather(3)} style={{
-              backgroundColor: weatherIndex === 3 ? daytime? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
+              backgroundColor: weatherIndex === 3 ? daytime ? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
             }}><p>Fog</p></button>
             <button className="weatherBtn btn4" onClick={() => setWeather(4)} style={{
-              backgroundColor: weatherIndex === 4 ? daytime? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
+              backgroundColor: weatherIndex === 4 ? daytime ? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
             }}><p>Drizzle</p></button>
             <button className="weatherBtn btn5" onClick={() => setWeather(5)} style={{
-              backgroundColor: weatherIndex === 5 ? daytime? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
+              backgroundColor: weatherIndex === 5 ? daytime ? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
             }}><p>Rain</p></button>
             <button className="weatherBtn btn6" onClick={() => setWeather(6)} style={{
-              backgroundColor: weatherIndex === 6 ? daytime? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
+              backgroundColor: weatherIndex === 6 ? daytime ? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
             }}><p>Thunder</p></button>
             <button className="weatherBtn btn7" onClick={() => setWeather(7)} style={{
-              backgroundColor: weatherIndex === 7 ? daytime? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
+              backgroundColor: weatherIndex === 7 ? daytime ? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
             }}><p>Snow</p></button>
             <button className="weatherBtn btn8" onClick={() => setWeather(8)} style={{
-              backgroundColor: weatherIndex === 8 ? daytime? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
+              backgroundColor: weatherIndex === 8 ? daytime ? 'rgba(57, 114, 17, 0.2)' : 'rgba(32, 58, 8, 0.5)' : 'rgba(0, 0, 0, 0)'
             }}><p>Tornado</p></button>
           </div>
         </div>
