@@ -282,7 +282,7 @@ export default function MMdesc() {
         }}></div>
 
         <div className='section-wo section5'>
-          <p className='stroke' style={{ textAlign: 'center' }}>Prototype</p>
+          <p className='stroke' style={{ textAlign: 'center' }}>Prototype in Progress</p>
         </div>
 
         <div className='section-img section6' style={{ backgroundColor: '#dcdddd' }}>

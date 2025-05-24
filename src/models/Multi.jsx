@@ -94,8 +94,9 @@ function Multi(props) {
           <div>
             <p className='font-bold' style={{ fontSize: '1.2rem' }}>Multicultural Museum Korea</p>
             <div className='sub-logo'>
-              <img style={{ width: '2.8rem' }} src='./img/next.svg' />
-              <img src='./img/js.png' />
+              {/* <img style={{ width: '2.8rem' }} src='./img/next.svg' />
+              <img src='./img/js.png' /> */}
+              Brand design
             </div>
           </div>
         </Html>
