@@ -320,9 +320,9 @@ export default function ArtDesc() {
                 I was curious about how deaf people engaged with culture such as museums and galleries.<br />
                 I researched how deaf people communicate and how the museum&lsquo;s docent service operates
                 to identify touch points.
-                Based on the research, I designed a exhibition guide app that allows deaf people to reserve and
+                Based on the research, I designed an exhibition guide app that allows deaf people to reserve and
                 interact with the docents the way they want to.
-                The logo is designed with the word <b>art</b>, where the letter <b>t</b> is styliyed to resemble a <b>+</b> (plus) sign.
+                The logo is designed with the word <b>art</b>, where the letter <b>t</b> is styled to resemble a <b>+</b> (plus) sign.
                 By intergrating augmented reality, it provides sign language interpretation for the Deaf and hard-of-hearing communitiy,
                 making art more accessible to everyone.
               </p>
