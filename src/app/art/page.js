@@ -771,7 +771,7 @@ export default function ArtDesc() {
           </table>
         </div>
 
-        <div className="section-img section10" style={{ backgroundColor: 'white' }}>
+        {/* <div className="section-img section10" style={{ backgroundColor: 'white' }}>
           <Image src="/art/flowchart.jpg" alt="flowchart" width={1713} height={809} className="w-full h-auto web flowchart_1" />
           <Image src="/art/flowchart-mobile.jpg" alt="flowchart" width={987} height={731} className="w-full h-auto mobile flowchart_2" />
           <p className='art stroke absolute left-[50%] bottom-0' style={{
@@ -783,7 +783,7 @@ export default function ArtDesc() {
             mixBlendMode: 'multiply',
           }}>Flowchart
           </p>
-        </div>
+        </div> */}
 
         <div className='section-wo section11'>
           <p className='stroke' style={{ textAlign: 'center' }}>Prototype</p>
