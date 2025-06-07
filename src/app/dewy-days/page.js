@@ -334,7 +334,7 @@ export default function DewyDesc() {
             ratio > 1 ? -ratio * 4.6 : 0,
             ratio > 1 ? 1 : 2 + (1 - ratio) * 9,
             ratio > 1 ? -20 : -20 - 20 * (1 - ratio)]}
-            onClick={() => { window.open("https://dewydays.vercel.app", "_blank") }} opacity={0} />
+            onClick={() => { window.open("https://dewy-days.vercel.app", "_blank") }} opacity={0} />
         </group>
 
         <group ref={mobile} position={[ratio > 1 ? -radius * 1.5 : -radius, -10, -8]} rotation-y={Math.PI / 2}>
@@ -372,7 +372,7 @@ export default function DewyDesc() {
             rotation={[0, -Math.PI / 2, 0]}
             scale={1} opacity={0}
             color={param.sky}
-            src={"https://dewydays.vercel.app/"}
+            src={"https://dewy-days.vercel.app/"}
             content={"iframe"} />
 
         </group>
