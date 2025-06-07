@@ -188,8 +188,9 @@ function Dewy(props) {
 							<p className='font-bold' style={{ fontSize: '1.4rem' }}>Dewy Days</p>
 							<div className='sub-desc'> Water tracking application </div>
 							<div className='sub-logo'>
-								<img src='./img/react.png' />
-								<img src='./img/js.png' />
+								<img style={{ width: '2.8rem' }} src='./img/next.svg' />
+								<img src='./img/ts.png' alt='typescript'/>
+								<img src='./img/neon.png' alt='neon'/>
 							</div>
 						</div>
 					</Html>

@@ -31,7 +31,8 @@ function Art(props) {
 							<div className='sub-desc'> Docent Service for the Deaf</div>
 							<div className='sub-logo'>
 								<img style={{ width: '2.8rem' }} src='./img/next.svg' />
-								<img src='./img/ts.png' />
+								<img src='./img/ts.png' alt='typescript'/>
+								<img src='./img/supabase.png' alt='supabase'/>
 							</div>
 						</Html>
 
