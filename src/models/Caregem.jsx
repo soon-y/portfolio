@@ -3,7 +3,6 @@ import { useGLTF, Html, Float, Mask, useMask } from '@react-three/drei'
 import Mobile from '@/models/Mobile'
 import { param } from '@/lib/param'
 import { ChevronUp, ChevronDown, BatteryMedium } from 'lucide-react'
-import { useLoader } from '@react-three/fiber';
 import * as THREE from 'three'
 import gsap from "gsap"
 
@@ -84,12 +83,12 @@ export default function Caregem(props) {
           <group name='crown'>
             {index === 1 && scrollIndex !== 4 &&
               <Html scale={0.8} center transform position={[1.1, 0.5, 1]}>
-                <ChevronUp size={18} color='white' className='border cursor-pointer' style={{ borderRadius: '50%', borderColor:'rgba(255,255,255,0.4)' }}
+                <ChevronUp size={18} color='white' className='border cursor-pointer' style={{ borderRadius: '50%', borderColor: 'rgba(255,255,255,0.4)' }}
                   onClick={() => setScrollIndex(scrollIndex + 1 > 4 ? scrollIndex : scrollIndex + 1)} />
               </Html>}
             {index === 1 && scrollIndex !== 0 &&
               <Html scale={0.8} center transform position={[1.1, -0.5, 1]}>
-                <ChevronDown size={18} color='white' className='border cursor-pointer' style={{ borderRadius: '50%', borderColor:'rgba(255,255,255,0.4)' }}
+                <ChevronDown size={18} color='white' className='border cursor-pointer' style={{ borderRadius: '50%', borderColor: 'rgba(255,255,255,0.4)' }}
                   onClick={() => setScrollIndex(scrollIndex - 1 < 0 ? scrollIndex : scrollIndex - 1)} />
               </Html>}
             <mesh ref={crown}
@@ -135,29 +134,29 @@ export default function Caregem(props) {
             {index === 1 && scrollIndex === 1 &&
               <Html center transform scale={0.3} position-y={-0.22}>
                 <p style={{ textAlign: 'center', lineHeight: 1 }}>
-                  <span className='font-bold' style={{fontSize: '1.2rem'}}>89</span><br />
-                  <span className='font-medium' style={{fontSize: '0.8rem'}}>BPM</span>
+                  <span className='font-bold' style={{ fontSize: '1.2rem' }}>89</span><br />
+                  <span className='font-medium' style={{ fontSize: '0.8rem' }}>BPM</span>
                 </p>
               </Html>}
             {index === 1 && scrollIndex === 2 &&
               <Html center transform scale={0.3} position-y={-0.22}>
                 <p style={{ textAlign: 'center', lineHeight: 1 }}>
-                  <span className='font-bold' style={{fontSize: '1.2rem'}}>5421</span><br />
-                  <span className='font-medium' style={{fontSize: '0.8rem'}}>steps</span>
+                  <span className='font-bold' style={{ fontSize: '1.2rem' }}>5421</span><br />
+                  <span className='font-medium' style={{ fontSize: '0.8rem' }}>steps</span>
                 </p>
               </Html>}
             {index === 1 && scrollIndex === 3 &&
               <Html center transform scale={0.3} position-y={-0.22}>
                 <p style={{ textAlign: 'center', lineHeight: 1 }}>
-                  <span className='font-bold' style={{fontSize: '1.2rem'}}>4.8</span><br />
-                  <span className='font-medium' style={{fontSize: '0.8rem'}}>km/h</span>
+                  <span className='font-bold' style={{ fontSize: '1.2rem' }}>4.8</span><br />
+                  <span className='font-medium' style={{ fontSize: '0.8rem' }}>km/h</span>
                 </p>
               </Html>}
             {index === 1 && scrollIndex === 4 &&
               <Html center transform scale={0.3} position-y={-0.22}>
                 <p style={{ textAlign: 'center', lineHeight: 1 }}>
-                  <span className='font-bold' style={{fontSize: '1.2rem'}}>REM</span><br />
-                  <span className='font-medium' style={{fontSize: '0.8rem'}}>Sleep Mode</span>
+                  <span className='font-bold' style={{ fontSize: '1.2rem' }}>REM</span><br />
+                  <span className='font-medium' style={{ fontSize: '0.8rem' }}>Sleep Mode</span>
                 </p>
               </Html>}
           </Mask>
@@ -274,35 +273,51 @@ export default function Caregem(props) {
   )
 }
 
-function Screen({ ...props }) {
+function Screen({ index, scrollIndex, ...props }) {
   const stencil = useMask(1)
-  const pill = useLoader(THREE.TextureLoader, './caregem/pill.png')
-  const scroll = useLoader(THREE.TextureLoader, './caregem/scrollImg.png')
+  const [pill, setPill] = useState(null)
+  const [scroll, setScroll] = useState(null)
   const ref = useRef()
 
-  if (ref.current) {
-    gsap.to(ref.current.position, {
-      y: props.scrollIndex * 1.6,
-      duration: 0.5,
-      ease: "power2.inout",
-    })
-  }
+  useEffect(() => {
+    const loader = new THREE.TextureLoader()
 
+    loader.load('./caregem/pill.png', setPill)
+    loader.load('./caregem/scrollImg.png', setScroll)
+  }, [])
+
+  useEffect(() => {
+    if (ref.current) {
+      gsap.to(ref.current.position, {
+        y: scrollIndex * 1.6,
+        duration: 0.5,
+        ease: 'power2.inOut',
+      })
+    }
+  }, [scrollIndex])
+
+  const isReady = pill && scroll
+
+  if (!isReady) return null
   return (
     <>
-      {(props.index === 0) && <group {...props}>
-        <mesh position={[0, 0, 1.47]} scale={0.8}>
-          <planeGeometry args={[2, 2]} />
-          <meshStandardMaterial map={pill} {...stencil} />
-        </mesh>
-      </group>}
+      {index === 0 && (
+        <group {...props}>
+          <mesh position={[0, 0, 1.47]} scale={0.8}>
+            <planeGeometry args={[2, 2]} />
+            <meshStandardMaterial map={pill} {...stencil} />
+          </mesh>
+        </group>
+      )}
 
-      {(props.index === 1) && <group {...props} ref={ref}>
-        <mesh position={[0, 0, 1.47]} scale={0.8} position-y={-3.2}>
-          <planeGeometry args={[2, 10]} />
-          <meshStandardMaterial map={scroll} {...stencil} />
-        </mesh>
-      </group>}
+      {index === 1 && (
+        <group {...props} ref={ref}>
+          <mesh position={[0, -3.2, 1.47]} scale={0.8}>
+            <planeGeometry args={[2, 10]} />
+            <meshStandardMaterial map={scroll} {...stencil} />
+          </mesh>
+        </group>
+      )}
     </>
   )
 }
