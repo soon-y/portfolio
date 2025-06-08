@@ -1,15 +1,16 @@
 "use client"
 
 import { Canvas } from '@react-three/fiber'
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import { useSwipeable } from 'react-swipeable'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { param } from '@/lib/param'
 import World from '@/components/World'
 import Link from 'next/link'
+import Loader from '@/components/Loader'
 
 function App() {
-  const [count, setCount] = useState(param.count)
+  const [pgNum, setPgNum] = useState(param.pgNum)
   const [index, setIndex] = useState(param.index)
   const [dewyHovered, setDewyHover] = useState(false)
   const [MMhovered, setMMhover] = useState(false)
@@ -21,18 +22,18 @@ function App() {
 
   const next = () => {
     if (!skillVisible) {
-      setCount(num => num % 6 + 1)
+      setPgNum(num => num % 6 + 1)
       setIndex(num => num + 1)
-      param.count = count + 1
+      param.pgNum = param.pgNum % 6 + 1
       param.index = param.index + 1
     }
   }
 
   const previous = () => {
     if (!skillVisible) {
-      setCount(num => num > 1 ? num - 1 : 6)
+      setPgNum(num => num > 1 ? num - 1 : 6)
       setIndex(num => num - 1)
-      param.count = count - 1
+      param.pgNum = pgNum > 1 ? pgNum - 1 : 6
       param.index = param.index - 1
     }
   }
@@ -46,20 +47,20 @@ function App() {
 
   return (
     <div {...swipeHandlers}>
-      <Canvas shadows camera={{
-        fov: 45,
-        position: [0, 0, 0]
-      }}
-        gl={{ stencil: true }}>
-        <World index={index} dewy_hovered={dewyHovered} MM_hovered={MMhovered} skillActive={updateSkillVisible} />
+      <Canvas shadows camera={{ fov: 45, position: [0, 0, 0] }}
+        gl={{ stencil: true }}
+      >
+        <Suspense fallback={<Loader />}>
+          <World index={index} dewy_hovered={dewyHovered} MM_hovered={MMhovered} skillActive={updateSkillVisible} />
+        </Suspense>
       </Canvas>
 
-      {count === 1 && <a href='https://www.linkedin.com/in/soonyoung-park/' target='_blank' style={{ cursor: 'auto' }}>
+      {pgNum === 1 && <a href='https://www.linkedin.com/in/soonyoung-park/' target='_blank' style={{ cursor: 'auto' }}>
         <div className='linkedIn fixed top-0 left-0 w-[25vw] h-[25vh]'>
         </div>
       </a>}
 
-      {count === 3 &&
+      {pgNum === 3 &&
         <Link href={'/dewy-days'}>
           <div className='fixed top-[25%] left-[25%] w-[50vw] h-[50vh]'
             onPointerOut={() => setDewyHover(false)}
@@ -67,23 +68,22 @@ function App() {
           </div>
         </Link>}
 
-      {count === 4 &&
+      {pgNum === 4 &&
         <Link href={'/art'}>
           <div className='fixed top-[40%] left-[25%] w-[50vw] h-[20vh]'>
           </div>
         </Link>}
 
-      {count === 6 &&
+      {pgNum === 6 &&
         <Link href={'/multicultural-museum'}>
           <div className='fixed top-[30%] left-[25%] w-[50vw] h-[40vh]'
             onPointerOut={() => setMMhover(false)}
             onPointerOver={() => setMMhover(true)}>
           </div>
         </Link>}
-
       <div>
         <div className='select-none text-center fixed left-[50%] bottom-3 transform -translate-x-1/2'>
-          <p className='page-nav font-semibold' style={{ fontSize: '1.2rem' }}>{count} / 6</p>
+          <p className='page-nav font-semibold' style={{ fontSize: '1.2rem' }}>{pgNum} / 6</p>
           <p className='text-gray-500'>© 2025 Soonyoung</p>
         </div>
         <ArrowLeft size={72} color='white' className='arrow-icon left-0' onClick={previous} />
