@@ -4,7 +4,7 @@ const height = 4 / 5
 const innerRadius = outerRadius - thickness
 
 export const param = {
-  count: 1,
+  pgNum: 1,
   index: 0,
   N: 100,
   height: height,
