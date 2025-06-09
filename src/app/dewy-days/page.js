@@ -393,17 +393,11 @@ export default function DewyDesc() {
           <div className='right-side'>
             <div className='desc dewy'>
               <p>
-                <a className='dewy' target="_blank" href="https://www.bbc.com/future/article/20190403-how-much-water-should-you-drink-a-day">
-                  How much water should we drink a day? </a>
-                It&lsquo;s very important to drink appropriate amount of water every day.
-                The water you should intake depends on your age, weight and activity level. The weather also apparently affects.
-                In general, people think that they should drink more water than usual when it&lsquo;s extremely hot,
-                however, that wasn&lsquo;t the case for me.
-                <br />
-                I used to drink little water, and <a className='dewy' target="_blank" href="https://www.bbc.com/news/world-asia-65247927">
-                  the fine dust in Korea</a> made my nose and throat feel dry.
-                I started thinking about how to make drinking water fun,
-                and came up with the idea to make it an interactive and fun game to achieve my daily goal!
+                <span className='font-bold'>How much water should we drink a day?</span> <br />
+                It's very important to drink an appropriate amount of water every day.
+                The amount you need depends on your age, weight, activity level, and even the weather.<br />
+                I used to drink very little water, so I started thinking about how to make staying hydrated more fun.
+                That&lsquo;s when I came up with the idea of turning it into an interactive and enjoyable game to help me reach my daily goal.
               </p>
             </div>
           </div>
@@ -421,9 +415,9 @@ export default function DewyDesc() {
                 Reach your goal with Dewy!
               </p>
               <p>
-                The amount of water you need to drink depends on your weight, thet weather, and your daily activity level.
-                Establish your weight and exercise time and find out the daily goal.
-                If you want to have a habit of drinking water regularly, setting alarms helps you achieve the goal.
+                The amount of water you need each day depends on your weight, the weather, and your daily activity level.
+                Set your weight and exercise time to calculate your personalized daily hydration goal.
+                If you enable <i>temperature mode</i>, an extra 500ml will be added to your goal when the temperature exceeds 30°C.
               </p>
             </div>
           </div>
@@ -437,8 +431,8 @@ export default function DewyDesc() {
                 Set the capacity of your favorites
               </p>
               <p>
-                You can specify the capacity of your preferred cup, tumbler, and bottle, respectively.
-                To change cups, switch the cup icon and set the volume of cup.
+                You can set the capacity of your preferred cup, tumbler, and bottle individually.
+                To switch between them, simply swipe the cup icon, select the corresponding volume, and change it easily anytime.
               </p>
             </div>
           </div>
@@ -452,9 +446,9 @@ export default function DewyDesc() {
                 Easily add your water intake
               </p>
               <p>
-                After selecting a cup, simply add water by adjusting the slider to the amount you drink.
-                Then the water fills up, Dewy splashs around, and your percentage of water intake towards your goal updates.
-                You can review the cups and amounts you had in Timeline.
+                After selecting a cup, simply add water by adjusting the slider to match the amount you drank.
+                Watch as the water fills up, Dewy splashes around, and your progress toward your daily goal updates in real time.
+                You can review your drinking history, including cups and amounts, in the Timeline.
               </p>
             </div>
           </div>
@@ -469,10 +463,8 @@ export default function DewyDesc() {
                 Real-time weather updates
               </p>
               <p>
-                Dewy Days provides real-time weather data via
-                <a href="https://open-meteo.com/" target="_blank"> Open Meteo API</a>.
-                If the particulate matter index (PM10/PM2.5) is very poor or the temperature is too high,
-                make sure to drink plenty of water.
+                Dewy Days provides real-time weather data using the <a href="https://open-meteo.com/" target="_blank"> Open Meteo API</a>.
+                If the particulate matter levels (PM10/PM2.5) are very poor or the temperature is unusually high, be sure to drink plenty of water to stay healthy and hydrated.
               </p>
             </div>
           </div>
