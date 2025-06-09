@@ -374,7 +374,6 @@ export default function DewyDesc() {
             color={param.sky}
             src={"https://dewy-days.vercel.app/"}
             content={"iframe"} />
-
         </group>
       </Canvas>
 
@@ -394,7 +393,7 @@ export default function DewyDesc() {
             <div className='desc dewy'>
               <p>
                 <span className='font-bold'>How much water should we drink a day?</span> <br />
-                It's very important to drink an appropriate amount of water every day.
+                It&lsquo;s very important to drink an appropriate amount of water every day.
                 The amount you need depends on your age, weight, activity level, and even the weather.<br />
                 I used to drink very little water, so I started thinking about how to make staying hydrated more fun.
                 That&lsquo;s when I came up with the idea of turning it into an interactive and enjoyable game to help me reach my daily goal.
