@@ -25,13 +25,13 @@ const Mobile = forwardRef(function Mobile(props, ref) {
         <mesh
           geometry={nodes.Cube.geometry}
           material={materials.Material}
-          scale={[0.211, 1.057, 1.057]}>
+          scale={[0.211, 1.057, 1.03]}>
           <meshStandardMaterial color={props.color} />
         </mesh>
         <mesh
           geometry={nodes.Cube001.geometry}
           material={materials.Material}
-          scale={[0.211, 1.057, 1.057]}>
+          scale={[0.211, 1.057, 1.03]}>
           <meshStandardMaterial color={props.color} />
         </mesh>
       </group>
@@ -40,7 +40,7 @@ const Mobile = forwardRef(function Mobile(props, ref) {
           <mesh
             geometry={nodes.screen.geometry} position={[0.001, 0.005, 0.006]}
             material={materials['Material.001']}
-            scale={[0.211, 1.049, 1.04]}>
+            scale={[0.211, 1.049, 1.01]}>
             <meshStandardMaterial color={param.black} opacity={props.opacity} transparent />
           </mesh>
           <Html ref={ref} position-x={-0.01} className="iframe-wrapper" rotation-y={Math.PI / 2} scale={0.2} transform>
