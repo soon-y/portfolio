@@ -212,15 +212,11 @@ export default function MMdesc() {
           <div className='right-side'>
             <div className='desc mm'>
               <p>
-                In Multiculture Museum Korea, People could enjoy
-                miniature landmarks, currency, and traditional costumes there. It
-                provided visitors with a variety of multicultural experiences and
-                the feeling of traveling all around the world. The regular hexagon
-                is geometrically stable and easy to expand, as seen in nature, like
-                a honeycomb. I thought it was similar to a globe where each country
-                communicates and expands its culture. The CMYK colour model and
-                connections between each vertex represent the diversity of cultures
-                intricately intertwined.
+                At the Multiculture Museum Korea, visitors can explore miniature landmarks, traditional costumes, and international currencies, offering a rich multicultural experience. <br/>
+                The design features a regular hexagon, chosen for its natural stability and ability to expand, much like a honeycomb. 
+                This shape symbolizes the globe, where different cultures connect and grow together. 
+                The CMYK color model reflects the vibrant diversity of global traditions, while the connected vertices represent the intricate relationships and unity between cultures. <br/>
+                Overall, the museum creates an immersive journey celebrating cultural exchange and harmony.
               </p>
             </div>
           </div>
@@ -282,7 +278,7 @@ export default function MMdesc() {
         }}></div>
 
         <div className='section-wo section5'>
-          <p className='stroke' style={{ textAlign: 'center' }}>Prototype in Progress</p>
+          <p className='stroke' style={{ textAlign: 'center' }}>Prototype <br/>in Progress</p>
         </div>
 
         <div className='section-img section6' style={{ backgroundColor: '#dcdddd' }}>

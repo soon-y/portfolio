@@ -54,7 +54,7 @@ export default function ArtDesc() {
           }
         })
       })
-    }    
+    }
 
     const sec1 = gsap.timeline({
       scrollTrigger: {
@@ -182,7 +182,7 @@ export default function ArtDesc() {
     })
     sec10.from('.flowchart_1', { opacity: 0, y: '20%' }, 0)
     sec10.from('.flowchart_2', { opacity: 0, y: '20%' }, 0)
-  })
+  }, [])
 
   useEffect(() => {
     const checkIfElementsAreLoaded = () => {
@@ -314,17 +314,9 @@ export default function ArtDesc() {
           <div className='right-side'>
             <div className='desc art'>
               <p>
-                In 2016, I came across a
-                <a className='art' href="https://comic.naver.com/webtoon/list?titleId=659934&page=1&sort=ASC" target="_blank"> comic </a>
-                written by a deaf writer based on her real-life experiences. As a museum-goer at the time,
-                I was curious about how deaf people engaged with culture such as museums and galleries.<br />
-                I researched how deaf people communicate and how the museum&lsquo;s docent service operates
-                to identify touch points.
-                Based on the research, I designed an exhibition guide app that allows deaf people to reserve and
-                interact with the docents the way they want to.
-                The logo is designed with the word <b>art</b>, where the letter <b>t</b> is styled to resemble a <b>+</b> (plus) sign.
-                By intergrating augmented reality, it provides sign language interpretation for the Deaf and hard-of-hearing communitiy,
-                making art more accessible to everyone.
+                In 2016, I came across a <a className='art' href="https://comic.naver.com/webtoon/list?titleId=659934&page=1&sort=ASC" target="_blank">comic</a> by a deaf authorthat sparked my curiosity about how deaf individuals experience museums.
+                This led me to research communication methods and docent services, ultimately inspiring me to design an exhibition guide app that helps deaf users book and engage with docents in accessible, personalized ways. <br />
+                The logo features the word <b>art</b>, with the letter <b>t</b> styled to resemble a <b>+</b> (plus) sign. By integrating augmented reality, the app delivers sign language interpretation for artworks and exhibitions, making art more inclusive and accessible to the Deaf and hard-of-hearing community.
               </p>
             </div>
           </div>
@@ -382,7 +374,7 @@ export default function ArtDesc() {
               <p style={{ color: 'rgba(255,255,255,0.8)' }}>common methods <b>02</b></p>
               <p className='method-title'>Lip Reading (Speechreading)</p>
               <p>
-                Lip reading involves watching the movement of a speaker’s lips, face, and body to understand
+                Lip reading involves watching the movement of a speaker&lsquo;s lips, face, and body to understand
                 what they are saying. The speakers should show their lips with frontal faces and speak clearly
                 at a natural pace.
                 However, it is sometimes challenging because many sounds look similar on the lips, and some
@@ -456,8 +448,7 @@ export default function ArtDesc() {
               <p className='title'>Persona 01</p>
               <p className="quotes">
                 <q><em>
-                  I want to be able to see at a glance where sign language docents are available and book
-                  them easily and conveniently.
+                  I want to quickly identify where sign language docents are available and book them easily and conveniently.
                 </em></q></p>
             </div>
             <div className="profile">
@@ -519,29 +510,19 @@ export default function ArtDesc() {
           <div className="bio box">
             <h3 className='art'>Bio</h3>
             <p className='art-opp'>
-              When Mina was five, she had an ear infection that made her right ear deaf. She could still use her
-              left ear
-              normally, but by the time she was 15, she had lost a lot of her hearing. She can recognise high-pitched
-              female voices, but otherwise communicates through text, speech reading and sign language.
+              When Mina was five, she had an ear infection that caused deafness in her right ear. She could still hear with her left ear, but by the time she was 15, she had lost much of her hearing. She can recognize high-pitched female voices but otherwise communicates through text, speech reading, and sign language.
             </p>
           </div>
           <div className="needs box">
             <h3 className='art'>Needs</h3>
             <p className='art-opp'>
-              Mina loves art and culture, so she searches for exhibitions and goes to places she wants to visit
-              in her free time. She previously enjoyed going to art exhibitions on her own, but recently she has been
-              trying to find a docent because she thinks it is more interesting to learn about the deeper meaning of
-              the artwork.
-              She would like there to be more sign language interpreters for the docent programs.
+              Mina loves art and culture and spends her free time searching for exhibitions and visiting places she wants to explore. She used to enjoy attending exhibitions alone, but recently she has been looking for docents, as she finds it more engaging to learn the deeper meanings behind artworks. She wishes there were more sign language interpreters available for docent programs.
             </p>
           </div>
           <div className="experience box">
             <h3 className='art'>Experience</h3>
             <p className='art-opp'>
-              Mina visited the museum to listen to the docent, but when she arrived at the last slot, there were
-              so many people that it was hard to see the curator&lsquo;s lips, and to make matters worse, she could barely
-              understand what he was saying because he had a low-pitched voice. Mina couldn&lsquo;t help but look at
-              the exhibition alone.
+              Mina attended a museum docent session, but it was the last time slot and very crowded, making it difficult for her to see the curator&lsquo;s lips. On top of that, the curator&lsquo;s low-pitched voice made it hard to understand. As a result, Mina ended up exploring the exhibition on her own.
             </p>
           </div>
         </div>
@@ -555,7 +536,7 @@ export default function ArtDesc() {
               <p className='title'>Persona 02</p>
               <p className="quotes">
                 <q><em>
-                  I want the freedom to explore artworks in depth without being restricted by docent schedules.
+                  I wish to explore artworks deeply without the limitations of fixed docent schedules.
                 </em></q>
               </p>
             </div>
@@ -619,41 +600,32 @@ export default function ArtDesc() {
           <div className="bio box">
             <h3 className='art'>Bio</h3>
             <p className='art-opp'>
-              Yoonha was born with a congenital hearing loss. As a child, she was teased for not speaking well, which
-              left a deep scar, and now she rarely speaks, preferring to communicate through sign language. She loves
-              to
-              draw because she can convey messages through pictures without having to speak. She visits museums to get
-              inspiration for her drawings, but she wants to understand them more deeply.
+              Yoonha was born with congenital hearing loss. As a child, she was teased for her speech difficulties, which left a lasting impact. Now, she rarely speaks and prefers to communicate through sign language. She loves to draw because it allows her to express herself without words. Museums inspire her artwork, but she wishes to understand the exhibits more deeply.
             </p>
           </div>
           <div className="needs box">
             <h3 className='art'>Needs</h3>
             <p className='art-opp'>
-              Yoonha usually draws by herself at home. Sometimes she goes to an arts centre for people with
-              disabilities
-              to meet other people and talk about painting. When she needs a change of scenery, she goes to museums
-              when there aren&lsquo;t many people. This is because she needs sign language interpretation, which she can
-              watch by herself.
+              Yoonha usually paints alone at home. Sometimes she visits an arts center for people with disabilities to connect with others and discuss painting. When she wants a change of scenery, she goes to museums during quiet hours, so she can watch sign language interpretation at her own pace.
             </p>
           </div>
           <div className="experience box">
             <h3 className='art'>Experience</h3>
             <p className='art-opp'>
-              It&lsquo;s been a while since Yoonha has been to an art museum. She tried to sign up for a sign language
-              interpretation guide, but it was cancelled because the number of participants was not met.
-              She downloaded the museum app to read the exhibit descriptions, but the writing was hard to read.
+              It&lsquo;s been a while since Yoonha last visited an art museum. She tried to sign up for a sign language interpretation guide, but the session was cancelled due to low attendance. She downloaded the museum app to read exhibit descriptions, but found the text difficult to read.
             </p>
           </div>
+
         </div>
 
         <div className="section-auto section9">
           <table className="journey-map art">
             <tbody>
               <tr>
-                <td style={{ paddingTop: '1rem' }}className='journey-touch'>
+                <td style={{ paddingTop: '1rem' }} className='journey-touch'>
                   <Image src="/art/portrait2-mobile.jpg" alt="portrait" width={1197} height={1220} className="journey-profile" />
                 </td>
-                <td colSpan={5}  style={{ paddingTop: '1rem' }} className="journey-stage journey-case pt-5">
+                <td colSpan={5} style={{ paddingTop: '1rem' }} className="journey-stage journey-case pt-5">
                   <b><p>Yoonha Lee </p></b>
                   <p>
                     She is visiting a gallery on the schedule of the sign language docent.
@@ -723,7 +695,7 @@ export default function ArtDesc() {
                   Explore
                 </p></td>
                 <td className="journey-stage"><p>
-                  Appreciates the artworks with reading descriptions
+                  Appreciates artworks by reading descriptions
                 </p></td>
                 <td className="journey-feeling"><Frown size={24} className="face-frown" /></td>
                 <td></td>
@@ -751,8 +723,7 @@ export default function ArtDesc() {
                   <Monitor size={24} className='inline-block desktop-screen' />
                   <Smartphone size={24} className='inline-block mobile-screen' />
                   <p className='inline'>
-                    Archiving galleries where sign language docent programs are provided,
-                    and being albe to book them
+                    Archiving galleries offering sign language docent programs and enabling users to book these services.
                   </p></td>
               </tr>
               <tr className='bg-[#f5f5f5] text-black'>
@@ -762,7 +733,7 @@ export default function ArtDesc() {
                 <td className="journey-stage" colSpan={4}>
                   <Smartphone size={24} className='inline-block mobile-screen' />
                   <p className='inline'>
-                    Providing sign language docents via AR
+                    Offering sign language docent services through augmented reality, enabling people to appreciate art at their convenience.
                   </p>
                 </td>
               </tr>
@@ -770,20 +741,6 @@ export default function ArtDesc() {
             </tbody>
           </table>
         </div>
-
-        {/* <div className="section-img section10" style={{ backgroundColor: 'white' }}>
-          <Image src="/art/flowchart.jpg" alt="flowchart" width={1713} height={809} className="w-full h-auto web flowchart_1" />
-          <Image src="/art/flowchart-mobile.jpg" alt="flowchart" width={987} height={731} className="w-full h-auto mobile flowchart_2" />
-          <p className='art stroke absolute left-[50%] bottom-0' style={{
-            color: 'white', stroke: 'rgb(205, 205, 205)',
-            WebkitTextStrokeColor: 'rgb(205, 205, 205)',
-            textAlign: 'center',
-            zIndex: 1,
-            transform: 'translate(-50%, 10%)',
-            mixBlendMode: 'multiply',
-          }}>Flowchart
-          </p>
-        </div> */}
 
         <div className='section-wo section11'>
           <p className='stroke' style={{ textAlign: 'center' }}>Prototype</p>
