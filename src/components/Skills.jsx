@@ -76,37 +76,37 @@ function Skills(props) {
 				<RigidBody colliders='cuboid' type='fixed' position={[-wc, 0, 0]}>
 					<mesh name='leftWall'>
 						<boxGeometry args={[1, 100, 10]} />
-						<meshStandardMaterial transparent opacity={0} />
+						<meshStandardMaterial color={'#242424'} transparent opacity={0} />
 					</mesh>
 				</RigidBody>
 				<RigidBody colliders='cuboid' type='fixed' position={[wc, 0, 0]}>
 					<mesh name='rightWall'>
 						<boxGeometry args={[1, 100, 10]} />
-						<meshStandardMaterial transparent opacity={0} />
+						<meshStandardMaterial color={'#242424'} transparent opacity={0} />
 					</mesh>
 				</RigidBody>
 				<RigidBody colliders='cuboid' type='fixed' position={[0, hc, 0]}>
 					<mesh name='topWall'>
 						<boxGeometry args={[100, 1, 10]} />
-						<meshStandardMaterial transparent opacity={0} />
+						<meshStandardMaterial color={'#242424'} transparent opacity={0} />
 					</mesh>
 				</RigidBody>
 				<RigidBody colliders='cuboid' type='fixed' position={[0, -hc, 0]}>
 					<mesh name='leftWall'>
 						<boxGeometry args={[100, 1, 10]} />
-						<meshStandardMaterial transparent opacity={0} />
+						<meshStandardMaterial color={'#242424'} transparent opacity={0} />
 					</mesh>
 				</RigidBody>
 				<RigidBody colliders='cuboid' type='fixed' position={[0, 0, -5]}>
 					<mesh name='frontWall'>
 						<boxGeometry args={[wc * 2, hc * 2 + 1, 1]} />
-						<meshStandardMaterial transparent opacity={0} />
+						<meshStandardMaterial color={'#242424'} transparent opacity={0} />
 					</mesh>
 				</RigidBody>
 				<RigidBody colliders='cuboid' type='fixed' position={[0, 0, 5]}>
 					<mesh name='backWall'>
 						<boxGeometry args={[wc * 2, hc * 2 + 1, 1]} />
-						<meshStandardMaterial transparent opacity={0} />
+						<meshStandardMaterial color={'#242424'} transparent opacity={0} />
 					</mesh>
 				</RigidBody>
 			</group>
