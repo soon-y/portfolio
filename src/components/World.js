@@ -75,6 +75,7 @@ function World(props) {
   })
 
   const toSkill = () => {
+    props.skillActive(true)
     if (domRefs.arrows[0]) domRefs.arrows[0].style.display = 'none'
     if (domRefs.arrows[1]) domRefs.arrows[1].style.display = 'none'
     if (domRefs.linkedIn) domRefs.linkedIn.style.display = 'none'

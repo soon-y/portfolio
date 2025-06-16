@@ -42,7 +42,8 @@ function App() {
     onSwipedLeft: next,
     onSwipedRight: previous,
     preventScrollOnSwipe: true,
-    trackMouse: true
+    trackMouse: true,
+    enabled: !skillVisible,
   })
 
   return (
