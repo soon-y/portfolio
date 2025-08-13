@@ -9,10 +9,11 @@ import Logo from '@/components/Logo'
 import Skills from '@/components/Skills'
 import Snake from '@/models/Snake'
 import Dewy from '@/models/Dewy'
-import Multi from '@/models/Multi'
+import Multi from '@/models/MMK'
 import Art from '@/models/Art'
 import Caregem from '@/models/Caregem'
 import Mobile from '@/models/Mobile'
+import Log from '@/models/Log'
 
 function World(props) {
   const [domRefs, setDomRefs] = useState({ arrows: [], pageNav: null, linkedIn: null })
@@ -67,10 +68,11 @@ function World(props) {
 
   useFrame((state, delta) => {
     if (!document.hidden && !touchDevice) {
+      const safeDelta = Math.min(delta, 0.1)
       const parallaxX = state.pointer.x
       const parallaxY = state.pointer.y
-      camera.position.x += (parallaxX - camera.position.x) * delta
-      camera.position.y += (parallaxY - camera.position.y) * delta
+      camera.position.x += (parallaxX - camera.position.x) * safeDelta
+      camera.position.y += (parallaxY - camera.position.y) * safeDelta
     }
   })
 
@@ -155,9 +157,9 @@ function World(props) {
         {permissionRequired &&
           <Mobile position={[wc - 2, viewport.aspect < 1 ? hc - 2 : hc - 1, Math.cos(step * 3) * radius]}
             scale={viewport.aspect < 1 ? .55 : .35} color={param.white} rotation-y={-Math.PI / 2} redSign={true} onClick={requestOrientationPermission} />}
-        <Multi position={[Math.sin(step * 4) * radius, 0, Math.cos(step * 4) * radius]} rotation-y={step * 1} MM_hovered={props.MM_hovered} />
-        <Caregem position={[Math.sin(step * 5) * radius, 0, Math.cos(step * 5) * radius]} rotation-y={step * 2} />
-        <Art position={[Math.sin(step * 6) * radius, 0, Math.cos(step * 6) * radius]} rotation-y={step * 3} />
+        <Caregem position={[Math.sin(step * 4) * radius, 0, Math.cos(step * 4) * radius]} rotation-y={step * 1} />
+        <Multi position={[Math.sin(step * 5) * radius, 0, Math.cos(step * 5) * radius]} rotation-y={step * 2} MM_hovered={props.MM_hovered}/>
+        <Log position={[Math.sin(step * 6) * radius, 0, Math.cos(step * 6) * radius]} rotation-y={step * 3} />
         <Skills position={[Math.sin(step * 3) * radius, 0, Math.cos(step * 3) * radius * 3]} visible={visible} />
       </group>
 
