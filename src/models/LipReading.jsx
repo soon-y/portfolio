@@ -7,7 +7,7 @@ import { useGLTF, useAnimations } from '@react-three/drei'
 
 export default function LipReading(props) {
   const group = useRef()
-  const { nodes, materials, animations } = useGLTF('./model/mouth.glb')
+  const { nodes, materials, animations } = useGLTF('/model/mouth.glb')
   const { actions, names } = useAnimations(animations, group)
 
   useEffect(() => {
@@ -40,4 +40,4 @@ export default function LipReading(props) {
   )
 }
 
-useGLTF.preload('./model/mouth.glb')
+useGLTF.preload('/model/mouth.glb')

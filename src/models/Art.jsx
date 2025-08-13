@@ -30,9 +30,9 @@ function Art(props) {
 						<Html center transform wrapperClass='annotation' position={[0, -1.9, 1]} style={{ display: props.display }}>
 							<div className='sub-desc'> Docent Service for the Deaf</div>
 							<div className='sub-logo'>
-								<img style={{ width: '2.8rem' }} src='./img/next.svg' />
-								<img src='./img/ts.png' alt='typescript'/>
-								<img src='./img/supabase.png' alt='supabase'/>
+								<img style={{ width: '2.8rem' }} src='/img/next.svg' />
+								<img src='/img/ts.png' alt='typescript'/>
+								<img src='/img/supabase.png' alt='supabase'/>
 							</div>
 						</Html>
 

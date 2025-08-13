@@ -8,7 +8,7 @@ import { useFrame } from '@react-three/fiber'
 import gsap from "gsap"
 
 function Dewy(props) {
-	const { nodes, materials, animations } = useGLTF('./model/Dewy.glb')
+	const { nodes, materials, animations } = useGLTF('/model/Dewy.glb')
 	const group = useRef()
 	const { actions, names } = useAnimations(animations, group)
 	const [hovered, setHover] = useState(false)
@@ -188,9 +188,9 @@ function Dewy(props) {
 							<p className='font-bold' style={{ fontSize: '1.4rem' }}>Dewy Days</p>
 							<div className='sub-desc'> Water tracking application </div>
 							<div className='sub-logo'>
-								<img style={{ width: '2.8rem' }} src='./img/next.svg' />
-								<img src='./img/ts.png' alt='typescript'/>
-								<img src='./img/neon.png' alt='neon'/>
+								<img style={{ width: '2.8rem' }} src='/img/next.svg' />
+								<img src='/img/ts.png' alt='typescript'/>
+								<img src='/img/neon.png' alt='neon'/>
 							</div>
 						</div>
 					</Html>
@@ -371,5 +371,5 @@ function Dewy(props) {
 	)
 }
 
-useGLTF.preload('./model/Dewy.glb')
+useGLTF.preload('/model/Dewy.glb')
 export default Dewy

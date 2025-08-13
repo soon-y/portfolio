@@ -7,7 +7,7 @@ import { useGLTF, useAnimations } from '@react-three/drei'
 
 export default function NoteTaking(props) {
   const group = useRef()
-  const { nodes, materials, animations } = useGLTF('./model/notes.glb')
+  const { nodes, materials, animations } = useGLTF('/model/notes.glb')
   const { actions, names } = useAnimations(animations, group)
 
   useEffect(() => {
@@ -101,4 +101,4 @@ export default function NoteTaking(props) {
   )
 }
 
-useGLTF.preload('./model/notes.glb')
+useGLTF.preload('/model/notes.glb')

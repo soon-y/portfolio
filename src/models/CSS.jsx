@@ -7,7 +7,7 @@ import { param } from '@/lib/param'
 import Typo from "@/models/mesh/Typo"
 
 function CSS(props) {
-  const { nodes, materials } = useGLTF('./model/CSS.glb')
+  const { nodes, materials } = useGLTF('/model/CSS.glb')
   return (
     <group {...props} dispose={null}>
       <Typo font={"Dinish_Condensed_Regular"} size={0.8} position={[-0.7, -0.8, 0]} color={param.white} height={0.3} text={"CSS"} />
@@ -20,5 +20,5 @@ function CSS(props) {
   )
 }
 
-useGLTF.preload('./model/CSS.glb')
+useGLTF.preload('/model/CSS.glb')
 export default CSS

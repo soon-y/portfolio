@@ -8,7 +8,7 @@ import gsap from "gsap"
 
 export default function Caregem(props) {
   const [hovered, setHover] = useState(false)
-  const { nodes, materials } = useGLTF('./model/caregem.glb')
+  const { nodes, materials } = useGLTF('/model/caregem.glb')
   const hourHand = useRef()
   const minHand = useRef()
   const secHand = useRef()
@@ -77,7 +77,7 @@ export default function Caregem(props) {
         <Html center occlude="blending" transform wrapperClass='annotation' position={[distance, 4.5, 0]}>
           <p className='font-bold' style={{ fontSize: '1.4rem' }}>Caregem</p>
           <div className='sub-desc'> Smartwatch application </div>
-          <div className='sub-logo'> <img src='./img/Vue.png' /> <img src='./img/ts.png' /></div>
+          <div className='sub-logo'> <img src='/img/Vue.png' /> <img src='/img/ts.png' /></div>
         </Html>
         <group name='watch' position={[distance, -1, -.5]} scale={2} rotation={[0, -0.2, 0]}>
           <group name='crown'>
@@ -282,8 +282,8 @@ function Screen({ index, scrollIndex, ...props }) {
   useEffect(() => {
     const loader = new THREE.TextureLoader()
 
-    loader.load('./caregem/pill.png', setPill)
-    loader.load('./caregem/scrollImg.png', setScroll)
+    loader.load('/caregem/pill.png', setPill)
+    loader.load('/caregem/scrollImg.png', setScroll)
   }, [])
 
   useEffect(() => {
@@ -322,4 +322,4 @@ function Screen({ index, scrollIndex, ...props }) {
   )
 }
 
-useGLTF.preload('./model/caregem.glb')
+useGLTF.preload('/model/caregem.glb')

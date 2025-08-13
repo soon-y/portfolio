@@ -7,7 +7,7 @@ import { useGLTF, useAnimations } from '@react-three/drei'
 
 export default function Model(props) {
   const group = useRef()
-  const { nodes, materials, animations } = useGLTF('./model/hand.glb')
+  const { nodes, materials, animations } = useGLTF('/model/hand.glb')
   const { actions, names } = useAnimations(animations, group)
 
   useEffect(() => {
@@ -37,4 +37,4 @@ export default function Model(props) {
   )
 }
 
-useGLTF.preload('./model/hand.glb')
+useGLTF.preload('/model/hand.glb')

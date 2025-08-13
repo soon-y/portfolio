@@ -9,7 +9,7 @@ import gsap from "gsap"
 function Toggle(props) {
   const [hovered, setHover] = useState(false)
   const [on, setON] = useState(false)
-  const { nodes, materials } = useGLTF('./model/3Dswitch.glb')
+  const { nodes, materials } = useGLTF('/model/3Dswitch.glb')
   const EN = useRef()
   const KR = useRef()
   const Toggle = useRef()
@@ -278,5 +278,5 @@ function Toggle(props) {
   )
 }
 
-useGLTF.preload('./model/3Dswitch.glb')
+useGLTF.preload('/model/3Dswitch.glb')
 export default Toggle

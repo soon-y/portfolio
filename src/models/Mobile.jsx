@@ -9,7 +9,7 @@ import { param } from '@/lib/param'
 import MobileNav from './MobileNav'
 
 const Mobile = forwardRef(function Mobile(props, ref) {
-  const { nodes, materials } = useGLTF('./model/mobile.glb')
+  const { nodes, materials } = useGLTF('/model/mobile.glb')
   const mobile = useRef()
 
   useFrame((state) => {
@@ -92,5 +92,5 @@ function Screen({ ...props }) {
   )
 }
 
-useGLTF.preload('./model/mobile.glb')
+useGLTF.preload('/model/mobile.glb')
 export default Mobile

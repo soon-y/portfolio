@@ -7,7 +7,7 @@ import { useGLTF, Html, Float, useAnimations } from '@react-three/drei'
 
 export default function Snake(props) {
 	const group = useRef()
-	const { nodes, materials, animations } = useGLTF('./model/snake.glb')
+	const { nodes, materials, animations } = useGLTF('/model/snake.glb')
 	const { actions, names } = useAnimations(animations, group)
 	const [count, setCount] = useState(5)
 	const [hovered, setHover] = useState(false)
@@ -57,8 +57,8 @@ export default function Snake(props) {
 				<Html occlude="blending" transform wrapperClass='annotation' position={[0, -3.5, 0]}>
 					<b>Soonake Game</b>
 					<div className='sub-logo'>
-						<img src='./img/threejs.png' />Three.js
-						<img src='./img/blender.png' />Blender
+						<img src='/img/threejs.png' />Three.js
+						<img src='/img/blender.png' />Blender
 					</div>
 				</Html>
 				<group scale={6} position-y={-2}>
@@ -514,4 +514,4 @@ export default function Snake(props) {
 	)
 }
 
-useGLTF.preload('./model/snake.glb')
+useGLTF.preload('/model/snake.glb')

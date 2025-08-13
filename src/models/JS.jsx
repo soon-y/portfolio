@@ -7,7 +7,7 @@ import { param } from '@/lib/param'
 import Typo from "@/models/mesh/Typo"
 
 function JS(props) {
-  const { nodes, materials } = useGLTF('./model/JS.glb')
+  const { nodes, materials } = useGLTF('/model/JS.glb')
   return (
     <group {...props} dispose={null}>
       <Typo font={"Neutra_Book"} size={0.8} position={[-0.3, -0.8, 0]} color={param.white} height={0.3} text={"JS"} />
@@ -20,5 +20,5 @@ function JS(props) {
   )
 }
 
-useGLTF.preload('./model/JS.glb')
+useGLTF.preload('/model/JS.glb')
 export default JS
