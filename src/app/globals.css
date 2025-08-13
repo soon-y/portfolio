@@ -33,6 +33,47 @@ body {
   scroll-snap-type: y mandatory;
 }
 
+h3 {
+  font-weight: 700;
+  font-size: x-large;
+  text-align: center;
+  margin: 10px 0;
+}
+
+table {
+  margin: auto;
+  width: 80%;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+td li {
+  color: black;
+}
+
+th {
+  padding: 0.5rem 1rem;
+}
+
+td {
+  padding: 0.5rem;
+}
+
+.table {
+  table {
+    background-color: white;
+    color: black;
+  }
+
+  th {
+    background-color: #f5f5f5;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #f5f5f5;
+  }
+}
+
 a {
   font-weight: 600;
   text-decoration: none;
@@ -52,6 +93,10 @@ canvas {
 p {
   font-size: 1rem;
   line-height: 1.5;
+}
+
+img {
+  margin: auto;
 }
 
 .arrow-icon {
@@ -113,20 +158,20 @@ p {
 }
 
 .section-wo {
-  max-width: 100vw;
+  width: 100vw;
   min-height: 100vh;
   overflow: hidden;
 }
 
 .section {
-  max-width: 100vw;
+  width: 100vw;
   min-height: 100vh;
   position: relative;
   overflow: hidden;
 }
 
 .section-auto {
-  max-width: 100vw;
+  width: 100vw;
   min-height: 100vh;
   position: relative;
 }
@@ -144,21 +189,21 @@ p {
 .flex-container {
   display: flex;
   flex-direction: row;
+  gap: 1rem;
 }
 
 .left-side {
-  flex: 50%;
-  align-self: center;
+  flex-basis: 50%;
+  display: flex;
   justify-content: center;
-  text-align: center;
 }
 
 .right-side {
-  flex: 50%;
-  align-self: center;
+  flex-basis: 50%;
   position: relative;
-  padding: 0 10vw 0 0;
+  padding-right: 10vw;
   display: flex;
+  align-items: center;
 }
 
 .stroke {
@@ -191,11 +236,53 @@ p {
     display: none;
   }
 
+  .left-side {
+    flex-grow: 1;
+  }
+
+  .left-side,
   .right-side {
+    flex-basis: auto;
+    width: 100%;
     padding: 2rem;
   }
 
   .right-side div {
     align-content: flex-end;
+  }
+}
+
+@media (max-width: 1024px) {
+  .flex-wrapper {
+    display: block;
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 800px) {
+  table {
+    width: 90%;
+  }
+
+  th {
+    display: none;
+  }
+
+  td {
+    display: flex;
+    text-align: left;
+    padding: 0.3rem 0.5rem;
+  }
+
+  .label::before {
+    content: attr(label);
+    font-weight: bold;
+    min-width: 80px;
+  }
+
+  .wideLabel::before {
+    content: attr(label);
+    font-weight: bold;
+    min-width: 110px;
   }
 }
