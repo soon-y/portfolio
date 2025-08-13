@@ -17,7 +17,7 @@ function App() {
   const [skillVisible, setSkillVisible] = useState(false)
 
   const updateSkillVisible = (bool) => {
-    setSkillVisible(bool);
+    setSkillVisible(bool)
   }
 
   const next = () => {
@@ -62,7 +62,7 @@ function App() {
       </a>}
 
       {pgNum === 3 &&
-        <Link href={'/dewy-days'}>
+        <Link href={'/dewyDays'}>
           <div className='fixed top-[25%] left-[25%] w-[50vw] h-[50vh]'
             onPointerOut={() => setDewyHover(false)}
             onPointerOver={() => setDewyHover(true)}>
@@ -70,13 +70,13 @@ function App() {
         </Link>}
 
       {pgNum === 4 &&
-        <Link href={'/art'}>
+        <Link href={'/log'}>
           <div className='fixed top-[40%] left-[25%] w-[50vw] h-[20vh]'>
           </div>
         </Link>}
 
-      {pgNum === 6 &&
-        <Link href={'/multicultural-museum'}>
+      {pgNum === 5 &&
+        <Link href={'/MMK'}>
           <div className='fixed top-[30%] left-[25%] w-[50vw] h-[40vh]'
             onPointerOut={() => setMMhover(false)}
             onPointerOver={() => setMMhover(true)}>
