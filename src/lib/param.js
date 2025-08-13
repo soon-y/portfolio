@@ -4,6 +4,7 @@ const height = 4 / 5
 const innerRadius = outerRadius - thickness
 
 export const param = {
+  fonts: ['Poppins_Light', 'Neutra_Book', 'Courier_Prime_Regular'],
   pgNum: 1,
   index: 0,
   N: 100,
