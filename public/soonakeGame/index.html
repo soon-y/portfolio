@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="./html/appIcon.jpg" />
+    <link rel="stylesheet" href="../common.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/5ae8715ba3.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="flex-container head">
+        <a href="../index.html"><button class="fa-solid fa-chevron-left"></button></a>
+        <div class="left-side">
+            <h1>Snake game</h1>
+            <div class="desc">
+                <span>#Three.js #JavaScript #GameDesign </span>
+            </div>
+            <div class="desc">
+                <i class="fa-solid fa-calendar"></i>&nbsp;
+                <span>10.2022 to 07.2024</span>
+            </div>
+            <div class="desc">
+                <a target="_blank" href="https://soonake-game.vercel.app/">
+                    <img id="icon" src="images/appIcon.png">
+                </a>
+            </div>
+        </div>
+        <div class="right-side">
+            <p>
+                This project was first implemented in <em>'Introduction to Computer Graphics'</em> class,
+                and has been further developed in terms of design.
+                It is programmed based on JavaScript and <b>Three.js</b> and most of the models
+                are designed in <b>Blender</b>.
+                <br />
+                The basic rules are identical to the orignial Snake game;
+            </p>
+            <ul>
+                <li>
+                    The head of Snake is initially placed at a random spot.
+                </li>
+                <li>
+                    The snake is controlled by arrow keys / swiping gestures(touchscreen).
+                </li>
+                <li>
+                    The snake moves forward one unit every 250ms.
+                </li>
+                <li>
+                    When the snake eats food, its body grows by one unit and the position of the food changes.
+                </li>
+                <li>
+                    The food is placed at a random point that does not overlap with the snake's position.
+                </li>
+                <li>
+                    The game ends when the snake hits a wall or intersects with his body.
+                </li>
+            </ul>
+            <p>
+                The user can change the concept of the background design:
+                <br />Easter, Summer, Halloween, and Winter.
+            </p>
+        </div>
+    </div>
+
+    <div class="contents">
+        <h2>Technologies</h2>
+        <p>
+        <table>
+            <tbody></tbody>
+            <tr>
+                <th><a target="_blank" href="https://threejs.org/">Three.js</a></th>
+                <td></td>
+            </tr>
+            <tr>
+                <td><a target="_blank" href="https://gsap.com/">GSAP</a></td>
+                <td>Movement for mouth, blinking and tongue flicking</td>
+            </tr>
+            <tr>
+                <th><a target="_blank" href="https://hammerjs.github.io/">Hammer.js</a>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <td>Swiping gestures for touch devices</td>
+            </tr>
+            <tr>
+                <th><a target="_blank" href="https://vitejs.dev/">Vite.js</a></th>
+                <td>provided by <a target="_blank" href="https://threejs-journey.com/">Three.js Journey</a>
+                </td>
+            </tr>
+            <tr>
+                <th>Shader</th>
+                <td>Smoke with coffee</td>
+            </tr>
+            <tr>
+                <th>Blender</th>
+                <td>
+                    Snake, Tree, Leaves, Fence, Wall, Field
+                    <br />
+                    <table style="border-collapse: collapse;">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Spring
+                                </td>
+                                <td>
+                                    Easter egg, Bunny hairband
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Summer&nbsp;&nbsp;
+                                </td>
+                                <td>
+                                    Watermelon, Sunglasses
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Autumn
+                                </td>
+                                <td>
+                                    Jack-o'-lantern, Frankenstein, Spider web
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Winter
+                                </td>
+                                <td>
+                                    Mug, Santa hat
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        </p>
+
+    </div>
+    <div class="contents">
+        <div class="season">
+            <button id="spring" class="btn">🐰</button>
+            <button id="summer" class="btn">🍉</button>
+            <button id="fall" class="btn">🎃</button>
+            <button id="winter" class="btn">🎄</button>
+        </div>
+        <canvas id="mycanvas"></canvas>
+    </div>
+
+    <script async type="text/javascript" src="../lib/es-module-shims.js"></script>
+
+    <script type="importmap">
+     {"imports": {"three": "../moduleLibs/build/three.module.js"}}
+    </script>
+    <script type="module" src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+</body>
+
+</html>

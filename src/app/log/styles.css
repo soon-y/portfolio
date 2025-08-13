@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+h2 {
+  font-weight: 700;
+  font-family: "Courier Prime", monospace;
+  line-height: 1.1;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+}
+
+.image {
+  max-width: 90%;
+  max-height: 100vh;
+  width: auto;
+  margin: auto;
+}
+
+.video {
+  max-width: 90%;
+  max-height: 100vh;
+  margin: auto;
+  display: block;
+  border-radius: 0.6rem;
+  margin-bottom: 60px;
+}
+
+:root {
+  --robot: #abd5fa;
+  --village: #d6abfa;
+  --billiard: #fc4437;
+  --soonake: #2a9606;
+  --caregem: #b28aeb;
+
+  --lightblue: #87c3f8;
+  --alice: aliceblue;
+  --odd: rgb(227, 239, 250);
+}
+
+a:hover {
+  transition-duration: 500ms;
+}
+
+.robot-title {
+  color: var(--robot);
+}
+
+.robot::selection {
+  background-color: var(--robot);
+  color: black;
+}
+
+.robot {
+  a:hover {
+    color: var(--robot);
+  }
+
+  table {
+    background-color: var(--alice);
+    color: black;
+  }
+
+  th {
+    background-color: var(--lightblue);
+    color: var(--alice);
+  }
+
+  .thead {
+    background-color: var(--lightblue);
+    color: var(--alice);
+  }
+}
+
+.village-title {
+  color: var(--village);
+}
+
+.village::selection {
+  color: var(--village);
+}
+
+.village a:hover {
+  color: var(--village);
+}
+
+.billiard::selection {
+  color: var(--billiard);
+}
+
+.billiard a:hover {
+  color: var(--billiard);
+}
+
+.soonake::selection {
+  color: var(--soonake);
+}
+
+.soonake a:hover {
+  color: var(--soonake);
+}
+
+.caregem-title {
+  color: var(--caregem);
+}
+
+.caregem::selection {
+  color: var(--caregem);
+}
+
+.caregem-opp::selection {
+  background-color: var(--caregem);
+  color: white;
+}
+
+.caregem a:hover {
+  color: var(--caregem);
+}

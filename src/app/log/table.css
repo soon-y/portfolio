@@ -1,0 +1,82 @@
+:root {
+	--lightblue: #87c3f8;
+	--main: #abd5fa;
+	--alice: aliceblue;
+	--odd: rgb(227, 239, 250);
+}
+
+.robot {
+	td a {
+		color: black;
+	}
+
+	table {
+		margin: auto;
+		width: 80%;
+		color: var(--white);
+		background-color: var(--alice);
+		color: black;
+		font-size: 1rem;
+		line-height: 1.4;
+	}
+
+	td li {
+		color: black;
+	}
+
+	th {
+		background-color: var(--lightblue);
+		color: var(--alice);
+		padding: 0.5rem 1rem;
+	}
+
+	.thead {
+		background-color: var(--lightblue);
+		color: var(--alice);
+		padding: 0.5rem 1rem;
+		font-weight: 700;
+	}
+
+	td {
+		padding: 0.5rem;
+	}
+
+	tr:nth-child(odd) {
+		background-color: var(--odd);
+	}
+
+	@media (max-width: 1024px) {
+		.flex-wrapper {
+			display: block;
+			flex-direction: row;
+		}
+	}
+
+	@media (max-width: 600px) {
+		table {
+			width: 90%;
+		}
+
+		th {
+			display: none;
+		}
+
+		td {
+			display: flex;
+			text-align: left;
+			padding: 0.4rem 0.5rem;
+		}
+
+		.label::before {
+			content: attr(label);
+			font-weight: bold;
+			min-width: 80px;
+		}
+
+		.wideLabel::before {
+			content: attr(label);
+			font-weight: bold;
+			min-width: 100px;
+		}
+	}
+}

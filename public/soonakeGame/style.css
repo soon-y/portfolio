@@ -1,0 +1,40 @@
+:root {
+    --main: #118124;
+}
+
+a:hover {
+    color: var(--main);
+}
+
+h1 {
+    color: var(--main);
+}
+
+::selection {
+    color: var(--main);
+}
+
+.season {
+    float: right;
+    margin-right: -20px;
+}
+
+.btn {
+    border: none;
+    font-size: 36px;
+    color: white;
+    filter: opacity(50%);
+    margin: 0;
+    padding: 10px;
+}
+
+.btn:hover {
+    color: white;
+    border: none;
+    filter: opacity(100%);
+}
+
+th {
+    text-align: left;
+    vertical-align: top;
+}
