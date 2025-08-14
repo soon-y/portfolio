@@ -254,7 +254,7 @@ Robot.updateLocation()
                 <tr>
                   <td className="label" label="Id.">UST-13</td>
                   <td className="label" label="Story">
-                    As a user, I want to use the option 'remove' so that I disconnect
+                    As a user, I want to use the option &lsquo;remove&lsquo; so that I disconnect
                     the robot to the APP so that is clears all of its saved settings.
                   </td>
                 </tr>
@@ -343,9 +343,8 @@ Robot.updateLocation()
                   <td className="label" label="Id.">REQ-10</td>
                   <td className="label" label="Prio.">Could</td>
                   <td className="label" label="Req.">
-                    The system shall automatically initiate 'home' if the battery level of the robot is equal to the
-                    minimum battery level (5%, 10%, 20%) which has been chosen by the user and send notifications
-                    when the battery level of the robot is below 10%(default).
+                    The system shall automatically initiate &lsquo;home&lsquo; if the battery level of the robot is equal to the
+                    minimum battery level (5%, 10%, 20%) which has been chosen by the user and send notifications when the battery level of the robot is below 10%(default).
                   </td>
                 </tr>
                 <tr>
