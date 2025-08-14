@@ -144,17 +144,17 @@ Robot.updateLocation()
               </p>
               <ul className='pt-4'>
                 <li>
-                  The “Auto” button starts cleaning in automatic mode and
+                  The &lsquo;Auto&lsquo; button starts cleaning in automatic mode and
                   the robot simultaneously maps the cleaning area.
                 </li>
                 <li>
-                  The “Pause” and “Home” buttons can be used to pause the robot or
+                  The &lsquo;Pause&lsquo; and &lsquo;Home&lsquo; buttons can be used to pause the robot or
                   return it to the charging station, respectively.
                 </li>
                 <li>
                   It is supposedly equipped with all the sensors and effectors
                   needed to safely navigate flat and rough floors for dry and wet cleaning,
-                  and has navigation that doesn't fall down stairs with a laser scanner.
+                  and has navigation that doesn&lsquo;t fall down stairs with a laser scanner.
                 </li>
                 <li>
                   It uses local WiFi to communicate with the cleaning robot app on an IOS or Android-based smartphone.
@@ -179,29 +179,25 @@ Robot.updateLocation()
                 <tr>
                   <td className="label" label="Id.">UST-1</td>
                   <td className="label" label="Story">
-                    As a user, I want to click any buttons such as 'auto', 'room' and
-                    'region' so that it operates the cleaning robot for its intended purpose.
+                    As a user, I want to click any buttons such as &lsquo;auto&lsquo;, &lsquo;room&lsquo; and &lsquo;region&lsquo; so that it operates the cleaning robot for its intended purpose.
                   </td>
                 </tr>
                 <tr>
                   <td className="label" label="Id.">UST-2</td>
                   <td className="label" label="Story">
-                    As a user, I want to keep the cleaning robot and the APP paired after the initial registration
-                    through the local WIFI so that I can use it without additional connection.
+                    As a user, I want to keep the cleaning robot and the APP paired after the initial registration through the local WIFI so that I can use it without additional connection.
                   </td>
                 </tr>
                 <tr>
                   <td className="label" label="Id.">UST-3</td>
                   <td className="label" label="Story">
-                    As a user, I want to receive notifications on my phone before and
-                    after cleaning a specific area.
+                    As a user, I want to receive notifications on my phone before and after cleaning a specific area.
                   </td>
                 </tr>
                 <tr>
                   <td className="label" label="Id.">UST-4</td>
                   <td className="label" label="Story">
-                    As a user, I want to use voice commands to operate the robot based
-                    on Alexa, Siri, and Google Home.
+                    As a user, I want to use voice commands to operate the robot based on Alexa, Siri, and Google Home.
                   </td>
                 </tr>
                 <tr>
@@ -219,7 +215,7 @@ Robot.updateLocation()
                 <tr>
                   <td className="label" label="Id.">UST-7</td>
                   <td className="label" label="Story">
-                    As a user, I want to check the robot's current location and progress while cleaning.
+                    As a user, I want to check the robot&lsquo;s current location and progress while cleaning.
                   </td>
                 </tr>
                 <tr>
@@ -279,7 +275,7 @@ Robot.updateLocation()
                   <td className="label" label="Id.">REQ-1</td>
                   <td className="label" label="Prio.">Must</td>
                   <td className="label" label="Req.">
-                    The system shall use the robot's LiDAR sensors to scan the
+                    The system shall use the robot&lsquo;s LiDAR sensors to scan the
                     surrounding area to generate a map
                     and then transmit the data to the APP prior to cleaning.
                   </td>
@@ -295,7 +291,7 @@ Robot.updateLocation()
                   <td className="label" label="Id." id="req3">REQ-3</td>
                   <td className="label" label="Prio.">Must</td>
                   <td className="label" label="Req.">
-                    When the 'Auto' button is pressed, the robot shall start cleaning
+                    When the &lsquo;Auto&lsquo; button is pressed, the robot shall start cleaning
                     while generating a map and also updating its location.
                   </td>
                 </tr>
@@ -318,22 +314,21 @@ Robot.updateLocation()
                   <td className="label" label="Id.">REQ-6</td>
                   <td className="label" label="Prio.">Must</td>
                   <td className="label" label="Req.">
-                    When the 'Home' button is pressed, the robot shall stop cleaning and return back to the charging dock.
+                    When the &lsquo;Home&lsquo; button is pressed, the robot shall stop cleaning and return back to the charging dock.
                   </td>
                 </tr>
                 <tr>
                   <td className="label" label="Id.">REQ-7</td>
                   <td className="label" label="Prio.">Should</td>
                   <td className="label" label="Req.">
-                    When the 'Pause' button is pressed, the robot will stop cleaning and be idle at the current location.
+                    When the &lsquo;Pause&lsquo; button is pressed, the robot will stop cleaning and be idle at the current location.
                   </td>
                 </tr>
                 <tr>
                   <td className="label" label="Id.">REQ-8</td>
                   <td className="label" label="Prio.">Should</td>
                   <td className="label" label="Req.">
-                    When the on/off buttons are pressed the robot will respectively turn
-                    on and turn off its system immediately.
+                    When the on/off buttons are pressed the robot will respectively turn on and turn off its system immediately.
                   </td>
                 </tr>
                 <tr>
@@ -341,7 +336,7 @@ Robot.updateLocation()
                   <td className="label" label="Prio.">Would</td>
                   <td className="label" label="Req.">
                     The system shall reset all the saved authorized users and revert back
-                    to default settings when the 'Reset' button is pressed.
+                    to default settings when the &lsquo;Reset&lsquo; button is pressed.
                   </td>
                 </tr>
                 <tr>
@@ -357,7 +352,7 @@ Robot.updateLocation()
                   <td className="label" label="Id.">REQ-11</td>
                   <td className="label" label="Prio.">Must</td>
                   <td className="label" label="Req.">
-                    The robot system shall clean the selected rooms/regions and update its location in 'Room', 'Region' mode.
+                    The robot system shall clean the selected rooms/regions and update its location in &lsquo;Room&lsquo;, &lsquo;Region&lsquo; mode.
                   </td>
                 </tr>
                 <tr>
@@ -379,7 +374,7 @@ Robot.updateLocation()
                   <th className='whitespace-nowrap'>UC Id.</th>
                   <th>Use Case Name</th>
                   <th>Actor</th>
-                  <th>actor's goal (what the actor intends to accomplish)</th>
+                  <th>actor&lsquo;s goal (what the actor intends to accomplish)</th>
                   <th>Related REQ</th>
                 </tr>
                 <tr>
@@ -403,7 +398,7 @@ Robot.updateLocation()
                   <td className="label" label="Name" id="uc3">AutoMode</td>
                   <td className="label" label="Actor">User</td>
                   <td className="label" label="Goal">
-                    To start the robot in 'auto' mode and the robot cleans while generating a map and updates its location
+                    To start the robot in &lsquo;auto&lsquo; mode and the robot cleans while generating a map and updates its location
                   </td>
                   <td className="label" label="Related">REQ-3</td>
                 </tr>
@@ -456,7 +451,7 @@ Robot.updateLocation()
                   <td className="label" label="Name">LowBattery</td>
                   <td className="label" label="Actor">Drive system</td>
                   <td className="label" label="Goal">
-                    To send back the robot to the charging dock when the robot's battery is lower than the minimum setting
+                    To send back the robot to the charging dock when the robot&lsquo;s battery is lower than the minimum setting
                   </td>
                   <td className="label" label="Related">REQ-10</td>
                 </tr>
@@ -506,7 +501,7 @@ Robot.updateLocation()
                   <td className="wideLabel" label="Initiator">User</td>
                 </tr>
                 <tr>
-                  <th scope="row">Actor's goal</th>
+                  <th scope="row">actor&lsquo;s goal</th>
                   <td className="wideLabel" label="Goal">To make the robot clean while generating a map and updating its
                     location
                   </td>
@@ -519,7 +514,7 @@ Robot.updateLocation()
                   <th scope="row">Preconditions</th>
                   <td className="label" label="Precond.">
                     <ul>
-                      <li>The “Auto” button is pressed.</li>
+                      <li>The &lsquo;Auto&lsquo; button is pressed.</li>
                       <li>Battery level is higher than the minimum battery value.</li>
                       <li>The robot is authorized and connected to the APP via local WIFI.</li>
                     </ul>
@@ -538,7 +533,7 @@ Robot.updateLocation()
                   <td className='text-right'> → </td>
                   <td>
                     <div className="flex-wrapper">
-                      1. <strong>USER</strong> opens the APP and presses 'Auto'.
+                      1. <strong>USER</strong> opens the APP and presses &lsquo;Auto&lsquo;.
                     </div>
                   </td>
                 </tr>

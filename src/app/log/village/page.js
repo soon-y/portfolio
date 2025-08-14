@@ -47,7 +47,7 @@ export default function Home() {
           <div className='right-side'>
             <p>
               In <em>Sofeware Construction</em> class, I developed drawing a doamin using Java, Java AWS and Swing.
-              It displays background, houses, streetlights on JFrame depending on the user's input.
+              It displays background, houses, streetlights on JFrame depending on the user&lsquo;s input.
             </p>
           </div>
         </div>

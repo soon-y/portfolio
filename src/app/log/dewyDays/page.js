@@ -586,7 +586,7 @@ export default function DewyDesc() {
                 <th className='whitespace-nowrap'>UC Id.</th>
                 <th>Use Case Name</th>
                 <th>Actor</th>
-                <th>actor's goal (what the actor intends to accomplish)</th>
+                <th>actor&lsquo;s goal (what the actor intends to accomplish)</th>
                 <th>Related REQ</th>
               </tr>
               <tr>

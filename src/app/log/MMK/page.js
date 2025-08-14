@@ -223,32 +223,32 @@ export default function MMdesc() {
         </div>
 
         <div className='section-img section1' style={{ backgroundColor: '#e4e4e4' }}>
-          <Image src="/multicultural/m-logo.png" alt="Logo" width={3776} height={1621} priority className="w-full h-auto img01 web" />
-          <Image src="/multicultural/m-logo-mobile.png" alt="Logo" width={2985} height={1621} priority className="w-full h-auto img01 mobile" />
+          <Image src="/MMK/m-logo.png" alt="Logo" width={3776} height={1621} priority className="w-full h-auto img01 web" />
+          <Image src="/MMK/m-logo-mobile.png" alt="Logo" width={2985} height={1621} priority className="w-full h-auto img01 mobile" />
         </div>
 
         <h1 className='text2_0 relative pt-12 pb-4 text-center text-3xl font-bold'>Logo Conception</h1>
         <div className='section section2 grid grid-rows-[1fr_1fr_1fr_1fr] md:grid-rows-[1fr_1fr] md:grid-cols-[1fr_1fr]'>
           <div className='relative w-[100vw] h-[25vh] md:w-[50vw] md:h-[50vh] overflow-hidden'>
-            <Image src="/multicultural/hex.jpg" alt="Connection" sizes="100vh" priority fill className="concept object-cover object-center" />
+            <Image src="/MMK/hex.jpg" alt="Connection" sizes="100vh" priority fill className="concept object-cover object-center" />
             <h1 className="text2_1 absolute drop-shadow-xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl font-bold">
               Connection
             </h1>
           </div>
           <div className='relative w-[100vw] h-[25vh] md:w-[50vw] md:h-[50vh] overflow-hidden'>
-            <Image src="/multicultural/globe.jpg" alt="Globe" sizes="100vh" priority fill className="concept object-cover object-center" />
+            <Image src="/MMK/globe.jpg" alt="Globe" sizes="100vh" priority fill className="concept object-cover object-center" />
             <h1 className="text2_2 absolute drop-shadow-xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl font-bold">
               Globe
             </h1>
           </div>
           <div className='relative w-[100vw] h-[25vh] md:w-[50vw] md:h-[50vh] overflow-hidden'>
-            <Image src="/multicultural/support.jpg" alt="Support" sizes="100vh" priority fill className="concept object-cover object-center" />
+            <Image src="/MMK/support.jpg" alt="Support" sizes="100vh" priority fill className="concept object-cover object-center" />
             <h1 className="text2_3 absolute drop-shadow-xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl font-bold">
               Support
             </h1>
           </div>
           <div className='relative w-[100vw] h-[25vh] md:w-[50vw] md:h-[50vh] overflow-hidden'>
-            <Image src="/multicultural/network.jpg" alt="Network" sizes="100vh" priority fill className="concept object-cover object-center" />
+            <Image src="/MMK/network.jpg" alt="Network" sizes="100vh" priority fill className="concept object-cover object-center" />
             <h1 className="text2_4 absolute drop-shadow-xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl font-bold">
               Network
             </h1>
@@ -256,23 +256,23 @@ export default function MMdesc() {
         </div>
 
         <div className='web section section3_1' style={{
-          background: "url('./multicultural/color-bg.jpg')",
+          background: "url('/MMK/color-bg.jpg')",
           backgroundSize: 'cover', backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
         }}>
-          <Image src="/multicultural/color.png" alt="Color" priority fill sizes="100vh" className="object-cover object-center img03_1" />
+          <Image src="/MMK/color.png" alt="Color" priority fill sizes="100vh" className="object-cover object-center img03_1" />
         </div>
 
         <div className='mobile section section3_2' style={{
-          background: "url('./multicultural/color-mobile-bg.jpg')",
+          background: "url('/MMK/color-mobile-bg.jpg')",
           backgroundSize: 'cover', backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
         }}>
-          <Image src="/multicultural/color-mobile.png" alt="Color" fill sizes="100vh" priority className="object-cover object-center  img03_2" />
+          <Image src="/MMK/color-mobile.png" alt="Color" fill sizes="100vh" priority className="object-cover object-center  img03_2" />
         </div>
 
         <div className='section' style={{
-          background: "url('./multicultural/pattern.gif')",
+          background: "url('/MMK/pattern.gif')",
           backgroundSize: 'cover', backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
         }}></div>
@@ -282,18 +282,18 @@ export default function MMdesc() {
         </div>
 
         <div className='section-img section6' style={{ backgroundColor: '#dcdddd' }}>
-          <Image src="/multicultural/stationery.jpg" alt="stationery" width={5343} height={2294} priority className="w-full h-auto web img06_1" />
-          <Image src="/multicultural/stationery-mobile.jpg" alt="stationery" width={2898} height={2294} priority className="w-full h-auto mobile img06_2" />
+          <Image src="/MMK/stationery.jpg" alt="stationery" width={5343} height={2294} priority className="w-full h-auto web img06_1" />
+          <Image src="/MMK/stationery-mobile.jpg" alt="stationery" width={2898} height={2294} priority className="w-full h-auto mobile img06_2" />
         </div>
 
         <div className='section-img section7' style={{ backgroundColor: '#c1c2c4' }}>
-          <Image src="/multicultural/bag.png" alt="bag" width={4955} height={2222} priority className="w-full h-auto web img07_1" />
-          <Image src="/multicultural/bag-mobile.png" alt="bag" width={2777} height={2222} priority className="w-full h-auto mobile img07_2" />
+          <Image src="/MMK/bag.png" alt="bag" width={4955} height={2222} priority className="w-full h-auto web img07_1" />
+          <Image src="/MMK/bag-mobile.png" alt="bag" width={2777} height={2222} priority className="w-full h-auto mobile img07_2" />
         </div>
 
         <div className='section-img section8' style={{ backgroundColor: '#a8a8a8' }}>
-          <Image src="/multicultural/ticket.png" alt="ticket" width={3775} height={1884} priority className="w-full h-auto web img08_1" />
-          <Image src="/multicultural/ticket-mobile.png" alt="ticket" width={2095} height={1884} priority className="w-full h-auto mobile img08_2" />
+          <Image src="/MMK/ticket.png" alt="ticket" width={3775} height={1884} priority className="w-full h-auto web img08_1" />
+          <Image src="/MMK/ticket-mobile.png" alt="ticket" width={2095} height={1884} priority className="w-full h-auto mobile img08_2" />
         </div>
       </div>
     </div>

@@ -66,7 +66,7 @@ export default function ArtDesc() {
               </div>
 
               <p>
-                This project was first implemented in <em>'Introduction to Computer Graphics'</em> class,
+                This project was first implemented in <em>Introduction to Computer Graphics</em> class,
                 and has been further developed in terms of design.
                 It is programmed based on JavaScript with <b>Three.js</b>. The models
                 are designed in <b>Blender</b>.
@@ -85,7 +85,7 @@ export default function ArtDesc() {
                   When the snake obtain the target, its body grows by one unit and the position of the food changes.
                 </li>
                 <li>
-                  The target is placed at a random spot where dosen't overlap with the snake's position.
+                  The target is placed at a random spot where dosen&lsquo;t overlap with the snake&lsquo;s position.
                 </li>
                 <li>
                   The game ends when the snake hits a wall or intersects with its body.

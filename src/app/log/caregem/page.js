@@ -248,7 +248,7 @@ export default function CaregemDesc() {
                 <td className="label" label="Id.">REQ-4</td>
                 <td className="label" label="Prio.">Must</td>
                 <td className="label" label="Req.">
-                  The system shall measure and display the user's heart rate in real-time.
+                  The system shall measure and display the user&lsquo;s heart rate in real-time.
                 </td>
               </tr>
               <tr>
@@ -269,14 +269,14 @@ export default function CaregemDesc() {
                 <td className="label" label="Id.">REQ-7</td>
                 <td className="label" label="Prio.">Must</td>
                 <td className="label" label="Req.">
-                  The system shall measure and display the user's movement speed during walking, running, or cycling activities.
+                  The system shall measure and display the user&lsquo;s movement speed during walking, running, or cycling activities.
                 </td>
               </tr>
               <tr>
                 <td className="label" label="Id.">REQ-8</td>
                 <td className="label" label="Prio.">Must</td>
                 <td className="label" label="Req.">
-                  The system shall record and analyze the user's sleep duration and quality.
+                  The system shall record and analyze the user&lsquo;s sleep duration and quality.
                 </td>
               </tr>
               <tr>
@@ -296,7 +296,7 @@ export default function CaregemDesc() {
                 <th className='whitespace-nowrap'>UC Id.</th>
                 <th>Use Case Name</th>
                 <th>Actor</th>
-                <th>actor's goal (what the actor intends to accomplish)</th>
+                <th>actor&lsquo;s goal (what the actor intends to accomplish)</th>
                 <th>Related REQ</th>
               </tr>
               <tr>

@@ -68,9 +68,10 @@ export default function ArtDesc() {
               </div>
 
               <p>
-                This project was first implemented in <em>'Introduction of Computer Graphics'</em> class,
+                This project was first implemented in <em>Introduction of Computer Graphics</em> class,
                 and has been further developed in terms of design.
-                It was programmed in JavaScript and used <b>Three.js</b>. A billiard table, pool billiard cues and holder were designed in <b>Blender</b>.
+                It was programmed in JavaScript and used <b>Three.js</b>. 
+                A billiard table, pool billiard cues and holder were designed in <b>Blender</b>.
                 The physics of the billiard simulation
                 referenced <a href="https://en.wikipedia.org/wiki/Elastic_collision#One-dimensional_Newtonian" target="_blank">Elastic Collision.</a>
               </p>
@@ -82,7 +83,7 @@ export default function ArtDesc() {
                   When rebounding off the cushion, the velocity of each ball drops by 20%.
                 </li>
                 <li>
-                  Due to friction on the pool table, each ball's velocity drops by 20% every second.
+                  Due to friction on the pool table, each ball&lsquo;s velocity drops by 20% every second.
                 </li>
                 <li>
                   The position, intensity, angle and color of the light, as well as the velocity volume, can be

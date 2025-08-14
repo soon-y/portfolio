@@ -167,7 +167,7 @@ export default function home() {
                   <td className="label" label="Id.">REQ-3</td>
                   <td className="label" label="Prio.">Must</td>
                   <td className="label" label="Req.">
-                    The APP shall transmit a signal to the robot's system and command it to pause the cleaning and
+                    The APP shall transmit a signal to the robot&lsquo;s system and command it to pause the cleaning and
                     return back to the charging dock when the "Home" button is pressed.
                   </td>
                 </tr>
@@ -192,7 +192,7 @@ export default function home() {
                   <td className="label" label="Prio.">Could</td>
                   <td className="label" label="Req.">
                     The APP shall have a drop-down menu with the option to force stop by transmitting a signal to
-                    the robot's system making it to force shutdown, in case of a system error.
+                    the robot&lsquo;s system making it to force shutdown, in case of a system error.
                   </td>
                 </tr>
                 <tr>
@@ -200,7 +200,7 @@ export default function home() {
                   <td className="label" label="Prio.">Would</td>
                   <td className="label" label="Req.">
                     The APP will send a notification to the smartphone/iPad/tablet system
-                    when there is a system failure or an error in the robot's system.
+                    when there is a system failure or an error in the robot&lsquo;s system.
                   </td>
                 </tr>
                 <tr>
@@ -228,7 +228,7 @@ export default function home() {
                   <td className="label" label="Prio.">Could</td>
                   <td className="label" label="Req.">
                     The APP shall receive voice commands through Alexa and compile it into one of three
-                    commands("Auto", "Home", "Pause") in requirements and transmit it to the robot's system.
+                    commands("Auto", "Home", "Pause") in requirements and transmit it to the robot&lsquo;s system.
                   </td>
                 </tr>
                 <tr>
@@ -265,7 +265,7 @@ export default function home() {
                   <th className='whitespace-nowrap'>UC Id.</th>
                   <th>Use Case Name</th>
                   <th>Actor</th>
-                  <th>actor's goal (what the actor intends to accomplish)</th>
+                  <th>actor&lsquo;s goal (what the actor intends to accomplish)</th>
                   <th>Related REQ</th>
                 </tr>
                 <tr>
@@ -429,7 +429,7 @@ export default function home() {
                   <td className="wideLabel" label="Initiator">User</td>
                 </tr>
                 <tr>
-                  <th scope="row">Actor's goal</th>
+                  <th scope="row">actor&lsquo;s goal</th>
                   <td className="wideLabel" label="Goal">To schedule cleaning jobs and select mode
                   </td>
                 </tr>
@@ -459,7 +459,7 @@ export default function home() {
                   <td className='text-right'> → </td>
                   <td>
                     <div className="flex-wrapper">
-                      1. <strong>USER</strong> opens the <strong>APP</strong> and presses 'schedule'.
+                      1. <strong>USER</strong> opens the <strong>APP</strong> and presses &lsquo;schedule&lsquo;.
                     </div>
                   </td>
                 </tr>
@@ -603,7 +603,7 @@ export default function home() {
                   <td className="label" label="Name">LogIn </td>
                 </tr>
                 <tr>
-                  <td className="label" label="Desc.">Verify the user's account</td>
+                  <td className="label" label="Desc.">Verify the user&lsquo;s account</td>
                   <td className="label" label="Type">Doing</td>
                   <td className="label" label="Name">LogInVerifier</td>
                 </tr>
@@ -639,7 +639,7 @@ export default function home() {
                 </tr>
                 <tr>
                   <td className="label whitespace-nowrap" label="Pair">LogIn ↔ LoginVerifer</td>
-                  <td className="label" label="Desc.">LogInVerifier verify the user's account.</td>
+                  <td className="label" label="Desc.">LogInVerifier verify theuser&lsquo;s account.</td>
                   <td className="label" label="Name">verify</td>
                 </tr>
 
@@ -670,8 +670,8 @@ export default function home() {
                 </tr>
                 <tr>
                   <td className="label" label="Concept">LogIn</td>
-                  <td className="label" label="Attr.">User's account</td>
-                  <td className="label" label="Desc.">Used to determine the actor's credentials to pair the authorized robot
+                  <td className="label" label="Attr.">User&lsquo;s account</td>
+                  <td className="label" label="Desc.">Used to determine the actor&lsquo;s credentials to pair the authorized robot
                   </td>
                 </tr>
 

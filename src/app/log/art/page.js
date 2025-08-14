@@ -560,7 +560,7 @@ export default function ArtDesc() {
           <div className="experience box">
             <h3 className='art'>Experience</h3>
             <p className='art-opp'>
-              It's been a while since Yoonha last visited an art museum. She tried to sign up for a sign language interpretation guide, but the session was cancelled due to low attendance. She downloaded the museum app to read exhibit descriptions, but found the text difficult to read.
+              It&lsquo;s been a while since Yoonha last visited an art museum. She tried to sign up for a sign language interpretation guide, but the session was cancelled due to low attendance. She downloaded the museum app to read exhibit descriptions, but found the text difficult to read.
             </p>
           </div>
         </div>
@@ -748,7 +748,7 @@ export default function ArtDesc() {
                 <td className="label" label="Id.">REQ-3</td>
                 <td className="label" label="Prio.">Must</td>
                 <td className="label" label="Req.">
-                  The system shall allow users to search or filter by city, region, or proximity to the user's current location.
+                  The system shall allow users to search or filter by city, region, or proximity to the user&lsquo;s current location.
                 </td>
               </tr>
               <tr>
@@ -769,7 +769,7 @@ export default function ArtDesc() {
                 <td className="label" label="Id.">REQ-6</td>
                 <td className="label" label="Prio.">Should</td>
                 <td className="label" label="Req.">
-                  The system shall store the user's bookmarked services for future access.
+                  The system shall store the user&lsquo;s bookmarked services for future access.
                 </td>
               </tr>
               <tr>
@@ -796,7 +796,7 @@ export default function ArtDesc() {
                 <th className='whitespace-nowrap'>UC Id.</th>
                 <th>Use Case Name</th>
                 <th>Actor</th>
-                <th>actor's goal (what the actor intends to accomplish)</th>
+                <th>actor&lsquo;s goal (what the actor intends to accomplish)</th>
                 <th>Related REQ</th>
               </tr>
               <tr>
@@ -810,7 +810,7 @@ export default function ArtDesc() {
                 <td className="label" label="Id.">UC-2</td>
                 <td className="label" label="Name">FilterByDate</td>
                 <td className="label" label="Actor">User</td>
-                <td className="label" label="Goal">To find events that match the user's preferred schedule</td>
+                <td className="label" label="Goal">To find events that match the user&lsquo;s preferred schedule</td>
                 <td className="label" label="Related">REQ-2</td>
               </tr>
               <tr>
@@ -852,7 +852,7 @@ export default function ArtDesc() {
                 <td className="label" label="Id.">UC-8</td>
                 <td className="label" label="Name">Login</td>
                 <td className="label" label="Actor">User</td>
-                <td className="label" label="Goal">To use the system's features available to authenticated users.</td>
+                <td className="label" label="Goal">To use the system&lsquo;s features available to authenticated users.</td>
                 <td className="label" label="Related">REQ-8</td>
               </tr>
             </tbody>
