@@ -95,31 +95,31 @@ export default function home() {
                 <tr>
                   <td className="label" label="Id.">UST-1</td>
                   <td className="label" label="Story">
-                    As a user, I want to click on "Auto" so that the cleaning robot starts to clean while generating a map of the cleaning area.
+                    As a user, I want to click on &lsquo;Auto&lsquo; so that the cleaning robot starts to clean while generating a map of the cleaning area.
                   </td>
                 </tr>
                 <tr>
                   <td className="label" label="Id.">UST-2</td>
                   <td className="label" label="Story">
-                    As a user, I want to click on "Pause" so that the cleaning robot stops cleaning.
+                    As a user, I want to click on &lsquo;Pause&lsquo; so that the cleaning robot stops cleaning.
                   </td>
                 </tr>
                 <tr>
                   <td className="label" label="Id.">UST-3</td>
                   <td className="label" label="Story">
-                    As a user, I want to click on "Home" so that the cleaning robot goes back to the charging dock.
+                    As a user, I want to click on &lsquo;Home&lsquo; so that the cleaning robot goes back to the charging dock.
                   </td>
                 </tr>
                 <tr>
                   <td className="label" label="Id.">UST-4</td>
                   <td className="label" label="Story">
-                    As a user, I want to define a region for cleaning jobs in "Region" mode.
+                    As a user, I want to define a region for cleaning jobs in &lsquo;Region&lsquo; mode.
                   </td>
                 </tr>
                 <tr>
                   <td className="label" label="Id.">UST-5</td>
                   <td className="label" label="Story">
-                    As a user, I want to select room(s) for the cleaning jobs in "Room" mode.
+                    As a user, I want to select room(s) for the cleaning jobs in &lsquo;Room&lsquo; mode.
                   </td>
                 </tr>
                 <tr>
@@ -160,7 +160,7 @@ export default function home() {
                   <td className="label" label="Prio.">Must</td>
                   <td className="label" label="Req.">
                     The APP shall transmit a signal starting cleaning to the robot system and update its location on
-                    the generated map of the cleaning area along its way in "Auto" mode.
+                    the generated map of the cleaning area along its way in &lsquo;Auto&lsquo; mode.
                   </td>
                 </tr>
                 <tr>
@@ -168,14 +168,14 @@ export default function home() {
                   <td className="label" label="Prio.">Must</td>
                   <td className="label" label="Req.">
                     The APP shall transmit a signal to the robot&lsquo;s system and command it to pause the cleaning and
-                    return back to the charging dock when the "Home" button is pressed.
+                    return back to the charging dock when the &lsquo;Home&lsquo; button is pressed.
                   </td>
                 </tr>
                 <tr>
                   <td className="label" label="Id." id="req4">REQ-4</td>
                   <td className="label" label="Prio.">Must</td>
                   <td className="label" label="Req.">
-                    In the "Room" mode the user can define rooms, and see uncleaned (not cleaned during the last 48 hours)
+                    In the &lsquo;Room&lsquo; mode the user can define rooms, and see uncleaned (not cleaned during the last 48 hours)
                     and cleaned (cleaned during the last 48 hours) rooms.
                   </td>
                 </tr>
@@ -183,7 +183,7 @@ export default function home() {
                   <td className="label" label="Id." id="req5">REQ-5</td>
                   <td className="label" label="Prio.">Should</td>
                   <td className="label" label="Req.">
-                    In the "Region" mode the APP shall grant the user to define areas to clean as regions and
+                    In the &lsquo;Region&lsquo; mode the APP shall grant the user to define areas to clean as regions and
                     display the currently defined regions which can be used for cleaning jobs.
                   </td>
                 </tr>
@@ -199,7 +199,7 @@ export default function home() {
                   <td className="label" label="Id.">REQ-7</td>
                   <td className="label" label="Prio.">Would</td>
                   <td className="label" label="Req.">
-                    The APP will send a notification to the smartphone/iPad/tablet system
+                    The APP will send a notification to the smartphone / iPad / tablet system
                     when there is a system failure or an error in the robot&lsquo;s system.
                   </td>
                 </tr>
@@ -228,7 +228,7 @@ export default function home() {
                   <td className="label" label="Prio.">Could</td>
                   <td className="label" label="Req.">
                     The APP shall receive voice commands through Alexa and compile it into one of three
-                    commands("Auto", "Home", "Pause") in requirements and transmit it to the robot&lsquo;s system.
+                    commands(&lsquo;Auto&lsquo;, &lsquo;Home&lsquo;, &lsquo;Pause&lsquo;) in requirements and transmit it to the robot&lsquo;s system.
                   </td>
                 </tr>
                 <tr>
@@ -243,7 +243,7 @@ export default function home() {
                   <td className="label" label="Id.">REQ-13</td>
                   <td className="label" label="Prio.">Should</td>
                   <td className="label" label="Req.">
-                    When the "Pause" button is pressed, the robot shall stop cleaning and be idle in the current location.
+                    When the &lsquo;Pause&lsquo; button is pressed, the robot shall stop cleaning and be idle in the current location.
                   </td>
                 </tr>
                 <tr>
@@ -559,7 +559,7 @@ export default function home() {
                 <tr>
                   <td></td>
                   <td className="nolabel" colSpan="2">
-                    6b. <strong>USER</strong> selects non-valide time. (e.g- time in the past)
+                    6b. <strong>USER</strong> selects non-valide time. (e.g. time in the past)
                   </td>
                 </tr>
                 <tr>
