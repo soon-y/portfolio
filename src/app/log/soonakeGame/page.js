@@ -19,7 +19,7 @@ export default function ArtDesc() {
     return () => {
       window.removeEventListener('resize', handleResize)
     }
-  })
+  },[])
 
   const handleResize = () => {
     const newRatio = window.innerWidth / window.innerHeight

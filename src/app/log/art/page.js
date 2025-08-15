@@ -235,7 +235,7 @@ export default function ArtDesc() {
     return () => {
       window.removeEventListener('resize', handleResize)
     }
-  })
+  },[])
 
   const handleResize = () => {
     setRadius(ratio > 1 ? ratio * 3 : 5)
