@@ -7,8 +7,9 @@ import { Calendar, Code2, File } from 'lucide-react'
 import '../styles.css'
 import '../table.css'
 import { useWindowRatio } from '@/utils/window'
+import Image from 'next/image'
 
-export default function Home() {
+export default function AutoMode() {
   const scale = Array.from({ length: 100 }, () => 0.5 + Math.random() * 4)
   const ratio = useWindowRatio()
 
@@ -475,7 +476,7 @@ Robot.updateLocation()
           <div>
             <h2 className='text-center text-2xl py-2'>Use Case Diagram</h2>
             <a href="/autoMode/UC-diagram.png" target="_blank">
-              <img className='image' src="/autoMode/UC-diagram.png" />
+              <Image width={1564} height={1580} alt='use case diagram' className='image' src="/autoMode/UC-diagram.png" />
             </a>
           </div>
 
@@ -659,7 +660,7 @@ Robot.updateLocation()
           <div>
             <h2 className='text-center text-2xl py-2'>Activity Diagram</h2>
             <a href="/autoMode/activity-diagram.png" target="_blank">
-              <img className='image' src="/autoMode/activity-diagram.png" alt="Activity diagram" />
+              <Image width={1234} height={1668} className='image' src="/autoMode/activity-diagram.png" alt="Activity diagram" />
             </a>
           </div>
 
@@ -667,7 +668,7 @@ Robot.updateLocation()
             <h2 className='text-center text-2xl py-2'>ClassName Diagram</h2>
             <a href="/autoMode/class-diagram.jpg" target="_blank">
               <div className='py-8 bg-white'>
-                <img className='image' src="/autoMode/class-diagram.jpg" alt="className diagram" />
+                <img width={1772} height={1136} className='image' src="/autoMode/class-diagram.jpg" alt="className diagram" />
               </div>
             </a>
           </div>

@@ -7,8 +7,9 @@ import { Calendar, Code2, File } from 'lucide-react'
 import '../styles.css'
 import '../table.css'
 import { useWindowRatio } from '@/utils/window'
+import Image from 'next/image'
 
-export default function home() {
+export default function ScheduleCleaning() {
   const scale = Array.from({ length: 100 }, () => 0.5 + Math.random() * 4)
   const ratio = useWindowRatio()
 
@@ -404,7 +405,7 @@ export default function home() {
           <div>
             <h2 className='text-center text-2xl py-2'>Use Case Diagram</h2>
             <a href="/scheduleCleaning/UC-diagram.png" target="_blank">
-              <img className='image' src="/scheduleCleaning/UC-diagram.png" />
+              <Image width={1450} height={1368} alt='use case diagram' className='image' src="/scheduleCleaning/UC-diagram.png" />
             </a>
           </div>
 
@@ -685,13 +686,13 @@ export default function home() {
           </div>
 
           <a href="/scheduleCleaning/domain-model.png" target="_blank">
-            <img className='image p-8 bg-white' src="/scheduleCleaning/domain-model.png" alt="Domain model" />
+            <Image width={978} height={474} className='image p-8 bg-white' src="/scheduleCleaning/domain-model.png" alt="Domain model" />
           </a>
 
           <div>
             <h2 className='text-center text-2xl py-2'>Activity Diagram</h2>
             <a href="/scheduleCleaning/activity-diagram.png" target="_blank">
-              <img className='image' src="/scheduleCleaning/activity-diagram.png" alt="Activity diagram" />
+              <Image width={1444} height={1192} className='image' src="/scheduleCleaning/activity-diagram.png" alt="Activity diagram" />
             </a>
           </div>
 
@@ -699,7 +700,7 @@ export default function home() {
             <h2 className='text-center text-2xl py-2'>Vertical Prototype</h2>
             <a href="/scheduleCleaning/prototype.jpg" target="_blank">
               <div className='py-8 bg-white'>
-                <img className='image' src="/scheduleCleaning/prototype.jpg" alt="Vertical prototype" />
+                <Image width={1257} height={1602} className='image' src="/scheduleCleaning/prototype.jpg" alt="Vertical prototype" />
               </div>
             </a>
           </div>
@@ -708,7 +709,7 @@ export default function home() {
             <h2 className='text-center text-2xl py-2'>ClassName Diagram</h2>
             <a href="/scheduleCleaning/class-diagram.png" target="_blank">
               <div className='py-8 bg-white'>
-                <img className='image' src="/scheduleCleaning/class-diagram.png" alt="className diagram" />
+                <Image width={2471} height={1833} className='image' src="/scheduleCleaning/class-diagram.png" alt="className diagram" />
               </div>
             </a>
           </div>
