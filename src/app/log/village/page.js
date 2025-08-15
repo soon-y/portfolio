@@ -6,12 +6,11 @@ import Link from 'next/link'
 import { Calendar, Code2 } from 'lucide-react'
 import '../styles.css'
 import { useWindowRatio } from '@/utils/window'
-import { usePathname } from 'next/navigation';
+import Image from 'next/image'
 
-export default function Home() {
+export default function Village() {
   const scale = Array.from({ length: 100 }, () => 0.5 + Math.random() * 4)
   const ratio = useWindowRatio()
-  const pathname = usePathname();
 
   return (
     <div>
@@ -56,7 +55,7 @@ export default function Home() {
           <div>
             <h2 className='text-center text-2xl py-2'>UML Diagram</h2>
             <a href="/village/uml.jpg" target="_blank">
-              <img className='image' src="/village/uml.jpg" alt="UML diagram" />
+              <Image width={1284} height={1805} className='image' src="/village/uml.jpg" alt="UML diagram" />
             </a>
           </div>
 
