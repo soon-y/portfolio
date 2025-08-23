@@ -32,34 +32,6 @@ export default function DewyDesc() {
   const dewy = useRef(null)
 
   useGSAP(() => {
-    if ("ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
-      gsap.utils.toArray(['.section', '.section-img', '.section-wo']).forEach((triggerEl) => {
-        ScrollTrigger.create({
-          trigger: triggerEl,
-          start: 'top top',
-          end: 'bottom top',
-          snap: {
-            snapTo: 1,
-            duration: 1,
-            ease: "power2.inOut",
-          }
-        })
-      })
-    } else {
-      gsap.utils.toArray(['.section', '.section-img', '.section-wo']).forEach((triggerEl) => {
-        ScrollTrigger.create({
-          trigger: triggerEl,
-          start: 'top bottom',
-          end: 'bottom bottom',
-          snap: {
-            snapTo: 1,
-            duration: 1,
-            ease: "power2.inOut",
-          }
-        })
-      })
-    }
-
     const sec1 = gsap.timeline({
       scrollTrigger: {
         trigger: '.section1',

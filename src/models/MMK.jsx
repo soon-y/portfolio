@@ -94,9 +94,9 @@ function MMK(props) {
           <div>
             <p className='font-bold' style={{ fontSize: '1.2rem' }}>Multicultural Museum Korea</p>
             <div className='sub-logo'>
-              <img src='./img/nest.png' />NextJS
-              <img src='./img/react.png' />React
-              <img src='./img/ts.png' />
+              <img src='/img/nest.png' />NextJS
+              <img src='/img/react.png' />React
+              <img src='/img/ts.png' />
             </div>
           </div>
         </Html>

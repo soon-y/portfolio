@@ -32,34 +32,6 @@ export default function DewyDesc() {
   const dewy = useRef(null)
 
   useGSAP(() => {
-    if ("ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
-      gsap.utils.toArray(['.section', '.section-img', '.section-wo']).forEach((triggerEl) => {
-        ScrollTrigger.create({
-          trigger: triggerEl,
-          start: 'top top',
-          end: 'bottom top',
-          snap: {
-            snapTo: 1,
-            duration: 1,
-            ease: "power2.inOut",
-          }
-        })
-      })
-    } else {
-      gsap.utils.toArray(['.section', '.section-img', '.section-wo']).forEach((triggerEl) => {
-        ScrollTrigger.create({
-          trigger: triggerEl,
-          start: 'top bottom',
-          end: 'bottom bottom',
-          snap: {
-            snapTo: 1,
-            duration: 1,
-            ease: "power2.inOut",
-          }
-        })
-      })
-    }
-
     const sec1 = gsap.timeline({
       scrollTrigger: {
         trigger: '.section1',
@@ -315,7 +287,6 @@ export default function DewyDesc() {
     const newRatio = window.innerWidth / window.innerHeight
     setRatio(newRatio)
     setRadius(ratio > 1 ? ratio * 3 : 5)
-    console.log(newRatio)
   }
 
   return (
@@ -419,8 +390,8 @@ export default function DewyDesc() {
           <Image src="/dewyDays/phone-web.jpg" alt="phone" width={2753} height={1399} className="w-full h-auto img01" />
         </div>
 
-        <div className='relative w-[100vw] h-auto flex flex-col table dewy-opp py-20'>
-          <h3>User Story</h3>
+        <div className='relative w-[100vw] flex flex-col table dewy-opp py-6'>
+          <h3 className='pt-8'>User Story</h3>
           <table>
             <tbody>
               <tr>

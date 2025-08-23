@@ -4,52 +4,22 @@ import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Sparkles, Environment } from '@react-three/drei'
-import { param } from '@/lib/param'
 import Link from 'next/link'
-import Mobile from "@/models/Mobile"
 import Multi from "@/models/MMK.jsx"
 import { useGSAP } from '@gsap/react'
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import './styles.css'
+import { Code2, LinkIcon } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 export default function MMdesc() {
   const [ratio, setRatio] = useState(1)
   const scale = Array.from({ length: 500 }, () => 0.5 + Math.random() * 4)
-  const prototype = useRef(null)
   const logo = useRef(null)
 
   useGSAP(() => {
-    if ("ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
-      gsap.utils.toArray(['.section', '.section-img', '.section-wo']).forEach((triggerEl) => {
-        ScrollTrigger.create({
-          trigger: triggerEl,
-          start: 'top top',
-          end: 'bottom top',
-          snap: {
-            snapTo: 1,
-            duration: 1,
-            ease: "power2.inOut",
-          }
-        })
-      })
-    } else {
-      gsap.utils.toArray(['.section', '.section-img', '.section-wo']).forEach((triggerEl) => {
-        ScrollTrigger.create({
-          trigger: triggerEl,
-          start: 'top bottom',
-          end: 'bottom bottom',
-          snap: {
-            snapTo: 1,
-            duration: 1,
-            ease: "power2.inOut",
-          }
-        })
-      })
-    }
-
     const sec1 = gsap.timeline({
       scrollTrigger: {
         trigger: '.section1',
@@ -106,17 +76,6 @@ export default function MMdesc() {
     sec6.from('.img06_1', { y: '30%', opacity: 0 }, 0)
     sec6.from('.img06_2', { y: '30%', opacity: 0 }, 0)
 
-    const sec7 = gsap.timeline({
-      scrollTrigger: {
-        trigger: '.section7',
-        start: 'top bottom',
-        end: 'bottom bottom',
-        scrub: 1,
-      }
-    })
-    sec7.from('.img07_1', { y: '30%', opacity: 0 }, 0)
-    sec7.from('.img07_2', { y: '30%', opacity: 0 }, 0)
-
     const sec8 = gsap.timeline({
       scrollTrigger: {
         trigger: '.section8',
@@ -131,27 +90,17 @@ export default function MMdesc() {
 
   useEffect(() => {
     const checkIfElementsAreLoaded = () => {
-      if (logo.current && prototype.current) {
+      if (logo.current) {
         const context = gsap.context(() => {
           const sec1 = gsap.timeline({
             scrollTrigger: {
-              trigger: '.section1',
+              trigger: '.table',
               start: 'top bottom',
               end: 'bottom center',
               scrub: 1,
             }
           })
           sec1.to(logo.current.position, { y: 20 }, 0)
-
-          const sec5 = gsap.timeline({
-            scrollTrigger: {
-              trigger: '.section5',
-              start: 'top bottom',
-              end: 'bottom bottom',
-              scrub: 1,
-            }
-          })
-          sec5.to(prototype.current.position, { y: 0 })
         })
         return () => context.revert()
       } else {
@@ -190,15 +139,6 @@ export default function MMdesc() {
             ratio > 1 ? 0 : 1 + (1 - ratio) * 4,
             ratio > 1 ? -10 : -14]} />
         </group>
-        <group position={[0, -20, -7]} ref={prototype}>
-          <Mobile
-            rotation={[0, -Math.PI / 2, 0]}
-            scale={1}
-            color={param.magenta}
-            src={"https://mmk-shop.vercel.app/"}
-            content={"iframe"} />
-        </group>
-
       </Canvas>
 
       <div className='wrapper mmk'>
@@ -210,267 +150,529 @@ export default function MMdesc() {
         <div id='first' className='section-wo flex-container'>
           <div className='left-side'></div>
           <div className='right-side'>
-            <div className='desc'>
+            <div>
               <p>
-                At the Multiculture Museum Korea, visitors can explore miniature landmarks, traditional costumes, and international currencies, offering a rich multicultural experience. <br/>
-                The design features a regular hexagon, chosen for its natural stability and ability to expand, much like a honeycomb. 
-                This shape symbolizes the globe, where different cultures connect and grow together. 
-                The CMYK color model reflects the vibrant diversity of global traditions, while the connected vertices represent the intricate relationships and unity between cultures. <br/>
-                Overall, the museum creates an immersive journey celebrating cultural exchange and harmony.
+                Multiculture Museum Korea offers a rich multicultural experience to visiters.
+                I designed a prototype of its e-commerce web site with react, nestJS and supabase.
               </p>
+
+              <div className='flex gap-2 items-center pt-4'>
+                <b>1. Shop (Frontend) for Customers/visitors</b>
+                <a href='https://github.com/soon-y/mmk-shop' target='_blank'>
+                  <Code2 />
+                </a>
+                <a href='https://mmk-shop.vercel.app/' target='_blank'>
+                  <LinkIcon />
+                </a>
+              </div>
+              <ul>
+                <li>displays products, prices, and descriptions.</li>
+                <li>lets customers add items to cart, checkout, and pay.</li>
+                <li>provides an easy-to-use interface for browsing and purchasing.</li>
+                <li>sends requests to the backend to get product data, create orders.</li>
+              </ul>
+              <div className='flex gap-2 items-center'>
+                <b>2. Admin (Dashboard) for staffs</b>
+                <a href='https://github.com/soon-y/mmk-admin' target='_blank'>
+                  <Code2 />
+                </a>
+                <a href='https://mmk-admin.vercel.app/' target='_blank'>
+                  <LinkIcon />
+                </a>
+              </div>
+              <ul>
+                <li>manage products (add/edit/delete).</li>
+                <li>track inventory and stock levels.</li>
+                <li>view and process customer orders.</li>
+                <li>see sales analytics and reports.</li>
+                <li>communicates with the APIs to update data, manage orders.</li>
+              </ul>
+              <div className='flex gap-2 items-center'>
+                <b>3. Backend (Server)</b>
+                <a href='https://github.com/soon-y/mmk-backend' target='_blank'>
+                  <Code2 />
+                </a>
+              </div>
+              <ul>
+                <li>stores all data (products, customers, orders) in the database.</li>
+                <li>provides APIs for both Shop and Admin to fetch or update data.</li>
+                <li>secures the system with authentication & authorization.</li>
+              </ul>
             </div>
           </div>
         </div>
+        
+        <div className='relative w-[100vw] h-auto flex flex-col table dewy-opp py-20'>
+          <Image src={'/MMK/structure.png'} alt='structure' width={361} height={201} className='image'/>
 
-                <div className='relative w-[100vw] h-auto flex flex-col table dewy-opp py-20'>
-                  <h3>User Story</h3>
-                  <table>
-                    <tbody>
-                      <tr>
-                        <th>Identifier</th>
-                        <th label="User Story">User Story</th>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id.">UST-1</td>
-                        <td className="label" label="Story">
-                          As a user, I want to set my weight and daily exercise time so that I can calculate my personalized daily hydration goal.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id.">UST-2</td>
-                        <td className="label" label="Story">
-                          As a user, I want to enable Temperature Mode so that my hydration goal increases automatically when it is hot outside.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id.">UST-3</td>
-                        <td className="label" label="Story">
-                          As a user, I want to set the capacity of my cup, tumbler, and bottle individually so that I can accurately track my water intake.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id.">UST-4</td>
-                        <td className="label" label="Story">
-                          As a user, I want to switch between my containers so that I can quickly select the one I am using.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id.">UST-5</td>
-                        <td className="label" label="Story">
-                          As a user, I want to log my water intake so that my daily progress updates in real time.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id.">UST-6</td>
-                        <td className="label" label="Story">
-                          As a user, I want to see visual feedback such as water filling up and animations so that tracking my hydration feels engaging.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id.">UST-7</td>
-                        <td className="label" label="Story">
-                          As a user, I want the system to use real-time weather and air quality data so that I can be reminded to drink more water in harsh conditions.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id.">UST-8</td>
-                        <td className="label" label="Story">
-                          As a user, I want to review my past water intake in a timeline so that I can monitor my hydration habits over time.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id.">UST-8</td>
-                        <td className="label" label="Story">
-                          As a user, I want to set reminders so that I keep myself hydrated.
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-        
-                  <h3 className='pt-8'>Functional Requirements</h3>
-                  <table>
-                    <tbody>
-                      <tr>
-                        <th>Identifier</th>
-                        <th>Priority</th>
-                        <th>Requirement</th>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id.">REQ-1</td>
-                        <td className="label" label="Prio.">Must</td>
-                        <td className="label" label="Req.">
-                          The system shall allow the user to input weight and daily exercise time to calculate a personalized daily hydration goal.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id.">REQ-2</td>
-                        <td className="label" label="Prio.">Must</td>
-                        <td className="label" label="Req.">
-                          The system shall allow the user to enable or disable Temperature Mode, which adds 500 ml to the hydration goal when the temperature exceeds 30°C.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id.">REQ-3</td>
-                        <td className="label" label="Prio.">Must</td>
-                        <td className="label" label="Req.">
-                          The system shall allow the user to set individual capacities for cup, tumbler, and bottle.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id.">REQ-4</td>
-                        <td className="label" label="Prio.">Should</td>
-                        <td className="label" label="Req.">
-                          The system shall allow the user to switch between containers.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id.">REQ-5</td>
-                        <td className="label" label="Prio.">Must</td>
-                        <td className="label" label="Req.">
-                          The system shall allow the user to log water intake by adjusting a slider to match the amount consumed.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id.">REQ-6</td>
-                        <td className="label" label="Prio.">Should</td>
-                        <td className="label" label="Req.">
-                          The system shall display real-time progress updates and animations when water is logged.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id.">REQ-7</td>
-                        <td className="label" label="Prio.">Must</td>
-                        <td className="label" label="Req.">
-                          The system shall record each water intake entry with timestamp, amount, and container type in the Timeline.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id.">REQ-8</td>
-                        <td className="label" label="Prio.">Must</td>
-                        <td className="label" label="Req.">
-                          The system shall provide a Timeline view for reviewing historical water intake data.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id.">REQ-9</td>
-                        <td className="label" label="Prio.">Must</td>
-                        <td className="label" label="Req.">
-                          The system shall retrieve real-time weather data and air quality (PM10/PM2.5) data.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id.">REQ-10</td>
-                        <td className="label" label="Prio.">Should</td>
-                        <td className="label" label="Req.">
-                          The system shall notify the user to drink more water when PM levels are very poor or temperature is unusually high.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id.">REQ-11</td>
-                        <td className="label" label="Prio.">Should</td>
-                        <td className="label" label="Req.">
-                          The system shall allow the user to set custom hydration reminders at specific times or intervals.
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id.">REQ-12</td>
-                        <td className="label" label="Prio.">Should</td>
-                        <td className="label" label="Req.">
-                          The system shall notify the user at the set reminder times to encourage water intake.
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-        
-                  <h3 className='pt-8'>Use Case List</h3>
-                  <table>
-                    <tbody>
-                      <tr>
-                        <th className='whitespace-nowrap'>UC Id.</th>
-                        <th>Use Case Name</th>
-                        <th>Actor</th>
-                        <th>actor&lsquo;s goal (what the actor intends to accomplish)</th>
-                        <th>Related REQ</th>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id." id="uc1">UC-1</td>
-                        <td className="label" label="Name">CalculateDailyGoal</td>
-                        <td className="label" label="Actor">User</td>
-                        <td className="label" label="Goal">To determine a personalized hydration goal based on weight and exercise time</td>
-                        <td className="label" label="Related">REQ-1</td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id." id="uc2">UC-2</td>
-                        <td className="label" label="Name">EnableTemperatureMode</td>
-                        <td className="label" label="Actor">User</td>
-                        <td className="label" label="Goal">To adjust hydration goal automatically in hot weather</td>
-                        <td className="label" label="Related">REQ-2</td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id." id="uc3">UC-3</td>
-                        <td className="label" label="Name">SetContainerCapacities</td>
-                        <td className="label" label="Actor">User</td>
-                        <td className="label" label="Goal">To customize capacities for different drinking containers</td>
-                        <td className="label" label="Related">REQ-3</td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id." id="uc4">UC-4</td>
-                        <td className="label" label="Name">SwitchContainers</td>
-                        <td className="label" label="Actor">User</td>
-                        <td className="label" label="Goal">To quickly change the selected container for logging</td>
-                        <td className="label" label="Related">REQ-4</td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id." id="uc5">UC-5</td>
-                        <td className="label" label="Name">LogWaterIntake</td>
-                        <td className="label" label="Actor">User</td>
-                        <td className="label" label="Goal">To record the amount of water consumed and update progress</td>
-                        <td className="label" label="Related">REQ-5, REQ-6</td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id." id="uc6">UC-6</td>
-                        <td className="label" label="Name">ViewDailyProgress</td>
-                        <td className="label" label="Actor">User</td>
-                        <td className="label" label="Goal">To see visual feedback and progress toward daily hydration goal</td>
-                        <td className="label" label="Related">REQ-6</td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id." id="uc7">UC-7</td>
-                        <td className="label" label="Name">ViewTimeline</td>
-                        <td className="label" label="Actor">User</td>
-                        <td className="label" label="Goal">To review past water intake records by time and container</td>
-                        <td className="label" label="Related">REQ-7, REQ-8</td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id." id="uc8">UC-8</td>
-                        <td className="label" label="Name">RetrieveWeatherData</td>
-                        <td className="label" label="Actor">System</td>
-                        <td className="label" label="Goal">To obtain temperature and PM levels from Open Meteo API</td>
-                        <td className="label" label="Related">REQ-9</td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id." id="uc9">UC-9</td>
-                        <td className="label" label="Name">NotifyHarshConditions</td>
-                        <td className="label" label="Actor">System</td>
-                        <td className="label" label="Goal">To alert the user to drink more water in extreme weather or poor air quality</td>
-                        <td className="label" label="Related">REQ-10</td>
-                      </tr>
-                      <tr>
-                        <td className="label" label="Id." id="uc10">UC-10</td>
-                        <td className="label" label="Name">SetHydrationReminders</td>
-                        <td className="label" label="Actor">User</td>
-                        <td className="label" label="Goal">To create scheduled reminders for drinking water</td>
-                        <td className="label" label="Related">REQ-11, REQ-12</td>
-                      </tr>
-                    </tbody>
-                  </table>
-        
-                  <h3 className='pt-8'>Activity Diagram</h3>
-                  <p className='pb-4 text-center'>Change cup and its volume and add water intake (UC-3 to UC-6)</p>
-                  <a href='/dewyDays/activity-diagram.png' target='_blank' className='image'>
-                    <Image src={'/dewyDays/activity-diagram.png'} width={587} height={730} alt='activity diagram' />
-                  </a>
-                </div>
+          <h3 className='pt-20'>User Story - Shop</h3>
+          <table>
+            <tbody>
+              <tr>
+                <th>Identifier</th>
+                <th label="User Story">User Story</th>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">UST-1</td>
+                <td className="label" label="Story">
+                  As a customer, I want to browse products by category so I can easily find what I am looking for.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">UST-2</td>
+                <td className="label" label="Story">
+                  As a customer, I want to search products by filtering so I can limit the product list to items that meet my needs.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">UST-3</td>
+                <td className="label" label="Story">
+                  As a customer, I want to search for products so I can quickly find specific items.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">UST-4</td>
+                <td className="label" label="Story">
+                  As a customer, I want to add items to my favorites and see them later so I can easily revisit products I like.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">UST-5</td>
+                <td className="label" label="Story">
+                  As a customer, I want to add items from my favorites to my cart easily so I can purchase products I&lsquo;ve saved without searching again.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">UST-6</td>
+                <td className="label" label="Story">
+                  As a user, I want to see the product detail so I can understand its features and decide whether to buy it.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">UST-7</td>
+                <td className="label" label="Story">
+                  As a customer, I want to add items to my cart and see the total price.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">UST-8</td>
+                <td className="label" label="Story">
+                  As a customer, I want to checkout securely so my payment is processed safely.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">UST-9</td>
+                <td className="label" label="Story">
+                  As a customer, I want to track my order so I know when it will arrive.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">UST-10</td>
+                <td className="label" label="Story">
+                  As a user, I want to see my previous orders so I can keep track of what I have purchased.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">UST-11</td>
+                <td className="label" label="Story">
+                  As a new user, I want to create an account so I can start using the system.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">UST-12</td>
+                <td className="label" label="Story">
+                  As a registered user, I want to log in so I can access my account.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">UST-13</td>
+                <td className="label" label="Story">
+                  As a customer, I want to change my personal information (e.g., password, shipping address) so that I can keep my account up-to-date.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 className='pt-8'>Functional Requirements - Shop</h3>
+          <table>
+            <tbody>
+              <tr>
+                <th>Identifier</th>
+                <th>Priority</th>
+                <th>Requirement</th>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">REQ-1</td>
+                <td className="label" label="Prio.">Must</td>
+                <td className="label" label="Req.">
+                  The system shall allow customers to browse products by category.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">REQ-2</td>
+                <td className="label" label="Prio.">Must</td>
+                <td className="label" label="Req.">
+                  The system shall allow customers to filter products by price, color, and size.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">REQ-3</td>
+                <td className="label" label="Prio.">Must</td>
+                <td className="label" label="Req.">
+                  The system shall provide a search function for customers to find products by keyword.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">REQ-4</td>
+                <td className="label" label="Prio.">Should</td>
+                <td className="label" label="Req.">
+                  The system should allow customers to add products to favorites for later viewing.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">REQ-5</td>
+                <td className="label" label="Prio.">Should</td>
+                <td className="label" label="Req.">
+                  The system should allow customers to move items from favorites to the shopping cart.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">REQ-6</td>
+                <td className="label" label="Prio.">Must</td>
+                <td className="label" label="Req.">
+                  The system shall display detailed product information including images, description, and specifications.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">REQ-7</td>
+                <td className="label" label="Prio.">Must</td>
+                <td className="label" label="Req.">
+                  The system shall allow customers to add items to the cart and calculate the total price.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">REQ-8</td>
+                <td className="label" label="Prio.">Must</td>
+                <td className="label" label="Req.">
+                  The system shall allow customers to checkout securely using a valid payment method.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">REQ-9</td>
+                <td className="label" label="Prio.">Must</td>
+                <td className="label" label="Req.">
+                  The system shall allow customers to track their orders and view expected delivery dates.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">REQ-10</td>
+                <td className="label" label="Prio.">Must</td>
+                <td className="label" label="Req.">
+                  The system shall allow a customer to update their personal information including name, email, password, and shipping address.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">REQ-11</td>
+                <td className="label" label="Prio.">Must</td>
+                <td className="label" label="Req.">
+                  The system shall validate changes to personal information (e.g., email format, password strength) before saving.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">REQ-12</td>
+                <td className="label" label="Prio.">Must</td>
+                <td className="label" label="Req.">
+                  The system shall require re-authentication for sensitive changes such as updating the password or email address.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">REQ-13</td>
+                <td className="label" label="Prio.">Should</td>
+                <td className="label" label="Req.">
+                  The system should send a confirmation email to the customer when critical personal information (password or email) is updated.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 className='pt-8'>Use Case List - Shop</h3>
+          <table>
+            <tbody>
+              <tr>
+                <th className='whitespace-nowrap'>UC Id.</th>
+                <th>Use Case Name</th>
+                <th>Actor</th>
+                <th>actor&lsquo;s goal (what the actor intends to accomplish)</th>
+                <th>Related REQ</th>
+              </tr>
+              <tr>
+                <td className="label" label="Id." id="uc1">UC-1</td>
+                <td className="label" label="Name">BrowseProducts</td>
+                <td className="label" label="Actor">Customer</td>
+                <td className="label" label="Goal">To browse products grouped by category</td>
+                <td className="label" label="Related">REQ-1</td>
+              </tr>
+              <tr>
+                <td className="label" label="Id." id="uc2">UC-2</td>
+                <td className="label" label="Name">FilterProducts</td>
+                <td className="label" label="Actor">Customer</td>
+                <td className="label" label="Goal">To filter products by price, color, and size</td>
+                <td className="label" label="Related">REQ-2</td>
+              </tr>
+              <tr>
+                <td className="label" label="Id." id="uc3">UC-3</td>
+                <td className="label" label="Name">SearchProducts</td>
+                <td className="label" label="Actor">Customer</td>
+                <td className="label" label="Goal">To search for products using keywords</td>
+                <td className="label" label="Related">REQ-3</td>
+              </tr>
+              <tr>
+                <td className="label" label="Id." id="uc4">UC-4</td>
+                <td className="label" label="Name">AddToFavorites</td>
+                <td className="label" label="Actor">Customer</td>
+                <td className="label" label="Goal">To save products for later viewing</td>
+                <td className="label" label="Related">REQ-4</td>
+              </tr>
+              <tr>
+                <td className="label" label="Id." id="uc5">UC-5</td>
+                <td className="label" label="Name">MoveFavoritesToCart</td>
+                <td className="label" label="Actor">Customer</td>
+                <td className="label" label="Goal">To move items from favorites into the shopping cart</td>
+                <td className="label" label="Related">REQ-5</td>
+              </tr>
+              <tr>
+                <td className="label" label="Id." id="uc6">UC-6</td>
+                <td className="label" label="Name">ViewProductDetail</td>
+                <td className="label" label="Actor">Customer</td>
+                <td className="label" label="Goal">To view product details including images, description, and specifications</td>
+                <td className="label" label="Related">REQ-6</td>
+              </tr>
+              <tr>
+                <td className="label" label="Id." id="uc7">UC-7</td>
+                <td className="label" label="Name">AddToCart</td>
+                <td className="label" label="Actor">Customer</td>
+                <td className="label" label="Goal">To add products to the cart and calculate the total price</td>
+                <td className="label" label="Related">REQ-7</td>
+              </tr>
+              <tr>
+                <td className="label" label="Id." id="uc8">UC-8</td>
+                <td className="label" label="Name">Checkout</td>
+                <td className="label" label="Actor">Customer</td>
+                <td className="label" label="Goal">To securely complete the purchase using a valid payment method</td>
+                <td className="label" label="Related">REQ-8</td>
+              </tr>
+              <tr>
+                <td className="label" label="Id." id="uc9">UC-9</td>
+                <td className="label" label="Name">TrackOrders</td>
+                <td className="label" label="Actor">Customer</td>
+                <td className="label" label="Goal">To track orders and view expected delivery dates</td>
+                <td className="label" label="Related">REQ-9</td>
+              </tr>
+              <tr>
+                <td className="label" label="Id." id="uc10">UC-10</td>
+                <td className="label" label="Name">UpdatePersonalInfo</td>
+                <td className="label" label="Actor">Customer</td>
+                <td className="label" label="Goal">To update name, email, password, and shipping address</td>
+                <td className="label" label="Related">REQ-10</td>
+              </tr>
+              <tr>
+                <td className="label" label="Id." id="uc11">UC-11</td>
+                <td className="label" label="Name">ValidatePersonalInfo</td>
+                <td className="label" label="Actor">System</td>
+                <td className="label" label="Goal">To validate format and strength of updated personal information</td>
+                <td className="label" label="Related">REQ-11</td>
+              </tr>
+              <tr>
+                <td className="label" label="Id." id="uc12">UC-12</td>
+                <td className="label" label="Name">AuthenticateForChanges</td>
+                <td className="label" label="Actor">Customer</td>
+                <td className="label" label="Goal">To confirm identity when updating sensitive details such as password or email</td>
+                <td className="label" label="Related">REQ-12</td>
+              </tr>
+              <tr>
+                <td className="label" label="Id." id="uc13">UC-13</td>
+                <td className="label" label="Name">SendConfirmationEmail</td>
+                <td className="label" label="Actor">System</td>
+                <td className="label" label="Goal">To send confirmation emails when critical personal information is updated</td>
+                <td className="label" label="Related">REQ-13</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 className='pt-8'>User Story - Admin</h3>
+          <table>
+            <tbody>
+              <tr>
+                <th>Identifier</th>
+                <th label="User Story">User Story</th>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">UST-1</td>
+                <td className="label" label="Story">
+                  As an admin, I want to add and edit products so I can keep the store up-to-date.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">UST-2</td>
+                <td className="label" label="Story">
+                  As an admin, I want to manage inventory so I can prevent selling out-of-stock items.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">UST-3</td>
+                <td className="label" label="Story">
+                  As an admin, I want to view orders so I can process and ship them efficiently.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">UST-4</td>
+                <td className="label" label="Story">
+                  As an admin, I want to view customers so I can manage sales effectively.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">UST-5</td>
+                <td className="label" label="Story">
+                  As an admin, I want to see sales reports so I can understand business performance.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">UST-6</td>
+                <td className="label" label="Story">
+                  As an admin, I want to update banners so I can keep the website visually appealing and promote relevant content.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">UST-7</td>
+                <td className="label" label="Story">
+                  As an admin, I want to add or update categories so I can organize products effectively.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 className='pt-8'>Functional Requirements - Admin</h3>
+          <table>
+            <tbody>
+              <tr>
+                <th>Identifier</th>
+                <th>Priority</th>
+                <th>Requirement</th>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">REQ-1</td>
+                <td className="label" label="Prio.">Must</td>
+                <td className="label" label="Req.">
+                  The system shall allow the admin to add and edit products so the store remains up-to-date.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">REQ-2</td>
+                <td className="label" label="Prio.">Must</td>
+                <td className="label" label="Req.">
+                  The system shall allow the admin to manage inventory to prevent selling out-of-stock items.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">REQ-3</td>
+                <td className="label" label="Prio.">Must</td>
+                <td className="label" label="Req.">
+                  The system shall allow the admin to view and process orders efficiently.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">REQ-4</td>
+                <td className="label" label="Prio.">Should</td>
+                <td className="label" label="Req.">
+                  The system shall allow the admin to view customers to manage sales effectively.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">REQ-5</td>
+                <td className="label" label="Prio.">Should</td>
+                <td className="label" label="Req.">
+                  The system shall allow the admin to view sales reports to understand business performance.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">REQ-6</td>
+                <td className="label" label="Prio.">Could</td>
+                <td className="label" label="Req.">
+                  The system shall allow the admin to update banners to keep the website visually appealing and promote relevant content.
+                </td>
+              </tr>
+              <tr>
+                <td className="label" label="Id.">REQ-7</td>
+                <td className="label" label="Prio.">Must</td>
+                <td className="label" label="Req.">
+                  The system shall allow the admin to add or update product categories to organize products effectively.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 className='pt-8'>Use Case List - Admin</h3>
+          <table>
+            <tbody>
+              <tr>
+                <th className='whitespace-nowrap'>UC Id.</th>
+                <th>Use Case Name</th>
+                <th>Actor</th>
+                <th>actor&lsquo;s goal (what the actor intends to accomplish)</th>
+                <th>Related REQ</th>
+              </tr>
+              <tr>
+                <td className="label" label="Id." id="uc1">UC-1</td>
+                <td className="label" label="Name">ManageProducts</td>
+                <td className="label" label="Actor">Admin</td>
+                <td className="label" label="Goal">To add and edit products so the store remains up-to-date</td>
+                <td className="label" label="Related">REQ-1</td>
+              </tr>
+              <tr>
+                <td className="label" label="Id." id="uc2">UC-2</td>
+                <td className="label" label="Name">ManageInventory</td>
+                <td className="label" label="Actor">Admin</td>
+                <td className="label" label="Goal">To manage inventory and prevent selling out-of-stock items</td>
+                <td className="label" label="Related">REQ-2</td>
+              </tr>
+              <tr>
+                <td className="label" label="Id." id="uc3">UC-3</td>
+                <td className="label" label="Name">ProcessOrders</td>
+                <td className="label" label="Actor">Admin</td>
+                <td className="label" label="Goal">To view and process orders efficiently</td>
+                <td className="label" label="Related">REQ-3</td>
+              </tr>
+              <tr>
+                <td className="label" label="Id." id="uc4">UC-4</td>
+                <td className="label" label="Name">ViewCustomers</td>
+                <td className="label" label="Actor">Admin</td>
+                <td className="label" label="Goal">To view customers and manage sales effectively</td>
+                <td className="label" label="Related">REQ-4</td>
+              </tr>
+              <tr>
+                <td className="label" label="Id." id="uc5">UC-5</td>
+                <td className="label" label="Name">ViewSalesReports</td>
+                <td className="label" label="Actor">Admin</td>
+                <td className="label" label="Goal">To view sales reports and understand business performance</td>
+                <td className="label" label="Related">REQ-5</td>
+              </tr>
+              <tr>
+                <td className="label" label="Id." id="uc6">UC-6</td>
+                <td className="label" label="Name">UpdateBanners</td>
+                <td className="label" label="Actor">Admin</td>
+                <td className="label" label="Goal">To update banners to keep the website visually appealing and promote relevant content</td>
+                <td className="label" label="Related">REQ-6</td>
+              </tr>
+              <tr>
+                <td className="label" label="Id." id="uc7">UC-7</td>
+                <td className="label" label="Name">ManageCategories</td>
+                <td className="label" label="Actor">Admin</td>
+                <td className="label" label="Goal">To add or update product categories to organize products effectively</td>
+                <td className="label" label="Related">REQ-7</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
         <div className='section-img section1' style={{ backgroundColor: '#e4e4e4' }}>
           <Image src="/MMK/m-logo.png" alt="Logo" width={3776} height={1621} priority className="w-full h-auto img01 web" />
@@ -505,8 +707,15 @@ export default function MMdesc() {
           </div>
         </div>
 
+        <p className={`relative py-12 ${ratio > 1 ? 'w-[50%]' : 'w-[90%]'}`} style={{ margin: 'auto' }}>
+          The design features a regular hexagon, chosen for its natural stability and ability to expand, much like a honeycomb.
+          This shape symbolizes the globe, where different cultures connect and grow together.
+          The CMYK color model reflects the vibrant diversity of global traditions, while the connected vertices represent the intricate relationships and unity between cultures.
+          The logo indicates cultural exchange and harmony.
+        </p>
+
         <div className='web section section3_1' style={{
-          background: "url('./MMK/color-bg.jpg')",
+          background: "url('/MMK/color-bg.jpg')",
           backgroundSize: 'cover', backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
         }}>
@@ -514,7 +723,7 @@ export default function MMdesc() {
         </div>
 
         <div className='mobile section section3_2' style={{
-          background: "url('./MMK/color-mobile-bg.jpg')",
+          background: "url('/MMK/color-mobile-bg.jpg')",
           backgroundSize: 'cover', backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
         }}>
@@ -522,14 +731,10 @@ export default function MMdesc() {
         </div>
 
         <div className='section' style={{
-          background: "url('./MMK/pattern.gif')",
+          background: "url('/MMK/pattern.gif')",
           backgroundSize: 'cover', backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
         }}></div>
-
-        <div className='section-wo section5'>
-          <p className='stroke' style={{ textAlign: 'center' }}>Prototype <br/>in Progress</p>
-        </div>
 
         <div className='section-img section6' style={{ backgroundColor: '#dcdddd' }}>
           <Image src="/MMK/stationery.jpg" alt="stationery" width={5343} height={2294} priority className="w-full h-auto web img06_1" />

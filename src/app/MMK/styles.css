@@ -8,6 +8,7 @@
 
 .mmk a:hover {
   color: var(--main);
+  transition-duration: 500ms;
 }
 
 .concept{

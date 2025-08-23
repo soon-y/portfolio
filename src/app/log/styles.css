@@ -6,11 +6,6 @@ h2 {
   line-height: 1.1;
 }
 
-ul {
-  list-style-type: disc;
-  padding-left: 1.25rem;
-}
-
 .image {
   max-width: 90%;
   max-height: 100vh;
@@ -94,7 +89,7 @@ a:hover {
 }
 
 .soonake::selection {
-  color: var(--soonake);
+  background-color: var(--soonake);
 }
 
 .soonake a:hover {
