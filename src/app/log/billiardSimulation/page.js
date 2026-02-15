@@ -62,7 +62,7 @@ export default function ArtDesc() {
                 <a href='https://github.com/soon-y/aBilliardSimulation/tree/%26a' target="_blank">
                   <Code2 />
                 </a>
-                <a href='https://a-billiard-simulation.vercel.app/'>
+                <a href='https://a-billiard-simulation.vercel.app/' target='_blank'>
                   <LinkIcon />
                 </a>
               </div>
