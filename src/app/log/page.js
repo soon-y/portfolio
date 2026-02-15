@@ -62,36 +62,36 @@ export default function Log() {
           <p className='z-10 mix-blend-difference fixed top-0 right-0 py-4 px-6' style={{ fontSize: '1.2rem' }}>Back</p>
         </Link>
 
-        <div className='pt-14 px-6 flex gap-4 cursor-pointer'>
+        <div className='pt-14 px-6 flex gap-4'>
           {category.map((el, i) => (
             <div
               key={i}
-              className={`border px-4 py-2 rounded-full duration-500 ${selected === i ? 'opacity-100' : 'opacity-50'}`}
+              className={`cursor-pointer p-1 duration-500 hover:opacity-80 ${selected === i ? 'opacity-100 underline' : 'opacity-50'}`}
               onClick={() => setSelected(i)}>{el}
             </div>
           ))}
         </div>
 
-        <div className='p-6 grid grid-cols-2 md:grid-cols-3 lg:md:grid-cols-4 gap-2'>
+        <div className='p-6 grid grid-cols-1 lg:md:grid-cols-2 gap-4'>
           {filteredContents.map((el, i) => (
             <Link key={i} href={`/log/${el.name}`}>
               <div className='cursor-pointer flex flex-col ease-in-out group'>
-                <div className='w-full aspect-square overflow-hidden'>
+                <div className='w-full aspect-2/1 overflow-hidden'>
                   <div
-                    className="w-full aspect-square bg-cover bg-no-repeat bg-center transition-transform group-hover:scale-110 duration-500 ease-in-out"
+                    className="w-full aspect-2/1 bg-cover bg-no-repeat bg-center transition-transform group-hover:scale-110 duration-500 ease-in-out"
                     style={{
-                      backgroundImage: `url(/${el.name}/thumbnail.jpg)`
+                      backgroundImage: `url(/${el.name}/thumbnail.gif)`
                     }}
                   ></div>
                 </div>
 
                 <div className='duration-500 opacity-80 group-hover:opacity-100'>
-                  <h2 className='pt-4 text-2xl'>{el.title}</h2>
-                  <div className=' flex gap-x-2 pb-8 flex-wrap pt-1'>
+                  <div className=' flex gap-x-2 flex-wrap pt-4'>
                     {el.tag.map((item, j) => (
-                      <p key={j}>#{item}</p>
+                      <p key={j}>{item} {j !== el.tag.length-1 ? '/' : '' } </p>
                     ))}
                   </div>
+                  <p className='pb-4 pt-1 m-0' style={{ fontSize: '1.8rem', lineHeight:'1' }}>{el.title}</p>
                 </div>
               </div>
             </Link>
