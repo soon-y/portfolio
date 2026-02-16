@@ -7,10 +7,22 @@ import { Calendar, Code2 } from 'lucide-react'
 import '../styles.css'
 import { useWindowRatio } from '@/utils/window'
 import Image from 'next/image'
+import { useState, useEffect } from 'react'
+import { getRelatedProjects, getFirstTagByPathname } from '@/lib/param'
 
 export default function Village() {
   const scale = Array.from({ length: 100 }, () => 0.5 + Math.random() * 4)
   const ratio = useWindowRatio()
+  const [url, setUrl] = useState("")
+  const [projects, setProjects] = useState("")
+
+  useEffect(() => {
+    setUrl(window.location.pathname)
+  }, [])
+
+  useEffect(() => {
+    if (url) setProjects(getRelatedProjects(url))
+  }, [url])
 
   return (
     <div>
@@ -68,6 +80,34 @@ export default function Village() {
           </div>
         </div>
       </div>
+
+      {projects.length > 0 &&
+        <div className='p-8 relative'>
+          <p>More Projects of <span className='font-semibold'>{getFirstTagByPathname(url)}</span></p>
+          <div className='py-4 grid grid-cols-1 lg:md:grid-cols-3 gap-4'>
+            {projects.map((el, i) => (
+              <div key={i} className='pointer-cursor opacity-80 hover:opacity-100 duration-500 group'>
+                <Link key={i} href={`/log/${el.name}`}>
+                  <div className='w-full aspect-2/1 overflow-hidden'>
+                    <div
+                      className="w-full aspect-2/1 bg-cover bg-no-repeat bg-center transition-transform group-hover:scale-110 duration-500 ease-in-out"
+                      style={{
+                        backgroundImage: `url(/${el.name}/thumbnail.gif)`
+                      }}
+                    ></div>
+                  </div>
+                  <div className=' flex gap-x-2 flex-wrap pt-4'>
+                    {el.tag.map((item, j) => (
+                      <p key={j}>{item} {j !== el.tag.length - 1 ? '/' : ''} </p>
+                    ))}
+                  </div>
+                  <p className='pb-4 pt-1 m-0' style={{ fontSize: '1.6rem', lineHeight: '1' }}>{el.title}</p>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      }
     </div>
   )
 }

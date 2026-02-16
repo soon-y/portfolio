@@ -9,12 +9,15 @@ import Multi from "@/models/MMK.jsx"
 import { useGSAP } from '@gsap/react'
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import '../../MMK/styles.css'
+import './styles.css'
 import { Code2, LinkIcon } from 'lucide-react'
+import { getRelatedProjects, getFirstTagByPathname } from '@/lib/param'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 export default function MMdesc() {
+  const [url, setUrl] = useState("")
+  const [projects, setProjects] = useState("")
   const [ratio, setRatio] = useState(1)
   const scale = Array.from({ length: 500 }, () => 0.5 + Math.random() * 4)
   const logo = useRef(null)
@@ -92,11 +95,21 @@ export default function MMdesc() {
     const checkIfElementsAreLoaded = () => {
       if (logo.current) {
         const context = gsap.context(() => {
+          const first = gsap.timeline({
+            scrollTrigger: {
+              trigger: '#first',
+              start: 'top top',
+              end: 'bottom bottom',
+              scrub: 1,
+            }
+          })
+          first.to(logo.current.position, { y: ratio > 1 ? 0 : 1 + (1 - ratio) * 4 }, 0)
+
           const sec1 = gsap.timeline({
             scrollTrigger: {
               trigger: '.table',
               start: 'top bottom',
-              end: 'bottom center',
+              end: '20% center',
               scrub: 1,
             }
           })
@@ -108,12 +121,17 @@ export default function MMdesc() {
       }
     }
     checkIfElementsAreLoaded()
+    setUrl(window.location.pathname)
     setRatio(window.innerWidth / window.innerHeight)
     window.addEventListener('resize', handleResize)
     return () => {
       window.removeEventListener('resize', handleResize)
     }
   })
+
+  useEffect(() => {
+    if (url) setProjects(getRelatedProjects(url))
+  }, [url])
 
   const handleResize = () => {
     const newRatio = window.innerWidth / window.innerHeight
@@ -203,7 +221,7 @@ export default function MMdesc() {
         </div>
 
         <div className='relative w-[100vw] h-auto flex flex-col table dewy-opp py-20'>
-          <Image src={'/MMK/structure.png'} alt='structure' width={361} height={201} className='image' />
+          <Image src={'/MMK/structure.png'} alt='structure' width={361} height={201} className='pb-0 lg:pb-12 w-[80vw] lg:w-[40vw] h-auto' />
 
           <h3 className='pt-20'>User Story - Shop</h3>
           <table>
@@ -674,6 +692,10 @@ export default function MMdesc() {
           </table>
         </div>
 
+        <div className='pb-20'>
+          <Image src={'/MMK/admin.gif'} alt='structure' width={1920} height={1013} className='rounded-xl w-[80vw] h-auto' />
+        </div>
+
         <div className='section-img section1' style={{ backgroundColor: '#e4e4e4' }}>
           <Image src="/MMK/m-logo.png" alt="Logo" width={3776} height={1621} priority className="w-full h-auto img01 web" />
           <Image src="/MMK/m-logo-mobile.png" alt="Logo" width={2985} height={1621} priority className="w-full h-auto img01 mobile" />
@@ -746,6 +768,34 @@ export default function MMdesc() {
           <Image src="/MMK/ticket-mobile.png" alt="ticket" width={2095} height={1884} priority className="w-full h-auto mobile img08_2" />
         </div>
       </div>
+
+      {projects.length > 0 &&
+        <div className='p-8 relative section-more'>
+          <p>More Projects of <span className='font-semibold'>{getFirstTagByPathname(url)}</span></p>
+          <div className='py-4 grid grid-cols-1 lg:md:grid-cols-3 gap-4'>
+            {projects.map((el, i) => (
+              <div key={i} className='pointer-cursor opacity-80 hover:opacity-100 duration-500 group'>
+                <Link key={i} href={`/log/${el.name}`}>
+                  <div className='w-full aspect-2/1 overflow-hidden'>
+                    <div
+                      className="w-full aspect-2/1 bg-cover bg-no-repeat bg-center transition-transform group-hover:scale-110 duration-500 ease-in-out"
+                      style={{
+                        backgroundImage: `url(/${el.name}/thumbnail.gif)`
+                      }}
+                    ></div>
+                  </div>
+                  <div className=' flex gap-x-2 flex-wrap pt-4'>
+                    {el.tag.map((item, j) => (
+                      <p key={j}>{item} {j !== el.tag.length - 1 ? '/' : ''} </p>
+                    ))}
+                  </div>
+                  <p className='pb-4 pt-1 m-0' style={{ fontSize: '1.6rem', lineHeight: '1' }}>{el.title}</p>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      }
     </div>
   )
 }

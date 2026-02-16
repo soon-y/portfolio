@@ -12,11 +12,14 @@ import Dewy from '@/models/Dewy'
 import gsap from "gsap"
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import "../../dewyDays/styles.css"
+import "./styles.css"
+import { getRelatedProjects, getFirstTagByPathname } from '@/lib/param'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 export default function DewyDesc() {
+  const [url, setUrl] = useState("")
+  const [projects, setProjects] = useState("")
   const scale = Array.from({ length: 100 }, () => 0.5 + Math.random() * 4)
   const [ratio, setRatio] = useState(1)
   const [radius, setRadius] = useState(ratio > 1 ? ratio * 3 : 5)
@@ -186,8 +189,17 @@ export default function DewyDesc() {
       if (mobile2.current && mobile3.current && mobile4.current
         && mobile.current && dewy.current && prototype.current
       ) {
-        console.log(ratio)
         const context = gsap.context(() => {
+          const first = gsap.timeline({
+            scrollTrigger: {
+              trigger: '#first',
+              start: 'top top',
+              end: 'bottom bottom',
+              scrub: 1,
+            }
+          })
+          first.to(dewy.current.position, { y: ratio > 1 ? 1 : 2 + (1 - ratio) * 9 }, 0)
+
           const sec1 = gsap.timeline({
             scrollTrigger: {
               trigger: '.section1',
@@ -268,6 +280,16 @@ export default function DewyDesc() {
             }
           })
           secPrototype.to(prototype.current.position, { y: 0 }, 0)
+
+          const secMore = gsap.timeline({
+            scrollTrigger: {
+              trigger: '.section8',
+              start: 'top 80%',
+              end: 'bottom center',
+              scrub: 1,
+            }
+          })
+          secMore.to(prototype.current.position, { y: 20 }, 0)
         })
         return () => context.revert()
       } else {
@@ -275,6 +297,7 @@ export default function DewyDesc() {
       }
     }
     checkIfElementsAreLoaded()
+    setUrl(window.location.pathname)
     setRatio(window.innerWidth / window.innerHeight)
     setRadius(ratio > 1 ? ratio * 3 : 5)
     window.addEventListener('resize', handleResize)
@@ -282,6 +305,10 @@ export default function DewyDesc() {
       window.removeEventListener('resize', handleResize)
     }
   }, [])
+
+  useEffect(() => {
+    if (url) setProjects(getRelatedProjects(url))
+  }, [url])
 
   const handleResize = () => {
     const newRatio = window.innerWidth / window.innerHeight
@@ -636,7 +663,7 @@ export default function DewyDesc() {
           <h3 className='pt-8'>Activity Diagram</h3>
           <p className='pb-4 text-center'>Change cup and its volume and add water intake (UC-3 to UC-6)</p>
           <a href='/dewyDays/activity-diagram.png' target='_blank' className='image'>
-            <Image src={'/dewyDays/activity-diagram.png'} width={587} height={730} alt='activity diagram' />
+            <Image src={'/dewyDays/activity-diagram.png'} width={480} height={650} alt='activity diagram' />
           </a>
         </div>
 
@@ -1029,6 +1056,34 @@ export default function DewyDesc() {
           <Image src="/dewyDays/card-web.png" alt="business card" fill sizes='100vw' className="img13 object-cover object-center" />
         </div>
       </div>
+
+      {projects.length > 0 &&
+        <div className='p-8 relative section-more'>
+          <p>More Projects of <span className='font-semibold'>{getFirstTagByPathname(url)}</span></p>
+          <div className='py-4 grid grid-cols-1 lg:md:grid-cols-3 gap-4'>
+            {projects.map((el, i) => (
+              <div key={i} className='pointer-cursor opacity-80 hover:opacity-100 duration-500 group'>
+                <Link key={i} href={`/log/${el.name}`}>
+                  <div className='w-full aspect-2/1 overflow-hidden'>
+                    <div
+                      className="w-full aspect-2/1 bg-cover bg-no-repeat bg-center transition-transform group-hover:scale-110 duration-500 ease-in-out"
+                      style={{
+                        backgroundImage: `url(/${el.name}/thumbnail.gif)`
+                      }}
+                    ></div>
+                  </div>
+                  <div className=' flex gap-x-2 flex-wrap pt-4'>
+                    {el.tag.map((item, j) => (
+                      <p key={j}>{item} {j !== el.tag.length - 1 ? '/' : ''} </p>
+                    ))}
+                  </div>
+                  <p className='pb-4 pt-1 m-0' style={{ fontSize: '1.6rem', lineHeight: '1' }}>{el.title}</p>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      }
     </div>
   )
 }

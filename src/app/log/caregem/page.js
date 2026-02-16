@@ -1,7 +1,7 @@
 "use client"
 
 import Image from 'next/image'
-import { useEffect, useRef, Suspense } from 'react'
+import { useState, useEffect, useRef, Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Sparkles, Environment } from '@react-three/drei'
 import Link from 'next/link'
@@ -12,43 +12,18 @@ import '../styles.css'
 import Caregem from '@/models/Caregem'
 import { useWindowRatio } from '@/utils/window'
 import { Code2, LinkIcon } from 'lucide-react'
+import { getRelatedProjects, getFirstTagByPathname } from '@/lib/param'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 export default function CaregemDesc() {
+  const [url, setUrl] = useState("")
+  const [projects, setProjects] = useState("")
   const ratio = useWindowRatio()
   const scale = Array.from({ length: 100 }, () => 0.5 + Math.random() * 4)
   const prototype = useRef(null)
 
   useGSAP(() => {
-    if ("ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
-      gsap.utils.toArray(['.section', '.section-img', '.section-wo']).forEach((triggerEl) => {
-        ScrollTrigger.create({
-          trigger: triggerEl,
-          start: 'top top',
-          end: 'bottom top',
-          snap: {
-            snapTo: 1,
-            duration: 1,
-            ease: "power2.inOut",
-          }
-        })
-      })
-    } else {
-      gsap.utils.toArray(['.section-img', '.section-prototype']).forEach((triggerEl) => {
-        ScrollTrigger.create({
-          trigger: triggerEl,
-          start: 'top bottom',
-          end: 'bottom bottom',
-          snap: {
-            snapTo: 1,
-            duration: 1,
-            ease: "power2.inOut",
-          }
-        })
-      })
-    }
-
     const sec1 = gsap.timeline({
       scrollTrigger: {
         trigger: '.section1',
@@ -76,13 +51,28 @@ export default function CaregemDesc() {
           })
           secLast.to(prototype.current.position, { y: 0 }, 0)
         })
+
+        const secMore = gsap.timeline({
+            scrollTrigger: {
+              trigger: '.section-more',
+              start: 'top 80%',
+              end: 'bottom bottom',
+              scrub: 1,
+            }
+          })
+          secMore.to(prototype.current.position, { y: 20 }, 0)
         return () => context.revert()
       } else {
         setTimeout(checkIfElementsAreLoaded, 100)
       }
     }
     checkIfElementsAreLoaded()
+    setUrl(window.location.pathname)
   })
+
+  useEffect(() => {
+    if (url) setProjects(getRelatedProjects(url))
+  }, [url])
 
   return (
     <div>
@@ -370,6 +360,34 @@ export default function CaregemDesc() {
           <p className='stroke text-center'>Prototype</p>
         </div>
       </div>
+
+      {projects.length > 0 &&
+        <div className='p-8 relative section-more'>
+          <p>More Projects of <span className='font-semibold'>{getFirstTagByPathname(url)}</span></p>
+          <div className='py-4 grid grid-cols-1 lg:md:grid-cols-3 gap-4'>
+            {projects.map((el, i) => (
+              <div key={i} className='pointer-cursor opacity-80 hover:opacity-100 duration-500 group'>
+                <Link key={i} href={`/log/${el.name}`}>
+                  <div className='w-full aspect-2/1 overflow-hidden'>
+                    <div
+                      className="w-full aspect-2/1 bg-cover bg-no-repeat bg-center transition-transform group-hover:scale-110 duration-500 ease-in-out"
+                      style={{
+                        backgroundImage: `url(/${el.name}/thumbnail.gif)`
+                      }}
+                    ></div>
+                  </div>
+                  <div className=' flex gap-x-2 flex-wrap pt-4'>
+                    {el.tag.map((item, j) => (
+                      <p key={j}>{item} {j !== el.tag.length - 1 ? '/' : ''} </p>
+                    ))}
+                  </div>
+                  <p className='pb-4 pt-1 m-0' style={{ fontSize: '1.6rem', lineHeight: '1' }}>{el.title}</p>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      }
     </div>
   )
 }

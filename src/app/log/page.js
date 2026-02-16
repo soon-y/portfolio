@@ -5,22 +5,12 @@ import { Sparkles, Environment } from '@react-three/drei'
 import Link from 'next/link'
 import './styles.css'
 import { useEffect, useState } from 'react'
+import { contents } from '@/lib/param'
 
 export default function Log() {
   const scale = Array.from({ length: 500 }, () => 0.5 + Math.random() * 4)
   const [category, setCategory] = useState(['All'])
   const [selected, setSelected] = useState(0)
-  const contents = [
-    { title: 'Multicultural Museum', name: 'MMK', tag: ['UI/UX', 'E-commerce', 'React', 'Nest.js', 'TypeScript',] },
-    { title: 'Dewy Days', name: 'dewyDays', tag: ['UI/UX', 'Next.js', 'TypeScript', 'Prototype'] },
-    { title: 'Caregem', name: 'caregem', tag: ['UI/UX', 'Vue', 'TypeScript', 'Prototype'] },
-    { title: 'art', name: 'art', tag: ['UI/UX', 'Next.js', 'TypeScript', 'Prototype'] },
-    { title: 'autoMode', name: 'autoMode', tag: ['Java', 'DesignPattern', 'Prototype'] },
-    { title: 'scheduleCleaning', name: 'scheduleCleaning', tag: ['Java', 'DesignPattern', 'Prototype'] },
-    { title: 'A village', name: 'village', tag: ['Java', 'DesignPattern'] },
-    { title: 'Snake Game', name: 'soonakeGame', tag: ['Three.js', 'JavaScript', 'Blender'] },
-    { title: 'A billiard simulation', name: 'billiardSimulation', tag: ['Three.js', 'JavaScript', 'Blender'] },
-  ]
   const [filteredContents, setFilteredContents] = useState(contents)
 
   useEffect(() => {

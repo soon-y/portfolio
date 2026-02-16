@@ -48,3 +48,40 @@ export const param = {
   n1: 0x333376,
   n2: 0x302e4b,
 }
+
+export const contents = [
+  { title: 'Multicultural Museum', name: 'MMK', tag: ['UI/UX', 'E-commerce', 'React', 'Nest.js', 'TypeScript',] },
+  { title: 'Dewy Days', name: 'dewyDays', tag: ['UI/UX', 'Next.js', 'TypeScript', 'Prototype'] },
+  { title: 'Caregem', name: 'caregem', tag: ['UI/UX', 'Vue', 'TypeScript', 'Prototype'] },
+  { title: 'art', name: 'art', tag: ['UI/UX', 'Next.js', 'TypeScript', 'Prototype'] },
+  { title: 'autoMode', name: 'autoMode', tag: ['Java', 'DesignPattern', 'Prototype'] },
+  { title: 'scheduleCleaning', name: 'scheduleCleaning', tag: ['Java', 'DesignPattern', 'Prototype'] },
+  { title: 'A village', name: 'village', tag: ['Java', 'DesignPattern'] },
+  { title: 'Soonake game', name: 'soonakeGame', tag: ['Three.js', 'JavaScript', 'Blender'] },
+  { title: 'A billiard simulation', name: 'billiardSimulation', tag: ['Three.js', 'JavaScript', 'Blender'] },
+]
+
+export const getFirstTagByPathname = (pathname) => {
+  const item = contents.find((content) =>
+    pathname.includes(content.name)
+  )
+  return item ? item.tag[0] : null;
+}
+
+export const getRelatedProjects = (pathname) => {
+  console.log(pathname )
+  const pathSegments = pathname.split("/")
+
+  const currentProject = contents.find((content) =>
+    pathSegments.includes(content.name)
+  )
+  console.log(currentProject)
+
+  if (!currentProject) return []
+
+  return contents.filter(
+    (content) =>
+      content.name !== currentProject.name &&
+      content.tag[0] === currentProject.tag[0]
+  )
+}
