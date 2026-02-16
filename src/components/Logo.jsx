@@ -5,7 +5,6 @@ import { param } from '@/lib/param'
 import { useThree, useFrame } from '@react-three/fiber'
 import gsap from "gsap"
 import Toggle from "@/models/Toggle"
-import LinkedIn from "@/models/LinkedIn"
 import HalfArc from "@/models/mesh/HalfArc"
 import DiameterBox from "@/models/mesh/DiameterBox"
 import RadiusBox from "@/models/mesh/RadiusBox"
@@ -688,10 +687,6 @@ function Logo(props) {
         onClick={() => setLang(!lang)}
         onPointerOut={() => setHover(false)}
         onPointerOver={() => setHover(true)}
-      />
-      <LinkedIn
-        position={[viewport.aspect < 1 ? -wc + 2 : -wc + 1, viewport.aspect < 1 ? hc - 2 : hc - 0.8, props.position[2]]}
-        scale={viewport.aspect < 1 ? 0.9 : .5}
       />
 
       <group {...props} dispose={null}

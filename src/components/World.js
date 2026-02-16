@@ -8,15 +8,11 @@ import gsap from "gsap"
 import Logo from '@/components/Logo'
 import Skills from '@/components/Skills'
 import Snake from '@/models/Snake'
-import Dewy from '@/models/Dewy'
-import Multi from '@/models/MMK'
-import Art from '@/models/Art'
-import Caregem from '@/models/Caregem'
 import Mobile from '@/models/Mobile'
 import Log from '@/models/Log'
 
 function World(props) {
-  const [domRefs, setDomRefs] = useState({ arrows: [], pageNav: null, linkedIn: null })
+  const [domRefs, setDomRefs] = useState({ arrows: [], pageNav: null })
   const scale = Array.from({ length: 1000 }, () => 0.5 + Math.random() * 4)
   const UIback = useRef()
   const Models = useRef()
@@ -27,7 +23,7 @@ function World(props) {
   const [radius, setRadius] = useState(viewport.aspect < 1.2 ? param.diameter * 10 + (1.2 - viewport.aspect) * param.diameter * 20 : param.diameter * 10)
   const [hc, setHc] = useState((2 * radius * Math.tan(Math.PI / 180 * camera.fov / 2)) * 0.5)
   const [wc, setWc] = useState((viewport.aspect * hc))
-  const step = Math.PI / 3
+  const step = Math.PI / 2
 
   useEffect(() => {
     if (viewport.aspect < 1.2) { setRadius(param.diameter * 10 + (1.2 - viewport.aspect) * param.diameter * 20) }
@@ -46,8 +42,7 @@ function World(props) {
   useEffect(() => {
     const arrows = document.getElementsByClassName("arrow-icon")
     const pageNav = document.querySelector(".page-nav")
-    const linkedIn = document.querySelector(".linkedIn")
-    setDomRefs({ arrows, pageNav, linkedIn })
+    setDomRefs({ arrows, pageNav })
 
     if ("ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0) {
       setTouchDevice(true)
@@ -80,7 +75,6 @@ function World(props) {
     props.skillActive(true)
     if (domRefs.arrows[0]) domRefs.arrows[0].style.display = 'none'
     if (domRefs.arrows[1]) domRefs.arrows[1].style.display = 'none'
-    if (domRefs.linkedIn) domRefs.linkedIn.style.display = 'none'
     if (domRefs.pageNav) domRefs.pageNav.style.display = 'none'
     if (UIback.current) UIback.current.style.display = 'block'
     gsap.to(camera.position, {
@@ -95,7 +89,6 @@ function World(props) {
     props.skillActive(false)
     if (domRefs.arrows[0]) domRefs.arrows[0].style.display = 'block'
     if (domRefs.arrows[1]) domRefs.arrows[1].style.display = 'block'
-    if (domRefs.linkedIn) domRefs.linkedIn.style.display = 'block'
     if (domRefs.pageNav) domRefs.pageNav.style.display = 'block'
     if (UIback.current) UIback.current.style.display = 'none'
     gsap.to(camera.position, {
@@ -151,16 +144,14 @@ function World(props) {
       <Environment preset="sunset" />
 
       <group ref={Models}>
-        <Dewy position={[Math.sin(step * 1) * radius, 0, Math.cos(step * 1) * radius]} rotation-y={step * 4} dewy_hovered={props.dewy_hovered} />
-        <Snake position={[Math.sin(step * 2) * radius, 0, Math.cos(step * 2) * radius]} rotation-y={step * 5} />
-        <Logo position={[Math.sin(step * 3) * radius, 0, Math.cos(step * 3) * radius]} onClick={toSkill} />
+        <Snake position={[Math.sin(step * 1) * radius, 0, Math.cos(step * 1) * radius]} rotation-y={step * -1} />
+        <Logo position={[Math.sin(step * 2) * radius, 0, Math.cos(step * 2) * radius]} onClick={toSkill} />
         {permissionRequired &&
           <Mobile position={[wc - 2, viewport.aspect < 1 ? hc - 2 : hc - 1, Math.cos(step * 3) * radius]}
-            scale={viewport.aspect < 1 ? .55 : .35} color={param.white} rotation-y={-Math.PI / 2} redSign={true} onClick={requestOrientationPermission} />}
-        <Caregem position={[Math.sin(step * 4) * radius, 0, Math.cos(step * 4) * radius]} rotation-y={step * 1} />
-        <Multi position={[Math.sin(step * 5) * radius, 0, Math.cos(step * 5) * radius]} rotation-y={step * 2} MM_hovered={props.MM_hovered}/>
-        <Log position={[Math.sin(step * 6) * radius, 0, Math.cos(step * 6) * radius]} rotation-y={step * 3} />
-        <Skills position={[Math.sin(step * 3) * radius, 0, Math.cos(step * 3) * radius * 3]} visible={visible} />
+            scale={viewport.aspect < 1 ? .55 : .35} color={param.white} rotation-y={-Math.PI / 2} redSign={true} onClick={requestOrientationPermission} />
+        }
+        <Skills position={[Math.sin(step * 2) * radius, 0, Math.cos(step * 2) * radius * 3]} visible={visible} />
+        <Log position={[0, 0, 0]} rotation-y={step * -2} />
       </group>
 
       <Html>
