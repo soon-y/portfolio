@@ -11,6 +11,7 @@ import Loader from '@/components/Loader'
 // import { OrbitControls } from '@react-three/drei'
 
 function App() {
+  const thisYear = new Date().getFullYear()
   const [pgNum, setPgNum] = useState(param.pgNum)
   const [index, setIndex] = useState(param.index)
   const [skillVisible, setSkillVisible] = useState(false)
@@ -66,7 +67,7 @@ function App() {
       <div>
         <div className='select-none text-center fixed left-[50%] bottom-3 transform -translate-x-1/2'>
           <p className='page-nav font-semibold' style={{ fontSize: '1.2rem' }}>{pgNum} / {totalPg}</p>
-          <p className='text-gray-500'>© 2025 Soonyoung</p>
+          <p className='text-gray-500'>© {thisYear} Soonyoung</p>
         </div>
         <ArrowLeft size={72} color='white' className='arrow-icon left-0' onClick={previous} />
         <ArrowRight size={72} color="white" className='arrow-icon right-0' onClick={next} />
