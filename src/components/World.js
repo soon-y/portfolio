@@ -150,7 +150,7 @@ function World(props) {
           <Mobile position={[wc - 2, viewport.aspect < 1 ? hc - 2 : hc - 1, Math.cos(step * 3) * radius]}
             scale={viewport.aspect < 1 ? .55 : .35} color={param.white} rotation-y={-Math.PI / 2} redSign={true} onClick={requestOrientationPermission} />
         }
-        <Skills position={[Math.sin(step * 2) * radius, 0, Math.cos(step * 2) * radius * 3]} visible={visible} />
+        {/* <Skills position={[Math.sin(step * 2) * radius, 0, Math.cos(step * 2) * radius * 3]} visible={visible} /> */}
         <Log position={[0, 0, 0]} rotation-y={step * -2} />
       </group>
 
