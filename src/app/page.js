@@ -8,7 +8,6 @@ import { param } from '@/lib/param'
 import World from '@/components/World'
 import Link from 'next/link'
 import Loader from '@/components/Loader'
-// import { OrbitControls } from '@react-three/drei'
 
 function App() {
   const thisYear = new Date().getFullYear()
@@ -52,7 +51,6 @@ function App() {
       <Canvas shadows camera={{ fov: 45, position: [0, 0, 0] }}
         gl={{ stencil: true }}
       >
-        {/* <OrbitControls /> */}
         <Suspense fallback={<Loader />}>
           <World index={index} skillActive={updateSkillVisible} />
         </Suspense>
@@ -62,7 +60,8 @@ function App() {
         <Link href={'/log'}>
           <div className='fixed top-[40%] left-[25%] w-[50vw] h-[20vh]'>
           </div>
-        </Link>}
+        </Link>
+      }
 
       <div>
         <div className='select-none text-center fixed left-[50%] bottom-3 transform -translate-x-1/2'>
