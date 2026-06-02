@@ -12,10 +12,10 @@ function Log(props) {
 		<>
 			<group {...props}>
 				<Float speed={1} rotationIntensity={0.2} floatIntensity={0.2}>
-					<group position={[-17, -2, -80]}
+					<group position={[-param.diameter * 2, 0, 0]}
 						onPointerOut={() => setHover(false)}
 						onPointerOver={() => setHover(true)}>
-						<Typo scale={4} font={param.fonts[2]} color={param.lila} size={param.diameter} height={2} text={"<log/>"} />
+						<Typo font={param.fonts[2]} color={param.lila} size={param.diameter} height={2} text={"<log/>"} />
 					</group>
 				</Float>
 			</group>
