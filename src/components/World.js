@@ -6,10 +6,10 @@ import { useThree, useFrame } from '@react-three/fiber'
 import { param } from '@/lib/param'
 import gsap from "gsap"
 import Logo from '@/components/Logo'
-import Skills from '@/components/Skills'
 import Snake from '@/models/Snake'
 import Mobile from '@/models/Mobile'
 import Log from '@/models/Log'
+import Weatherland from '@/models/Weatherland'
 
 function World(props) {
   const [domRefs, setDomRefs] = useState({ arrows: [], pageNav: null })
@@ -145,13 +145,14 @@ function World(props) {
 
       <group ref={Models}>
         <Snake position={[Math.sin(step * 1) * radius, 0, Math.cos(step * 1) * radius]} rotation-y={step * -1} />
+        {/* <Skills position={[Math.sin(step * 2) * radius, 0, Math.cos(step * 2) * radius * 3]} visible={visible} /> */}
         <Logo position={[Math.sin(step * 2) * radius, 0, Math.cos(step * 2) * radius]} onClick={toSkill} />
         {permissionRequired &&
           <Mobile position={[wc - 2, viewport.aspect < 1 ? hc - 2 : hc - 1, Math.cos(step * 3) * radius]}
             scale={viewport.aspect < 1 ? .55 : .35} color={param.white} rotation-y={-Math.PI / 2} redSign={true} onClick={requestOrientationPermission} />
         }
-        {/* <Skills position={[Math.sin(step * 2) * radius, 0, Math.cos(step * 2) * radius * 3]} visible={visible} /> */}
-        <Log position={[0, 0, 0]} rotation-y={step * -2} />
+        <Weatherland position={[Math.sin(step * 3) * radius, -4, Math.cos(step * 3) * radius]} rotation-y={step*0.5} />
+        <Log position={[Math.sin(step * 4) * radius, 0, Math.cos(step * 4) * radius]} rotation-y={step * -2} />
       </group>
 
       <Html>
