@@ -4,12 +4,12 @@ import { useFrame } from "@react-three/fiber"
 import vertexShader from './shader/grass/vertexShader.glsl'
 import fragmentShader from './shader/grass/fragmentShader.glsl'
 
-export default function Grass(props) {
+export default function Grass({ scale, progress, windDir, windSpd, lightDir }) {
   const count = 5000
   const grassRef = useRef()
   const bladesPerTuft = 4
   const total = count * bladesPerTuft
-  const grassHeight = 0.3
+  const grassHeight = 0.5
 
   const geometry = useMemo(() => {
     const g = new THREE.PlaneGeometry(0.12, grassHeight, 1, 6)
@@ -34,9 +34,13 @@ export default function Grass(props) {
       fragmentShader,
       uniforms: {
         uTime: { value: 0 },
-        uWindDir: { value: new THREE.Vector2(Math.cos(props.windDir.current), Math.sin(props.windDir.current)) },
-        uWindSpeed: { value: props.windSpeed.current },
-        uProgress: { value: props.progress },
+        uWindDir: { value: new THREE.Vector2(Math.cos(windDir.current), -Math.sin(windDir.current)) },
+        uWindSpeed: { value: windSpd.current },
+        uProgress: { value: 0 },
+        uLightPos: { value: new THREE.Vector3([0,10,0]) },
+        uLightDir: { value: lightDir },
+        uLightAngle: { value: 2 },
+        uLightPenumbra: { value: 0.5 },
       },
       side: THREE.DoubleSide
     })
@@ -51,11 +55,11 @@ export default function Grass(props) {
       let x, z
 
       while (true) {
-        x = (Math.random() - 0.5) * props.scale * 4
-        z = (Math.random() - 0.5) * props.scale * 4
+        x = (Math.random() - 0.5) * scale * 4
+        z = (Math.random() - 0.5) * scale * 4
 
         const dist = Math.sqrt(x * x + z * z)
-        if (dist > props.scale * 2 - 0.4) continue
+        if (dist > scale * 2 - 0.4) continue
 
         const pondZ = -1
         const pondRadius = 12
@@ -92,13 +96,14 @@ export default function Grass(props) {
 
   useFrame((state) => {
     grassRef.current.material.uniforms.uTime.value = state.clock.elapsedTime
-    grassRef.current.material.uniforms.uWindSpeed.value = props.windSpeed.current
-    grassRef.current.material.uniforms.uWindDir.value.set(Math.cos(props.windDir.current), Math.sin(props.windDir.current))
+    grassRef.current.material.uniforms.uProgress.value = progress
+    grassRef.current.material.uniforms.uWindDir.value = new THREE.Vector2(Math.cos(windDir.current), -Math.sin(windDir.current))
+    grassRef.current.material.uniforms.uWindSpeed.value = windSpd.current
   })
 
   return (
     <group scale={0.5}>
-      <instancedMesh ref={grassRef} args={[geometry, material, total]} position-y={-grassHeight} />
+      <instancedMesh ref={grassRef} args={[geometry, material, total]} position-y={-grassHeight/2} />
     </group>
   )
 }

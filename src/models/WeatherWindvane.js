@@ -11,15 +11,18 @@ export function Windvane(props) {
   const arrowRef = useRef()
   const anemometerRef = useRef()
 
-  useFrame(() => {
+  useFrame((_, delta) => {
     const arrow = arrowRef.current
     const anemometer = anemometerRef.current
 
     if (!arrow || !anemometer) return
 
+    const rpm = props.windSpd.current * 3
+    const angularSpeed = rpm * Math.PI * 2 / 60
+
+    anemometer.rotation.y -= angularSpeed * delta
     arrow.rotation.y = props.windDir.current
-    anemometer.rotation.y -= props.windSpeed.current * 0.01
-  }, [])
+  }, [props.windDir, props.windSpd])
 
   return (
     <group {...props}>

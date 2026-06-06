@@ -11,12 +11,12 @@ export function Streetlight(props) {
   const target = useRef()
 
   useEffect(() => {
-    if(spotLightRef.current) spotLightRef.current.target = target.current
+    if (spotLightRef.current) spotLightRef.current.target = target.current
   }, [])
 
   return (
     <group {...props}>
-      <group dispose={null} position={[0.5, 0.01, -0.3]} rotation-y={-Math.PI * 0.2}>
+      <group dispose={null} position={[0.42, 0.01, -0.3]} rotation-y={-Math.PI * 0.2}>
         <mesh
           castShadow
           receiveShadow
@@ -56,21 +56,20 @@ export function Streetlight(props) {
         </mesh>
       </group>
 
-      {props.hovered &&
-        <spotLight castShadow
-          ref={spotLightRef}
-          position={[0.3, 0.8, -0.1]}
-          angle={1.0}
-          penumbra={0.5}
-          intensity={100}
-          distance={100}
-          shadow-mapSize={[2048, 2048]}
-          shadow-camera-near={0.1}
-          shadow-camera-far={1}
-          shadow-bias={-0.0001}
-          shadow-normalBias={0.02}
-        />
-      }
+      <spotLight castShadow
+        ref={spotLightRef}
+        visible={props.hovered}
+        position={[0.3, 0.8, -0.1]}
+        angle={1.0}
+        penumbra={0.5}
+        intensity={200}
+        distance={100}
+        shadow-mapSize={[2048, 2048]}
+        shadow-camera-near={0.1}
+        shadow-camera-far={1}
+        shadow-bias={-0.0001}
+        shadow-normalBias={0.02}
+      />
 
       <object3D ref={target} position={[0.2, -1, 0.5]} />
 

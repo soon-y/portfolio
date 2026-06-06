@@ -1,11 +1,13 @@
 import { useEffect, useMemo, useRef } from "react"
 import { useFrame } from "@react-three/fiber"
+import trunkVertex from './shader/tree/trunkVertex.glsl'
 import vertexShader from './shader/tree/vertexShader.glsl'
 import fragmentShader from './shader/tree/fragmentShader.glsl'
 import { useGLTF } from '@react-three/drei'
 
-export default function Tree(props) {
+export default function Tree({ progress, windDir, windSpd }) {
   const { nodes, materials } = useGLTF('model/tree.glb')
+
   const leafMaterialRef = useRef()
   const trunkMaterial = useMemo(() => materials.trunk.clone(), [materials])
   const trunkShaderRef = useRef()
@@ -18,9 +20,9 @@ export default function Tree(props) {
 
   const uniforms = useMemo(() => ({
     uTime: { value: 0 },
-    uProgress: { value: props.progress },
-    uWindStrength: { value: props.windSpeed.current },
-    uWindDir: { value: props.windDir.current },
+    uProgress: { value: progress },
+    uWindSpeed: { value: 0 },
+    uWindDir: { value: 0 },
   }), [])
 
   useFrame((state) => {
@@ -28,27 +30,28 @@ export default function Tree(props) {
 
     if (trunkShaderRef.current) {
       trunkShaderRef.current.uniforms.uTime.value = time
-      trunkShaderRef.current.uniforms.uWindStrength.value = props.windSpeed.current
-      trunkShaderRef.current.uniforms.uWindDir.value = props.windDir.current
+      trunkShaderRef.current.uniforms.uWindSpeed.value = windSpd.current
+      trunkShaderRef.current.uniforms.uWindDir.value = windDir.current
     }
 
     if (leafMaterialRef.current) {
       leafMaterialRef.current.uniforms.uTime.value = time
-      leafMaterialRef.current.uniforms.uWindStrength.value = props.windSpeed.current
-      leafMaterialRef.current.uniforms.uWindDir.value = props.windDir.current
+      leafMaterialRef.current.uniforms.uProgress.value = progress
+      leafMaterialRef.current.uniforms.uWindSpeed.value = windSpd.current
+      leafMaterialRef.current.uniforms.uWindDir.value = windDir.current
     }
   })
 
   useEffect(() => {
     trunkMaterial.onBeforeCompile = (shader) => {
       shader.uniforms.uTime = { value: 0 }
-      shader.uniforms.uWindStrength = { value: 0 }
+      shader.uniforms.uWindSpeed = { value: 0 }
       shader.uniforms.uWindDir = { value: 0 }
 
       shader.vertexShader =
         `
       uniform float uTime;
-      uniform float uWindStrength;
+      uniform float uWindSpeed;
       uniform float uWindDir;
 
       attribute vec4 windWeight;
@@ -57,18 +60,12 @@ export default function Tree(props) {
       shader.vertexShader = shader.vertexShader.replace(
         '#include <begin_vertex>',
         `
-      #include <begin_vertex>
+        #include <begin_vertex>
 
-      float weight = windWeight.r;
-      
-      float branchWind =
-      sin( uTime * 1.5 + position.y * 0.25 ) * 0.05 * uWindStrength * weight;
+        float weight = windWeight.r;
 
-      vec2 windDir = vec2( cos(uWindDir), sin(uWindDir));
-
-      transformed.x += windDir.x * branchWind;
-      transformed.z += windDir.y * branchWind;
-      `
+        ${trunkVertex}
+        `
       )
 
       trunkShaderRef.current = shader
@@ -77,10 +74,9 @@ export default function Tree(props) {
     trunkMaterial.needsUpdate = true
   }, [trunkMaterial])
 
-
   return (
     <group>
-      <group position={[-3, 0, -3]} scale={0.8} rotation-y={0.1}>
+      <group position={[-3.5, 0, -3]} scale={0.8} rotation-y={0.1}>
         <group position={[0, -0.199, 0]}>
           <mesh castShadow receiveShadow
             geometry={nodes.Cube.geometry}

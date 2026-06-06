@@ -24,32 +24,35 @@ void main() {
   float bend = pow(pos.y, 1.5);
   pos.z += bend * 0.2;
 
-  vec4 baseWorldPos = modelMatrix * (instanceMatrix * vec4(pos, 1.0));
+  float heightFactor = pow(pos.y, 2.0);
 
-  float windCoord = dot(baseWorldPos.xz, uWindDir);
+  vec4 instancePos = instanceMatrix * vec4(pos, 1.0);
+  vec4 worldPos = modelMatrix * instancePos;
 
-  float wave = sin(windCoord * 2.0 -
-    uTime * (1.0 + uWindSpeed * 0.1));
+  float windCoord = dot(worldPos.xz, uWindDir);
 
-  float noise = snoise(vec3(baseWorldPos.xz * 0.3, uTime * (0.5 + uWindSpeed * 0.2)));
+  float wave = sin(windCoord * 1.5 - uTime * 2.5);
 
-  float combined = wave + noise * 0.5;
+  float noise = snoise(vec3(worldPos.xz * 0.25, uTime * 0.4 + aRandom * 10.0));
 
-  float heightFactor = pow(pos.y, 1.5);
+  float combined = wave + noise * 0.6;
 
-  vec2 windOffset = uWindDir *
-    combined *
-    (0.1 + uWindSpeed * 0.01) *
-    heightFactor;
+  float windStrength = clamp(uWindSpeed / 25.0, 0.0, 2.0);
 
-  pos.x += windOffset.x;
-  pos.z += windOffset.y;
+  float sway = combined * heightFactor * (0.08 + windStrength * 0.12);
 
-  vec4 worldPos = modelMatrix * (instanceMatrix * vec4(pos, 1.0));
+  pos.x += uWindDir.x * sway;
+  pos.z += uWindDir.y * sway;
+
+  instancePos = instanceMatrix * vec4(pos, 1.0);
+
+  worldPos = modelMatrix * instancePos;
+  vWorldPos = worldPos.xyz;
+
   vec4 viewPos = viewMatrix * worldPos;
 
-  vWorldPos = worldPos.xyz;
   vDepth = -viewPos.z;
+
   vNormal = normalize(mat3(modelMatrix * instanceMatrix) * normal);
 
   gl_Position = projectionMatrix * viewPos;

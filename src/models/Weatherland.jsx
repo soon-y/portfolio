@@ -6,50 +6,64 @@ import Grass from "./WeatherGrass"
 import Pond from "./WeatherPond"
 import Tree from "./WeatherTree"
 import { useFrame } from "@react-three/fiber"
+import * as THREE from 'three'
 
 function Weatherland(props) {
   const scaleFactor = 7
-  const progress = 0.3
+  const [progress, setProgress] = useState(0.3)
   const [hovered, setHover] = useState(false)
   useEffect(() => void (document.body.style.cursor = hovered ? "pointer" : "auto"), [hovered])
   const href = () => { window.open("https://weather-land.vercel.app/", "_blank") }
 
-  const windSpeed = 2
-  const gustsSpeed = 10
-  const time = useRef(0)
-  const gustStrength = useRef(0)
-  const direction = useRef(0)
-  const speed = useRef(0)
-  const finalSpeed = useRef(0)
+  const timeRef = useRef(0)
+  const windSpeedRef = useRef(0)
+  const windDirRef = useRef(0)
+  const finalDirRef = useRef(0)
+  const targetProgress = useRef(0.3)
+
+  useEffect(() => {
+    targetProgress.current = hovered ? 0.25 : 0.3
+  }, [hovered])
 
   useFrame((_, delta) => {
-    time.current += delta
+    setProgress(prev =>
+      THREE.MathUtils.lerp(
+        prev,
+        targetProgress.current,
+        delta * 5
+      )
+    )
 
-    let targetSpeed = hovered ? gustsSpeed : windSpeed
-    let targetDirection = hovered ? Math.PI * 0.1 : Math.PI * 0.8
+    timeRef.current += delta
 
-    gustStrength.current *= 0.95
+    const targetDirection = hovered ? Math.PI * 0.5 : Math.PI * 0.4
+    const targetSpeed = hovered ? 50 : 5
 
-    const sway = Math.sin(time.current * 2) * (speed.current * 0.001)
+    windDirRef.current += (targetDirection - windDirRef.current) * 0.1
+    windSpeedRef.current += (targetSpeed - windSpeedRef.current) * 0.1
 
-    direction.current += (targetDirection - direction.current) * 0.05 + sway
-    speed.current += (targetSpeed - speed.current) * 0.05
-    
-    finalSpeed.current = speed.current + gustStrength.current
-  }, [])
+    const sway = Math.sin(timeRef.current * 2) * (windSpeedRef.current * 0.001)
+    finalDirRef.current = windDirRef.current + sway
+  })
+
+  const lightPos = new THREE.Vector3([0, 10, 0])
+  const targetPos = new THREE.Vector3([0, 0, 0])
+
+  const lightDir = new THREE.Vector3()
+  lightDir.subVectors(targetPos, lightPos).normalize()
 
   return (
     <group {...props}
-      //onClick={href}
+      onClick={href}
       onPointerOut={() => setHover(false)}
       onPointerOver={() => setHover(true)}
     >
       <WorldGround scale={scaleFactor} />
       <Streetlight scale={scaleFactor} hovered={hovered} />
-      <Windvane scale={scaleFactor} hovered={hovered} windSpeed={finalSpeed} windDir={direction} />
-      <Grass scale={scaleFactor} hovered={hovered} windSpeed={finalSpeed} windDir={direction} progress={progress}/>
-      <Pond scale={scaleFactor} hovered={hovered} windSpeed={finalSpeed} windDir={direction} progress={progress}/>
-      <Tree hovered={hovered} windSpeed={finalSpeed} windDir={direction} progress={progress} />
+      <Windvane scale={scaleFactor} windSpd={windSpeedRef} windDir={finalDirRef} />
+      <Grass scale={scaleFactor} windSpd={windSpeedRef} windDir={finalDirRef} progress={progress} lightDir={lightDir} />
+      <Pond scale={scaleFactor} windSpd={windSpeedRef} windDir={finalDirRef} progress={progress} lightDir={lightDir} />
+      <Tree windSpd={windSpeedRef} windDir={finalDirRef} progress={progress} />
     </group>
   )
 }
