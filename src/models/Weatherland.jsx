@@ -26,6 +26,8 @@ function Weatherland(props) {
   }, [hovered])
 
   useFrame((_, delta) => {
+    delta = Math.min(delta, 0.05)
+
     setProgress(prev =>
       THREE.MathUtils.lerp(
         prev,
@@ -36,11 +38,20 @@ function Weatherland(props) {
 
     timeRef.current += delta
 
-    const targetDirection = hovered ? Math.PI * 0.5 : Math.PI * 0.4
-    const targetSpeed = hovered ? 50 : 5
+    const targetDirection = hovered ? Math.PI * 0.5 : Math.PI * 0.1
+    const targetSpeed = hovered ? 50 : 10
 
-    windDirRef.current += (targetDirection - windDirRef.current) * 0.1
-    windSpeedRef.current += (targetSpeed - windSpeedRef.current) * 0.1
+    windDirRef.current = THREE.MathUtils.lerp(
+      windDirRef.current,
+      targetDirection,
+      delta * 3
+    )
+
+    windSpeedRef.current = THREE.MathUtils.lerp(
+      windSpeedRef.current,
+      targetSpeed,
+      delta * 3
+    )
 
     const sway = Math.sin(timeRef.current * 2) * (windSpeedRef.current * 0.001)
     finalDirRef.current = windDirRef.current + sway
