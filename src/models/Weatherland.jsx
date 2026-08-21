@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react"
 import WorldGround from "./WeatherGround"
 import { Streetlight } from "./WeatherStreetlight"
 import { Windvane } from "./WeatherWindvane"
+import Post from "./WeatherPost"
+import Thermometer from "./WeatherThermometer"
 import Grass from "./WeatherGrass"
 import Pond from "./WeatherPond"
 import Tree from "./WeatherTree"
@@ -72,9 +74,11 @@ function Weatherland(props) {
       <WorldGround scale={scaleFactor} />
       <Streetlight scale={scaleFactor} hovered={hovered} />
       <Windvane scale={scaleFactor} windSpd={windSpeedRef} windDir={finalDirRef} />
-      <Grass scale={scaleFactor} windSpd={windSpeedRef} windDir={finalDirRef} progress={progress} lightDir={lightDir} />
+      <Grass scale={scaleFactor} windSpd={windSpeedRef} windDir={finalDirRef} lightDir={lightDir} />
       <Pond scale={scaleFactor} windSpd={windSpeedRef} windDir={finalDirRef} progress={progress} lightDir={lightDir} />
       <Tree windSpd={windSpeedRef} windDir={finalDirRef} progress={progress} />
+      <Thermometer hovered={hovered} />
+      <Post />
     </group>
   )
 }

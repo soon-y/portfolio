@@ -4,7 +4,7 @@ import { useFrame } from "@react-three/fiber"
 import vertexShader from './shader/grass/vertexShader.glsl'
 import fragmentShader from './shader/grass/fragmentShader.glsl'
 
-export default function Grass({ scale, progress, windDir, windSpd, lightDir }) {
+export default function Grass({ scale, windDir, windSpd }) {
   const count = 5000
   const grassRef = useRef()
   const bladesPerTuft = 4
@@ -36,11 +36,7 @@ export default function Grass({ scale, progress, windDir, windSpd, lightDir }) {
         uTime: { value: 0 },
         uWindDir: { value: new THREE.Vector2(Math.cos(windDir.current), -Math.sin(windDir.current)) },
         uWindSpeed: { value: windSpd.current },
-        uProgress: { value: 0 },
-        uLightPos: { value: new THREE.Vector3([0,10,0]) },
-        uLightDir: { value: lightDir },
-        uLightAngle: { value: 2 },
-        uLightPenumbra: { value: 0.5 },
+        uProgress: { value: 0.28 },
       },
       side: THREE.DoubleSide
     })
@@ -96,7 +92,6 @@ export default function Grass({ scale, progress, windDir, windSpd, lightDir }) {
 
   useFrame((state) => {
     grassRef.current.material.uniforms.uTime.value = state.clock.elapsedTime
-    grassRef.current.material.uniforms.uProgress.value = progress
     grassRef.current.material.uniforms.uWindDir.value = new THREE.Vector2(Math.cos(windDir.current), -Math.sin(windDir.current))
     grassRef.current.material.uniforms.uWindSpeed.value = windSpd.current
   })

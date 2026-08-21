@@ -62,12 +62,13 @@ function World(props) {
   }, [touchDevice])
 
   useFrame((state, delta) => {
+    delta = Math.min(delta, 0.05)
+
     if (!document.hidden && !touchDevice) {
-      const safeDelta = Math.min(delta, 0.1)
       const parallaxX = state.pointer.x
       const parallaxY = state.pointer.y
-      camera.position.x += (parallaxX - camera.position.x) * safeDelta
-      camera.position.y += (parallaxY - camera.position.y) * safeDelta
+      camera.position.x += (parallaxX - camera.position.x) * delta
+      camera.position.y += (parallaxY - camera.position.y) * delta
     }
   })
 

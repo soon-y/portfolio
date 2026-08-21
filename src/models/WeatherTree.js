@@ -6,7 +6,7 @@ import fragmentShader from './shader/tree/fragmentShader.glsl'
 import { useGLTF } from '@react-three/drei'
 
 export default function Tree({ progress, windDir, windSpd }) {
-  const { nodes, materials } = useGLTF('model/tree.glb')
+  const { nodes, materials } = useGLTF('/model/tree.glb')
 
   const leafMaterialRef = useRef()
   const trunkMaterial = useMemo(() => materials.trunk.clone(), [materials])
@@ -100,4 +100,4 @@ export default function Tree({ progress, windDir, windSpd }) {
   )
 }
 
-useGLTF.preload('model/tree.glb')
+useGLTF.preload('/model/tree.glb')
