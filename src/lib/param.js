@@ -50,6 +50,7 @@ export const param = {
 }
 
 export const contents = [
+  { title: 'Weather Land', name: 'weatherland', tag: ['UI/UX', 'React', 'Next.js', 'Three.js', 'OpenGL',] },
   { title: 'Multicultural Museum', name: 'MMK', tag: ['UI/UX', 'E-commerce', 'React', 'Nest.js', 'TypeScript',] },
   { title: 'Dewy Days', name: 'dewyDays', tag: ['UI/UX', 'Next.js', 'TypeScript', 'Prototype'] },
   { title: 'Caregem', name: 'caregem', tag: ['UI/UX', 'Vue', 'TypeScript', 'Prototype'] },

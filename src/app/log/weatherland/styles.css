@@ -1,0 +1,17 @@
+:root {
+  --main: #00b351;
+}
+
+.main::selection {
+  color: var(--main);
+}
+
+.main a:hover {
+  color: var(--main);
+  transition-duration: 500ms;
+}
+
+.main-opp::selection {
+  background-color: var(--main);
+  color: white;
+}
