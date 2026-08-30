@@ -6,7 +6,7 @@ import { Sparkles, Environment } from '@react-three/drei'
 import { LinkIcon, Code2 } from 'lucide-react'
 import { param } from '@/lib/param'
 import Link from 'next/link'
-import Mobile from "@/models/Mobile"
+import Mobile from "@/models/MobileRect"
 import Weatherland from '@/models/Weatherland'
 import gsap from "gsap"
 import { useGSAP } from '@gsap/react'
