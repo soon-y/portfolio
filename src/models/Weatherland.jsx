@@ -40,23 +40,24 @@ function Weatherland(props) {
 
     timeRef.current += delta
 
-    const targetDirection = hovered ? Math.PI * 0.5 : Math.PI * 0.1
+    const targetDirection = hovered ? Math.PI * -0.6 : Math.PI * 0.1
     const targetSpeed = hovered ? 50 : 10
 
     windDirRef.current = THREE.MathUtils.lerp(
       windDirRef.current,
       targetDirection,
-      delta * 3
+      delta * 0.8
     )
 
     windSpeedRef.current = THREE.MathUtils.lerp(
       windSpeedRef.current,
       targetSpeed,
-      delta * 3
+      delta * 1.5
     )
 
     const sway = Math.sin(timeRef.current * 2) * (windSpeedRef.current * 0.001)
     finalDirRef.current = windDirRef.current + sway
+
   })
 
   const lightPos = new THREE.Vector3([0, 10, 0])
